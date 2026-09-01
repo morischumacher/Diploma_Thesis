@@ -114,7 +114,7 @@ The two task briefs are reproduced below exactly as the study-guide application 
 \section{Evaluation codebook}
 \label{app:eval-codebook}
 
-The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1994}. The ``Seeded'' column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
+The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The ``Seeded'' column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
 
 \footnotesize
 \begin{longtable}{p{1.6cm}p{9.6cm}cc}
@@ -177,7 +177,7 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-P41 & New-account creation returns a raw ``username already exists'' error inline, forcing an unguided retry. & eff & 1 \\
     E-P42 & The internships and interdisciplinary recommendation tabs render a bare ``no recommendations'' dead-end. & sat & 1 \\
     E-P43 & The drag handles are hidden under the card title; participants could not place a course until the moderator located them. & eff & 3 \\
-    E-P44 & The compliance engine validates against prerequisites and reports them in the dashboard after the fact, but neither view shows them at the point of placement; participants wanted a visible ordering indicator. & eff & 2 \\
+    E-P44 & The graph draws the curriculum's formal prerequisite pairs, but the soft, recommended orderings the compliance engine holds are reported only in the dashboard after the fact and are shown in neither view at the point of placement; participants wanted a visible ordering indicator. & eff & 2 \\
     E-P45 & The graph becomes hard to read once many categories are present, even with zoom. & eff & 2 \\
     E-P46 & An off-target click navigated away and disrupted plan state mid-task. & eff & 1 \\
     E-P47 & The graph carries no semester dimension at all, so a placement made from a node cannot be judged against the target lane's load; over-fill is discovered only after switching views. & eff & 3 \\
@@ -230,7 +230,7 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-G05 & Completion and milestone animation creates delight. & sat \\
     E-G06 & Parking stage discovered and valued for shortlisting before committing. & sat \\
     E-G07 & Graph and sidebar filters (narrow elective, ECTS range) praised. & eff/sat \\
-    E-G08 & Graph makes course dependencies and constraints legible. & eff/sat \\
+    E-G08 & Graph makes course dependencies (containment and formal prerequisite edges) and constraints legible. & eff/sat \\
     E-G09 & Blocked-drop, accepted, and milestone banners are unambiguous. & eff/sat \\
     E-G10 & Expanding curriculum clusters to find specialisation courses is highly discoverable. & eff/sat \\
     E-G11 & The ``Done'' check-off mode with live ECTS and StEOP updates valued. & sat \\
@@ -426,7 +426,7 @@ Two properties of the sampling bound what the labelled record can support. Event
 \section{Per-run completion audit}
 \label{app:eval-completion}
 
-Table~\ref{tab:app-completion} gives the final plan state of all twenty-two analysed scenario runs against the constraints of their brief. A lane at or below the stated cap counts as the internship or exchange semester and is exempt from the per-semester band; overshoot of the 180~ECTS total is not counted as a failure, a shortfall is. Lane values were cross-checked against the dashboard's planned total and are reported as unknown where that constraint does not determine them. The excluded session P08 is not listed.
+The two task briefs are reproduced verbatim in Figure~\ref{fig:scenario-a} and Figure~\ref{fig:scenario-b}. Table~\ref{tab:app-completion} gives the final plan state of all twenty-two analysed scenario runs against the constraints of their brief. A lane at or below the stated cap counts as the internship or exchange semester and is exempt from the per-semester band; overshoot of the 180~ECTS total is not counted as a failure, a shortfall is. Lane values were cross-checked against the dashboard's planned total and are reported as unknown where that constraint does not determine them. The excluded session P08 is not listed.
 
 \begin{table}[htpb]
     \centering
@@ -436,15 +436,15 @@ Table~\ref{tab:app-completion} gives the final plan state of all twenty-two anal
         \toprule
         Run & Per-semester ECTS & Reduced-load lane & Out of band & Total & Verdict \\
         \midrule
-        P01-A & 32/31/32/30/21/31 & none & S5 = 21 & 177 (3 short) & incomplete, 6 of 7 semesters \\
+        P01-A & 32/31/32/30/21/31 & none & S5 = 21 & 177 (3 short) & incomplete, 6 of 7 semesters, no internship \\
         P01-B & 26/25/20/24/21/22/\textbf{9}/24 & S7 = 9 & S3 = 20 & 171 (9 short) & incomplete \\
-        P02-A & 32/31/32/30/27/12/16 & none & S6, S7 & 180 & 2 violations \\
+        P02-A & 32/31/32/30/27/12/16 & none & S6, S7 & 180 & 2 violations, no internship \\
         P02-B & 26/25/26/24/\textbf{9}/24/24/22 & S5 = 9 & none & 180 & \textbf{compliant} \\
         P03-A & 26/31/32/30/\textbf{6}/27/31 & S5 = 6 & S1 = 26 & 183 & 1 violation \\
         P03-B & 32/31/\textbf{8}/30/27/31/12/12 & S3 = 8 & 6 of 7 & 183 & badly incomplete \\
         P04-A & 32/31/32/30/\textbf{9}/31/15 & S5 = 9 & S7 = 15 & 180 & 1 violation \\
         P04-B & 26/25/26/24/\textbf{9}/24/25/24 & S5 = 9 & none & 183 & \textbf{compliant} \\
-        P05-A & 26/31/32/12/30/33/16 & none & S1, S4, S7 & 180 & 3 violations \\
+        P05-A & 26/31/32/12/30/33/16 & none & S1, S4, S7 & 180 & 3 violations, no internship \\
         P05-B & 26/25/26/24/\textbf{6}/27/24/22 & S5 = 6 & none & 180 & \textbf{compliant} \\
         P06-A & 26/31/29/30/30/\textbf{6}/28 & S6 = 6 & S1 = 26 & 180 & 1 violation \\
         P06-B & 26/25/26/24/24/30/\textbf{9}/22 & S7 = 9 & S6 = 30 & 186 & 1 violation \\
@@ -456,11 +456,11 @@ Table~\ref{tab:app-completion} gives the final plan state of all twenty-two anal
         P10-B & 26/25/26/24/24/24/\textbf{9}/22 & S7 = 9 & none & 180 (+6 parked) & \textbf{compliant} \\
         P11-A & 32/31/26/30/30/\textbf{6}/25 & S6 = 6 & S3, S7 & 180 & 2 violations \\
         P11-B & 26/25/20/24/\textbf{9}/27/24/25 & S5 = 9 & S3 = 20 & 180 & 1 violation \\
-        P12-A & 32/31/?/30/12/30/? & none & S5 = 12, S3/S7 unread & 180 & unresolved \\
+        P12-A & 32/31/?/30/12/30/? & none & S5 = 12, S3/S7 unread & 180 & unresolved; no internship among the readable lanes \\
         P12-B & 26/25/26/24/21/24/12/22 & none & S7 = 12 & 180 (+6 parked) & 1 violation, no exchange \\
         \bottomrule
     \end{tabular}
-    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS.}
+    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. A dash in the reduced-load column is itself a failure of the brief and is carried into the verdict.}
     \label{tab:app-completion}
 \end{table}
 
@@ -506,7 +506,7 @@ Two properties of the counts bound how they should be read. A frequency states t
     Populated or hidden recommendation tabs, and an internship data channel & 5/11 & A tab named for the task's own constraint returns a bare empty state (E-P42, E-P56). \\
     An in-tool glossary for the curriculum vocabulary & 4/11 & Narrow and broad electives, focus area versus exam subject, and module versus course each required moderator explanation (E-P01, E-P28). \\
     An ECTS to week-hours equivalence, shown by default & 4/11 & The week-hours panel is advertised on every dashboard and never populated, so workload can only be judged in ECTS (E-P33, E-P61). \\
-    Visible prerequisite and course-ordering indicators & 4/11 & The compliance engine holds the relation and reports it after the fact; neither view renders it at the point of placement (E-P44). \\
+    Visible recommended-ordering indicators & 4/11 & The graph renders the formal prerequisite pairs, but the engine's recommended orderings are reported after the fact and rendered in neither view at the point of placement (E-P44). \\
     Transparent recommendation provenance, and a way to steer it & 4/9 & A student cannot tell which of their own profile inputs produced a given suggestion (E-P68). \\
     Non-blocking or explained introductory-phase check-off ordering & 4/11 & StEOP courses gate each other until marked done, and the resulting warning never clears (E-P20). \\
     A self-consistent completion panel & 8/8 & The focus-area checklist reports complete while Missing Requirements lists an unmet module from the same area (E-P36, E-P49, E-P52). \\
