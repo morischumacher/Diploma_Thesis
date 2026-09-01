@@ -275,6 +275,37 @@ Third, end-to-end tests drive a browser against the running stack to simulate th
 Standard unit tests cover the remaining components. Client-side tests isolate the domain layer, including the plan reducer and graph filters. Service-side tests cover the curriculum documents, individual recommendation channels, catalogue queries, and database migration integrity. A continuous integration pipeline runs this entire suite alongside strict type checks on every change.
 This heavy reliance on recorded verification is effective here because the compliance engine is strictly deterministic and the plan model is a pure function of its inputs, guaranteeing stable test outputs for any given state.
 
+% =============================================================================
+\section{Revisions After the Evaluation Study}
+\label{sec:impl-post-study}
+
+Everything described up to this point is the system the eleven participants of Chapter~\ref{chap:evaluation} used. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. The changes fall into two kinds. The first is a set of corrections to defects the study surfaced (Section~\ref{sec:impl-post-study-fixes}). The second is an addition rather than a correction, the soft-dependency edge layer (Section~\ref{sec:impl-prereq-edges}), which supplies a capability four participants asked for and did not receive.
+
+\subsection{Corrections to Reported Defects}
+\label{sec:impl-post-study-fixes}
+
+The defects of Table~\ref{tab:problems} are held as a register in the tool's repository, ranked by the severity and frequency reported in Chapter~\ref{chap:evaluation}. Five have been closed, each with a regression test that reproduces the observed failure before the fix and passes after it. The remainder are open and are not discussed here.
+
+Term availability (E-P29) was legible only through a filter dimension, not from a course card. A winter or summer marker was added to the card in both views and to the catalogue row, drawing on the same field the filter already used.
+
+The feedback banners failed in two independent ways and both were corrected (E-P50, and the arithmetic half of E-G09). One visual style carried acceptance, rejection and progress, so a refusal could not be told from a confirmation; the three now have distinct styles, and a rejection states the constraint that produced it. Separately, milestone banners computed their percentage against a hard-coded credit denominator rather than the loaded programme's own total, which is what produced the runs announcing 25\,\% completion at 102 and at 108 of 180~ECTS; the denominator now comes from the curriculum in force.
+
+The internships and interdisciplinary recommendation tabs rendered a bare dead end when a channel returned nothing (E-P42). A tab with no candidates now states why it is empty. This does not repair the underlying cause, which is the placeholder interaction data described in Section~\ref{sec:impl-recommender}; it stops the empty state from reading as a fault in the tool.
+
+The profile screen carried wording written for the study rather than for a student (E-P27), which was rewritten.
+
+The fifth correction is the edge layer, and it is large enough to take separately.
+
+\subsection{The Soft-Dependency Edge Layer}
+\label{sec:impl-prereq-edges}
+
+The evaluated graph already drew the formal prerequisite pairs the two curricula fix, as a togglable overlay on the containment layout (Chapter~\ref{chap:design}, Section~\ref{sec:graph-ltr}). What it did not draw was the other half of the relation the compliance engine holds: the soft, recommended orderings the engine reports as non-blocking Dashboard advisories (Section~\ref{sec:impl-compliance}; Feature~\ref{feat:003}, Req.~3). That asymmetry followed from the data rather than from the layout. Recommended sequence has no institutional grounding in either curriculum, so the pairs the engine holds are curated rather than published (Feature~\ref{feat:003}, Delineation), and at design time there was no authoritative set to draw. Four participants asked for ordering information at the point of placement and did not receive it (E-P44), and closing that gap therefore meant rendering what the engine already knew rather than acquiring anything new.
+
+The layer reuses the mechanism the formal edges already use. The soft pairs, which live as an attribute of each programme's checker class (Section~\ref{sec:impl-compliance}), are now served alongside the catalogue instead of remaining inside the engine, and the graph renders them as a second edge style: dashed where the formal edges are solid, and carrying a tooltip that states the recommendation in the same words as the corresponding Dashboard advisory, so that a student meets one message rather than two. Both styles sit in one toggle group in the filter sidebar, so the overlay can be set to formal edges only, both, or neither, which is what the decluttering requirement asks for (DEP-04). Because both edge types cross the exam-subject bands rather than running along them, they are drawn above the containment layout and are hidden by default; node positions are unchanged, so the spatial memory the design protects (Feature~\ref{feat:013}, Req.~2) survives turning the overlay on and off.
+
+Two limits on this layer should be stated plainly. It was built after the study, so no participant used it and Chapter~\ref{chap:evaluation} carries no evidence about how it is read. And it is thin by construction: the Bachelor programme contributes two formal pairs and a small curated set of recommended ones, the Master programme fewer still, so the layer draws a handful of edges over a graph of 101 courses. Chapter~\ref{chap:discussion} (Section~\ref{sec:disc-future}) takes up what would have to be established before a dependency-revealing view of this kind could be said to earn its place.
+
+% =============================================================================
 \section{Key Decisions}
 \label{sec:impl-decisions}
 Four decisions shaped what the evaluation was able to observe, and it is that consequence rather than the rationale already given above that is worth drawing together here.
