@@ -1,0 +1,58 @@
+\label{chap:from-themes-to-requirements}
+
+This chapter translates the design-relevant themes identified in Chapter~\ref{chap:formative-study} into concrete features and testable requirements. This transition follows the logic of human-centred design, in which design is grounded in an explicit understanding of users, tasks, and environments and proceeds through the specification of user requirements, the production of design solutions, and later evaluation against those requirements \cite{noauthor_iso_nodate}. At the same time, it aligns with requirements engineering, which is concerned with identifying stakeholder needs and documenting them in a form suitable for analysis, communication, and subsequent implementation \cite{nuseibeh_requirements_2000}. In doing so, this chapter completes the answer to Research Question~1 begun in Chapter~\ref{chap:formative-study}, yielding the features-and-requirements specification that the Design and Implementation chapters realise.
+
+\section{From Themes to Requirements}
+\label{sec:derivation-process}
+
+The starting point was the final theme set of Chapter~\ref{chap:formative-study}: 64 themes, each a design-relevant need category grounded in collated interview excerpts and linked throughout to that evidence, so that a requirement can be related back to its qualitative origin \cite{gotel_analysis_1994}.
+
+Each theme was first read, together with the initial codes and excerpts constituting it, to formulate a design implication, the guiding question being what the system must support if the need is to be addressed. Each theme is treated as the operative, citable expression of a stakeholder need, since it carries its own excerpts and a requirement derived from it therefore remains traceable to the passages that motivated it rather than resting on a label \cite{nuseibeh_requirements_2000}. One or more candidate requirements were then formulated per theme, written as system-oriented statements of capabilities or conditions and kept as implementation-independent as was reasonable: they specify \emph{what} the system should support, not \emph{how}. Closely related requirements were then grouped into \emph{features}, a feature being a coherent product capability bundling related requirements under one functional topic. Where several themes converged on one capability their requirements were grouped into a shared feature; where one theme implied substantively different capabilities its requirements contributed to more than one. A requirement count is therefore not tied one-to-one to its parent theme. For each feature a short delineation records what was intentionally excluded from the first implementation scope, consistent with requirements-engineering practice, in which not all elicited needs are taken forward unchanged but must be bounded in a form manageable for development.
+
+The resulting traceability chain is \emph{interview evidence $\rightarrow$ code $\rightarrow$ theme $\rightarrow$ requirement $\rightarrow$ feature}, matching the derivation order above and the canonical chain of Chapter~\ref{chap:formative-study} (Section~\ref{sec:link-subsequent-chapters}). This is the logic of pre-requirements-specification traceability, that is, documenting how requirements originate in earlier stakeholder- and context-related artefacts rather than appearing only at the formal specification stage \cite{gotel_analysis_1994}. Each feature below accordingly lists its associated themes by identifier, and each theme's own codes and excerpts are recorded in Section~\ref{app:codebook}. Every feature is presented in the same structure: title and identifier, associated themes, description and user evidence, derived requirements, and a delineation where one applies.
+
+\section{Scope Refinement for Requirements Derivation}
+\label{sec:overall-scope-refined}
+The general scope of this thesis, programme-level planning only (OOS2) and no automated planning (OOS1), is defined in the Methodology chapter (Section~\ref{sec:overall-scope}) before any thesis-specific evidence is available to justify it. Two further scope boundaries require the supporting evidence that excluded findings provide, and are therefore stated here rather than upfront:
+
+\begin{itemize}
+    \item \textbf{OOS3:} No live connection to the institutional course management or learning management system (CMS/LMS).
+    \item \textbf{OOS4:} No community features (e.g., ratings, discussion, chat, or upload of shared resources).
+\end{itemize}
+
+All four boundaries (OOS1--OOS4) apply throughout Section~\ref{sec:resulting-features} and are referenced there and in later chapters by these same numbers.
+
+\section{Resulting Features}
+\label{sec:resulting-features}
+
+Thirteen features were derived from the formative study's theme set, carrying fifty-five numbered requirements between them. Each feature carries a total importance score (Section~\ref{sec:prevalence-ranking}), the summed prevalence of its associated themes, which was used to prioritise early implementation attention. Table~\ref{tab:feature-summary} lists the result in descending order of that score; the full specifications, with the interview evidence behind each feature and the wording of every requirement, are given in Section~\ref{app:feature-specs}, and are cited from the Design chapter onward in the form Feature~\ref{feat:004}, Req.~1.
+
+The ranking separates the specification into three bands. The four highest-scoring features (scores 15--20) are the planning substrate: getting curriculum data into the system without manual transcription (FEATURE-001), showing progress against the programme at three granularities (FEATURE-002), enforcing the curriculum's own rules (FEATURE-003), and moving a course from exploration in the graph to commitment in the table (FEATURE-004). These four define the hybrid graph--table concept that the rest of the thesis builds and tests. A middle band (scores 9--14) adds the judgement layer participants described around that substrate: semester feasibility (FEATURE-005), stage-appropriate onboarding (FEATURE-006), explainable recommendation (FEATURE-007), and replanning under disruption (FEATURE-008). The remaining five (scores 3--6) concern how the representation behaves once it is populated: density control (FEATURE-009), graph interpretability (FEATURE-010), visual and affective load (FEATURE-011), non-destructive recommendation display (FEATURE-012), and user-defined spatial grouping (FEATURE-013).
+
+Two features contain requirements that were derived from the data but not carried into the implemented system, because of resource and time constraints during development: FEATURE-005, Req.~3 (self-assessed readiness profiles) and FEATURE-013, Reqs.~1, 3, and~4 (named, cross-view groups). Both are stated in the respective Delineation in Section~\ref{app:feature-specs} and are taken up as shortfalls in Chapter~\ref{chap:discussion}. All other exclusions recorded in a Delineation follow from the scope boundaries OOS1--OOS4 rather than from what was built.
+
+\begin{table}[htpb]
+    \centering
+    \footnotesize
+    \begin{tabular}{@{}l>{\raggedright\arraybackslash}p{4.5cm}c>{\raggedright\arraybackslash}p{3.3cm}c@{}}
+        \toprule
+        \textbf{ID} & \textbf{Feature} & \textbf{Score} & \textbf{Associated themes} & \textbf{Reqs.} \\
+        \midrule
+        FEATURE-001 & Unified Data \& Tool Integration & 20 & C9, C10, C11, C12, C15, C37, C62 & 5 \\
+        FEATURE-002 & Multi-Level Roadmap \& Progress Dashboard & 19 & C1, C16, C18, C19, C57 & 6 \\
+        FEATURE-003 & Curriculum Rules \& Compliance Engine & 18 & C13, C17, C30, C31, C33, C63 & 5 \\
+        FEATURE-004 & Graph-to-Table Planning Workflow & 15 & C20, C21, C44, C47, C61 & 6 \\
+        FEATURE-005 & Feasibility Planning & 14 & C6, C35, C48, C49 & 3 \\
+        FEATURE-006 & Onboarding \& Guided Planning Transition & 14 & C5, C7, C59 & 2 \\
+        FEATURE-007 & Evidence-Based, Explainable Recommendation Support & 13 & C23, C24, C45, C52 & 6 \\
+        FEATURE-008 & Constraint-Aware Replanning \& Disruption Handling & 9 & C4, C46, C56 & 4 \\
+        FEATURE-009 & Overwhelm-Safe Browsing & 6 & C42, C50, C64 & 3 \\
+        FEATURE-010 & Graph Interpretability & 5 & C27, C28, C32, C40, C41 & 4 \\
+        FEATURE-011 & Motivating Visual UI \& Emotional Load Reduction & 5 & C8, C54, C58 & 4 \\
+        FEATURE-012 & Recommendation Presentation UX & 4 & C43, C55 & 3 \\
+        FEATURE-013 & Spatial Organisation \& Grouping Controls & 3 & C28, C29 & 4 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The thirteen features, in descending order of importance score, with the themes each was derived from and the number of requirements each carries. The full specifications are in Section~\ref{app:feature-specs}.}
+    \label{tab:feature-summary}
+\end{table}

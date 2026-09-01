@@ -1,0 +1,245 @@
+% Copyright (C) 2014-2025 by Thomas Auzinger <thomas@auzinger.name>
+
+% Inside the square brackets (e.g., [draft,onside]), different options can be chosen:
+% 'draft': Obtain debug information on the build.
+% 'final': Remove all debug information in the final build.
+% 'onside': Create document for onsided printing (without empty pages added by LaTeX).
+% 'twoside': Create document for twosided printing, which adds empty pages to start chapters on odd pages.
+\documentclass[final,twoside]{vutinfth}
+
+% Define convenience functions to use the author name and the thesis title in the PDF document properties.
+%% AIREV [BLOCKER] (The title-page metadata is still the template's: \thesistitle is "Title of the Thesis", the subtitle is the placeholder, \setdate is 01.01.2001, and \Keywords is "a list of keywords". These render on the title pages and in the PDF properties of the submitted document; only you can supply the real title, subtitle or its removal, submission date, and keywords.)
+\newcommand{\authorname}{Moritz Jakob Schumacher} % The author name without titles.
+\newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
+
+% Create the XMP metadata file for the creation of PDF/A compatible documents.
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+\Author{\authorname}                                    % The author's name in the document properties.
+\Title{\thesistitle}                                    % The document's title in the document properties.
+\Language{en-GB}                                        % The document's language in the document properties. Select 'en-US', 'en-GB', or 'de-AT'.
+\Keywords{a\sep list\sep of\sep keywords}               % The document's keywords in the document properties (separated by '\sep ').
+\Publisher{TU Wien}                                     % The document's publisher in the document properties.
+\Subject{Thesis}                                        % The document's subject in the document properties.
+\end{filecontents*}
+
+% Load packages to allow in- and output of non-ASCII characters.
+\usepackage{lmodern}        % Use an extension of the original Computer Modern font to minimize the use of bitmapped letters.
+\usepackage[T1]{fontenc}    % Determines font encoding of the output. Font packages have to be included before this line.
+\usepackage[utf8]{inputenc} % Determines encoding of the input. All input files have to use UTF8 encoding.
+
+% Usepackages for the fisuals in the design chapter
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\usepackage{xcolor}
+
+\definecolor{subjectblue}{RGB}{59,130,246}
+\definecolor{subjectblue20}{RGB}{219,234,254}
+\definecolor{subjectgreen}{RGB}{16,185,129}
+\definecolor{subjectgreen20}{RGB}{209,250,229}
+\definecolor{subjectorange}{RGB}{245,158,11}
+\definecolor{subjectorange20}{RGB}{254,243,199}
+\definecolor{plannedfill}{RGB}{229,231,235}
+\definecolor{panelgray}{RGB}{247,247,247}
+\definecolor{doneborder}{RGB}{156,163,175}
+\definecolor{donefill}{RGB}{243,244,246}
+
+% Extended LaTeX functionality is enables by including packages with \usepackage{...}.
+\usepackage{amsmath}    % Extended typesetting of mathematical expression.
+\usepackage{amssymb}    % Provides a multitude of mathematical symbols.
+\usepackage{mathtools}  % Further extensions of mathematical typesetting.
+\usepackage{microtype}  % Small-scale typographic enhancements.
+\usepackage{csquotes}   % Provides \enquote for context-sensitive quotation marks (used in Related Work).
+\usepackage[inline]{enumitem} % User control over the layout of lists (itemize, enumerate, description).
+\usepackage{multirow}   % Allows table elements to span several rows.
+\usepackage{booktabs}   % Improves the typesetting of tables.
+\usepackage{longtable}  % Allows tables to span multiple pages.
+\usepackage{subcaption} % Allows the use of subfigures and enables their referencing.
+\usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
+\usepackage[dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+\usepackage{nag}        % Issues warnings when best practices in writing LaTeX documents are violated.
+\usepackage{todonotes}  % Provides tooltip-like todo notes.
+\usepackage{morewrites} % Increases the number of external files that can be used.
+\usepackage[a-2b,mathxmp]{pdfx}      % Enables PDF/A compliance. Loads the package hyperref and has to be included second to last.
+\usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists of acronyms. This package has to be included last.
+
+% Preamble for appendix
+% Required packages:
+\usepackage{longtable,booktabs,array,ragged2e}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*,nosep}
+
+% Set PDF document properties
+\hypersetup{
+    pdfpagelayout   = TwoPageRight,           % How the document is shown in PDF viewers (optional).
+    linkbordercolor = {Melon},                % The color of the borders of boxes around hyperlinks (optional).
+}
+
+\setpnumwidth{2.5em}        % Avoid overfull hboxes in the table of contents (see memoir manual).
+\setsecnumdepth{subsection} % Enumerate subsections.
+
+\nonzeroparskip             % Create space between paragraphs (optional).
+\setlength{\parindent}{0pt} % Remove paragraph indentation (optional).
+
+\makeindex      % Use an optional index.
+\makeglossaries % Use an optional glossary.
+%\glstocfalse   % Remove the glossaries from the table of contents.
+
+% Set persons with 4 arguments:
+%  {title before name}{name}{title after name}{gender}
+%  where both titles are optional (i.e. can be given as empty brackets {}).
+\setauthor{}{Moritz Jakob Schumacher}{B.Sc.}{male}
+\setadvisor{Assistant Prof. Dr.rer.nat.}{René Röpke}{B.Sc. M.Sc.}{male}
+
+% For bachelor and master theses:
+\setfirstassistant{}{Selina Reinhard}{B.Sc. M.Sc.}{female}
+%\setsecondassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+%\setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations:
+%\setfirstreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+%\setsecondreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations at the PhD School and optionally for dissertations:
+%\setsecondadvisor{Pretitle}{Forename Surname}{Posttitle}{male} % Comment to remove.
+
+% Required data.
+\setregnumber{12331473}
+\setdate{01}{01}{2001} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{Titel der Arbeit} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
+\setsubtitle{Optional Subtitle of the Thesis}{Optionaler Untertitel der Arbeit} % Sets English and German version of the subtitle (both can be English or German).
+
+% Select the thesis type: bachelor / master / doctor.
+% Bachelor:
+%\setthesis{bachelor}
+%
+% Master:
+\setthesis{master}
+\setmasterdegree{dipl.} % dipl. / rer.nat. / rer.soc.oec. / master
+%
+% Doctor:
+%\setthesis{doctor}
+%\setdoctordegree{rer.soc.oec.}% rer.nat. / techn. / rer.soc.oec.
+
+% For bachelor and master:
+\setcurriculum{Software Engineering}{Software Engineering} % Sets the English and German name of the curriculum.
+
+% Optional reviewer data:
+%\setfirstreviewerdata{Affiliation, Country}
+%\setsecondreviewerdata{Affiliation, Country}
+
+
+\begin{document}
+
+\frontmatter % Switches to roman numbering.
+% The structure of the thesis has to conform to the guidelines at
+%  https://informatics.tuwien.ac.at/study-services
+
+\addtitlepage{naustrian} % German title page.
+\addtitlepage{english} % English title page.
+\addstatementpage{naustrian}  % Select 'english' for the English statement text.
+
+\begin{danksagung*}
+\input{formalities/danksagung}
+\end{danksagung*}
+
+\begin{acknowledgements*}
+\input{formalities/acknowledgements}
+\end{acknowledgements*}
+
+\begin{kurzfassung}
+\input{formalities/kurzfassung}
+\end{kurzfassung}
+
+\begin{abstract}
+\input{formalities/abstract}
+\end{abstract}
+
+% Select the language of the thesis, e.g., english or naustrian.
+\selectlanguage{english}
+
+% Add a table of contents (toc).
+\tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+
+% Switch to arabic numbering and start the enumeration of chapters in the table of content.
+\mainmatter
+
+\chapter{Introduction}
+%% AIREV [MINOR] (Document-wide residual: "dependency" is used in two senses, the containment relation the graph draws and the prerequisite relation of the cited literature, and about forty occurrences have not been checked against the glossary definition proposed at the end of the glossary. After the Introduction, Related Work and glossary edits are made, sweep every "dependenc*" occurrence and confirm each is either the prerequisite sense or an explicit historical description of the prototype and the formative interviews.)
+\input{chapters/introduction}
+
+\chapter{Methodology}
+\input{chapters/methodology.tex}
+
+\chapter{Related Work}
+\input{chapters/relatedwork.tex}
+
+\chapter{Formative Study: Needfinding with a Prototype}
+\input{chapters/needfindingwithprototype.tex}
+
+\chapter{From Themes to Requirements}
+\input{chapters/fromthemestorequirements.tex}
+
+\chapter{Design}
+\input{chapters/design.tex}
+
+\chapter{Implementation}
+\input{chapters/implementation.tex}
+
+\chapter{Evaluation}
+\input{chapters/evaluation.tex}
+
+\chapter{Discussion}
+\input{chapters/discussion.tex}
+
+% Remove following line for the final thesis.
+%\input{intro.tex} % A short introduction to LaTeX.
+
+\backmatter
+
+% Declare the use of AI tools as mentioned in the statement of originality.
+% Use either the English aitools or the German kitools.
+\begin{aitools}
+\input{formalities/aitools}
+\end{aitools}
+
+\begin{kitools}
+\input{formalities/kitools}
+\end{kitools}
+
+% Use an optional list of figures.
+\listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
+
+% Use an optional list of tables.
+\cleardoublepage % Start list of tables on the next empty right hand page.
+\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+
+% Use an optional list of algorithms.
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
+
+% Add an index.
+\printindex % Rerun build-thesis or build-all when removing the index through commenting.
+
+% Add a glossary.
+\printglossaries % Rerun build-thesis or build-all when removing it through commenting.
+
+% Add a bibliography.
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+% \backmatter above sets secnumdepth to -10, which left every appendix chapter
+% unnumbered and every \ref to an appendix label resolving to a stale counter:
+% the code-by-participant matrix rendered as "Appendix 13". Restoring exactly what
+% \backmatter switched off gives the appendices their letters back, and recouples
+% their figures and tables to the chapter, without disturbing the arabic page
+% numbers the back matter is already running.
+\appendix
+\makeatletter
+\@mainmattertrue
+\setcounter{secnumdepth}{\value{maxsecnumdepth}}
+\makeatother
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\input{appendix/appendix.tex}
+
+\end{document}

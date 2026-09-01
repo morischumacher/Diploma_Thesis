@@ -1,0 +1,206 @@
+\label{chap:formative-study}
+
+Following the literature-based motivation for a hybrid graph-table interface, this thesis conducted a formative, user-centred needfinding study to ground the design in students' real planning practices and to derive implementable requirements. The study used an interactive but non-functional prototype as an elicitation artefact to make workflows, expectations, and missing functionality tangible to participants.
+
+This chapter contributes to answering the first research question:
+
+\begin{quote}
+\textit{What are students' needs and resulting requirements for a hybrid graph-table interface that supports programme-level study planning and understanding of course dependencies?}
+\end{quote}
+
+The outcome of this chapter is therefore a ranked set of needs that directly inform features and their requirements (Chapter~\ref{chap:from-themes-to-requirements}), development (Chapter~\ref{chap:implementation}), and later evaluation tasks (Chapter~\ref{chap:evaluation}).
+
+% ------------------------------------------------------------
+\section{Study Goal and Guiding Questions}
+\label{sec:study-goal}
+
+The goal of the formative study was to understand how students currently plan their study programme at a programme level, identify pain points and breakdowns in current tools and practices, and gather input on features students would want when confronted with the concept of a hybrid graph-table interface.
+
+\subsection{Guiding Questions}
+
+To operationalise this goal, the interviews were guided by the following questions:
+
+\begin{itemize}
+    \item \textbf{Current practice:} How do students currently plan upcoming semesters and their overall programme progress, and which resources or tools do they use?
+    \item \textbf{Decision pain points:} Which parts of study planning are effortful, error-prone, or frustrating?
+    \item \textbf{Information needs:} What information do students need at decision points?
+    \item \textbf{Concept fit of a hybrid interface:} Where would a graph view help (structure, dependencies, exploration), and where would a table help (semester allocation, workload overview)?
+    \item \textbf{Requirement implications:} Which concrete capabilities should the tool provide to reduce planning effort and increase confidence, and what should explicitly remain out of scope?
+\end{itemize}
+
+These guiding questions were intentionally phrased to generate actionable design implications rather than abstract opinions.
+
+% ------------------------------------------------------------
+\section{Prototype as Elicitation Artefact}
+\label{sec:prototype-elicitation}
+
+\paragraph{Purpose of the prototype in the study.}
+The prototype gave participants something concrete to react to, instead of asking them to imagine an abstract planning tool. Rather than discussing study planning only at an abstract level, participants could react to visible interface elements, anticipated workflows, and concrete interaction concepts. It was not intended to evaluate visual polish, implementation quality, or system performance.
+The prototype's underlying concept, a hybrid interface combining a node-link graph with a semester table, was not itself derived from these interviews. As stated in the Methodology chapter (Section~\ref{sec:overall-assumptions}), the need for this combination is motivated by the related-work review (Chapter~\ref{chap:related-work}) and treated as a starting assumption going into the formative study, not as a hypothesis tested against alternatives. The formative study's role was accordingly to elicit requirements \emph{within} this hybrid concept, which panels, encodings, and interactions it should have, rather than to establish whether a hybrid interface was the right concept in the first place.
+
+\paragraph{What the prototype represented.}
+The prototype represented a hybrid study-planning concept with three closely related interaction spaces.
+
+\emph{Table View.}
+The Table View presented the plan as a lane-based semester canvas. A left sidebar labelled \enquote{Course Catalogue} contained searchable curriculum entries and colour-coded subject-level catalogue items. Course obligation was indicated by the curriculum specific indicators (Mandatory (M), Core (C) , Elective (E)). The main area consisted of semester columns arranged from left to right, each showing a running ECTS total in the column header. Within these columns, individual courses could be placed as cards, and multi-course modules could also be represented as grouped containers containing several subordinate course cards. The prototype thereby illustrated semester allocation, visual comparison across semesters, and the distinction between different curriculum levels such as exam subject, module, and course. It also suggested rearrangement as a core planning action, since courses and grouped modules were visually represented as movable planning objects. This Table View is illustrated in Figure~\ref{fig:prototype-tableview}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{pictures/Prototype_TableView.pdf}
+    \caption{Table View of the prototype: semester columns with running ECTS totals, a searchable catalogue sidebar, and courses and grouped modules placed as movable cards.}
+    \label{fig:prototype-tableview}
+\end{figure}
+
+
+\emph{Graph View.}
+The Graph View represented the curriculum as a node-link structure organised around colour-coded exam-subject nodes. A filter sidebar on the left exposed controls for subject-level visibility and general graph options, including \enquote{Show only Added Courses}, \enquote{Show Formal Prerequisites}, \enquote{Show All}, and \enquote{Collapse All}. Within the graph itself, subject, module, and course elements were shown as distinct nodes connected by edges, making hierarchical relations and dependency-like structures explorable in a way that differed from the semester-based Table View. Course obligation was again indicated by the curriculum specific indicators (Mandatory (M), Core (C) , Elective (E)). Planned courses where marked with a star. Collapsed branches were indicated visually, allowing focus on specific regions of the curriculum, making it possible to discuss abstraction and focus mechanisms as part of the exploration workflow. This Graph View is illustrated in Figure~\ref{fig:prototype-graphview}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{pictures/Prototype_GraphView.pdf}
+    \caption{Graph View of the prototype: exam subjects, modules, and courses as colour-coded nodes, with filter controls, planned-course markers, and collapsible branches.}
+    \label{fig:prototype-graphview}
+\end{figure}
+
+\emph{Recommendation and planning interactions.}
+The prototype also included explicit interaction hooks for recommendation-supported exploration, present in both views: in the Table View, recommendation-related actions were available from the sidebar; in the Graph View, they were attached directly to course nodes and a dedicated overlay. In the Graph View, course cards exposed actions such as \enquote{SIMILAR COURSES} and \enquote{ADD TO PLAN}. In addition, a separate recommendation overlay visualised a selected focal course together with related courses connected to it, alongside actions such as \enquote{ADD TO PLAN} and \enquote{REMOVE FROM PLAN}. The overlay also included a semester-selection control, making it possible to discuss how exploratory recommendations might translate into concrete placement decisions in the semester plan. This part of the prototype was used to probe when recommendation support would be useful, how visible it should be, and how tightly it should be integrated with planning actions. This interaction concept is illustrated in Figure~\ref{fig:prototype-recommendation}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{pictures/Prototype_SimilarCourses.pdf}
+    \caption{Recommendation concept in the prototype: a focal course shown with related courses, add and remove actions, and a semester-selection control bridging into the plan.}
+    \label{fig:prototype-recommendation}
+\end{figure}
+
+\paragraph{What the prototype did not represent.}
+The prototype was visually detailed but not a functional system: it had no backend, no persistent data model, and no live rule-checking. Controls such as \enquote{Show Formal Prerequisites} and the recommendation actions were conceptual prompts for discussion, not validated computational features, and the recommendation views tested participants' expectations and acceptance conditions, not the quality of an actual algorithm. It also covered only a bounded subset of programmes and curriculum structures, so feedback about missing coverage was treated as a scope limitation of the elicitation artefact rather than a flaw in the interaction concept. In sum, the prototype functioned as a requirements-elicitation device for design and workflow discussion, not as a summative usability or system-performance evaluation instrument.
+
+% ------------------------------------------------------------
+\section{Participants and Recruitment}
+\label{sec:participants-recruitment}
+
+The formative study included six students from the Faculty of Informatics at TU Wien: three Bachelor's students (Informatics) and three Master's students (Software Engineering). This split was chosen to obtain perspectives from participants with different degrees of curriculum familiarity (early versus advanced stages) and different planning constraints (e.g., broader foundational requirements versus more specialised elective choices).
+
+\subsection{Inclusion and Relevance}
+
+Participants were eligible if they were currently enrolled in one of the target programmes and had practical experience planning at least one semester of their studies. The target population is appropriate because the tool is explicitly intended to support student-facing programme-level planning in this institutional context.
+
+\subsection{Recruitment Approach and Limitations}
+
+Recruitment targeted three Bachelor's and three Master's students from the intended population. Given the small sample size and single-faculty focus, the goal was breadth of needs discovery rather than representativeness. The resulting requirements in Chapter~\ref{chap:from-themes-to-requirements} should therefore be interpreted as user-driven insights for the scoped context rather than statistically generalisable findings.
+
+% ------------------------------------------------------------
+\section{Procedure}
+\label{sec:procedure}
+The study used semi-structured interviews combined with a think-aloud prototype walkthrough, following the interview plan provided in the Section~\ref{app:formative-interview-plan}. Each session consisted of the following four phases:
+
+\subsection*{Phase A: Welcome, Framing, and Consent}
+
+Participants were welcomed, informed about the purpose of the study, and asked for consent to audio recording. To ensure consistent understanding, the interviewer clarified that \enquote{study planning} in this thesis refers to programme-level planning (courses, dependencies, requirements, and semester allocation), explicitly excluding within-course and semester time management and scheduling.
+
+\subsection*{Phase B: Current Planning Behaviour}
+
+Participants were asked to recount a recent planning episode (e.g., planning the next semester). Prompts focused on:
+
+\begin{itemize}
+    \item first actions and decision steps,
+    \item information needed to decide,
+    \item tools and resources used (and what each supports),
+    \item typical breakdowns and coping strategies,
+    \item tasks that remain manual or fragmented across tools.
+\end{itemize}
+
+This phase grounded the discussion in lived practice and produced baseline needs independent of the prototype.
+
+\subsection*{Phase C: Prototype Exploration}
+
+Participants then explored the prototype while thinking aloud, guided by a structured walkthrough. They were asked to imagine they were planning an upcoming semester and to verbalise expectations, confusions, and desired behaviours.
+
+The walkthrough covered:
+
+\begin{itemize}
+    \item \textbf{Table View exploration:} course catalogue/search, semester lanes, colour/grouping by curriculum structures, and interpretation of semester workload summaries (ECTS). Participants observed and commented on drag-and-drop planning interactions, including moving single courses and multi-course modules and noticing how workload totals update.
+    \item \textbf{Graph View exploration:} high-level overview of dependencies, adding items to the plan, and using filters (e.g., collapse all, already-added items). Participants were explicitly asked how they would expect the graph and table to be connected (e.g., synchronised selection, bidirectional navigation, rule feedback).
+    \item \textbf{Decision-support discussion:} the prototype included \enquote{similar courses} and Graph filters related with course recommendations; these were used as prompts to elicit expectations about acceptable decision support, trust needs, and integration points of course recommendations in the workflow, without treating recommendation design as a primary research question.
+\end{itemize}
+
+Throughout the walkthrough, the interviewer used neutral probes (e.g., \enquote{What would you expect to happen?} and \enquote{What would you do next?}) to elicit requirements rather than to validate the prototype.
+
+\subsection*{Phase D: Reflection and Wrap-Up}
+
+Finally, participants summarised what they would add or change, whether they would integrate such a tool into their study planning, and what would increase adoption likelihood. Participants could also opt into being contacted for a later study phase.
+
+% ------------------------------------------------------------
+\section{Analysis Method}
+
+\label{sec:analysis-method}
+This chapter's analysis sits in the \emph{codebook} branch of the thematic-analysis (TA) family. Braun and Clarke describe six phases, namely familiarising yourself with the dataset, coding, generating initial themes, developing and reviewing themes, refining and naming them, and writing up, but stress that TA is a family of related approaches rather than one method, differing in how they treat codes, themes, researcher subjectivity, and procedure \cite[pp.~227--228]{braun_thematic_2022}. They distinguish three: \emph{coding-reliability} TA, \emph{codebook} TA, and \emph{reflexive} TA \cite[pp.~235--237]{braun_thematic_2022}.
+
+Codebook TA was chosen because the other two do not fit this study. Coding-reliability TA treats researcher subjectivity mainly as a threat to accuracy and centres quality procedures such as multiple coders and inter-coder agreement \cite[pp.~237--238]{braun_thematic_2022}, which a single-researcher, formative-design analysis cannot supply. Reflexive TA develops themes as shared-meaning patterns arrived at through sustained interpretive engagement \cite[pp.~35--36, 77--78]{braun_thematic_2022}, where this project needed a more structured intermediate representation between transcript excerpts and system requirements. Codebook TA sits between them, combining \enquote{Big Q} qualitative values with a more structured approach to coding and early theme development \cite[p.~242]{braun_thematic_2022}: enough structure to produce an auditable, traceable set of codes and themes translatable into requirements, without the interpretive commitment of the one or the multi-coder apparatus of the other.
+
+Braun and Clarke frame the phases as \enquote{robust process guidelines, not rigid rules} \cite[p.~10]{braun_thematic_2022} and the process as \enquote{progressive but recursive} \cite[p.~36]{braun_thematic_2022}. The steps below are presented in order for transparency, but the actual work moved repeatedly between coding, consolidation, review, and refinement. For the operational layer that codebook TA does not itself prescribe, namely how a codebook is built and maintained across many transcripts, the analysis draws on the Framework Method's structured charting procedure \cite{gale_using_2013} and on Saldaña's first-cycle coding guidance for labelling codes and attaching them to excerpts \cite{saldana_coding_2013}.
+
+\subsection{Data Preparation and Familiarisation}
+\label{sec:data-preparation}
+
+All six interviews were audio-recorded, transcribed verbatim using Notta.ai\footnote{\url{https://www.notta.ai/}}, anonymised, and labelled I1--I6. The interviews were conducted in German; the excerpts quoted in this thesis are the author's translations, and the German originals are retained in the coding document alongside every code they informed. The transcripts were then read repeatedly to support familiarisation with the dataset before formal coding began.
+
+During this stage, passages expressing a practice, problem, information need, expectation, or evaluation relevant to study planning were identified and extracted as excerpts. Not every part of a transcript was extracted this way: small talk, purely procedural exchanges, and content unrelated to study planning were left uncoded, while a single passage could inform more than one code where it carried more than one relevant meaning. This is why the codebook (Section~\ref{sec:theme-consolidation}) records, for each theme, the specific interviews and excerpts that informed it, rather than assuming uniform coverage across the full transcript or across all six interviews:\todo{Moritz: this forward-references Section~\ref{sec:theme-consolidation} (Step 2) and Section~\ref{sec:prevalence-ranking} (Step 4) from here in Data Preparation, before either has been introduced. I think this is acceptable, forward references that briefly point ahead to where a concept is properly defined are standard practice in thesis writing, especially when (as here) the reader only needs to know the referenced section exists and roughly what it covers, not its full content, to follow the current sentence. The alternative, fully explaining the codebook and prevalence ranking here, would duplicate Steps 2 and 4 and get the ordering backwards. Flagging in case you'd rather restructure so codebook/prevalence are only ever referenced after their own definition.} a code's relevance to the final requirements comes from what it says, not from how much transcript text it covers or how many times it was mentioned; how consistently a code recurs across interviews is used later, separately, as an implementation-prioritisation heuristic (Section~\ref{sec:prevalence-ranking}), not as a criterion for whether a code is relevant in the first place.
+
+This segmentation served as an analytic aid for subsequent coding and remained compatible with Braun and Clarke's first phase of familiarisation \cite[pp.~33--49]{braun_thematic_2022}.
+
+\subsection{Step 1 -- Initial Coding with Verbatim Evidence}
+\label{sec:initial-coding}
+
+In the first formal coding phase, these excerpts were assigned short, inductively developed initial codes. The purpose of this step was to stay close to participants' statements while beginning to capture analytically relevant aspects of practices, problems, information needs, expectations, and evaluations relevant to study planning, the same categories used to identify excerpts in the first place (Section~\ref{sec:data-preparation}). In line with Braun and Clarke's description of coding, the codes were not treated merely as summaries of surface content, but as concise analytic labels for potentially relevant meanings in the data \cite[pp.~51--71]{braun_thematic_2022}, following the first-cycle coding practice already introduced above \cite{saldana_coding_2013}.
+
+Each code was stored together with at least one verbatim quote and the corresponding interview ID. This created an explicit analytic trail from interpretation back to source material and allowed later theme consolidation to remain grounded in the transcripts.
+
+\paragraph{Example.}
+\emph{Defining study planning as multi-level}
+\begin{quote}
+(I1) \enquote{... three levels ... for my current semester ... then ... next semester ... And then ... how I am on track for my entire degree in percent or visually ...}
+\end{quote}
+
+\subsection{Step 2 -- Consolidation into a Codebook of Higher-Level Themes}
+\label{sec:theme-consolidation}
+
+In the next step, conceptually similar initial codes were grouped into broader, higher-level themes. In the context of this thesis, these themes are design-relevant need categories: a stable label for a recurring, planning-related need, supported by the specific codes and verbatim excerpts that informed it, rather than the fully interpretive, shared-meaning themes reflexive TA aims for \cite[pp.~77--78, 230--231, 271]{braun_thematic_2022}. The purpose here was not to develop a rich thematic narrative about student identity or meaning-making, but to condense recurring planning-related needs into stable analytic categories that could later be translated into requirements.
+
+Consolidation reduced the 435 initial codes recorded across the six interviews to \textbf{64 themes}, labelled C1--C64 and reproduced in full in Section~\ref{app:codebook}. To support this process, a codebook was maintained, recording for each theme: (a) a stable theme label, (b) the specific initial codes grouped under it, (c) the number of interviews in which it recurred, and (d) the collated verbatim excerpts that informed it. This structured, traceable record-keeping is what the Framework Method's emphasis on transparent charting of data (already introduced in Section~\ref{sec:analysis-method}) is applied to in practice \cite{gale_using_2013}.
+
+Consolidation was iterative rather than a single grouping pass: definitions were revised where categories overlapped, previously coded segments were reconsidered, and candidate themes were adjusted until the codebook stabilised.
+
+\subsection{Step 3 -- Scope-Based Review and Refinement}
+\label{sec:scope-refinement}
+After the initial codebook had been formed, the theme set was reviewed against the specific scope of the thesis, as stated in the Methodology chapter (Section~\ref{sec:overall-scope}): study planning is defined at the programme level, excluding within-course management such as deadlines or scheduling.
+
+In this project, \enquote{study planning} was defined as \emph{programme-level} planning: understanding curriculum structure, dependencies, requirement fulfilment, and semester allocation. Themes that primarily addressed \emph{within-course} management, for example deadline reminders, weekly time scheduling, or detailed exam-date planning, were therefore removed from the final set.
+
+This step corresponds to the review and refinement logic in thematic analysis: candidate themes must be checked against both the data and the research purpose, and they may be revised, collapsed, split, or discarded \cite[pp.~35--36, 97--111]{braun_thematic_2022}. Braun and Clarke explicitly note that radical revision is common during this stage and that themes must be assessed in terms of both their internal coherence and their relevance to the research question \cite[pp.~35--36]{braun_thematic_2022}. In the present study, this review was especially important because the interviews also surfaced adjacent issues that were meaningful to participants but outside the intended design scope of the artefact. Two concrete examples from the ranked code list illustrate this: a recurring code capturing workload/effort estimation support beyond ECTS was excluded on the grounds that it would require a community feature (rating or shared feedback data) that is out of scope for this thesis; a code capturing planning around actual course availability over time was excluded because it would require a live connection to the institutional course/learning management system, which this thesis does not have. Both exclusions are recorded directly against their originating code in the codebook, with the specific out-of-scope boundary noted at the point of exclusion, rather than only stated as a general principle.
+
+\subsection{Step 4 -- Post-Analytic Prioritisation for Implementation}
+\label{sec:prevalence-ranking}
+
+Once the final theme set had been established, the themes were reviewed for their prevalence across participants, defined as the number of interviews in which a given theme occurred at least once. This step was used solely to support implementation prioritisation for a first prototype iteration.
+
+This distinction matters methodologically: prevalence (the number of interviews in which a theme occurred) was used solely as a design heuristic to prioritise implementation attention for a first prototype, not as evidence of a theme's analytic importance or as statistical generalisability. Braun and Clarke caution against treating frequency as the basis for thematic importance, noting that \enquote{whether a pattern helps us elucidate a key aspect of understanding our research topic is not determined by how many people said it} \cite[p.~141]{braun_thematic_2022}. This caution is relevant even though the present study does not use reflexive TA, and is consistent with broader qualitative-methods guidance that treats numbers as a supportive, transparent summarisation aid rather than as a measure of significance \cite{sandelowski_real_2001}.
+
+\subsection{Output Artefacts and Traceability}
+\label{sec:output-traceability}
+The analysis produced three main artefacts: (1) a table of initial codes linked to verbatim evidence, (2) the consolidated theme codebook, and (3) a prevalence-informed prioritisation overview for implementation scoping. Together, these artefacts formed an explicit decision trail from transcript excerpt to code, from code to theme, and from theme to later requirement.
+
+The second of these is this chapter's substantive result and the input Chapter~\ref{chap:from-themes-to-requirements} works from. The 64 themes are listed in Section~\ref{app:codebook} with, for each, its prevalence across the six interviews and its disposition: 51 were carried into the features-and-requirements specification, and 11 were excluded at Step~3 as lying outside the thesis's scope, five of them because they would require a live connection to the institutional systems (OOS3), two a community feature (OOS4), two automated planning (OOS1), one course-level planning (OOS2), and one a mobile application. Two further themes record artefacts of the interview procedure itself, namely the clarification of what \enquote{study planning} meant in this study and participants' willingness to be contacted for a later phase, and are not design-relevant findings. Themes are cited throughout the remainder of this thesis by their identifier, for example (C21).
+
+\subsection{Link to Subsequent Chapters}
+\label{sec:link-subsequent-chapters}
+
+The final themes define which support needs the proposed study-planning tool should address. In Chapter~\ref{chap:from-themes-to-requirements}, these themes are translated into testable system requirements and linked to later design, implementation, and evaluation decisions through our traceability chain:
+
+\begin{quote}
+\textit{Literature Review $\rightarrow$ Formative Interviews $\rightarrow$ Codes $\rightarrow$ Themes $\rightarrow$ Requirements $\rightarrow$ Features $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Evaluation}
+\end{quote}
+
+This chain is the artefact-level realisation of the nested model introduced in the Methodology chapter (Section~\ref{sec:paradigm}), not a second framework: domain problem characterisation spans Literature Review through Themes, data and task abstraction spans Requirements and Features, encoding and interaction design is the Design stage, and algorithm design is Implementation, with Evaluation validating across levels. Requirements precede Features because that is the derivation order (Chapter~\ref{chap:from-themes-to-requirements}, Steps~1--3), even though each Feature is the reader-facing heading its requirements are listed under.
+
+This explicit transition from qualitative findings to requirements is consistent with the applied purpose of the chosen analytic approach: the analysis was not conducted to produce stand-alone thematic interpretation alone, but to ground the artefact design in a transparent and traceable account of user needs.

@@ -1,0 +1,175 @@
+% ============================================================
+\section{Formative Interview Plan}
+\label{app:formative-interview-plan}
+
+This section documents the semi-structured interview plan used in the formative study. The interview combined questions about current study-planning practices with a think-aloud walkthrough of the prototype. Its purpose was to understand students' study-planning behaviour and to gather feedback on the hybrid graph--table prototype.
+
+\subsection{Interview Overview}
+
+\noindent
+\textbf{Project:} Hybrid Graph--Table Study Planner with Embedded Recommender System\\
+\textbf{Purpose:} Understand students' study-planning behaviour and gather feedback on the hybrid prototype\\
+\textbf{Participants:} 3 Master's students, 3 Bachelor's students\\
+\textbf{Method:} Semi-structured interview + think-aloud prototype walkthrough\\
+\textbf{Recording:} Audio
+
+\subsection{Interview Structure}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{p{4.2cm}p{2.2cm}p{7.2cm}}
+\hline
+\textbf{Phase} & \textbf{Duration} & \textbf{Goal} \\
+\hline
+A. Welcome \& Consent & 3 min & Build trust, explain study purpose \\
+B. Current Planning Behaviour & 15 min & Understand existing workflows and pain points \\
+C. Prototype Exploration (Think-Aloud) & 30 min & Observe expectations, reactions, and design implications \\
+D. Reflection \& Wrap-Up & 12 min & Summarise impressions and collect improvement ideas \\
+\hline
+\end{tabular}
+\caption{Structure of the interview sessions.}
+\label{tab:interview-structure}
+\end{table}
+
+\subsection{Detailed Interview Script}
+
+% ------------------------------------------------------------
+\subsubsection{Phase A: Welcome, Framing, and Consent}
+
+\paragraph{Introductory script.}
+
+Thanks for taking part. I am testing an early concept for a study-planning tool that combines a graph view and a table view with recommendations.
+
+
+
+The topic is study planning. What do you think this means? Could you explain it in your own words so that we know we are talking about the same thing?
+
+
+\paragraph{Clarification of the study scope.}
+
+In our case, we are interested in how you plan your whole study programme. That means we focus on the course level:
+\begin{itemize}
+    \item how your courses are connected,
+    \item which dependencies or prerequisites exist,
+    \item which courses you want to take, should take, or have to take,
+    \item and in which semester you take them.
+\end{itemize}
+We are not looking at how you plan your time or resources within a single course. Instead, we care about this higher-level, programme-wide planning.
+
+
+\paragraph{Consent and background questions.}
+
+There are no right or wrong answers; we are interested in your honest opinions. With your permission, I will record audio for analysis; all data will be anonymous.
+
+
+\noindent
+\textbf{Background questions:}
+\begin{itemize}
+    \item Which programme and semester are you in?
+    \item How many ECTS are you still missing approximately?
+    \item Do you agree to audio recording?
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Phase B: Current Planning Behaviour}
+
+\paragraph{Core prompts.}
+The prompts were: Walk me through the last time you planned your semester; What was the first thing you did?; What kind of information did you look for or need in order to decide?; What was most important for you while planning your semester?; Which tools or resources did you use for planning?; Can you show or describe one of them?; What does each tool help you with specifically?; What do you mainly use it for: overview, scheduling, checking rules, workload balance, or something else?; Where did you run into challenges using these tools?; Can you give an example of when something did not work as expected?; How did you handle that situation?; Have you ever been frustrated about parts of the process?; What is missing from your current tools or process?; Which tasks do you still have to do manually or outside of those tools?.
+
+
+\paragraph{Recommendation-related prompts.}
+\begin{itemize}
+    \item If a tool could give you recommendations while you plan, what kind of recommendations would be interesting?
+    \item What should such recommendations look like?
+    \item When should they appear: during course selection, after choosing, or somewhere else?
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Phase C: Prototype Exploration (Think-Aloud)}
+
+\paragraph{Method instruction.}
+
+Now please look at this prototype with me. Imagine you are planning next semester. Please say aloud what you expect, what you like, and what confuses you.
+
+
+\subsubsection*{Table View}
+
+\begin{itemize}
+    \item Show overview
+    \item Show search field
+    \item Show exam subjects in different colours
+    \item Show module number in exam subjects
+    \item Show semester grid with the ECTS sum per semester
+\end{itemize}
+
+\paragraph{Break 1.}
+
+\begin{itemize}
+    \item Show sidebar (expand sidebar)
+    \item Show the difference between exam subject, module, and course items
+    \item Explain M, C, E
+    \item Explain what is trackable
+\end{itemize}
+
+\paragraph{Break 2.}
+
+\begin{itemize}
+    \item Show drag interactions (Frame 2, 3)
+    \item Show how the ECTS sum changes
+    \item Show how a module can be moved
+\end{itemize}
+
+\subsubsection*{Graph View}
+
+\begin{itemize}
+    \item Show graph from a high-level perspective, including add-to-plan interaction
+    \item Explain the stars
+    \item Explain M/C/E
+    \item Explain filter options
+    \item Explain exam subjects, modules, and course items
+\end{itemize}
+
+\noindent
+\textbf{Question:} Can you think of other ways to connect the graph with the table?
+
+\paragraph{Break 3.}
+
+\begin{itemize}
+    \item Show filter options from the graph:
+    \begin{itemize}
+        \item Exam subjects
+        \item Only added courses
+        \item Content similarities
+        \item Formal prerequisites
+        \item Show all
+        \item Collapse all
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Break 4.}
+
+\begin{itemize}
+    \item Show similar courses (Frame 2)
+\end{itemize}
+
+\paragraph{Break 5: Recommendations.}
+
+\begin{itemize}
+    \item On what could recommendations be based?
+    \item How could recommendations be integrated in the graph?
+    \item How could recommendations be integrated in the table?
+    \item What would you need in order to trust them?
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsubsection{Phase D: Reflection and Wrap-Up}
+
+\begin{itemize}
+    \item If you could add one thing to the tool, what would it be?
+    \item Would you integrate a tool with the shown concepts into your personal study planning, and why?
+    \item Follow-up (if not): What would increase the chance that you would do so?
+    \item Is there anything else you would like to share with us?
+    \item We would contact you for a follow-up if we build the actual tool. Would this be okay?
+\end{itemize}
+
+% ============================================================

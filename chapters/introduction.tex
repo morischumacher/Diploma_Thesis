@@ -1,0 +1,47 @@
+\label{chap:introduction}
+
+Students in higher education face growing challenges in planning their studies. Curricula often involve complex prerequisites, electives, and institutional rules that are difficult to navigate using static study guides or standard plans~\cite{schulte_large_2017, morsy_study_2019}. Individual circumstances, such as failed courses, varying study speeds, or limited access to advisors, further complicate planning and can affect performance, graduation times, and motivation~\cite{wong_sequence_2018, chaturapruek_how_2018}.
+
+%% AIREV [MAJOR] (This paragraph sells the graph as the surface on which students "understand dependencies", the prerequisite sense of the cited papers; the built graph renders containment only. Consider "understand the curriculum's structure (graph)" here, which is what the tool does and what the evaluation found valuable, and let the dependency framing remain attributed to the literature.)
+Existing approaches address these issues but remain limited. Graph-based systems focus mainly on visualising course dependencies~\cite{auvinen_stops_2014, rollande_graph_2013, trippel_developing_2025}, while table-based planning tools emphasise semester-level scheduling~\cite{hirmer_requirements_2022, judel_supporting_2023}, typically in isolation from one another. This motivates investigating a hybrid approach: integrating a graph and a table into a single planning workflow so students can understand dependencies (graph) and manage their schedule and workload (table).
+
+Curriculum analytics approaches offer valuable institutional insight into study paths~\cite{schulte_large_2017, archambault_curriculum_2015, buck-emden_analyse_2018, kapucu_competency-based_2017}, but are rarely embedded directly in a student-facing planning tool. More adaptive solutions, such as Educational Recommender Systems (ERS), show strong algorithmic potential~\cite{bhumichitr_recommender_2017, wong_sequence_2018, esteban_helping_2020, srisamutr_course_2018, al-badarenah_automated_2016}, yet, to our knowledge, have not been embedded into student-facing planning environments either. This raises the question of to what extent such recommendations can support students within their planning workflow.
+
+\section{Research Questions}
+\label{sec:research-questions}
+
+Building on the challenges and gaps outlined above, this thesis investigates the design, implementation, and experience of a hybrid graph-table study planner, built for and evaluated against two degree programmes at the Faculty of Informatics of TU~Wien, the Bachelor in Computer Science and the Master in Software Engineering \& Internet Computing. We formulate three research questions:
+
+\textbf{Research Question 1} \emph{What are students' needs and resulting requirements for a hybrid graph-table interface that supports programme-level study planning and understanding of course dependencies?}
+
+This question is addressed by a formative needfinding study conducted with an interactive but non-functional prototype (Chapter~\ref{chap:formative-study}), whose findings are translated into a ranked features-and-requirements specification (Chapter~\ref{chap:from-themes-to-requirements}).
+
+Building on these requirements, the second sub-question concerns the design and construction of the tool itself:
+
+\textbf{Research Question 2} \emph{How can we design and implement a hybrid interface that combines graph-based visualisation with table-based planning to help students plan their studies and understand course dependencies, based on those requirements?}
+
+This question is addressed by the Design chapter (Chapter~\ref{chap:design}), which derives each design decision from a requirement, prior evidence, or an explicitly stated assumption, and by the Implementation chapter (Chapter~\ref{chap:implementation}), which realises that design as a working system.
+
+Finally, the third sub-question examines how the implemented system is received by its intended users:
+
+\textbf{Research Question 3} \emph{How do students experience the hybrid interface and its embedded recommendations in terms of user experience (effectiveness, efficiency, and satisfaction)?}
+
+This question is addressed by an evaluation study with students (Chapter~\ref{chap:evaluation}), using established user-experience instruments to assess the implemented tool.
+
+\section{Contributions}
+\label{sec:contributions}
+
+This thesis makes the following contributions:
+
+%% AIREV [MAJOR] (The contributions list no longer carries the gates-versus-sequences result, removed during the earlier dependency edits and stated nowhere else in the thesis: that these curricula encode containment with credit gates rather than course-to-course prerequisite sequences, which is a real finding and not a shortfall. Restore it as a fifth bullet; the deleted wording is in git at "git show 9c1bd75 -- chapters/introduction.tex".)
+\begin{itemize}
+    \item \textbf{A requirements specification for study planning.} A ranked features-and-requirements specification for a study-planning tool, grounded in formative interview evidence (Chapter~\ref{chap:from-themes-to-requirements}).
+    \item \textbf{A hybrid graph-table planning tool.} The design and implementation of a web-based tool that unites a curriculum graph and a schedule-managing table over a single shared plan, checks that plan against the regulations of two degree programmes in real time, and embeds explainable recommendations within the planning workflow (Chapters~\ref{chap:design}--\ref{chap:implementation}).
+    \item \textbf{An account of what a curriculum graph contributes to planning.} Evidence, from a within-subjects study of eleven students observed at the level of the interface itself, that the graph enters the planning process at one point: it replaces the course catalogue as the surface on which a named gap is turned into candidate courses, and it leaves untouched the step at which a course is committed to a semester, because it renders no semester dimension against which that commitment could be judged (Chapter~\ref{chap:evaluation}).
+    \item \textbf{Evidence that a completion signal students trust can certify a plan it has not checked.} Every participant reported success in a condition in which no plan met the stated constraints, and the tool agreed with them, because the constraints it does not model are silent rather than wrong. This bears on any planning tool that guides through a checklist (Chapter~\ref{chap:evaluation}).
+\end{itemize}
+
+\section{Outlook}
+\label{sec:outlook}
+
+The remainder of this thesis is organised as follows. Chapter~\ref{chap:methodology} sets out the research paradigm, process, and scope that frame the work. Chapter~\ref{chap:related-work} reviews related systems and establishes the research gap. Chapter~\ref{chap:formative-study} reports the formative needfinding study, and Chapter~\ref{chap:from-themes-to-requirements} translates its findings into a features-and-requirements specification; together these answer Research Question~1. Chapter~\ref{chap:design} and Chapter~\ref{chap:implementation} design and build the hybrid tool, answering Research Question~2. Chapter~\ref{chap:evaluation} evaluates the tool with students, answering Research Question~3, and Chapter~\ref{chap:discussion} discusses the findings, limitations, and directions for future work.

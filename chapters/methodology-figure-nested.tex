@@ -1,0 +1,42 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small]
+  % Four concentric rounded rectangles, outermost = Level 1, innermost = Level 4
+  \def\cx{0}\def\cy{0}
+
+  % Level 1 (outermost)
+  \fill[subjectblue20, rounded corners=6pt] (\cx-7,\cy-4.6) rectangle (\cx+7,\cy+4.6);
+  \draw[subjectblue, line width=1pt, rounded corners=6pt] (\cx-7,\cy-4.6) rectangle (\cx+7,\cy+4.6);
+  \node[font=\scriptsize\bfseries, text=subjectblue, anchor=north west] at (\cx-6.8,\cy+4.35) {Level 1 -- Domain Characterisation};
+  \node[font=\tiny, text=subjectblue, anchor=north west, text width=4.6cm] at (\cx-6.8,\cy+3.95) {Related Work \& Formative Study};
+
+  % Level 2
+  \fill[subjectgreen20, rounded corners=6pt] (\cx-5.2,\cy-3.4) rectangle (\cx+5.2,\cy+3.0);
+  \draw[subjectgreen, line width=1pt, rounded corners=6pt] (\cx-5.2,\cy-3.4) rectangle (\cx+5.2,\cy+3.0);
+  \node[font=\scriptsize\bfseries, text=subjectgreen, anchor=north west] at (\cx-5.0,\cy+2.75) {Level 2 -- Abstraction};
+  \node[font=\tiny, text=subjectgreen, anchor=north west, text width=4.2cm] at (\cx-5.0,\cy+2.35) {Themes $\to$ Requirements};
+
+  % Level 3
+  \fill[subjectorange20, rounded corners=6pt] (\cx-3.4,\cy-2.2) rectangle (\cx+3.4,\cy+1.4);
+  \draw[subjectorange, line width=1pt, rounded corners=6pt] (\cx-3.4,\cy-2.2) rectangle (\cx+3.4,\cy+1.4);
+  \node[font=\scriptsize\bfseries, text=subjectorange, anchor=north west] at (\cx-3.2,\cy+1.15) {Level 3 -- Encoding/Interaction};
+  \node[font=\tiny, text=subjectorange, anchor=north west, text width=3.0cm] at (\cx-3.2,\cy+0.75) {Design};
+
+  % Level 4 (innermost)
+  \fill[gray!15, rounded corners=6pt] (\cx-1.7,\cy-1.0) rectangle (\cx+1.7,\cy+0.1);
+  \draw[gray!60, line width=1pt, rounded corners=6pt] (\cx-1.7,\cy-1.0) rectangle (\cx+1.7,\cy+0.1);
+  \node[font=\scriptsize\bfseries, text=gray!70, align=center] at (\cx,\cy-0.2) {Level 4\\\footnotesize Algorithm};
+  \node[font=\tiny, text=gray!70, align=center] at (\cx,\cy-0.75) {Implementation};
+
+  % Formative study validation arrow: curls from outside Level 1, into Levels 1-2 boundary
+  \draw[->, dashed, subjectblue, thick] (\cx-6.8,\cy-4.9) to[out=-100,in=180] (\cx-5.6,\cy-3.7) to[out=0,in=190] (\cx-3.0,\cy-3.0);
+  \node[font=\tiny, text=subjectblue, align=left, anchor=north west, text width=4cm] at (\cx-6.8,\cy-5.2) {Formative study validates Levels 1--2, \emph{before} design begins};
+
+  % Evaluation validation arrow: curls from outside, into Levels 3-4 boundary
+  \draw[->, dashed, subjectorange, thick] (\cx+4.0,\cy-4.9) to[out=90,in=-160] (\cx+2.6,\cy-2.6) to[out=20,in=-90] (\cx+2.2,\cy-0.9);
+  \node[font=\tiny, text=subjectorange, align=left, anchor=north west, text width=4cm] at (\cx+1.2,\cy-5.2) {Evaluation study validates Levels 3--4, \emph{after} implementation};
+
+\end{tikzpicture}
+\caption{Alternative rendering of Figure~\ref{fig:nested-model-mapping}: the four levels drawn literally as nested regions, decreasing in scope from Level 1 (outermost, broadest) to Level 4 (innermost, most concrete), with each region holding the thesis stage(s) that address it.}
+\label{fig:nested-model-mapping-alt}
+\end{figure}

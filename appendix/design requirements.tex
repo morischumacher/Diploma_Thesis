@@ -1,0 +1,370 @@
+\subsection*{Planning workflow \& horizons}
+
+\textbf{Multi-horizon views (program $\leftrightarrow$ semesters $\leftrightarrow$ course-level)}
+\begin{itemize}
+  \item \textbf{HZN-01}~Provide linked planning horizons: \textcolor{red}{(1) course-level operational details (deadlines/appointments)}, (2) semester-level allocation, (3) whole-program progress status (e.g., \% to completion).
+  \item \textbf{HZN-02}~Enable users to zoom between horizons while preserving context (e.g., course $\rightarrow$ placement options $\rightarrow$ \textcolor{red}{within-semester facts).}
+  \item \textbf{HZN-03}~Make the scope of planning explicit by separating course selection, \textcolor{red}{time/schedule} coordination, and progress/requirement tracking into distinguishable but interoperable views/modes.
+  \item \textcolor{blue}{\textbf{HZN-04}~Support capacity-aware planning by allowing per-semester workload targets (e.g., ECTS budget) and revision after a “test phase.”}
+\end{itemize}
+
+\textbf{Guided explore $\rightarrow$ select $\rightarrow$ plan flow}
+\begin{itemize}
+  \item \textbf{FLOW-01}~Provide an explicit staged workflow supporting (1) exploration/orientation, (2) shortlisting/selection, (3) committing courses into a semester plan.
+  \item \textbf{FLOW-02}~Support a selection set (shortlist) independent of semester assignment to avoid premature commitment.
+  \item \textbf{FLOW-03}~Enable seamless transition from exploration to planning via direct actions such as “Add to plan” with semester choice.
+  \item \textcolor{blue}{\textbf{FLOW-04}~Support iterative re-planning by allowing users to revise selections and semester allocations without losing prior organization.}
+\end{itemize}
+
+\textbf{Automation for generating a draft plan}
+\begin{itemize}
+  \item \textcolor{red}{\textbf{DRAFT-01}~Provide a “generate draft plan” function that converts a selection set into a proposed semester-by-semester allocation.}
+  \item \textcolor{blue}{\textbf{DRAFT-02}~Allow users to specify capacity constraints (e.g., target ECTS per semester) and incorporate them into generated drafts.}
+  \item \textcolor{blue}{\textbf{DRAFT-03}~Allow users to specify personal context parameters (e.g., part-time work constraints) and present drafts as editable suggestions (not prescriptions).}
+  \item \textcolor{red}{\textbf{DRAFT-04}~Provide transparent rationales for draft allocations (e.g., workload balancing, prerequisite ordering) to support trust and informed override.}
+\end{itemize}
+
+\textbf{Represent uncertainty and buffers}
+\begin{itemize}
+  \item \textbf{UNC-01}~Support explicit uncertainty states for courses (e.g., \emph{must-do}, \emph{maybe}, \emph{unsure}).
+  \item \textbf{UNC-02}~Allow users to allocate and visualize buffer capacity within and across semesters (e.g., reserved ECTS/time slots).
+  \item \textcolor{blue}{\textbf{UNC-03}~Allow users to express prioritization through interaction/layout while clearly communicating what spatial encodings mean.}
+  \item \textcolor{blue}{\textbf{UNC-04}~Support course state tracking beyond uncertainty (planned/in-progress/completed) with persistent visual differentiation for periodic checks and replanning.}
+\end{itemize}
+
+
+\subsection*{Progress \& requirement fulfillment}
+
+\textbf{Live requirement checker \& rule engine}
+\begin{itemize}
+  \item \textbf{RULE-01}~Encode program-specific curriculum rules in a rule engine and compute fulfillment automatically.
+  \item \textbf{RULE-02}~Provide real-time requirement fulfillment feedback and explicitly indicate what remains missing in each category.
+  \item \textcolor{blue}{\textbf{RULE-03}~Provide course-to-requirement attribution transparency (why a course counts / does not count).}
+  \item \textcolor{blue}{\textbf{RULE-04}~Warn about (or prevent) order violations when sequencing constraints exist (e.g., prerequisites).}
+  \item \textcolor{red}{\textbf{RULE-05}~Provide an authoritative, institution-aligned validation mode to reduce reliance on administrative clarification.}
+\end{itemize}
+
+\textbf{Status dashboard with counters and categories}
+\begin{itemize}
+  \item \textbf{DASH-01}~Provide a persistent status dashboard summarizing progress across multiple categories (ECTS, requirement groups, quotas) with counters and percentages.
+  \item \textbf{DASH-02}~Distinguish course states at minimum as planned vs.\ completed (optionally in-progress) and reflect states consistently across views.
+  \item \textbf{DASH-03}~Support visual de-emphasis for completed items (e.g., graying out) while retaining them for context (do not disappear).
+  \item \textcolor{blue}{\textbf{DASH-04}~Provide quick-recognition indicators for “completed areas” to support rapid scanning.}
+  \item \textcolor{blue}{\textbf{DASH-05}~Support category-specific progress views to reduce manual transcript scanning/document parsing.}
+\end{itemize}
+
+\textcolor{red}{\textbf{What-if previews and future-state simulation}
+\begin{itemize}
+  \item \textbf{WHATIF-01}~Provide instant what-if previews that update requirement fulfillment when users add/remove courses.
+  \item \textbf{WHATIF-02}~Simulate future-state outcomes across semesters (projected completion timeline / “semester of completion”) given plan and workload assumptions.
+  \item \textcolor{blue}{\textbf{WHATIF-03}~Explain what-if results at requirement-category level (which quota advances, which constraints remain unmet).}
+  \item \textcolor{blue}{\textbf{WHATIF-04}~Support reversible exploratory interaction so users can test alternatives without losing configuration.}
+\end{itemize}}
+
+\textbf{Error detection and re-validation support}
+\begin{itemize}
+  \item \textbf{VALID-01}~Detect and flag inconsistent/invalid plans (unmet constraints, impossible sequences, category misattributions) with actionable explanations.
+  \item \textcolor{blue}{\textbf{VALID-02}~Reduce manual data-entry error by minimizing required inputs and validating user-entered data (range checks, duplicates, mismatch warnings).}
+  \item \textbf{VALID-03}~Support “re-validation” as a first-class action (one-click recompute and highlight changes since last validation).
+  \item \textcolor{blue}{\textbf{VALID-04}~Track and communicate validation freshness (last validated timestamp; whether rules/data changed since).}
+  \item \textbf{VALID-05}~Provide safeguards against silent failure to reduce continuous double-checking.
+\end{itemize}
+
+
+\subsection*{Scheduling \& workload realism}
+
+\textbf{Capacity-aware workload planning (beyond ECTS)}
+\begin{itemize}
+  \item \textbf{WORK-01}~Allow users to define personal capacity constraints (including work-related limits) and persist them across planning/automation.
+  \item \textbf{WORK-02}~Provide per-course workload indicators beyond ECTS (e.g., number/type of assessments such as exams/exercises).
+  \item \textcolor{blue}{\textbf{WORK-03}~Provide a difficulty/effort weighting indicator per course and aggregate into a semester-level workload summary.}
+  \item \textcolor{red}{\textbf{WORK-04}~Support workload balancing interactions (swap/move) with immediate updates to workload summaries for reflective rebalancing.}
+  \item \textcolor{blue}{\textbf{WORK-05}~Communicate uncertainty and individual variability in workload estimates to avoid false precision.}
+\end{itemize}
+
+\textcolor{red}{\textbf{Time \& exam collision detection}
+\begin{itemize}
+  \item \textbf{COLL-01}~Detect timetable/exam collisions at planning time (before commitment) and keep detection continuously updated as selections change.
+  \item \textbf{COLL-02}~Provide a semester-level conflict analysis view with drill-down/zoom to reveal conflicts clearly.
+  \item \textcolor{blue}{\textbf{COLL-03}~Integrate course event data into the planning surface to replace manual table-based collision management and minimize transcription.}
+  \item \textbf{COLL-04}~Explicitly indicate missing schedule data (e.g., unknown exam dates) and warn about increased collision risk.
+  \item \textcolor{blue}{\textbf{COLL-05}~Support quick replanning after collisions (identify conflicts and enable fast substitution/rescheduling).}
+\end{itemize}}
+
+\textcolor{red}{\textbf{Course availability and offering constraints}
+\begin{itemize}
+  \item \textbf{OFFER-01}~Surface offering constraints (e.g., winter/summer availability, cadence) in exploration/planning and support filtering by semester availability.
+  \item \textcolor{blue}{\textbf{OFFER-02}~Surface availability risks/instability signals (e.g., cancellation/shift likelihood or “offering uncertain” flags).}
+  \item \textbf{OFFER-03}~Support rapid replacement workflows when a planned course becomes unavailable, preserving requirement/ECTS implications.
+  \item \textcolor{blue}{\textbf{OFFER-04}~Allow users to maintain opportunistic alternatives (short list of substitutes) to operationalize substitution behavior.}
+  \item \textcolor{blue}{\textbf{OFFER-05}~Support peer-aware planning contexts where joint planning makes availability constraints salient.}
+\end{itemize}}
+
+
+\subsection*{Course info \& data integration}
+
+\textbf{Integrated course facts + drill-down to official info}
+\begin{itemize}
+  \textcolor{red}{\item \textbf{CARD-01}~Provide expandable course cards that surface concrete planning facts (deadlines/appointments, assessment modalities).}
+  \item \textcolor{red}{\textbf{CARD-02}~Support drill-down from each course card/node to official institutional details (in-context popup/panel).}
+  \item \textcolor{blue}{\textbf{CARD-03}~Minimize context switching by enabling access to official descriptions without separate navigation/logins for basic verification.}
+  \item \textcolor{red}{\textbf{CARD-04}~Offer concise, icon-based encodings for assessment/workload-relevant signals with optional click-to-expand details.}
+  \item \textcolor{blue}{\textbf{CARD-05}~Display prerequisites (where available) and support a dedicated prerequisite view.}
+\end{itemize}
+
+\textbf{Institutional data sync to reduce manual entry}
+\begin{itemize}
+  \textcolor{red}{\item \textbf{SYNC-01}~Synchronize course metadata from institutional sources to reduce manual extraction and re-entry.}
+  \item \textbf{SYNC-02}~Minimize manual data entry by default and validate any user-entered data to mitigate known error modes.
+  \item \textcolor{red}{\textbf{SYNC-03}~Detect curriculum/version changes and re-validate impacted plans (flag potentially outdated items).}
+  \item \textcolor{blue}{\textbf{SYNC-04}~Support lightweight institutional workflows users already use (e.g., import/mirror favorites/categorized lists) while providing a more usable planning representation.}
+  \item \textcolor{blue}{\textbf{SYNC-05}~Provide stable structured representations that reduce “unusable overview” and time spent searching, without requiring users to assemble templates.}
+\end{itemize}
+
+\textcolor{red}{\textbf{Community knowledge and feedback layer}
+\begin{itemize}
+  \item \textbf{COMM-01}~Provide an optional community feedback layer (qualitative comments + structured signals) to complement official descriptions.
+  \item \textcolor{blue}{\textbf{COMM-02}~Support documentation-rich contributions (tagged workload reality checks, assessment expectations, pitfalls) beyond numeric ratings.}
+  \item \textbf{COMM-03}~Allow community reporting of implicit prerequisites and sequencing as experiential guidance, clearly marked as non-official and attributable.
+  \item \textcolor{blue}{\textbf{COMM-04}~Include governance mechanisms (moderation/reporting/versioning/recency cues) to keep a living and trustworthy knowledge base.}
+  \item \textcolor{blue}{\textbf{COMM-05}~Allow users to disable/hide peer feedback/ratings to preserve autonomy.}
+\end{itemize}}
+
+
+\subsection*{Graph visualization (hybrid interface)}
+
+\textbf{Graph as overview/orientation, not the plan}
+\begin{itemize}
+  \item \textbf{GRAPH-01}~Use the graph primarily for exploration/orientation; keep the actionable semester plan in a table-like surface.
+  \item \textcolor{blue}{\textbf{GRAPH-02}~Support a clear transition from graph exploration to table planning (select/commit courses).}
+  \item \textbf{GRAPH-03}~Keep the graph optional and non-blocking; planning must remain possible without it.
+  \item \textcolor{blue}{\textbf{GRAPH-04}~Support novice orientation via a big-picture overview that reduces overwhelm from institutional listings.}
+\end{itemize}
+
+\textbf{Clear spatial encoding \& layout conventions}
+\begin{itemize}
+  \item \textbf{LAYOUT-01}~Make spatial encoding explicit via onboarding and an always-available legend (e.g., what vertical placement means, if anything).
+  \item \textbf{LAYOUT-02}~Provide a default left-to-right hierarchical layout aligned with reading direction and clearly labeled structure.
+  \item \textbf{LAYOUT-03}~Use familiar, interpretable symbols (or allow switching to familiar symbol sets) and avoid ambiguous shorthand labels.
+  \item \textcolor{blue}{\textbf{LAYOUT-04}~Prioritize concise visual indicators (e.g., color coding) in the graph and externalize details into drill-down or table views.}
+  \item \textbf{LAYOUT-05}~Ensure consistent icon semantics across views to prevent misinterpretation of feedback/status symbols.
+\end{itemize}
+
+\textbf{Prerequisites \& soft dependencies visualization}
+\begin{itemize}
+  \item \textbf{DEP-01}~Visualize formal prerequisites clearly (distinct styling) and support prerequisite-based sequencing warnings.
+  \item \textbf{DEP-02}~Distinguish prerequisite edges from similarity/recommendation edges (styles + explanatory tooltips).
+  \item \textbf{DEP-03}~Allow user-created “soft dependency” annotations (recommended-before) to capture implicit knowledge.
+  \item \textbf{DEP-04}~Provide dependency decluttering (toggle edges, show prerequisites only) to avoid edge overload and support grouping-first users.
+\end{itemize}
+
+\textbf{Personal workspace layout \& rearrangement}
+\begin{itemize}
+  \item \textbf{WS-01}~Provide both structured auto-layout and free-layout (user rearrangement) modes.
+  \item \textbf{WS-02}~Preserve user spatial layouts persistently across sessions (no unexpected resets).
+  \item \textcolor{blue}{\textbf{WS-03}~Support spatial prioritization workflows (distance/placement expresses relevance) and keep placements stable when the graph updates.}
+  \item \textbf{WS-04}~Clarify what is semantic vs.\ purely personal in spatial layout to prevent misinterpretation.
+\end{itemize}
+
+\textbf{Zoom, scalability \& decluttering controls in graph}
+\begin{itemize}
+  \item \textcolor{blue}{\textbf{ZOOM-01}~Provide progressive disclosure (module-level by default; course-level on demand), with details externalized into tables when preferred.}
+  \item \textcolor{blue}{\textbf{ZOOM-02}~Provide strong decluttering (filters/collapsible groups), keeping mandatory items visible while allowing elective collapse.}
+  \item \textbf{ZOOM-03}~Support zoom and focus interactions (semantic zoom, focus+context) to manage large graphs.
+  \item \textcolor{red}{\textbf{ZOOM-04}~Support semester-level zoom/drill-down to inspect within-semester constraints (e.g., time conflicts) without increasing baseline complexity.}
+  \item \textbf{ZOOM-05}~Offer a “show all / full picture” option for global context with the ability to retreat to filtered views.
+\end{itemize}
+
+
+\subsection*{Table-based planning}
+
+\textbf{Semester table as the primary planning surface}
+\begin{itemize}
+  \item \textbf{TABLE-01}~Provide a semester table as the primary planning surface; planning must be possible with the table alone.
+  \item \textcolor{blue}{\textbf{TABLE-02}~Support a vertical semester layout (semesters stacked under one another) as default.}
+  \item \textbf{TABLE-03}~Display ECTS totals at least at semester level and module/category level.
+  \item \textbf{TABLE-04}~Visually distinguish mandatory courses (highlight/mark Pflichtf\"acher).
+  \item \textcolor{blue}{\textbf{TABLE-05}~Support structured ordering logic within the table, including quick reordering.}
+\end{itemize}
+
+\textbf{Course pool + drag/drop planning interactions}
+\begin{itemize}
+  \item \textbf{POOL-01}~Provide a course pool (candidate list) feeding the semester table without manual re-entry.
+  \item \textbf{POOL-02}~Support drag-and-drop to add/move courses between pool and semesters, and across semesters.
+  \item \textbf{POOL-03}~Provide a lightweight add interaction (plus / contextual “Add to plan”) as an alternative to drag-and-drop.
+  \item \textbf{POOL-04}~Provide a “selected view” (shortlist) aggregating plus-marked courses to evaluate fit before committing.
+  \item \textbf{POOL-05}~Reduce manual dragging via automatic alignment/snapping after actions while preserving manual reordering.
+  \item \textbf{POOL-06}~Make eligibility/availability clearly visible in the pool (what can be scheduled now).
+\end{itemize}
+
+\textbf{Notes, annotations, and personal constraints}
+\begin{itemize}
+  \item \textbf{NOTE-01}~Support free-form notes within or immediately adjacent to the semester table.
+  \item \textbf{NOTE-02}~Support per-course and per-semester annotations (priorities, constraints, reminders).
+  \item \textbf{NOTE-03}~Support capturing social recommendations as notes linked to courses with provenance (e.g., “recommended by colleague”).
+  \item \textcolor{blue}{\textbf{NOTE-04}~Keep annotations visible at decision time (inline badges/side panel), not buried in a separate tab.}
+\end{itemize}
+
+
+\subsection*{Grouping \& modular organization}
+
+\textbf{User-created named groupings and modules}
+\begin{itemize}
+  \item \textbf{GROUP-01}~Allow users to create custom groups of courses and assign free-text names/labels.
+  \item \textbf{GROUP-02}~Visually represent group boundaries/membership so it is obvious what belongs together.
+  \item \textbf{GROUP-03}~Support rapid “create group from selected courses” workflows.
+  \item \textcolor{blue}{\textbf{GROUP-04}~Support grouping as an alternative to edge-heavy dependency displays.}
+  \item \textcolor{blue}{\textbf{GROUP-05}~Allow groups to store lightweight metadata (short description/intention) to preserve organizing logic over time.}
+\end{itemize}
+
+\textbf{Flexible grouping across semesters + move behavior}
+\begin{itemize}
+  \item \textbf{GROUPX-01}~Support groups spanning multiple (including non-adjacent) semesters with clear visual indication of cross-semester membership.
+  \item \textbf{GROUPX-02}~Define predictable move behavior for grouped items (move-all by default) and communicate it via cues or previews.
+  \item \textbf{GROUPX-03}~Allow explicit choice between moving the whole group vs.\ detaching/moving a single course.
+  \item \textcolor{blue}{\textbf{GROUPX-04}~Support “keep coupled items together” mechanisms (group lock / paired-course pinning).}
+  \item \textcolor{blue}{\textbf{GROUPX-05}~Warn users when splitting tightly coupled group members across semesters (override possible).}
+  \item \textbf{GROUPX-06}~Preserve group structure and naming across sessions.
+\end{itemize}
+
+
+\subsection*{Filtering \& managing overload}
+
+\textbf{Filters for obligation, semester, ECTS/workload, states}
+\begin{itemize}
+  \item \textbf{FILTER-01}~Provide strong multi-criteria filtering (obligation type, semester availability, interest/topic filters) to reduce overload.
+  \item \textbf{FILTER-02}~Provide an ECTS/workload range filter (e.g., slider) for capacity-filling and fast narrowing.
+  \item \textcolor{blue}{\textbf{FILTER-03}~Provide state filters (planned vs.\ completed; optionally in-progress) for iterative planning and status awareness.}
+  \item \textbf{FILTER-04}~Provide course-type filters/toggles (e.g., transferable skills visibility).
+  \item \textbf{FILTER-05}~Allow filtering by semester context (“which semester”) to reflect offering/timing realities.
+\end{itemize}
+
+\textbf{Negated filters, collapse, and focus on unfinished}
+\begin{itemize}
+  \item \textbf{NEG-01}~Support negated filters (e.g., “not added / not in plan”) to focus on actionable options.
+  \item \textbf{NEG-02}~Support a focus-on-unfinished mode (hide/deemphasize completed while retrievable and traceable).
+  \item \textbf{NEG-03}~Support collapsible sections for non-mandatory areas as a decluttering strategy.
+  \item \textcolor{red}{\textbf{NEG-04}~Keep mandatory courses always visible (or provide an “always show Pflichtf\"acher” option).}
+\end{itemize}
+
+\textbf{Show-all overview + FOMO reduction}
+\begin{itemize}
+  \item \textbf{SHOW-01}~Provide a “Show all” mode revealing the full course/curriculum space to support a comprehensive picture.
+  \item \textbf{SHOW-02}~Enable seamless switching between show-all and filtered/decluttered views.
+  \item \textbf{SHOW-03}~Provide overview cues that reassure users they are seeing “everything,” reducing FOMO while retaining decluttering controls.
+  \item \textbf{SHOW-04}~Preserve planning context when toggling show-all (keep planned/completed items identifiable) to avoid disorientation.
+\end{itemize}
+
+
+\subsection*{Recommendations \& trust (RQ2)}
+
+\textbf{Recommendation types aligned to workflow and goals}
+\begin{itemize}
+  \item \textbf{RECTYPE-01}~Provide interest-based and content-similarity recommendations (including cross-module similarity).
+  \item \textcolor{red}{\textbf{RECTYPE-02}~Provide goal-aligned modes (e.g., completion-speed suggestions tied to user objective).}
+  \item \textbf{RECTYPE-03}~Provide curriculum- and dependency-aligned recommendations as a trustable baseline.
+  \item \textcolor{red}{\textbf{RECTYPE-04}~Provide popularity/scarcity signals as a distinct, actionable recommendation class (e.g., limited seats---register early).}
+  \item \textbf{RECTYPE-05}~Base personalization on explicit user inputs (e.g., declared interest tags) and do not assume life context implicitly.
+\end{itemize}
+
+\textbf{Recommendation presentation: annotate, don’t hide}
+\begin{itemize}
+  \item \textbf{RECPRES-01}~Present recommendations as annotations/markers on the full option space rather than hiding non-recommended items.
+  \item \textbf{RECPRES-02}~Provide subtle markers (star/badge) with optional stronger emphasis, letting users choose intensity.
+  \item \textbf{RECPRES-03}~Prevent overload (especially in graphs) by offering a separate recommendation panel/section as an alternative presentation.
+  \item \textcolor{blue}{\textbf{RECPRES-04}~Preserve context when showing recommendations (completed/planned items remain visible and identifiable).}
+  \item \textbf{RECPRES-05}~Attach minimal context (e.g., why recommended) so recommendations are not just a “dry” filtered subset.
+\end{itemize}
+
+\textbf{Trust, transparency, and user control}
+\begin{itemize}
+  \item \textbf{RECTRUST-01}~Explain why each recommendation is shown (tags, similarity, prerequisites, popularity/scarcity, etc.).
+  \item \textbf{RECTRUST-02}~Disclose the data basis of recommendations (e.g., aggregate usage indicators) and communicate when scale is insufficient.
+  \item \textcolor{blue}{\textbf{RECTRUST-03}~Provide explicit user controls to enable/disable recommendation types (especially peer comparisons), including “hide peer comparisons.”}
+  \item \textbf{RECTRUST-04}~Keep recommendations optional and framed as decision support (not prescriptions).
+  \item \textbf{RECTRUST-05}~Include workload/effort transparency alongside recommended items (workload indicators) to support trust.
+  \item \textcolor{blue}{\textbf{RECTRUST-06}~Account for curriculum/version differences in peer-derived recommendations (warn when peer paths may not apply).}
+  \item \textcolor{blue}{\textbf{RECTRUST-07}~Treat ratings/feedback as optional, provenance-labeled inputs with clear data-quality signals.}
+\end{itemize}
+
+
+\subsection*{Social \& cohort support}
+
+\textcolor{red}{\textbf{Peer contact and anti-isolation features}
+\begin{itemize}
+  \item \textbf{SOC-01}~Provide cohort-awareness indicators at course and semester level (e.g., how many peers plan/take a course).
+  \item \textbf{SOC-02}~Provide opt-in sharing of planned semester selections to enable repeated peer contact without forcing conformity.
+  \item \textbf{SOC-03}~Enable users to identify opportunities for repeated peer encounters (overlap across semesters / common cohort paths).
+  \item \textbf{SOC-04}~Provide lightweight peer-contact affordances linked to courses (e.g., join cohort channel, study group sign-up).
+  \item \textbf{SOC-05}~Allow social signals to be disabled/ignored (optional layer).
+  \item \textbf{SOC-06}~Protect privacy by default (aggregate/anonymized indicators unless users opt in to identifiable sharing).
+\end{itemize}}
+
+
+\subsection*{Motivation \& emotional load}
+
+\textbf{Motivating progress feedback and rewards}
+\begin{itemize}
+  \item \textcolor{blue}{\textbf{MOT-01}~Provide motivating progress feedback (completion \%, visual indicators) that updates as users plan/complete courses.}
+  \item \textbf{MOT-02}~Provide milestone feedback (module completed, requirement fulfilled, X\% to completion) as intermediate endpoints.
+  \item \textcolor{blue}{\textbf{MOT-03}~Provide visually polished progress representations (visual appeal supports motivation).}
+  \item \textbf{MOT-04}~Provide optional lightweight reward cues (non-intrusive confirmations on completion events).
+\end{itemize}
+
+\textbf{Reduce cognitive burden and overwhelm}
+\begin{itemize}
+  \item \textbf{COG-01}~Scaffold planning through progressive disclosure (start high-level; reveal detail on demand) to reduce overwhelm.
+  \item \textcolor{blue}{\textbf{COG-02}~Reduce repetitive manual work (e.g., automated requirement checking and data integration).}
+  \item \textbf{COG-03}~Use calm, non-text-heavy visual presentation (concise cues, de-emphasis of completed items) to avoid discouragement.
+  \item \textbf{COG-04}~Support transitional regulation complexity by surfacing applicable rule sets and simplifying interpretation.
+  \item \textbf{COG-05}~Support low-friction re-entry (resume where left off; show what changed since last check) to mitigate avoidance cycles.
+\end{itemize}
+
+
+\subsection*{Personalization \& control}
+
+\textbf{Support personal prioritization and ordering logics}
+\begin{itemize}
+  \item \textbf{PRIO-01}~Allow users to mark priority states (at minimum: \emph{must-do} vs.\ \emph{maybe/unsure}) and reflect them persistently.
+  \item \textbf{PRIO-02}~Support user-driven ordering within a semester (move items up/down) to maintain a priority-based arrangement.
+  \item \textbf{PRIO-03}~Provide multiple ordering modes (priority, alphabetical, perceived difficulty) and allow switching without losing context.
+  \item \textbf{PRIO-04}~Support optional spatial/positional prioritization cues (push low-relevance items “back” without deleting them).
+  \item \textbf{PRIO-05}~Offer optional auto-alignment/auto-tidying after drag-and-drop (snap into structured position) while preserving user control.
+  \item \textbf{PRIO-06}~Preserve the user’s chosen ordering logic/arrangement across sessions.
+  \item \textbf{PRIO-07}~Support deprioritization without loss: downrank secondary areas while keeping them visible/retrievable.
+\end{itemize}
+
+
+\subsection*{Personalization \& learning goals}
+
+\textbf{Support competency- and outcome-based planning}
+\begin{itemize}
+  \item \textbf{GOAL-01}~Let users define learning goals/target competencies (e.g., tags/outcome statements) and attach them to semester and program horizons.
+  \item \textbf{GOAL-02}~Provide self-assessment (strong/medium/weak) and flag potential course--capability mismatches.
+  \item \textbf{GOAL-03}~Support prior-knowledge declarations and use them to tailor sequencing guidance and reduce unnecessary repetition.
+  \item \textbf{GOAL-04}~Represent course learning outcomes and required competencies in course detail views (and condensed in selection views).
+  \item \textbf{GOAL-05}~Support a reflective post-course step (record “what I learned,” update self-assessment) and feed into future planning.
+  \item \textbf{GOAL-06}~Offer goal/competency-aligned recommendations (strengthen competency X; next courses given prior knowledge) while preserving user control.
+\end{itemize}
+
+
+\subsection*{Adoption, accessibility \& tool fit}
+
+\textbf{Mobile/ambient access + low-friction engagement}
+\begin{itemize}
+  \item \textbf{MOBILE-01}~Provide mobile access to the plan and ambient/glanceable access patterns (e.g., widget-like summary).
+  \item \textbf{MOBILE-02}~Support passive visibility (calendar-like overview / at-a-glance surface) without requiring a full planning session.
+  \item \textbf{MOBILE-03}~Minimize login/entry friction (persistent sessions, quick-open pathways).
+  \item \textbf{MOBILE-04}~Support low-effort check-ins (compact dashboard: current semester + next actions) to encourage revisitation.
+  \item \textbf{MOBILE-05}~Maintain high visual quality (legible, polished UI) because visual appeal supports use.
+\end{itemize}
+
+\textbf{Tailored to program structure; replaces Excel/TISS conditions}
+\begin{itemize}
+  \item \textbf{ADOPT-01}~Tailor to the target program structure (encode core/mandatory modules and categories) to establish trust and fit.
+  \item \textbf{ADOPT-02}~Use program-appropriate symbols/terminology and make mandatory structures salient.
+  \item \textbf{ADOPT-03}~Replace Excel only by meeting critical constraints (at minimum: collision detection + requirement-rule handling).
+  \item \textcolor{blue}{\textbf{ADOPT-04}~Reduce institutional friction by minimizing clunky interactions and synchronizing institutional data (avoid click-through/manual extraction).}
+  \item \textbf{ADOPT-05}~Support artifact-compatibility during adoption (import/reference existing Excel structures).
+  \item \textbf{ADOPT-06}~Provide an immediately usable structured default (fills gap of missing official planning template; no need to self-manage).
+\end{itemize}   

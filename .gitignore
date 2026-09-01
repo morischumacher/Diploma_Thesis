@@ -1,0 +1,22 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.mw
+*.acn
+*.acr
+*.alg
+*.glo
+*.gls
+*.glg
+*.ist
+*.idx
+*.ind
+*.xmpdata
+*.xmpi
+main.pdf

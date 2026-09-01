@@ -1,0 +1,519 @@
+% =============================================================================
+% Summative evaluation materials: instruments, interview topics, full codebook,
+% and code-by-participant matrix. Referenced from chapters/evaluation.tex via
+% \ref{app:eval-instruments} and \ref{app:eval-codebook}. House style per
+% CONTROL.md: British spelling; first-person plural; no em-dashes in prose;
+% bold only as table headers or item labels.
+% =============================================================================
+
+\chapter{Summative Evaluation Materials}
+\label{app:eval-materials}
+
+This appendix documents the materials and coding scheme behind the summative evaluation reported in Chapter~\ref{chap:evaluation}. It reproduces the questionnaire instruments and the voice-interview topics, and it lists the full thematic codebook together with the code-by-participant matrix on which the reported frequencies rest.
+
+% -----------------------------------------------------------------------------
+\section{Questionnaire instruments}
+\label{app:eval-instruments}
+
+\subsection{Post-task questionnaire (administered after each scenario)}
+
+After each of the two scenarios, participants completed the same nine-item questionnaire. Items~1 to~6 form a TAM-derived short form adapted to the planning domain~\cite{davis_perceived_1989}: items~1 to~3 measure perceived usefulness and items~4 to~6 perceived ease of use, with item~5 reported separately from the ease-of-use mean for the reason given in Section~\ref{sec:eval-questionnaire}. Each is rated on a seven-point Likert scale anchored ``Strongly disagree'' (1) to ``Strongly agree'' (7). Items~7 to~9 capture self-assessed task outcome and are analysed as experience measures rather than as ground-truth completion (Section~\ref{sec:eval-effectiveness}).
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{clp{7.6cm}l}
+        \toprule
+        \# & Construct & Item wording & Scale \\
+        \midrule
+        1 & Usefulness   & The interface helped me create a study plan more effectively. & 1--7 \\
+        2 & Usefulness   & The interface improved my productivity when dealing with course dependencies and constraints. & 1--7 \\
+        3 & Usefulness   & The interface would be useful for planning my own studies. & 1--7 \\
+        4 & Ease of use  & Learning to use the interface was easy for me. & 1--7 \\
+        5 & Ease of use  & The interface made it easy to keep an overview while planning. & 1--7 \\
+        6 & Ease of use  & Interacting with the interface felt clear and understandable. & 1--7 \\
+        7 & Success      & How successful were you in meeting all task constraints? & 3-point\textsuperscript{a} \\
+        8 & Satisfaction & Rate your satisfaction with the semester plan you created. & 1--7\textsuperscript{b} \\
+        9 & Difficulty   & How easy or difficult did you find it to complete the task with this tool? & 1--7\textsuperscript{c} \\
+        \bottomrule
+    \end{tabular}
+    \caption{The nine-item post-task questionnaire administered after each scenario. \textsuperscript{a}~``Fully successful'', ``Partially successful'', ``Not successful''. \textsuperscript{b}~Anchored ``Very unsatisfied'' (1) to ``Very satisfied'' (7). \textsuperscript{c}~Anchored ``Very difficult'' (1) to ``Very easy'' (7).}
+    \label{tab:app-perscenario-instrument}
+\end{table}
+
+Item~7 named the concrete constraints for the scenario in question. For Scenario~A the wording was ``e.g.\ semesters 1--7, 30~ECTS $\pm$3, internship semester max 9~ECTS''; for Scenario~B it named the Artificial-Intelligence targets. The questionnaire was presented bilingually (English and German); Table~\ref{tab:app-perscenario-instrument} reproduces the English wording.
+
+\subsection{Final questionnaire (User Experience Questionnaire)}
+
+After both scenarios and the open-exploration phase, participants completed the User Experience Questionnaire once~\cite{laugwitz_construction_2008}. The instrument comprises twenty-six seven-point semantic-differential items between opposing adjectives (for example ``obstructive / supportive'' and ``confusing / clear''), which aggregate into six scales: attractiveness, perspicuity, efficiency, dependability, stimulation, and novelty. Perspicuity, efficiency, and dependability summarise pragmatic (goal-directed) quality; stimulation and novelty summarise hedonic quality. We report the group profile in Table~\ref{tab:ueq}. We use the standard instrument without modification and therefore do not reproduce all twenty-six items here.
+
+\subsection{Voice-interview topics}
+\label{app:eval-interview}
+
+The session closed with a short semi-structured voice interview conducted through the study-guide application. The moderator raised four topics and let participants speak freely; the prompts were framed to elicit friction and re-planning behaviour rather than to lead the response.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{p{3.6cm}p{9.8cm}}
+        \toprule
+        Topic & Prompt \\
+        \midrule
+        System blocks and friction & Were there moments where the planner blocked your progress or made it hard to implement your plan? \\
+        Backtracking and re-planning & Did you have to backtrack or delete parts of your plan to satisfy constraints? How did the interface support or hinder this? \\
+        Hesitation and orientation & Did you feel confused or pause at certain states? How understandable was the visual feedback, for example the recommendation arrows or the warnings? \\
+        General feedback & What were your favourite aspects, and what was missing? \\
+        \bottomrule
+    \end{tabular}
+    \caption{The four topics raised in the closing voice interview.}
+    \label{tab:app-interview}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\section{Scenario briefs}
+\label{app:eval-scenarios}
+
+The two task briefs are reproduced below exactly as the study-guide application presented them (Chapter~\ref{chap:evaluation}, Section~\ref{sec:eval-conditions}). Each states its persona constraints and strategy guidance and nothing else; the curriculum's own requirements were never stated in the brief and reached participants only through the tool.
+
+\begin{figure}[htpb]
+    \centering
+    \fbox{\begin{minipage}{0.92\textwidth}
+        \textbf{Scenario~A: Cybersecurity}\hfill\textit{Condition: baseline (graph off)}\\[4pt]
+        \textbf{Persona.} A first-semester Bachelor student who wants to specialise in Cybersecurity.\\[3pt]
+        \textbf{Task.} Plan semesters 1--7 using the interactive planner.\\[3pt]
+        \textbf{Constraints.}
+        \begin{itemize}\setlength\itemsep{1pt}
+            \item Target about 30~ECTS per semester (acceptable range 27 to 33~ECTS).
+            \item Include exactly one internship semester, limited to at most 9~ECTS.
+        \end{itemize}
+        \textbf{Strategy guidance.} Follow your interests and select security- and networking-related modules; stay within related domains to build a deep specialisation.
+    \end{minipage}}
+    \caption{Scenario~A task brief shown to participants: the Cybersecurity persona, planned in the graph-off baseline condition.}
+    \label{fig:scenario-a}
+\end{figure}
+
+\begin{figure}[htpb]
+    \centering
+    \fbox{\begin{minipage}{0.92\textwidth}
+        \textbf{Scenario~B: Artificial Intelligence}\hfill\textit{Condition: experimental (graph on)}\\[4pt]
+        \textbf{Persona.} A first-semester Bachelor student who wants to specialise in Artificial Intelligence.\\[3pt]
+        \textbf{Task.} Plan semesters 1--8 using the interactive planner.\\[3pt]
+        \textbf{Constraints.}
+        \begin{itemize}\setlength\itemsep{1pt}
+            \item Target about 24~ECTS per semester (acceptable range 21 to 27~ECTS).
+            \item Include exactly one exchange semester, limited to at most 9~ECTS.
+        \end{itemize}
+        \textbf{Strategy guidance.} Follow your interests and select AI, Data Science, and Machine Learning modules; explore new domains to build a broader understanding.
+    \end{minipage}}
+    \caption{Scenario~B task brief shown to participants: the Artificial Intelligence persona, planned in the graph-on experimental condition.}
+    \label{fig:scenario-b}
+\end{figure}
+
+
+% -----------------------------------------------------------------------------
+\section{Evaluation codebook}
+\label{app:eval-codebook}
+
+The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1994}. The ``Seeded'' column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
+
+\footnotesize
+\begin{longtable}{p{1.6cm}p{9.6cm}cc}
+    \caption{Usability-problem codes (\mbox{E-P}).}
+    \label{tab:app-codebook-problems}\\
+    \toprule
+    Code & Definition & Dim. & Sev. \\
+    \midrule
+    \endfirsthead
+    \multicolumn{4}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    Code & Definition & Dim. & Sev. \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{4}{r}{\emph{continued on next page}}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    E-P01 & Curriculum terminology unclear (focus area vs exam subject; narrow vs broad elective); no in-tool definition. & eff & 3 \\
+    E-P02 & Total and remaining ECTS, and the per-semester maximum, not findable at a glance. & eff & 2 \\
+    E-P03 & Requirement status stated only in prose, not glanceable. & eff & 2 \\
+    E-P04 & Table and catalogue lack the mandatory, category, and ECTS filters available with the graph sidebar. & eff & 3 \\
+    E-P05 & Why a course cannot be placed in a semester is unclear; constraint feedback not legible. & eff & 2 \\
+    E-P06 & Participant misread a scenario instruction (study artefact, not a tool defect). & eff & 1 \\
+    E-P07 & Graph zoom triggers on quick single clicks. & eff & 1 \\
+    E-P08 & Slow cold-start: roughly one minute of blank loading before first paint. & eff & 2 \\
+    E-P09 & Signup defaults to the wrong programme regardless of the intended plan. & eff & 2 \\
+    E-P10 & Requirement, ECTS-gap, and warning status only inside expandable dashboard panels; repeated expand and collapse to read. & eff & 2 \\
+    E-P11 & Recommendation panel overlaps and occludes the table lanes. & eff & 1 \\
+    E-P12 & Per-semester ECTS legible in the graph only at deep zoom. & eff & 1 \\
+    E-P13 & ``Disable Graph View'' negative checkbox easy to misread. & sat & 1 \\
+    E-P14 & Onboarding tour drives the early session before the actual task. & eff & 1 \\
+    E-P15 & Layout-axis configuration popup surfaces mid-task; purpose unclear, no payoff. & eff & 2 \\
+    E-P16 & Changing the maximum ECTS per semester destabilises the plan and forces re-placement; overload hard-rejects without auto-levelling. & eff & 3 \\
+    E-P17 & How to add a reduced-load semester is not discoverable. & eff & 2 \\
+    E-P18 & Grade-entry effort versus its benefit (weighted GPA) is not obvious. & sat & 2 \\
+    E-P19 & Course-type mutual-exclusivity rules (VO/VU/UE) not explained in-tool. & eff & 2 \\
+    E-P20 & Per-semester overload warning never clears; StEOP prerequisites gate each other until marked done. & eff & 1 \\
+    E-P21 & Cannot drag courses from the catalogue into the plan; a drag attempt produced a stuck ghost. & eff & 3 \\
+    E-P22 & No clear affordance to remove a placed module. & eff & 2 \\
+    E-P23 & Per-course action icons on catalogue cards are small and fiddly. & eff & 2 \\
+    E-P24 & Pan and zoom strand the graph on empty canvas; no recentre or fit control. & eff & 2 \\
+    E-P25 & The mandated internship or exchange semester (at most 9~ECTS) has no explicit affordance and is never confirmed by the tool. & eff & 2 \\
+    E-P26 & The workload band is not enforced: overload only advises and a band-violating plan still earns full completion. & eff & 3 \\
+    E-P27 & Internal study wording (``User Study Persona 1'') leaks into the production profile UI. & sat & 1 \\
+    E-P28 & A module expands into several courses of mixed obligation type; the granularity confused novices. & eff & 1 \\
+    E-P29 & No at-a-glance winter or summer indicator per semester lane; participants lose term parity while placing season-locked courses. & eff & 2 \\
+    E-P30 & Toggling a graph sidebar filter spuriously zooms or recentres the canvas (confirmed bug). & eff & 2 \\
+    E-P31 & Removing a placed card deletes even a mandatory module with no confirmation or undo. & eff & 2 \\
+    E-P32 & The overload warning fires within the stated acceptable band because it is driven by the stricter profile value. & eff & 2 \\
+    E-P33 & Workload shown in ECTS with no week-hours equivalence the participant can interpret. & sat & 1 \\
+    E-P34 & The panel reports ``no missing requirements'' while unmodelled hard constraints (internship semester, lower workload bound) are unmet; the tool green-lights an incomplete plan. & eff & 3 \\
+    E-P35 & The upper workload bound is a hard block but the lower bound is only a soft warning, so under-loaded semesters are never forced to correct. & eff & 3 \\
+    E-P36 & The dashboard checklist can show checked greater than total (for example 9/6), undermining trust in the tracker. & eff & 1 \\
+    E-P37 & The parking stage cannot be viewed inside the graph view; participants had to switch modes. & eff & 2 \\
+    E-P38 & Moving a placed module into the parking stage silently removes it from the ECTS total and from requirement counting. & eff & 2 \\
+    E-P39 & Under interface load a junior participant loses track of his own intent and mis-clicks (a cognitive-load signal). & eff & 2 \\
+    E-P40 & Collapsible section headers lack an obvious chevron, so their expand or collapse state is not glanceable. & eff & 1 \\
+    E-P41 & New-account creation returns a raw ``username already exists'' error inline, forcing an unguided retry. & eff & 1 \\
+    E-P42 & The internships and interdisciplinary recommendation tabs render a bare ``no recommendations'' dead-end. & sat & 1 \\
+    E-P43 & The drag handles are hidden under the card title; participants could not place a course until the moderator located them. & eff & 3 \\
+    E-P44 & The compliance engine validates against prerequisites and reports them in the dashboard after the fact, but neither view shows them at the point of placement; participants wanted a visible ordering indicator. & eff & 2 \\
+    E-P45 & The graph becomes hard to read once many categories are present, even with zoom. & eff & 2 \\
+    E-P46 & An off-target click navigated away and disrupted plan state mid-task. & eff & 1 \\
+    E-P47 & The graph carries no semester dimension at all, so a placement made from a node cannot be judged against the target lane's load; over-fill is discovered only after switching views. & eff & 3 \\
+    E-P48 & A multi-course module carries an inline ECTS selector that silently rewrites the plan total, and the catalogue, the card, and the engine disagree about its value. & eff & 3 \\
+    E-P49 & The dashboard contradicts itself: the focus-area checklist reports complete while Missing Requirements simultaneously lists an unmet module from that same area. & eff & 3 \\
+    E-P50 & Toast semantics are unreliable: one visual style carries acceptance, rejection, and progress, and confirmations fire with no state change or alongside a decrease. & eff/sat & 2 \\
+    E-P51 & Adding a semester is reachable only from inside a card's placement menu; there is no board-level control, and the affordance was invisible to participants and moderator alike. & eff & 2 \\
+    E-P52 & Canvas, lane headers, and dashboard disagree for whole sample intervals after a drop; the lane header lags the dashboard by at least one interval. & eff & 2 \\
+    E-P53 & Placement menus silently omit semesters a course is not offered in, and can offer semesters that do not yet exist, creating empty lanes. & eff & 2 \\
+    E-P54 & The milestone banner's percentage does not match its own ECTS figures. & sat & 2 \\
+    E-P55 & Season and status glyphs are too small and not colour-differentiated, and become illegible at zoom-out. & eff & 2 \\
+    E-P56 & An empty result set, whether from a filter combination or a recommendation tab, renders as a blank surface with no message, count, or reset. & eff/sat & 1 \\
+    E-P57 & The workload target is a fixed profile default that ignores the scenario band, so guidance mis-fires in both directions unless the user retunes it. & eff & 3 \\
+    E-P58 & Requirement entries are dead text: a named module cannot be navigated to and must be re-found by hand in the catalogue. & eff & 2 \\
+    E-P59 & The planner opens showing a previous account's plan before the new session's sign-in completes. & sat & 2 \\
+    E-P60 & Removal is destructive with no confirmation and no undo, and is confirmed by a success toast. & eff & 3 \\
+    E-P61 & The ``Estimated Week-Hours per Semester'' panel advertises a target and is never populated. & sat & 1 \\
+    E-P62 & Changing the focus area in the profile discards the plan and forces the prebuilt plan to be re-applied. & eff & 3 \\
+    E-P63 & Expanded catalogue clusters cannot be collapsed again, so the sidebar grows monotonically during search. & eff & 1 \\
+    E-P64 & The catalogue header advertises drag-and-drop that does not work from that surface. & eff & 2 \\
+    E-P65 & The graph canvas lacks the viewport controls the table canvas provides. & eff & 2 \\
+    E-P66 & Requirement counting is coupled to the workload cap, so editing a profile number changes what the plan is reported to be missing. & eff & 3 \\
+    E-P67 & The plan's length cannot be declared; the prebuilt plan always emits six semesters. & eff & 2 \\
+    E-P68 & Recommendation provenance is opaque: the user cannot tell which profile input produced a suggestion. & sat & 2 \\
+\end{longtable}
+\normalsize
+
+\footnotesize
+\begin{longtable}{p{1.6cm}p{10.6cm}c}
+    \caption{Positive-finding codes (\mbox{E-G}).}
+    \label{tab:app-codebook-positives}\\
+    \toprule
+    Code & Definition & Dim. \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    Code & Definition & Dim. \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{3}{r}{\emph{continued on next page}}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    E-G01 & Prebuilt pre-fill plan initialisation valued; removes the blank page. & eff/sat \\
+    E-G02 & Recommendations actively used and dragged into the plan. & eff/sat \\
+    E-G03 & The ``+'' valid-target affordance shows where a course can be placed. & eff \\
+    E-G04 & Real-time compliance nudges (maximum load, missing requirement) noticed and used. & eff \\
+    E-G05 & Completion and milestone animation creates delight. & sat \\
+    E-G06 & Parking stage discovered and valued for shortlisting before committing. & sat \\
+    E-G07 & Graph and sidebar filters (narrow elective, ECTS range) praised. & eff/sat \\
+    E-G08 & Graph makes course dependencies and constraints legible. & eff/sat \\
+    E-G09 & Blocked-drop, accepted, and milestone banners are unambiguous. & eff/sat \\
+    E-G10 & Expanding curriculum clusters to find specialisation courses is highly discoverable. & eff/sat \\
+    E-G11 & The ``Done'' check-off mode with live ECTS and StEOP updates valued. & sat \\
+    E-G12 & Reordering plan and dashboard sections brings structure. & sat \\
+    E-G13 & The visual legend aids interpretation of colours, borders, and state. & sat \\
+    E-G14 & Recommendations re-rank live to a freshly typed interest. & sat \\
+    E-G15 & The missing-requirements checklist functions as the primary completion loop and carries novices to a complete plan. & eff \\
+    E-G16 & Filtering ``Mandatory'' in the graph surfaces all mandatory modules with their affiliations at once, which the table cannot. & eff \\
+    E-G17 & The graph clarifies the ``module contains several courses'' relationship where the table's labels confused participants. & sat \\
+    E-G18 & Combining a category filter with the ``not planned'' course-state filter turns the graph into a gap-finder. & eff \\
+    E-G19 & Node state encoding (planned, parked, not planned) is self-explanatory without recourse to the legend. & sat \\
+    E-G20 & The graph canvas recentre control was found unaided and valued. & sat \\
+    E-G21 & Grade entry is immediately understood and valued for GPA tracking. & sat \\
+    E-G22 & Per-course estimated week-hours valued as a corrective to ECTS-as-workload. & sat \\
+\end{longtable}
+\normalsize
+
+\footnotesize
+\begin{longtable}{p{1.6cm}p{10.6cm}c}
+    \caption{Neutral and method-observation codes (\mbox{E-N}), and the two per-session method flags.}
+    \label{tab:app-codebook-neutral}\\
+    \toprule
+    Code & Definition & Dim. \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    Code & Definition & Dim. \\
+    \midrule
+    \endhead
+    \bottomrule
+    \endlastfoot
+    E-N01 & Participant articulates complementary value: table for acting, graph for understanding dependencies; both wanted. & graph contribution \\
+    E-N02 & Participant explored the graph less than they would in real use (lab-setting caveat). & validity \\
+    E-N03 & Self-reported task success contradicts the video-observed state; the video is used as the effectiveness measure. & validity \\
+    E-N04 & Participant's own curriculum knowledge clashes with the tool's model, colouring interpretation. & validity \\
+    E-N05 & Recommendations browsed but rejected in favour of an explicit checklist and search (a trust signal, not a capability gap). & feature signal \\
+    E-N06 & A very junior participant relies on recommendations and the dashboard because he cannot judge modules himself. & validity \\
+    E-N07 & Participants browse and inspect in the graph but perform all substantive placement in the table, parking stage, and dashboard. & graph contribution \\
+    E-N08 & The study guide's task timer stops while the guide tab is backgrounded, so its elapsed figures understate. Instrument defect, not a product defect. & validity \\
+    E-N09 & Graph-only canvas chrome persists in the graph-disabled baseline condition. Study artefact, not a product defect. & validity \\
+    FAC & Facilitator intervention: a conceptual or task rescue by the moderator that qualifies task success. & method flag \\
+    LEN & Self-report leniency: self-reported scores near ceiling despite observed friction. & method flag \\
+\end{longtable}
+\normalsize
+
+% -----------------------------------------------------------------------------
+\section{Code-by-participant matrix}
+\label{app:eval-matrix}
+
+Table~\ref{tab:app-matrix} records, for each code, the participants in whom it was evidenced and the resulting frequency. A dot marks presence, an empty cell absence, and a dash a code that could not be decided for that participant. Two situations produce a dash. The facilitator flag cannot be observed for P09 to P12, whose recordings are screen shares with the webcam tile cropped and whose transcripts carry a single speaker label, so moderator and participant speech are not separable. The twenty-nine codes after E-P46 were introduced after P01 to P07 had been analysed; they were decided directly from both records for P09 to P12 and reconstructed from the earlier session files for P01 to P07, where a file that says nothing about a code leaves it undecided. Denominators therefore state how much evidence exists rather than being uniform.
+
+\footnotesize
+\begin{longtable}{lccccccccccc c}
+    \caption{Code-by-participant matrix after re-application of the final codebook to all participants. A dot ($\bullet$) marks presence; \textsuperscript{$\ast$}~marks a frequency this revision changed.}
+    \label{tab:app-matrix}\\
+    \toprule
+    Code & P01 & P02 & P03 & P04 & P05 & P06 & P07 & P09 & P10 & P11 & P12 & Freq. \\
+    \midrule
+    \endfirsthead
+    \multicolumn{13}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    Code & P01 & P02 & P03 & P04 & P05 & P06 & P07 & P09 & P10 & P11 & P12 & Freq. \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{13}{r}{\emph{continued on next page}}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    E-P01 & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  &  &  & 4/11 \\
+    E-P02 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & 8/11 \\
+    E-P03 & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & 7/11 \\
+    E-P04 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P05 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P06 & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & 7/11 \\
+    E-P07 & $\bullet$ &  &  &  &  &  &  &  &  &  &  & 1/11 \\
+    E-P08 & $\bullet$ &  &  &  & $\bullet$ &  &  &  &  & $\bullet$ &  & 3/11 \\
+    E-P09 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P10 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P11 & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ &  & 6/11 \\
+    E-P12 &  &  &  &  &  &  &  &  &  &  &  & 0/11 \\
+    E-P13 &  & $\bullet$ &  &  &  &  &  &  &  &  &  & 1/11 \\
+    E-P14 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & 9/11 \\
+    E-P15 &  & $\bullet$ &  &  &  &  &  &  &  &  &  & 1/11 \\
+    E-P16 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & 7/11 \\
+    E-P17 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & 9/11 \\
+    E-P18 &  & $\bullet$ &  &  &  &  &  &  &  &  &  & 1/11 \\
+    E-P19 &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ &  &  &  &  & 3/11 \\
+    E-P20 &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  &  & $\bullet$ &  & 4/11 \\
+    E-P21 & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  &  & 2/11 \\
+    E-P22 &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  &  & 2/11 \\
+    E-P23 &  &  & $\bullet$ &  &  &  &  &  &  &  &  & 1/11 \\
+    E-P24 &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  &  &  & 3/11 \\
+    E-P25 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P26 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P27 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/11 \\
+    E-P28 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ &  & 7/11 \\
+    E-P29 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P30 &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & 2/11 \\
+    E-P31 &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & 2/11 \\
+    E-P32 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P33 &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  &  &  & 4/11 \\
+    E-P34 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P35 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/11 \\
+    E-P36 & $\bullet$ &  &  &  &  &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ & 4/11 \\
+    E-P37 &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 9/11 \\
+    E-P38 &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/11 \\
+    E-P39 & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  & 5/11 \\
+    E-P40 &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  &  &  & 3/11 \\
+    E-P41 &  &  &  &  &  & $\bullet$ &  &  &  &  &  & 1/11 \\
+    E-P42 &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & 4/11 \\
+    E-P43 &  &  &  &  &  &  & $\bullet$ &  &  &  &  & 1/11 \\
+    E-P44 &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  &  &  & 4/11 \\
+    E-P45 &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  &  & 3/11 \\
+    E-P46 &  &  &  &  &  &  & $\bullet$ &  &  &  &  & 1/11 \\
+    E-G01 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-G02 & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/11 \\
+    E-G03 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  & 7/11 \\
+    E-G04 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-G05 & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ &  & 2/11 \\
+    E-G06 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-G07 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-G08 & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ &  & 2/11 \\
+    E-G09 &  &  &  &  &  &  &  &  &  &  &  & 0/11 \\
+    E-G10 & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 9/11 \\
+    E-G11 &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  &  &  & 3/11 \\
+    E-G12 &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & $\bullet$ &  & 3/11 \\
+    E-G13 &  & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ &  &  &  &  & 3/11 \\
+    E-G14 &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & 7/11 \\
+    E-G15 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-G16 &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & 4/11 \\
+    E-G17 &  & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & 6/11 \\
+    E-N01 & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & 7/11 \\
+    E-N02 & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  &  & 2/11 \\
+    E-N03 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & 9/11 \\
+    E-N04 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  &  & $\bullet$ & 6/11 \\
+    E-N05 & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ & 7/11 \\
+    E-N06 &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & 2/11 \\
+    E-N07 &  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & 6/11 \\
+    FAC & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & 7/7 \\
+    LEN & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  &  & $\bullet$ &  & 6/11 \\
+    E-P47 & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/10 \\
+    E-P48 & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/10 \\
+    E-P49 & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 8/8 \\
+    E-P50 & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 9/9 \\
+    E-P51 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & 8/10 \\
+    E-P52 & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 7/7 \\
+    E-P53 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P54 & $\bullet$ & \textcolor{gray}{--} & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & 6/10 \\
+    E-P55 & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ &  &  &  &  & 2/6 \\
+    E-P56 & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ &  &  & 3/5 \\
+    E-P57 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 11/11 \\
+    E-P58 & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 7/7 \\
+    E-P59 & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & $\bullet$ &  &  & $\bullet$ & 4/6 \\
+    E-P60 & \textcolor{gray}{--} &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & 5/10 \\
+    E-P61 & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 10/11 \\
+    E-P62 & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} &  &  &  &  & 1/5 \\
+    E-P63 & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} &  &  &  &  & 1/5 \\
+    E-P64 & \textcolor{gray}{--} &  & $\bullet$ &  &  &  &  &  &  &  &  & 1/10 \\
+    E-P65 &  & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} &  &  &  &  &  & 1/7 \\
+    E-P66 & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} &  &  &  &  & 1/5 \\
+    E-P67 & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & 8/8 \\
+    E-P68 & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  & 4/9 \\
+    E-G18 & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} &  & \textcolor{gray}{--} & $\bullet$ & $\bullet$ &  &  & $\bullet$ & 4/7 \\
+    E-G19 & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ &  & $\bullet$ & 5/6 \\
+    E-G20 & $\bullet$ & \textcolor{gray}{--} &  & \textcolor{gray}{--} &  &  & \textcolor{gray}{--} &  &  &  &  & 1/8 \\
+    E-G21 &  &  &  &  &  & $\bullet$ &  &  &  &  &  & 1/11 \\
+    E-G22 & \textcolor{gray}{--} &  &  &  &  & $\bullet$ &  &  &  &  &  & 1/10 \\
+    E-N08 & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ &  & 5/6 \\
+    E-N09 & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & \textcolor{gray}{--} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & 8/9 \\
+\end{longtable}
+
+% -----------------------------------------------------------------------------
+\section{Screen-record labelling scheme}
+\label{app:eval-stagelog}
+
+Each screen recording was sampled at ten-second intervals at native resolution, and every sampled frame was labelled against the scheme below, producing 2{,}179 labelled frames across the twenty-two scenario runs. The labelling was performed without reference to the transcripts or to any earlier analysis, so that the two records could be compared rather than merged.
+
+\begin{itemize}
+    \item \textbf{Surface.} Exactly one of: the study-guide application, the sign-in or setup dialog, a loading state, the table view, the graph view, or another window.
+    \item \textbf{Panels.} Which of the catalogue sidebar, filter sidebar, recommendation panel, dashboard, visual legend, and modal dialogues were open, recorded independently of the surface because the dashboard coexists with both views. Where the dashboard was open, the expanded collapsible sections were recorded individually, which is what allows the expand-and-collapse cost behind E-P10 to be counted rather than estimated.
+    \item \textbf{Plan state.} The per-semester ECTS read directly off the lane headers, the dashboard's planned total, the missing-requirement and warning counts, and the focus-area status.
+    \item \textbf{Transient text.} Any banner, toast, or rejection message, transcribed verbatim.
+    \item \textbf{Flags.} Whether the per-semester panel was open, whether the moderator was the active speaker, whether the canvas and the dashboard disagreed, and whether the layout-axis configuration changed.
+\end{itemize}
+
+The frame total is the number of labelled rows the stage logs contain, counted by a single script held with the logs themselves so that it can be reproduced rather than tallied by hand. Two rules matter for that count and are recorded here because earlier tallies differed on them: a row is a frame only if its surface column names one of the surfaces above, which excludes the analysis tables the same files carry, and a timestamp is read as an integer rather than as a fixed-width field, because the two earliest runs write their first ten timestamps without leading zeros.
+
+Two properties of the sampling bound what the labelled record can support. Events shorter than the ten-second interval may fall between frames, so counts of transient banners are lower bounds. Lane-header digits are small at the source resolution, so every reported ECTS value was corroborated against the dashboard total or the stated remaining gap before being accepted, and values that could not be corroborated were recorded as unknown rather than inferred.
+
+% -----------------------------------------------------------------------------
+\section{Per-run completion audit}
+\label{app:eval-completion}
+
+Table~\ref{tab:app-completion} gives the final plan state of all twenty-two analysed scenario runs against the constraints of their brief. A lane at or below the stated cap counts as the internship or exchange semester and is exempt from the per-semester band; overshoot of the 180~ECTS total is not counted as a failure, a shortfall is. Lane values were cross-checked against the dashboard's planned total and are reported as unknown where that constraint does not determine them. The excluded session P08 is not listed.
+
+\begin{table}[htpb]
+    \centering
+    \scriptsize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{l p{3.5cm} l l l p{2.5cm}}
+        \toprule
+        Run & Per-semester ECTS & Reduced-load lane & Out of band & Total & Verdict \\
+        \midrule
+        P01-A & 32/31/32/30/21/31 & none & S5 = 21 & 177 (3 short) & incomplete, 6 of 7 semesters \\
+        P01-B & 26/25/20/24/21/22/\textbf{9}/24 & S7 = 9 & S3 = 20 & 171 (9 short) & incomplete \\
+        P02-A & 32/31/32/30/27/12/16 & none & S6, S7 & 180 & 2 violations \\
+        P02-B & 26/25/26/24/\textbf{9}/24/24/22 & S5 = 9 & none & 180 & \textbf{compliant} \\
+        P03-A & 26/31/32/30/\textbf{6}/27/31 & S5 = 6 & S1 = 26 & 183 & 1 violation \\
+        P03-B & 32/31/\textbf{8}/30/27/31/12/12 & S3 = 8 & 6 of 7 & 183 & badly incomplete \\
+        P04-A & 32/31/32/30/\textbf{9}/31/15 & S5 = 9 & S7 = 15 & 180 & 1 violation \\
+        P04-B & 26/25/26/24/\textbf{9}/24/25/24 & S5 = 9 & none & 183 & \textbf{compliant} \\
+        P05-A & 26/31/32/12/30/33/16 & none & S1, S4, S7 & 180 & 3 violations \\
+        P05-B & 26/25/26/24/\textbf{6}/27/24/22 & S5 = 6 & none & 180 & \textbf{compliant} \\
+        P06-A & 26/31/29/30/30/\textbf{6}/28 & S6 = 6 & S1 = 26 & 180 & 1 violation \\
+        P06-B & 26/25/26/24/24/30/\textbf{9}/22 & S7 = 9 & S6 = 30 & 186 & 1 violation \\
+        P07-A & 26/28/32/30/\textbf{9}/30/28 & S5 = 9 & S1 = 26 & 183 & 1 violation \\
+        P07-B & 26/25/26/24/27/24/\textbf{9}/22 & S7 = 9 & none & 183 & \textbf{compliant} \\
+        P09-A & 26/31/26/30/24/12/31 & none & S1, S3, S5, S6 & 180 & 4 violations, no internship \\
+        P09-B & 26/25/26/24/\textbf{9}/24/24/22 & S5 = 9 & none & 180 & \textbf{compliant} \\
+        P10-A & 32/31/32/30/\textbf{9}/21/28 & S5 = 9 & S6 = 21 & 183 & 1 violation \\
+        P10-B & 26/25/26/24/24/24/\textbf{9}/22 & S7 = 9 & none & 180 (+6 parked) & \textbf{compliant} \\
+        P11-A & 32/31/26/30/30/\textbf{6}/25 & S6 = 6 & S3, S7 & 180 & 2 violations \\
+        P11-B & 26/25/20/24/\textbf{9}/27/24/25 & S5 = 9 & S3 = 20 & 180 & 1 violation \\
+        P12-A & 32/31/?/30/12/30/? & none & S5 = 12, S3/S7 unread & 180 & unresolved \\
+        P12-B & 26/25/26/24/21/24/12/22 & none & S7 = 12 & 180 (+6 parked) & 1 violation, no exchange \\
+        \bottomrule
+    \end{tabular}
+    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS.}
+    \label{tab:app-completion}
+\end{table}
+
+% -----------------------------------------------------------------------------
+\section{Catalogue of unmet requirements}
+\label{app:eval-unmet}
+
+The requests below were recorded from the interviews and think-aloud of all eleven analysed participants, or observed as a capability a participant visibly needed and lacked. Roughly one hundred raw items across the twenty-two runs reduce to the twenty-seven distinct capabilities listed here. They are the basis of Table~\ref{tab:unmet} in Chapter~\ref{chap:discussion} and of the development agenda in Section~\ref{sec:disc-future}. Requests made by a single participant are retained where the underlying gap is specific enough to act on.
+
+Two properties of the counts bound how they should be read. A frequency states the participants for whom the need was evidenced, either asked for verbatim or visibly lacked, so a denominator below eleven marks a capability that could not be decided for every participant rather than one that was refused. And the four most recent sessions were roughly half the length of the earlier seven, so a capability nobody reached the point of needing in a short run is under-counted rather than disconfirmed; where a count sits well below the cohort size it should be read as a floor.
+
+\begin{longtable}{p{5.4cm}cp{6.2cm}}
+    \caption{Capabilities requested or visibly lacking, with what each would resolve.}
+    \label{tab:app-unmet}\\
+    \toprule
+    Capability & Freq. & What it would resolve \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    Capability & Freq. & What it would resolve \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{3}{r}{\emph{continued on next page}}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    Category, obligation, and ECTS filters in the table and catalogue & 11/11 & The study's most universal friction; in the graph-off condition the catalogue cannot be narrowed at all, so students fall back on free-text search (E-P04, E-P56). \\
+    An explicit internship or exchange semester, checked by the rule engine & 11/11 & Both briefs mandate one and the tool models none, so the constraint is tracked entirely by the student and never confirmed (E-P25, E-P34). \\
+    A workload band with both ends enforced & 11/11 & The profile expresses a maximum and a recommendation but not a band, so warnings fire inside the stated range and nothing at all fires below it (E-P26, E-P32, E-P35, E-P57). \\
+    A winter or summer indicator on every semester lane & 11/11 & Removes the place, reject, and re-place rework loop caused by invisible term parity at the moment of commitment (E-P29, E-P55). \\
+    Semester lanes and per-lane load visible inside graph view & 10/10 & A placement made from a node cannot be judged against the target lane's load; over-fill is discovered only after switching back (E-P47). \\
+    Parked credits reflected in, or visibly subtracted from, the totals & 10/11 & Parked ECTS are excluded from every total and nothing says so, and requirement counting drops them too (E-P38). \\
+    A board-level control for adding a semester, and a declarable plan length & 10/11 & Both briefs need more lanes than the prebuilt plan emits, and the only way to add one is inside a card's placement menu (E-P17, E-P51, E-P67). \\
+    The parking stage visible, and droppable, inside the graph & 9/11 & Courses parked from graph nodes cannot be reviewed without switching views, the mode switch participants named most often (E-P37). \\
+    Requirement entries linked to the courses that satisfy them & 8/11 & Each checklist item must currently be re-found by hand in the catalogue, breaking the loop the checklist otherwise drives (E-P58). \\
+    Valid target semesters marked before the drop, not after & 8/11 & The tool already computes the legal set for the placement menu; showing it during a drag turns a rejection after the fact into guidance before it (E-P05, E-G03). \\
+    A glanceable statement of what is still outstanding & 7/11 & Total and remaining ECTS and requirement status sit behind collapsible panels and are stated in prose rather than as figures (E-P02, E-P03, E-P10). \\
+    Warnings readable without an expand, each with a reason & 6/11 & The warnings panel was never opened once across the 437 frames of the four most recent sessions while its counter climbed to five (E-P10). \\
+    A way to reduce a card's load or level a lane, instead of a hard rejection & 6/11 & An over-cap drop is refused outright and must be resolved by hand, and the inline ECTS selector that could resolve it rewrites the plan total instead (E-P16, E-P48). \\
+    Rejection banners that state the reason and the valid alternatives & 6/11 & One visual style carries acceptance, rejection and progress, so a refusal cannot be told from a confirmation (E-P05, E-P50, E-P54). \\
+    Populated or hidden recommendation tabs, and an internship data channel & 5/11 & A tab named for the task's own constraint returns a bare empty state (E-P42, E-P56). \\
+    An in-tool glossary for the curriculum vocabulary & 4/11 & Narrow and broad electives, focus area versus exam subject, and module versus course each required moderator explanation (E-P01, E-P28). \\
+    An ECTS to week-hours equivalence, shown by default & 4/11 & The week-hours panel is advertised on every dashboard and never populated, so workload can only be judged in ECTS (E-P33, E-P61). \\
+    Visible prerequisite and course-ordering indicators & 4/11 & The compliance engine holds the relation and reports it after the fact; neither view renders it at the point of placement (E-P44). \\
+    Transparent recommendation provenance, and a way to steer it & 4/9 & A student cannot tell which of their own profile inputs produced a given suggestion (E-P68). \\
+    Non-blocking or explained introductory-phase check-off ordering & 4/11 & StEOP courses gate each other until marked done, and the resulting warning never clears (E-P20). \\
+    A self-consistent completion panel & 8/8 & The focus-area checklist reports complete while Missing Requirements lists an unmet module from the same area (E-P36, E-P49, E-P52). \\
+    The integrated versus split course-format choice made visible in the plan & 3/11 & A module offered as VU or as VO plus UE resolves silently, and the rule surfaces only on removal (E-P19). \\
+    A findable recentre or fit-to-content control in the graph & 3/11 & The control exists but was not found; participants lost the canvas while panning (E-P24, E-P65, E-G20). \\
+    Splitting a module across semesters, or repeating it at partial credit & 2/11 & A multi-course module must be placed whole, which conflicts with balancing a semester to a band. \\
+    A view of the courses belonging to the chosen focus area & 2/11 & The focus area drives the checklist but cannot be used to filter what is shown. \\
+    Persistent or re-readable notifications & 2/11 & Milestone and rule messages disappear before they can be read, with no history to consult (E-P50, E-P54). \\
+    An in-tool statement of per-category caps, not only minima & 2/11 & The dashboard reports what is still required but never what a category will no longer count. \\
+\end{longtable}

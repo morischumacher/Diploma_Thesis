@@ -1,0 +1,28 @@
+\chapter{Glossary}
+\label{app:glossary}
+
+This glossary defines domain-specific and thesis-specific terms used regularly throughout the chapters, in the sense they carry in this thesis specifically.
+
+\begin{description}
+  \item[Programme] A degree programme at TU Wien; this thesis covers the Bachelor Informatics and Master Software Engineering programmes specifically (Chapter~\ref{chap:methodology}, Section~\ref{sec:overall-scope}).
+  \item[Exam Subject] The second level of the curriculum hierarchy (Programme $\to$ Exam Subject $\to$ Module $\to$ Course), a named grouping of modules within a programme (Section~\ref{sec:curriculum-abstraction}).
+  \item[Module] The third level of the curriculum hierarchy; a named unit containing one or more courses, carrying a single obligation category (Section~\ref{sec:curriculum-abstraction}).
+  \item[Course (course item)] The fourth, most granular level of the curriculum hierarchy; refers to any course-item entry regardless of teaching format (VO, UE, VU, PR, etc.).
+  \item[Obligation category / obligation type] Whether a module is mandatory, constrained elective, or fully elective (Section~\ref{sec:obligation}); the underlying institutional taxonomy differs between the Bachelor and Master programmes (Section~\ref{sec:course-obligation-abstraction}).
+  \item[Planning status] The lifecycle state of a course in a student's plan: not planned, parked, planned, or done (Section~\ref{sec:lifecycle}).
+  \item[Parking Stage] The intermediate holding area for shortlisted courses that have not yet been assigned to a semester (Section~\ref{sec:parking}).
+  \item[Prototype] The Figma prototype used to elicit requirements in the formative study (Chapter~\ref{chap:formative-study}), distinct from the implemented tool this thesis's Design and Implementation chapters describe.
+  \item[Theme (C-identifier)] One of the 64 consolidated, design-relevant need categories produced by grouping the initial interview codes (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}); cited in running text by its identifier, e.g.\ (C21). Each theme carries the interviews and verbatim excerpts that informed it. The full set is given in Section~\ref{app:codebook}.
+  \item[Code] An individual, inductively developed label attached to a coded excerpt during initial coding (Chapter~\ref{chap:formative-study}, Section~\ref{sec:initial-coding}). The 435 initial codes are the input to theme consolidation and are not cited individually in this thesis; the themes they were grouped into are.
+  \item[Feature (FEATURE-XXX)] One of the 13 features derived from themes in Chapter~\ref{chap:from-themes-to-requirements}, each carrying a set of numbered requirements.
+  \item[Requirement (Req.)] A single numbered requirement under a feature. Within Chapter~\ref{chap:from-themes-to-requirements}, a feature's own heading uses its name directly (e.g.\ FEATURE-005); from Design onward, a feature is cited by its cross-reference label, e.g.\ Feature~\ref{feat:005}, Req.~Y, so the citation always resolves to the feature's current number even if features are renumbered.
+  \item[OOS (Out of Scope)] One of the four system-wide scope boundaries (OOS1--OOS4); OOS1 and OOS2 are general and stated in the Methodology chapter (Section~\ref{sec:overall-scope}), OOS3 and OOS4 are specific and stated in Chapter~\ref{chap:from-themes-to-requirements} (Section~\ref{sec:overall-scope-refined}) alongside the findings that justify them.
+  \item[Nested Model] Munzner's nested model for visualisation design and validation~\cite{munzner2009}, used as this thesis's umbrella structuring framework (Chapter~\ref{chap:methodology}, Section~\ref{sec:paradigm}).
+  \item[Table View] The primary planning canvas: semesters as vertical columns containing course cards, organised for commitment-stage planning (Section~\ref{sec:table-spatial}).
+  \item[Graph View] The exploratory canvas: the curriculum rendered as a left-to-right hierarchical layout, organised for browsing and sensemaking rather than planning (Section~\ref{sec:graph-ltr}).
+  \item[Recommendation Panel] The independently-toggleable left-side panel showing per-family course recommendations with inspectable evidence (Section~\ref{sec:rec-panel}).
+  \item[Compliance Engine] The backend rule engine invoked after every planning action, returning fulfilment status, ECTS statistics, hard violations, and soft warnings (Section~\ref{sec:compliance}).
+  \item[Dashboard] The persistent right-panel component showing compliance and progress information at four aggregation levels (Section~\ref{sec:dashboard}).
+  \item[Semester Picker] The menu used to assign a course to a semester or the Parking Stage from wherever it is triggered (Section~\ref{sec:semester-picker}).
+%% AIREV [MINOR] (The word this thesis most needs to pin down, "dependency", has no glossary entry, and the text uses it in two senses: the containment relation the graph draws, and the prerequisite relation of the cited literature and of Chapter 8's "dependency information". An entry stating both senses and which one a bare "dependency" means would defuse the ambiguity flagged at Research Question 1.)
+\end{description}

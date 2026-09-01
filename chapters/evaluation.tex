@@ -1,0 +1,482 @@
+%% REV (one thing you have to fix is that in the chapter its stated that the graph does not show dependencies. but it does, it just doenst schow soft dependencies for the study. But it showed hard prerequesits. But in the reimplementation after the eval study, some of the "Highest-impact usability problems across the eleven analysed participants" where fixed including the one with the soft dependencies. 
+\label{chap:evaluation}
+
+This chapter addresses \textbf{Research Question~3}: \emph{how do students experience the hybrid interface and its embedded recommendations in terms of user experience (effectiveness, efficiency, and satisfaction)?} Following the nested-model logic of Chapter~\ref{chap:methodology}, the evaluation validates the encoding, interaction, and algorithm levels of the implemented artefact~\cite{munzner2009}.
+
+We answer that question from two records rather than one. Alongside the questionnaires and interviews that capture what students report, we reconstruct what students actually did, by sampling every screen recording at fixed intervals and labelling each frame with the surface in use, the panels open, and the plan state on screen. This gives an observational counterpart to each of the three ISO~9241-11 dimensions the question names. Effectiveness is read from whether the finished plans satisfy the constraints of their brief and from the share of placements the tool rejected, rather than from whether students believed they had finished. Efficiency is read from the path a student took through the interface, that is which surfaces were occupied, for how long, and in what order, rather than from elapsed time, because the same duration can cover a direct route to a complete plan or a long sequence of rejected placements. Satisfaction is read from the questionnaires and the interviews, where self-report is the appropriate instrument. The two records are needed together rather than separately: Section~\ref{sec:eval-effectiveness} shows that every participant reported success in a condition in which no plan met its brief, so self-report alone would have answered the effectiveness half of Research Question~3 incorrectly.
+
+The study contrasts two conditions of the same tool, one without the curriculum graph and one with it. Its purpose is to locate what a graph contributes to the activity of planning, not to rank the two conditions against each other. This is where the present study departs from the formative study of Chapter~\ref{chap:formative-study}, which treated the value of a graph-based view as a premise the design could build on. Here that premise is put to observation: we ask what students do, in what order, and on which surface, and what changes when the graph becomes available.
+
+\section{Study Design}
+\label{sec:eval-design}
+
+The study is a within-subjects, two-condition observation of eleven students planning a Bachelor curriculum under persona scenarios. This section states the system under test, the two conditions and their briefs, the procedure and instruments, the cohort, and the two-record analysis method on which every later figure rests.
+
+\subsection{System Under Test}
+\label{sec:eval-system}
+
+The system evaluated is the hybrid study planner designed in Chapter~\ref{chap:design} and built in Chapter~\ref{chap:implementation}. Five of its components carry the findings reported here, and each owns a distinct part of the planning work. The supporting elements around them, namely the course catalogue with free-text search (Section~\ref{sec:sidebar-design}), the visual legend (Section~\ref{sec:legend}), and the short onboarding tour (Section~\ref{sec:onboarding}), were present and unchanged in both conditions.
+
+\begin{itemize}
+    \item A semester \emph{table}, shown as lanes into which courses are placed, is the primary editing surface (Section~\ref{sec:table-view}).
+    \item A node--link \emph{graph} renders the curriculum hierarchy, that is exam subjects containing modules containing courses, laid out by curriculum depth, with a filter sidebar whose dimensions include obligation type, ECTS range, course type, planning status, and term availability (Section~\ref{sec:graph-spatial}).
+    \item A \emph{rule-checking dashboard}, driven by the compliance engine of Section~\ref{sec:compliance}, reports the running ECTS total, the missing requirements, the focus-area checklist, the per-semester workload verdict, and the warning list (Section~\ref{sec:dashboard}).
+    \item A \emph{recommendation panel} proposes courses with human-readable reasons (Section~\ref{sec:rec-panel}).
+    \item A \emph{parking stage} lets students shortlist courses before committing them to a semester (Section~\ref{sec:parking}).
+\end{itemize}
+
+\subsection{Conditions and Scenarios}
+\label{sec:eval-conditions}
+
+Each participant completed two planning tasks, framed as persona scenarios so that individual domain preference does not vary the task, under two settings of the graph. The setting is an account-level property fixed before the task begins; participants did not switch views between conditions within a run.
+
+\begin{itemize}
+    \item \textbf{Scenario~A (graph off).} A Cybersecurity persona, planned with the graph unavailable. The table, dashboard, recommendations, catalogue, and parking stage remain fully available.
+    \item \textbf{Scenario~B (graph on).} An Artificial Intelligence persona, planned with the full tool including the graph and its filter sidebar.
+\end{itemize}
+
+Everything other than the graph was held constant across the two conditions. Each brief stated only its persona constraints, namely the per-semester ECTS band and the single reduced-load semester, together with strategy guidance on the kind of module to prefer. The curriculum's own hard requirements, that is the mandatory modules, the chosen focus area, the narrow (\emph{enge Wahl}) and broad (\emph{breite Wahl}) elective categories, and the introductory-phase (StEOP) rules, were never stated in the brief. Participants encountered them only inside the tool and tracked them through the dashboard, which makes the dashboard the sole channel through which the curriculum was communicated during a task. The two briefs are reproduced exactly as the study-guide application presented them in Section~\ref{app:eval-scenarios}.
+
+\subsubsection*{Fixed Scenario Order}
+\label{sec:eval-order}
+
+Scenario~A preceded Scenario~B for every participant, without counterbalancing. The learning trajectory is the unit of analysis in this study, and a constant sequence is what makes those trajectories comparable: every participant met Scenario~B at the same point on their learning curve, having established a baseline workflow under identical conditions. Counterbalancing would have produced heterogeneous learning histories across the cohort, and at $N=11$ the split cohorts ($n=5$ against $n=6$) would in any case have been too small to estimate an order effect reliably.
+
+The design bounds what can be claimed accordingly. Graph availability and second exposure are perfectly collinear, so the graph's effect cannot be separated from the effect of performing the task a second time, nor from the change of topic between the two personas. No causal claim about the graph's independent effect follows from this data. What the design does support is an account of how the graph modifies a workflow the participant has already established, and every comparison in Section~\ref{sec:eval-ab} is reported within that bound.
+
+\subsubsection*{Scope and Non-Goals}
+\label{sec:eval-nongoals}
+
+This study does not evaluate plan accuracy or generation speed, and does not use either to compare the two conditions. Establishing either would require strict experimental controls: matched cohorts with a known baseline of curriculum knowledge, a tool-agnostic operationalisation of plan quality, constant task exposure, and a sample large enough to isolate condition effects from individual variance. Those controls fall outside the scope of a qualitative, small-scale design.
+
+The completion audit in Section~\ref{sec:eval-effectiveness} is therefore not a performance comparison between participants. It serves a single measurement purpose: by establishing independently which plans met their brief, it makes visible the gap between what students reported achieving and what they achieved, and so fixes the limits of what the self-report instruments in this study can be read to mean.
+
+\subsection{Procedure and Measures}
+\label{sec:eval-procedure}
+
+Each session followed a fixed sequence administered through the purpose-built study-guide web application described in Section~\ref{sec:impl-userstudy}: (1)~demographics; (2)~recording consent; (3)~a short video tutorial of the tool; (4)~Scenario~A; (5)~the post-task questionnaire for Scenario~A; (6)~Scenario~B; (7)~the post-task questionnaire for Scenario~B; (8)~an open-exploration phase in which participants tried features freely; (9)~the final questionnaire; and (10)~a semi-structured voice interview. Sessions were screen- and audio-recorded. The think-aloud method was used throughout the working phases, that is in Scenario~A, in Scenario~B, and in the open-exploration phase, and a moderator was present to resolve operational questions about the interface.
+
+After each scenario, participants completed an identical nine-item questionnaire: six items forming a TAM-derived short form adapted to the planning domain~\cite{davis_perceived_1989}, three for perceived usefulness and three for perceived ease of use, followed by three items on task success, satisfaction with the plan, and task difficulty. After both scenarios and the open-exploration phase, participants completed the 26-item User Experience Questionnaire once~\cite{laugwitz_construction_2008}. Because the acceptance items are a domain-adapted short form rather than Davis's validated scales, they are reported as TAM-derived throughout and without the reliability coefficients Davis reports for his six-item versions. The full instruments are reproduced in Section~\ref{app:eval-instruments}.
+
+\subsection{Participants}
+\label{sec:eval-participants}
+
+Twelve sessions were conducted and eleven are analysed. The excluded session, P08, was held without a screen recording, and the analysis method of Section~\ref{sec:eval-analysis} depends on that record; without it the session cannot be labelled, so it contributes to no frequency in this chapter. It is retained on record and appears in the completion audit marked as excluded. The four most recent sessions were captured as a screen share in which the meeting's webcam tile is not present; the earlier recordings retain the full meeting window and therefore that tile (Chapter~\ref{chap:methodology}, Section~\ref{sec:ethics-overview}). No frame of any recording is reproduced in this thesis, and every analysis artefact refers to participants by code alone.
+
+The eleven analysed participants span the experience strata the study targets: four reported regular prior experience with study-planning tools, one reported little, and six reported none. They ranged from the 2nd to the 8th semester across Software Engineering (MSc) and Computer Science (BSc). Three of the eleven also took part in the formative study (Chapter~\ref{chap:formative-study}); the remaining eight are new to the research. Table~\ref{tab:participants} lists the cohort. Participants are referred to by code throughout, and recordings were anonymised.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{llccr}
+        \toprule
+        P & Programme & Sem. & Prior exp. & UEQ overall \\
+        \midrule
+        P01 & Software Engineering (MSc)            & 6 & none    & $+2.46$ \\
+        P02 & Software Engineering (MSc)            & 6 & regular & $+2.00$ \\
+        P03 & Computer Science (BSc)                      & 6 & none    & $+2.15$ \\
+        P04 & Software Engineering (MSc)            & 5 & regular & $+2.46$ \\
+        P05 & Software Engineering (MSc)        & 8 & none    & $+2.69$ \\
+        P06 & Software Engineering (MSc)                  & 2 & none    & $+1.35$ \\
+        P07 & Software Engineering (MSc)                  & 8 & regular & $+2.62$ \\
+        P09 & Software Engineering (MSc)                  & 5 & little  & $+1.88$ \\
+        P10 & Computer Science (BSc)                           & 2 & none    & $+2.42$ \\
+        P11 & Computer Science (BSc)                           & 2 & none    & $+2.46$ \\
+        P12 & Software Engineering (MSc)                  & 6 & regular & $+2.46$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{The eleven analysed participants, with the overall UEQ score reported in Section~\ref{sec:eval-questionnaire}. P08 is excluded and not listed.}
+    \label{tab:participants}
+\end{table}
+
+\subsection{Analysis Method}
+\label{sec:eval-analysis}
+
+Two independent records were produced per participant and then triangulated (Figure~\ref{fig:eval-pipeline}). The first is the think-aloud and interview transcript. The second is the screen recording, treated as an artefact in its own right: each recording was sampled at ten-second intervals and every sampled frame was labelled against a fixed scheme recording the active surface, the panels open, the sidebar contents, the per-semester ECTS read off the lane headers, the dashboard state, and any transient banner text. This produced 2{,}179 labelled frames across the twenty-two scenario runs. The labelling scheme is reproduced in Section~\ref{app:eval-stagelog}.
+
+Sessions were conducted in German; participant quotations in this chapter are the author's translations, and the German originals are held with the transcripts. Transcripts and recordings were analysed with a codebook thematic analysis in the tradition of Braun and Clarke~\cite{braun_thematic_2022}, using a controlled codebook of usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code is mapped to an ISO~9241-11 dimension and each problem carries a working Nielsen severity rating~\cite{nielsen1994}. The codebook was applied to every participant, following the same practice as the formative study (Section~\ref{sec:analysis-method}), so that a code coined while analysing a later session is also decided for the earlier ones and frequencies are comparable across the cohort rather than reflecting the order in which codes were introduced. Section~\ref{app:eval-matrix} reports the resulting matrix.
+
+Frequencies are written as \emph{n}/\emph{m}, where \emph{m} is the number of participants for whom the code could be decided and \emph{n} the number for whom it was evidenced. The denominator is eleven for most codes and smaller where a code could not be decided for every participant, either because the relevant feature was never reached in that session or because the record does not settle it; a code reported as 9/9 was therefore evidenced in every session in which the question arose, not in nine of eleven. Severity is a single-analyst judgement, so the ranking in Table~\ref{tab:problems} is indicative rather than exact.
+
+Durations were recorded and are reported where they describe the shape of a session, but they are not used as an efficiency metric, for the reason given at the start of this chapter. They are derived from the frame index of the recording rather than from the study application's own per-scenario timer, which freezes while its browser tab is backgrounded (E-N08). The remaining sections report the results, beginning with the planning process the two records reconstruct.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,
+  b/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=center, inner sep=2.4mm, text width=3.9cm},
+  wide/.style={b, text width=9.0cm},
+  a/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=black}]
+  \node[b] (rec) at (-2.9,0) {\textbf{Screen recording}};
+  \node[b] (tra) at ( 2.9,0) {\textbf{Transcript} \\ \small think-aloud, interview};
+  \node[b] (frm) at (-2.9,-1.9) {\textbf{Frames} \\ \small every 10\,s};
+  \node[b] (qual) at ( 2.9,-1.9) {\textbf{Utterance coding}};
+  \node[b] (log) at (-2.9,-3.8) {\textbf{State log} \\ \small surface, panels, \\ \small lane ECTS};
+  \node[wide] (cb) at (0,-5.9) {\textbf{Codebook applied to both records, for every participant}};
+  \node[wide] (out) at (0,-7.7) {\textbf{Process model, code frequencies, completion audit}};
+  \draw[a] (rec) -- (frm);
+  \draw[a] (tra) -- (qual);
+  \draw[a] (frm) -- (log);
+  % Each record drops straight into its own side of the codebook box, so the two
+  % paths never cross and neither arrowhead lands on the other's line.
+  \draw[a] (log.south)  -- ([xshift=-2.9cm]cb.north);
+  \draw[a] (qual.south) -- ([xshift=2.9cm]cb.north);
+  \draw[a] (cb) -- (out);
+\end{tikzpicture}
+\caption{The two-record analysis. The screen recording is sampled and labelled independently of the transcript, and the codebook is then applied to both records for every participant.}
+\label{fig:eval-pipeline}
+\end{figure}
+
+% =============================================================================
+
+\section{The Planning Process}
+\label{sec:eval-process}
+
+Planning under this tool is a single checklist-driven loop, and it has the same shape for every participant in both conditions. Students read what the dashboard says is still missing, find a candidate that closes the gap, place it, and return to the list. This section establishes that loop from the state logs, then reports where candidates came from, including the recommendation panel, the three places where the loop breaks, and the way its own rule-checker is configured.
+
+\subsection{A State Model of the Planning Process}
+\label{sec:eval-statemodel}
+
+Each sampled frame carries a primary surface and, where that surface is the table, whether the dashboard panel is open and whether the sidebar shows the course catalogue or the graph's filters. Combining these yields the process states of Table~\ref{tab:states}. Three quantities are derived from them, and each answers a different question. Occupancy, the share of sampled frames in a state, says where attention went. Entries, the number of times a state was entered, and dwell, the mean number of consecutive frames per entry expressed in seconds, separate one long visit from many short ones, which is what distinguishes a surface a student settles into from one they consult and leave. Self-transitions are removed before counting transitions, so a transition is a genuine change of state rather than a frame boundary.
+
+The recommendation panel is recorded per frame but enters the model as an overlay rather than as a state, because it does not displace a surface the way the catalogue and the graph displace each other. Across the frames in which it is open, the dashboard is open in 85\,\% and the sidebar still shows the catalogue or the graph filters in 94\,\%, so the panel accompanies a state rather than constituting one. Its occupancy, entries, and dwell are given in Table~\ref{tab:occupancy} on that basis and are analysed in Section~\ref{sec:eval-recs}.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{lp{7.4cm}}
+        \toprule
+        State & Interpretation \\
+        \midrule
+        \textsc{dash+cat} & Table with the dashboard open and the catalogue in the sidebar: the checklist-driven working state \\
+        \textsc{cat}      & Table with the catalogue, dashboard closed: browsing for candidates \\
+        \textsc{dash}     & Table with the dashboard, no catalogue: reading status \\
+        \textsc{graph}    & Graph view; its sidebar is always the filter panel \\
+        \textsc{table}    & Table with neither panel \\
+        \textsc{off}      & Study guide, sign-in, loading, questionnaire \\
+        \bottomrule
+    \end{tabular}
+    \caption{Process states derived from the frame labels. The compound definition is required because the dashboard is a right-hand panel that coexists with the table rather than replacing it.}
+    \label{tab:states}
+\end{table}
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{lrrr@{\hskip 2em}rrr}
+        \toprule
+        & \multicolumn{3}{c}{Scenario~A (1{,}197 frames)} & \multicolumn{3}{c}{Scenario~B (982 frames)} \\
+        \cmidrule(r){2-4}\cmidrule(l){5-7}
+        State & Occ.\ \% & Entries & Dwell~s & Occ.\ \% & Entries & Dwell~s \\
+        \midrule
+        \textsc{dash+cat} & 51.2 & 38 & 161 & 46.5 & 51 & 90 \\
+        \textsc{cat}      & 27.1 & 40 &  81 &  6.7 & 22 & 30 \\
+        \textsc{graph}    & ---  & ---& --- & 26.6 & 42 & 62 \\
+        \textsc{dash}     &  5.5 & 11 &  60 &  8.2 &  8 & 101 \\
+        \textsc{table}    &  0.6 &  5 &  14 &  2.0 &  3 & 67 \\
+        \textsc{off}      & 15.6 & 26 &  72 &  9.9 & 35 & 28 \\
+        \midrule
+        \multicolumn{7}{l}{\emph{Overlay, counted independently of the states above}} \\
+        \textsc{recs}     & 24   & 23 & 125 & 20   &  8 & 244 \\
+        \bottomrule
+    \end{tabular}
+    \caption{State occupancy, number of entries, and mean dwell per entry, aggregated over the eleven runs of each condition. The catalogue and the graph exchange places: 40 catalogue entries in Scenario~A against 42 graph entries in Scenario~B, at comparable dwell. The recommendation panel is an overlay rather than a state, so its occupancy is a share of the same frames and does not enter the column total.}
+    \label{tab:occupancy}
+\end{table}
+
+\subsection{The Core Workflow: A Checklist-Driven Two-State Loop}
+\label{sec:eval-loop}
+
+The dashboard's missing-requirements checklist was the completion mechanism for every participant (E-G15, 11/11). Students seeded the plan with the pre-filled mandatory backbone, which every participant accepted and valued (E-G01, 11/11), and from there read the remaining gap, acted to close it, and returned to the list. P09 opens Scenario~A by reading the count aloud, ``22 missing requirements, wow, that is a lot'', and then works it down item by item; P10 names the driver directly, ``I need narrow-elective modules, transferable skills, so let me see what narrow-elective ones there are''. For the most junior participant the loop did not begin until the moderator pointed at the tracker: P06 had been placing courses for roughly nine minutes with no view of what remained, and his reply marks the moment browsing turned into a loop (``exactly that, here I see what I need''). That the loop takes the same shape for fluent and for heavily assisted participants is what makes it a property of the tool rather than of facilitation.
+
+The loop runs between two states, and introducing the graph changes which two but not the loop itself. In Scenario~A the cycle runs between the catalogue and the dashboard: \textsc{cat}~$\rightarrow$~\textsc{dash+cat} accounts for 27.5\,\% of all state changes and the reverse for 17.4\,\%, so the pair accounts for 44.9\,\% of everything that happens. In Scenario~B the same cycle runs between the graph and the dashboard, with \textsc{dash+cat}~$\rightarrow$~\textsc{graph} and its reverse at 19.3\,\% each, or 38.6\,\% of all state changes together. Figure~\ref{fig:eval-loop} renders both cycles with these probabilities.
+
+The cycle also turns at the same rate in both conditions. Counting the states a participant passes through between one return to an open dashboard and the next gives a median of 2.0 in Scenario~A ($n=38$ returns) and 2.0 in Scenario~B ($n=48$ returns), which is the minimum a two-state cycle can produce and means that students went out, found one candidate, and came straight back to the checklist. Adding a third surface therefore did not lengthen the excursion between two consultations of the checklist. What changed is only which surface the excursion goes to, and that substitution is the subject of Section~\ref{sec:eval-ab}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,
+  s/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=center,
+            inner sep=2mm, text width=2.9cm, minimum height=12mm},
+  faint/.style={s, dashed, draw=gray, text=gray},
+  a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
+  lb/.style={font=\scriptsize, inner sep=1.4pt, fill=white}]
+  % ---- Scenario A: the cycle runs between the catalogue and the dashboard
+  \node[font=\small\bfseries] at (0,1.5) {Scenario A (graph off)};
+  \node[s] (dashA) at (0,0)    {\textbf{\textsc{dash+cat}} \\ \small 51.2\,\%};
+  \node[s] (catA)  at (0,-3.0) {\textbf{\textsc{cat}} \\ \small 27.1\,\%};
+  \draw[a] ([xshift=-0.85cm]dashA.south) -- node[lb, left]  {17.4\,\%} ([xshift=-0.85cm]catA.north);
+  \draw[a] ([xshift= 0.85cm]catA.north)  -- node[lb, right] {27.5\,\%} ([xshift= 0.85cm]dashA.south);
+  % ---- Scenario B: the same cycle, with the graph in the catalogue's place
+  \node[font=\small\bfseries] at (6.6,1.5) {Scenario B (graph on)};
+  \node[s] (dashB) at (6.6,0)    {\textbf{\textsc{dash+cat}} \\ \small 46.5\,\%};
+  \node[s] (grB)   at (6.6,-3.0) {\textbf{\textsc{graph}} \\ \small 26.6\,\%};
+  \draw[a] ([xshift=-0.85cm]dashB.south) -- node[lb, left]  {19.3\,\%} ([xshift=-0.85cm]grB.north);
+  \draw[a] ([xshift= 0.85cm]grB.north)   -- node[lb, right] {19.3\,\%} ([xshift= 0.85cm]dashB.south);
+  % The catalogue is no longer a station of the cycle: it hangs off the graph as a
+  % side branch taken on 4.1 per cent of transitions.
+  \node[faint] (catB) at (6.6,-5.9) {\textsc{cat} \\ \small 6.7\,\%};
+  \draw[a, draw=gray, dashed] (grB.south) -- node[lb, right, text=gray] {4.1\,\%} (catB.north);
+\end{tikzpicture}
+\caption{The dominant planning cycle in each condition, with each transition's share of all state changes and each state's occupancy. The cycle keeps its two-state shape and period; only the candidate-finding surface changes.}
+\label{fig:eval-loop}
+\end{figure}
+
+\subsection{The Parking Stage: Shortlisting Before Commitment}
+\label{sec:eval-parking}
+
+The parking stage is what allows two surfaces to operate on one plan without either having to do the other's work, and every participant used it to shortlist before committing (E-G06, 11/11). In the graph-on condition it is where courses discovered in the graph were held before assignment. P04 described the strategy in advance (``I will put everything into the parking zone and then go back to the table and assign each to the right semester''), and the recordings show it executed: P09 moved nine courses from graph nodes into the parking stage in a single episode, and P10 nine across two.
+
+That the stage sits outside the plan's accounting is both its function and a source of error. Parked credits are excluded from the planned ECTS total and nothing on screen says so (E-P38, 10/11). P02 planned against a total of 102~ECTS while 24~ECTS sat parked; P10 and P12 each ended a run with 6~ECTS parked while the dashboard reported a complete 180~ECTS plan and zero missing requirements. Nine participants asked, in one form or another, for the stage to be visible from inside the graph, where it is not (E-P37, 9/11).
+
+\subsection{The Recommendation Panel Accompanies the Loop Rather Than Driving It}
+\label{sec:eval-recs}
+
+The recommendation panel was one of the most occupied surfaces in the tool, and almost every participant opened it, but it did not become a station of the planning cycle. It was open for 24\,\% of sampled frames in Scenario~A and 20\,\% in Scenario~B, which is the same order as the catalogue in Scenario~A (27.1\,\%) and the graph in Scenario~B (26.6\,\%), and ten of the eleven participants opened it at least once. Both records agree on which participant did not: the one blank cell in E-G02 (10/11) is the same participant whose frames never show the panel.
+
+Occupancy overstates consultation, however, and the block structure of the record says why. The panel was entered 23 times in Scenario~A and 8 times in Scenario~B across all eleven runs, against 40 catalogue entries and 41 graph entries, and 71\,\% of the time it was open falls inside nine episodes longer than three minutes. The longest is a single unbroken episode of nearly fifteen minutes in P01's Scenario~A, entered once and never closed. The panel was therefore frequently present rather than frequently consulted, and its high occupancy records a drawer left open beside the working state rather than a surface students returned to in the way they returned to the checklist.
+
+What students did with it divides along their confidence in the curriculum. Recommendations were actively used and dragged into the plan by ten of eleven (E-G02), and seven participants saw the panel re-rank to an interest they had just typed and recognised that it had (E-G14, 7/11). Against that, seven participants browsed the recommendations and then set them aside in favour of the explicit checklist and catalogue search (E-N05, 7/11), and six of those seven are among the ten who had used recommendations earlier in the same session, so this is a considered rejection rather than a failure to find the feature. The two participants who could not yet judge modules for themselves leaned on the panel instead, using it and the dashboard as a substitute for curriculum knowledge (E-N06, 2/11). The condition data show the same split more sharply: in Scenario~B five participants never opened the panel at all, while three kept it open for more than half the run.
+
+Three defects bound what these figures can be read to mean. The panel is a drawer over the canvas, and for six participants it overlapped and occluded the semester lanes it was meant to feed (E-P11, 6/11), which is a direct cost of the coexistence that keeps it out of the state model. Where a recommendation family was consulted for a specific gap it sometimes returned nothing: the internships tab rendered a bare empty state in a task that required an internship semester (E-P42, 4/11), and P09 met it while looking for exactly that. And although every card carries a reason, four of the nine participants for whom it can be decided could not tell which of their own profile inputs had produced a given suggestion (E-P68, 4/9), so the explanation identified the relationship but not its origin.
+
+\subsection{Friction Points in the Planning Loop}
+\label{sec:eval-friction}
+
+The most costly problems cluster at three stages of the loop rather than spreading evenly across the interface, and reading them against the loop rather than as a flat list is what makes their cost legible. Each stage fails in a different way: the drive stage does not show the status the loop depends on, the find stage cannot be narrowed to the gap being closed, and the commit stage withholds the fact needed to place a course correctly.
+
+At the drive stage the status the loop depends on was not glanceable. Requirement and ECTS-gap status lived behind collapsible dashboard panels (E-P10, 11/11), and where status was shown it was written as prose rather than given as a figure (E-P03, 7/11; P01: ``how many do I have? I do not see it''). A named requirement could not be navigated to and had to be re-found by hand in the catalogue (E-P58); all four of the most recent participants demonstrate the round trip, reading a module name out of the panel and retyping it into search. The warning list is the extreme case: across the 437 frames of the four most recent sessions the warnings panel was never opened once, while its counter climbed to between two and five in every run.
+
+At the find stage the catalogue could not be narrowed. Filtering by category, obligation, or ECTS was available only in the graph's sidebar (E-P04, 11/11, severity~3), so students in the graph-off condition fell back on free-text search. P10 states the fallback and its cost in one line: ``that does not work, so I have to pick them out by hand''. The recommendation panel was the other route to a candidate, and Section~\ref{sec:eval-recs} reports both how far it carried students and where it returned nothing.
+
+At the commit stage the tool withheld the fact needed to place a course correctly. A course's winter or summer availability is not shown on the lanes, so students inferred a term, were rejected, and re-placed (E-P29, 11/11). This is the study's clearest rework loop, and it is a display gap rather than a rule problem: the rule is correct and the message is prompt, but the information needed to avoid the rejection is absent at the moment of the decision. Ten participants asked for a term indicator on the lane, most of them unprompted, and several audibly counted parity aloud in its place.
+
+\subsection{User-Configured Compliance Thresholds}
+\label{sec:eval-config}
+
+The rule-checker students relied on was configured by the students themselves, and most reconfigured it before or during planning. The profile exposes a maximum and a recommended ECTS value per semester, and neither scenario band is expressible as a band. Participants who aligned the profile to their brief obtained an engine that enforced the task; those who did not were checked against the tool's default of 30~ECTS.
+
+The recordings show both outcomes. P01 made the change within four minutes of first contact and discovered the asymmetry in the same breath (``I will set it to 33 straight away, more is not allowed, and is there a minimum? No''). P10 set 33 and 30 within three minutes. P12 narrated the mismatch in Scenario~B before correcting it by hand. P11 changed the recommended value from 30 to 24 midway through a run, which moved what the tool counted as a violation partway through the session. Where the profile was not aligned, the tool checked the wrong thing: P06 completed Scenario~B with one semester at 30~ECTS against a stated band of 21 to 27 while the dashboard reported no warning, because its target was still 30 (E-P32, 11/11; E-P57, 11/11).
+
+A second asymmetry is visible across all twenty-two runs: the upper bound blocks and the lower bound is silent (E-P35, 10/11). Every warning the tool emits has the form ``Semester~N is heavy''. No lane below the band floor produced one, including P05-A at 12~ECTS, P03-B at 8, P09-A at 12, P11-B at 20, and P12-B at 12. That asymmetry, rather than buried status, accounts for most of the surviving band violations reported in Section~\ref{sec:eval-effectiveness}.
+
+% =============================================================================
+\section{How the Graph Enters the Planning Process}
+\label{sec:eval-ab}
+
+The graph enters the planning loop at exactly one point: it replaces the catalogue as the surface at which a named gap is turned into candidate courses, and it leaves everything downstream of that untouched. Three measures establish this, and they must be kept apart, because only the first of them survives the collinearity of order and condition described in Section~\ref{sec:eval-order}.
+
+\subsection{Substitution: The Graph Replaces the Catalogue}
+\label{sec:eval-substitution}
+
+The graph does not add a third station to the planning cycle; it takes the place of one. Catalogue-only occupancy falls from 27.1\,\% of frames in Scenario~A to 6.7\,\% in Scenario~B, while the graph accounts for 26.6\,\%, very nearly the share the catalogue vacates. The entry counts are closer still: the catalogue is entered 40 times across the eleven Scenario~A runs and the graph 42 times across the eleven Scenario~B runs, at comparable mean dwell (81~s against 62~s). The substitution is visible in the transition matrix as well: from the working state \textsc{dash+cat}, the probability of moving to the catalogue falls from 3.1\,\% in Scenario~A to 0.0\,\% in Scenario~B, while the probability of moving to the graph is 6.4\,\%. Per participant, catalogue occupancy falls in ten of eleven cases, from a median of 27.4\,\% to 4.5\,\%.
+
+This is the finding the two conditions were run to obtain, and it is the one claim of the three that the fixed order does not compromise. Practice alone does not lead a participant to abandon a catalogue they used competently in the first run and adopt in its place a filter panel that did not exist in that run.
+
+\subsection{Placement Rate in the Second Run}
+\label{sec:eval-rate}
+
+Plan construction ran markedly faster in the second run, but this design cannot attribute that to the graph. Placements per ten minutes rise from a median of 7.8 in Scenario~A to 13.9 in Scenario~B, in ten of eleven participants, while total sampled time falls from 20.8 to 13.3 median minutes on a task carrying one additional semester. The direction is consistent across the cohort and the magnitude is large.
+
+It is reported here as a description of the second run rather than as an effect of the graph. Scenario~A always ran first, so graph availability and second exposure are perfectly collinear and no test can separate them. A participant who is faster the second time may be faster because of the filters, because the interface is familiar, because the curriculum is familiar, or because the brief is familiar, and this design distinguishes none of these.
+
+\subsection{Placement Rejection Rate}
+\label{sec:eval-accuracy}
+
+Placement accuracy does not change, and this is the measure that constrains the other two. The share of placement attempts ending in a rejection moves from a median of 16.7\,\% to 13.6\,\%, but it falls in only seven of eleven participants and rises in four, which is what chance produces (sign test, $p = 0.55$). Rejections per ten minutes in fact rise, from 1.2 to 1.8, because placement activity rises. Table~\ref{tab:ab} sets the three measures side by side.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{p{6.0cm}rrlr}
+        \toprule
+        Measure & Median A & Median B & Direction & \\
+        \midrule
+        Catalogue-only occupancy       & 27.4\,\% & 4.5\,\%  & down in 10 of 11 & \\
+        Placements per 10 minutes      & 7.8      & 13.9     & up in 10 of 11   & \\
+        Rejected share of placements   & 16.7\,\% & 13.6\,\% & down in 7 of 11  & $p = 0.55$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Three within-subject comparisons across the eleven participants. A sign test is reported only for the third measure, where the direction is not determined by the design; for the first two the counts are given without a test, because the direction of the first follows from graph availability and the direction of the second is confounded with scenario order.}
+    \label{tab:ab}
+\end{table}
+
+Taken together, the three measures give a narrow interpretation, and it is the one the data supports. The graph changed \emph{where candidates were found} and left \emph{how placements were committed} untouched. It could hardly have done otherwise: the rework loop at the commit stage arises from term parity and per-lane load not being shown on the semester lane, which is a property of the table and not of the graph.
+
+\subsection{The Graph's Role: Query Support Without Commit Support}
+\label{sec:eval-graphrole}
+
+The graph supports the query step, in which a named gap is turned into a set of candidate courses, and it does not support the commit step, in which a candidate is assigned to a semester. This division is a consequence of what each surface displays rather than a preference participants held.
+
+The query step is where the graph is used well. The clearest instance is P02 in Scenario~B: he expands the missing-requirements panel, reads that seven narrow-elective modules are required and two are present, switches to the graph, narrows the obligation filter to narrow electives, pans the resulting clusters harvesting candidates into the parking stage, returns to the table, and places them.
+P09 found a sharper variant unaided, combining the term-availability filter with the ``not planned'' course-state filter so that the graph displays exactly the outstanding set, and read a definitive negative answer off it (``everything offered in winter and summer would already be planned''); P12 formed the same combination for winter courses he had not yet planned and placed twelve credits from what it returned (E-G18). P09 switched into the graph for the single purpose of finding a course of a given ECTS value, a query the catalogue cannot express: ``for that I switch to the graph view, I see it immediately with my filters''.
+
+The commit step returns to the table for a structural reason. Plan state did change inside the graph, in both cohorts and for participants across the experience range, so the graph is not a read-only inspector; P12 placed courses from graph nodes in all three of his excursions. What the graph does not render, at any zoom level, is the semester dimension: neither lanes nor per-lane ECTS totals appear anywhere in graph view (E-P47, evidenced for ten of the ten participants for whom it can be decided). A student placing a course from a node therefore cannot see which semester is being loaded.
+P10 names the missing information directly (``adding directly from here I would probably not do, because I do not know which semester has room''), and when he does place from a node moments later it succeeds only because he remembers which lane had room (``I could still recall that I wanted to do something there anyway''), and P12 states the consequence (``I do not even know how much I have, I have to switch over again''). P06 provides the demonstration: a course placed from a graph node pushed a lane past the nine-ECTS exchange cap, and the breach became visible only after returning to the table. A second view can therefore be committed from only if it carries enough of the plan's state to show the consequence of the commitment.
+
+% =============================================================================
+\section{Usability Problems}
+\label{sec:eval-problems}
+
+Table~\ref{tab:problems} ranks the highest-impact and most frequent problems across the eleven participants. Most of them belong to a stage of the planning loop and are developed in Section~\ref{sec:eval-friction}, where each is attached to the stage it disrupts; this section records the ranking and the two problems that belong to no single stage. The last column marks the five problems that have since been fixed; those revisions were made after this study and are described in Chapter~\ref{chap:implementation} (Section~\ref{sec:impl-post-study}), so every problem the table lists was present in the system these participants used.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{@{}l>{\raggedright\arraybackslash}p{7.0cm}ccl c@{}}
+        \toprule
+        Code & Problem & Sev. & Freq. & ISO dimension & Fixed \\
+        \midrule
+        E-P04 & Table and catalogue lack the graph's filters & 3 & 11/11 & efficiency & \\
+        E-P05 & Placement feedback arrives only after the drop & 2 & 11/11 & effectiveness & \\
+        E-P10 & Requirement status behind collapsible panels & 2 & 11/11 & efficiency & \\
+        E-P29 & Winter/summer offering not glanceable & 2--3 & 11/11 & efficiency & $\checkmark$ \\
+        E-P09 & Setup defaults to the wrong programme & 2 & 11/11 & effectiveness & \\
+        E-P32 & Workload warning driven by the profile, not the task band & 2 & 11/11 & efficiency & \\
+        E-P25 & Reduced-load semester has no affordance & 2 & 11/11 & effectiveness & \\
+        E-P26 & Workload band not enforced & 3 & 11/11 & effectiveness & \\
+        E-P34 & Completion signalled over an incomplete constraint set & 3 & 11/11 & effectiveness & \\
+        E-P53 & Placement menus omit and invent semesters & 2 & 11/11 & effectiveness & \\
+        E-P57 & Workload target ignores the task band & 3 & 11/11 & efficiency & \\
+        E-P38 & Parking silently removed from totals and counts & 2 & 10/11 & effectiveness & \\
+        E-P35 & Lower workload bound only advisory & 3 & 10/11 & effectiveness & \\
+        E-P27 & Study wording leaks into the profile UI & 1 & 10/11 & satisfaction & $\checkmark$ \\
+        E-P47 & Graph carries no semester dimension & 3 & 10/10 & effectiveness & \\
+        E-P48 & Module ECTS selector rewrites the plan total & 3 & 10/10 & effectiveness & \\
+        E-P17 & Adding a semester not discoverable & 2 & 9/11 & effectiveness & \\
+        E-P14 & Onboarding tour drives the early session & 1 & 9/11 & efficiency & \\
+        E-P37 & Parking stage not visible inside the graph & 2 & 9/11 & efficiency & \\
+        E-P11 & Recommendation panel occludes the semester lanes & 1 & 6/11 & efficiency & \\
+        E-P15 & The graph makes soft dependencies visible & 1 & 6/11 & efficiency \\
+        E-P50 & Toast semantics unreliable & 2 & 9/11 & efficiency & $\checkmark$ \\
+        E-P02 & Totals and remaining ECTS not glanceable & 2 & 8/11 & efficiency & \\
+        E-P49 & Dashboard contradicts itself & 3 & 8/11 & effectiveness & \\
+        E-P03 & Requirement status stated only in prose & 2 & 7/11 & efficiency & \\
+        E-P16 & Retuning the cap destabilises the plan & 3 & 7/11 & effectiveness & \\
+        E-P01 & Curriculum and elective terminology unclear & 3 & 4/11 & effectiveness & \\
+        E-P42 & Recommendation tabs render a bare empty state & 1 & 4/11 & satisfaction & $\checkmark$ \\
+        E-P68 & Recommendation provenance is opaque & 2 & 4/11 & satisfaction & \\
+        \bottomrule
+    \end{tabular}
+    \caption{Highest-impact usability problems across the eleven analysed participants. Denominators below eleven mark codes that could not be decided for every participant; Section~\ref{app:eval-matrix} records which and why. A tick marks a problem addressed \emph{after} this study, in the revisions recorded in Chapter~\ref{chap:implementation} (Section~\ref{sec:impl-post-study}); every problem listed, ticked or not, was present in the system these eleven participants used.}
+    \label{tab:problems}
+\end{table}
+
+Two problems cut across the loop rather than sitting at one stage. The first is the account setup, which defaulted to the wrong degree programme for every participant and had to be corrected manually before planning could begin (E-P09, 11/11). The second concerns the feedback banners, and it is a negative result: banners were prompt and frequent, but their meaning was not recoverable from their appearance. Rejection and confirmation banners share one visual style; a red rejection was observed on screen in the same frame as a successful placement, a green confirmation fired on a card that silently left the plan, and milestone banners reported percentages inconsistent with their own ECTS figures in four separate runs, announcing 25\,\% completion at 102 and at 108 of 180~ECTS. The code recording banners as unambiguous stands at 0/11 (E-G09), and the underlying observation is carried in inverted form by E-P50 (9/9) and E-P54 (6/10). P12 read a correctly firing max-load rejection as a defect of the tool. Both halves of this finding, the banner arithmetic and the shared display slot, were fixed after the study (Section~\ref{sec:impl-post-study-fixes}).
+
+% =============================================================================
+\section{Positive Findings}
+\label{sec:eval-positives}
+
+Five positive findings are universal, and all five sit on the loop of Section~\ref{sec:eval-process}: the pre-filled plan removes the blank page (E-G01, 11/11), the requirement checklist drives completion (E-G15, 11/11), the parking stage holds candidates before commitment (E-G06, 11/11), real-time compliance feedback is noticed and used (E-G04, 11/11), and the graph's filters are valued once found (E-G07, 11/11). Table~\ref{tab:positives} lists these together with the less frequent findings, including the two recommendation codes analysed in Section~\ref{sec:eval-recs}.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{p{8.6cm}cp{2.4cm}}
+        \toprule
+        Positive finding (code) & Freq. & ISO dimension \\
+        \midrule
+        Pre-filled starting plan removes the blank page (E-G01) & 11/11 & efficiency/sat. \\
+        Requirement checklist drives completion (E-G15) & 11/11 & effectiveness \\
+        Parking stage used to shortlist before committing (E-G06) & 11/11 & satisfaction \\
+        Real-time compliance nudges noticed and used (E-G04) & 11/11 & efficiency \\
+        Graph and sidebar filters valued (E-G07) & 11/11 & efficiency/sat. \\
+        Recommendations actively used to fill gaps (E-G02) & 10/11 & efficiency/sat. \\
+        Graph supports interest-driven browsing (E-G10) & 9/11 & efficiency/sat. \\
+        Valid-target affordance clear (E-G03) & 7/11 & efficiency \\
+        Recommendations respond to stated interests (E-G14) & 7/11 & satisfaction \\
+        Graph clarifies module composition (E-G17) & 6/11 & satisfaction \\
+        Graph ``mandatory'' filter shows affiliations (E-G16) & 4/11 & effectiveness \\
+        ``Done'' check-off mode with live totals valued (E-G11) & 3/11 & satisfaction \\
+        Visual legend aids interpretation (E-G13) & 3/11 & satisfaction \\
+        Reordering plan sections brings structure (E-G12) & 3/11 & satisfaction \\
+        Milestone animation creates delight (E-G05) & 2/11 & satisfaction \\
+        Blocked-drop and milestone banners unambiguous (E-G09)\textsuperscript{$\dagger$} & 0/11 & effectiveness/sat. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Positive findings across the eleven analysed participants. \textsuperscript{$\dagger$}~E-G09 is a capability the tool was expected to have rather than a finding: it is retained here at zero because the claim it encodes was contradicted by both records in every session, and the observation it inverts is carried as a problem by E-P50 and E-P54.}
+    \label{tab:positives}
+\end{table}
+
+% =============================================================================
+\section{Questionnaire Results}
+\label{sec:eval-questionnaire}
+
+The tool was received positively, and students experienced it first as a capable instrument and only secondarily as an engaging one. Table~\ref{tab:ueq} gives the UEQ group profile on the standard $-3$ to $+3$ scale, where pragmatic quality ($+2.28$) leads hedonic quality ($+2.00$). The two weakest scales correspond to the qualitative findings: perspicuity ($+1.82$) to the learnability and terminology problems of Section~\ref{sec:eval-friction}, and novelty ($+1.77$) to the frequent comparison with existing practice, since several experienced participants rated the tool a clear improvement on manual spreadsheets rather than something unfamiliar (P04: ``until now I only edited Excel files manually, I find this really great''). Perspicuity and dependability also carry the widest spread, which separates the students the tool served well from those it did not: the lowest overall score belongs to the most junior participant, P06, and the highest to P05, who worked fluently throughout.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{lrrr}
+        \toprule
+        UEQ scale & Mean & SD & Range \\
+        \midrule
+        Attractiveness & $+2.61$ & 0.31 & $+2.17$ to $+3.00$ \\
+        Efficiency     & $+2.59$ & 0.29 & $+2.00$ to $+3.00$ \\
+        Dependability  & $+2.43$ & 0.72 & $+0.75$ to $+3.00$ \\
+        Stimulation    & $+2.23$ & 0.65 & $+0.75$ to $+3.00$ \\
+        Perspicuity    & $+1.82$ & 0.67 & $+0.75$ to $+3.00$ \\
+        Novelty        & $+1.77$ & 0.74 & $+0.75$ to $+2.75$ \\
+        \midrule
+        Pragmatic quality & $+2.28$ & & \\
+        Hedonic quality   & $+2.00$ & & \\
+        Overall           & $+2.27$ & & $+1.35$ to $+2.69$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{UEQ group profile across the eleven analysed participants, on the standard $-3$ to $+3$ scale. Values are descriptive; a sample of eleven does not support inferential claims.}
+    \label{tab:ueq}
+\end{table}
+
+The acceptance items sit high in both conditions and the differences between them are small (Table~\ref{tab:tam}). One item behaves differently from the rest and is reported separately rather than averaged into the ease-of-use scale: the item asking how easy it was to keep an overview while planning correlates more strongly with the usefulness items than with the two ease-of-use items it was grouped with, at $+0.88$ against $+0.74$ in Scenario~B and $+0.66$ against $+0.34$ in Scenario~A. That pattern is consistent with it measuring a task outcome rather than a cost of operating the system, and including it would raise the correlation between the two constructs in Scenario~B from $+0.61$ to $+0.75$, overstating their convergence.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{lrr}
+        \toprule
+        Construct (1--7) & Scenario~A & Scenario~B \\
+        \midrule
+        Perceived usefulness (3 items)        & 6.18 & 6.45 \\
+        Perceived ease of use (2 items)       & 5.59 & 6.09 \\
+        \midrule
+        ``Easy to keep an overview'' (separate) & 6.36 & 6.55 \\
+        Satisfaction with the plan             & 6.27 & 5.91 \\
+        Task difficulty (7 = very easy)        & 6.18 & 6.00 \\
+        \bottomrule
+    \end{tabular}
+    \caption{TAM-derived acceptance items and post-task ratings, means over the eleven analysed participants. The overview item is excluded from the ease-of-use mean for the reason given in the text.}
+    \label{tab:tam}
+\end{table}
+
+We do not interpret the small differences between conditions in these ratings. The design is not a controlled comparison (Section~\ref{sec:eval-order}), and the dip in Scenario~B satisfaction is concentrated in the two participants for whom the graph added difficulty rather than being spread across the cohort.
+
+% =============================================================================
+\section{Effectiveness and Self-Reported Success}
+\label{sec:eval-effectiveness}
+
+Every participant reported success in a condition in which no plan met its brief. All eleven rated their Scenario~A outcome as ``Yes'', and not one Scenario~A run satisfied the stated constraints. Self-reported success in this study therefore measures felt rather than actual completion (E-N03, 9/11), and the observational record rather than the questionnaire carries the effectiveness claim. This is the reason the completion audit was conducted at all (Section~\ref{sec:eval-nongoals}), and it is the section's principal result.
+
+Read against the full set of hard constraints, the plans participants produced were substantially but not uniformly compliant. Of the twenty-two scenario runs, six met every stated constraint, most of the remainder failed on one or two semesters, and one run is left unresolved because two lane values were never legible; the per-run audit is in Section~\ref{app:eval-completion}. The tool reliably tracked the constraints it models, namely the ECTS total, StEOP, the focus area, and the elective categories, and students closed these out. Two constraints it does not model as first-class requirements, the reduced-load internship or exchange semester and the per-semester workload band, were handled by the students themselves, with mixed results and with no confirmation from the tool either way (E-P25 and E-P26, both 11/11). All six fully compliant runs are Scenario~B runs and Scenario~A produced none, which is the strongest single pattern in the completion data and is entirely confounded with order (Section~\ref{sec:eval-order}); it is reported as a property of the second run and is not attributed to the graph.
+
+The tool's own completion signal ran ahead of the observed state in the same way the self-reports did. All twenty-two runs ended with the dashboard reporting zero missing requirements and a completed focus-area checklist, including a run with four lanes outside the stated band and no internship semester at all, and two runs with credits left in the parking stage. The calibration gap did not track experience: some participants over-rated, one was well calibrated, and an experienced participant under-rated a near-complete plan, so we report no consistent relationship between experience and calibration in this sample.
+
+What the checklist did at the boundary of its own model is the sharpest instance of the same mechanism. P02 created an empty semester lane specifically to serve as the internship semester, then filled it to twelve ECTS because the dashboard reported that six ECTS were still missing from the total and said nothing about the internship. The requirement he had represented himself was invisible to the mechanism he was following, so following the mechanism removed it. This is the study's central design implication, developed in Chapter~\ref{chap:discussion}: a checklist that students trust as their compass must cover every constraint they are held to, because the constraints it omits are the ones that will be optimised away.
+
+Three qualifications apply to any reading of the final plans. Four runs in the first cohort were ended by the moderator rather than by the participant, so their final state is a stopping point rather than a declared result. In three sessions the screen share froze or the recording ended while work continued, so the last observed frame understates what was achieved. And lane values in the four most recent sessions were recorded through a screen share rather than a direct capture, so they are reconciled arithmetically against the dashboard total rather than read from the lane header; where that constraint does not determine a value it is reported as unknown.
+
+% =============================================================================
+\section{Summary}
+\label{sec:eval-summary}
+Eleven students planned a Bachelor curriculum twice, once without the curriculum graph and once with it. The two records support five conclusions about the planning process, stated here in the form the recordings carry them, and one about how the tool was received. Each is taken up in Chapter~\ref{chap:discussion}.
+
+Planning under this tool is a single checklist-driven loop. Students read what is missing, find a candidate, hold it, place it, and re-read. The loop was the completion mechanism for every participant, its two-state cycle accounts for roughly 40\,\% of all observed state changes in both conditions, and its period is the same with and without the graph.
+
+Recommendations accompanied that loop without becoming part of it. The panel was open for about a fifth to a quarter of all sampled frames and ten of eleven participants used it, but it was entered a fraction as often as the catalogue or the graph, and seven participants browsed it and then returned to the checklist and search to decide. Its value divided by curriculum confidence: the participants who could not yet judge modules leaned on it, and those who could set it aside.
+
+The graph enters that loop at one point. It replaces the catalogue as the station at which a named gap is turned into candidate courses, taking almost exactly the occupancy and entry count the catalogue vacates, and it does not alter the rate at which placements are rejected. Its contribution is to the query step and not to the commit step, and the reason is structural: the graph renders no semester dimension, so the consequence of a placement made there is not visible from there.
+What the graph makes legible is curriculum structure, not dependency. Containment edges are drawn and valued, while prerequisite relations exist in the compliance engine and appear nowhere in either view, so this evaluation bounds its claim to the contribution of a browsable structural view.
+
+The tool was received well, and the questionnaires say where its weaknesses are rather than contradicting the process account. Every UEQ scale is positive and pragmatic quality (+2.28) leads hedonic (+2.00), so students experienced a capable instrument before an engaging one; the two weakest scales, perspicuity (+1.82) and novelty (+1.77), correspond to the terminology and learnability problems the observational record shows and to the fact that experienced participants judged the tool against spreadsheets they already knew. The acceptance items sit high in both conditions and the differences between conditions are small enough that we do not interpret them. What the questionnaires cannot carry is the effectiveness half of Research Question~3, for the reason the next paragraph gives.
+
+The compliance layer certifies plans it has not checked. Its thresholds are supplied by the user rather than by the task, its lower bound only advises where its upper bound blocks, and two hard constraints of both briefs lie outside its model. All twenty-two runs ended with the tool reporting no missing requirements, and every participant reported success in a condition in which no run met the stated constraints. The instrument students trusted as their measure of completion was, for the constraints it does not model, silent rather than wrong.
+The defects this study surfaced are recorded as a register in the tool's repository, ranked by the severity and frequency reported here, and the first of them have been fixed with regression tests that reproduce the observed failure; the remainder are open.

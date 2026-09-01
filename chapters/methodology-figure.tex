@@ -1,0 +1,68 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small, >={Stealth[length=6pt]}, scale=0.95, transform shape]
+  \def\bw{2.55} % box width
+  \def\bh{1.1}  % box height
+  \def\gap{0.25}
+
+  % Level band backgrounds (behind boxes)
+  \fill[subjectblue20, rounded corners=4pt] (0,2.3) rectangle (2*\bw+\gap+0.2,3.8);
+  \fill[subjectgreen20, rounded corners=4pt] (2*\bw+\gap+0.4,2.3) rectangle (3*\bw+2*\gap+0.6,3.8);
+  \fill[subjectorange20, rounded corners=4pt] (3*\bw+2*\gap+0.8,2.3) rectangle (4*\bw+3*\gap+1.0,3.8);
+  \fill[gray!12, rounded corners=4pt] (4*\bw+3*\gap+1.2,2.3) rectangle (5*\bw+4*\gap+1.4,3.8);
+
+  % Level labels above bands
+  \node[font=\scriptsize\bfseries, text=subjectblue, align=center, anchor=south] at (\bw+\gap/2+0.1, 3.85) {Level 1\\Domain Characterisation};
+  \node[font=\scriptsize\bfseries, text=subjectgreen, align=center, anchor=south] at (2.5*\bw+2*\gap+0.5, 3.85) {Level 2\\Abstraction};
+  \node[font=\scriptsize\bfseries, text=subjectorange, align=center, anchor=south] at (3.5*\bw+3*\gap+0.9, 3.85) {Level 3\\Encoding/\\Interaction};
+  \node[font=\scriptsize\bfseries, text=gray!70, align=center, anchor=south] at (4.5*\bw+4*\gap+1.3, 3.85) {Level 4\\Algorithm};
+
+  % Stage boxes
+  \def\stagebox#1#2#3#4{
+    \fill[white, rounded corners=3pt] (#1,2.5) rectangle (#1+\bw,3.6);
+    \draw[#3, line width=1.2pt, rounded corners=3pt] (#1,2.5) rectangle (#1+\bw,3.6);
+    \node[align=center, text width=2.35cm, font=\scriptsize] at (#1+\bw/2,3.05) {#2};
+  }
+  \stagebox{0}{Related\\Work}{subjectblue}{}
+  \stagebox{\bw+\gap+0.2}{Formative\\Study}{subjectblue}{}
+  \stagebox{2*\bw+2*\gap+0.4}{Themes $\to$\\Requirements}{subjectgreen}{}
+  \stagebox{3*\bw+3*\gap+0.8}{Design}{subjectorange}{}
+  \stagebox{4*\bw+4*\gap+1.2}{Implementation}{gray!60}{}
+
+  % arrows between stages
+  \foreach \x in {0,1,2,3} {
+    \pgfmathsetmacro{\xa}{\x*(\bw+\gap)+\x*0.2+\bw}
+    \pgfmathsetmacro{\xb}{\xa+\gap+0.2}
+    \draw[->, gray!60] (\xa+0.02,3.05) -- (\xb-0.02,3.05);
+  }
+
+  % ---- Validation spans of the two empirical studies ----
+  % The two studies validate different, non-overlapping spans of the model, so
+  % each is drawn as its own bracket over the levels it validates, rather than a
+  % single box, to avoid conflating them. The evaluation study spans BOTH Level 3
+  % (Design) and Level 4 (Implementation).
+  \pgfmathsetmacro{\rwc}{\bw/2}                    % Related Work centre (L1)
+  \pgfmathsetmacro{\trc}{2*\bw+2*\gap+0.4+\bw/2}   % Themes->Requirements centre (L2)
+  \pgfmathsetmacro{\dec}{3*\bw+3*\gap+0.8+\bw/2}   % Design centre (L3)
+  \pgfmathsetmacro{\imc}{4*\bw+4*\gap+1.2+\bw/2}   % Implementation centre (L4)
+  \def\vy{1.8}    % bracket line height
+  \def\vt{2.48}   % prong tops (meet the stage boxes at y=2.5)
+
+  % Formative study: validates levels 1--2 (domain characterisation + abstraction)
+  \draw[dashed, subjectblue, thick] (\rwc,\vy) -- (\trc,\vy);
+  \draw[->, dashed, subjectblue, thick] (\rwc,\vy) -- (\rwc,\vt);
+  \draw[->, dashed, subjectblue, thick] (\trc,\vy) -- (\trc,\vt);
+  \node[font=\scriptsize, text=subjectblue, align=center] at ({(\rwc+\trc)/2},\vy-0.55)
+    {Formative study\\validates levels 1--2 (before design)};
+
+  % Evaluation study: validates levels 3--4 (encoding/interaction + algorithm)
+  \draw[dashed, subjectorange, thick] (\dec,\vy) -- (\imc,\vy);
+  \draw[->, dashed, subjectorange, thick] (\dec,\vy) -- (\dec,\vt);
+  \draw[->, dashed, subjectorange, thick] (\imc,\vy) -- (\imc,\vt);
+  \node[font=\scriptsize, text=subjectorange, align=center] at ({(\dec+\imc)/2},\vy-0.55)
+    {Evaluation study\\validates levels 3--4 (after implementation)};
+
+\end{tikzpicture}
+\caption{The thesis's process stages mapped onto Munzner's four nested-model levels. The two studies are drawn as the spans they validate: the formative study validates levels~1--2 before design work begins, the evaluation study levels~3--4 after implementation.}
+\label{fig:nested-model-mapping}
+\end{figure}

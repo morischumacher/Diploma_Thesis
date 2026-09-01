@@ -1,0 +1,107 @@
+\documentclass[paper=a4,fontsize=11pt,oneside,titlepage]{scrartcl}
+% -------------------------------------------------
+\usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+\usepackage[
+  backend=biber,
+  style=numeric,  
+  doi=true,
+  url=false,
+  isbn=false,          
+]{biblatex}
+\addbibresource{references.bib}
+% -------------------------------------------------
+\subject{{\normalsize Seminar for Master Students in\\
+  Software Engineering}\\\vspace{1cm}
+  Master Thesis Proposal Draft}
+
+\title{Design and Evaluation of a Hybrid Graph–Table Interface with Embedded Recommender System for Study Planning}
+
+\author{\textit{Student:}\\
+Moritz Schumacher BSc., 12331473}
+
+\date{\today}
+
+\publishers{\textit{Advisor:}\\
+Assistant Prof. Dr. rer. nat Rene Christian Röpke\\\vspace{1cm}
+\textit{Co-Supervising Assistant:}\\
+Selina Reinhard MSc.}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+\newpage
+% -------------------------------------------------
+\section{Problem Statement and Motivation}
+\label{sec:problem}
+% -------------------------------------------------
+
+Students in higher education face growing challenges in planning their studies. Curricula often involve complex prerequisites, electives, and institutional rules that are difficult to navigate using static study guides or standard plans~\cite{schulte_large_2017, morsy_study_2019}. Individual circumstances, such as failed courses, varying study speeds, or limited access to advisors, further complicate planning and can affect performance, graduation times, and motivation~\cite{wong_sequence_2018, chaturapruek_how_2018}.
+Existing approaches address these issues but remain limited. Graph-based systems focus mainly on visualizing course dependencies~\cite{auvinen_stops_2014, rollande_graph_2013, trippel_developing_2025}, while table-based assistants emphasize semester-level scheduling~\cite{hirmer_requirements_2022, judel_supporting_2023, baucks_dashboard_2023}. This leaves a gap: integrating a graph and a table into a single planning workflow so students can understand dependencies (graph) and manage their schedule and workload (table).
+Curriculum analytics approaches offer institutional insights but depend heavily on data of Learning Management Systems (LMS) or Content Management Systems (CMS), limiting transferability~\cite{schulte_large_2017, harden_curriculum_2001, archambault_curriculum_2015, buck-emden_analyse_2018, kapucu_competency-based_2017}. More adaptive solutions, such as Educational Recommender Systems (ERS), show strong algorithmic potential~\cite{bhumichitr_recommender_2017, wong_sequence_2018, esteban_helping_2020, srisamutr_course_2018, al-badarenah_automated_2016}, yet to our knowledge, have not been embedded into student-facing planning environments. This raises the question of to what extent such ERS can truly support students in their planning workflow. Building on these challenges, we formulate the following main research question:
+
+\textbf{Main Research Question} How can a hybrid graph–table planner, augmented with recommendations learned from students’ interaction data, be designed and implemented to support study planning and enhance user experience?
+
+% -------------------------------------------------
+\section{Aim of the Thesis}
+\label{sec:aim}
+% -------------------------------------------------
+
+This thesis proposes a unified approach to study planning: a hybrid graph–table interface that informs about course dependencies and enables semester scheduling, enriched by recommendations learned from students’ own interactions. We aim to understand how graph- and table-based visualization of curriculum structures can be jointly orchestrated within authentic planning workflows, derive and embed data-driven recommendations that fit these workflows, and assess the resulting system’s user experience. Therefore we divide our main research question into four sub-questions:
+
+\paragraph{Sub-Question 1} How can we design a hybrid interface that combines graph-based visualization with table-based planning to help students plan their studies and understand course dependencies?
+
+\paragraph{Sub-Question 2} How can data generated through students’ interactions with the interface be used to develop a recommender system?
+
+\paragraph{Sub-Question 3} How can the generated recommendations be effectively integrated into the hybrid graph–table interface and within a student planning workflow?
+
+\paragraph{Sub-Question 4} How do students experience the hybrid interface and its embedded recommendations in terms of user experience (effectiveness, efficiency, and satisfaction)?
+
+% -------------------------------------------------
+\section{Methodology and Expected Results}
+\label{sec:methods}
+% -------------------------------------------------
+
+To answer the four sub-questions introduced in Section~\ref{sec:aim}, our tool addresses them methodologically as follows:
+
+\paragraph{Hybrid Interface (graph, table)}
+We investigate how a dependency graph and a semester-planning table can be combined, and used in tandem, within a coherent student planning workflow. We will analyze student workflows to identify where a graph’s structural overview and a table’s scheduling add most value, informed by a small user study. Based on these, we will prototype coordination mechanisms\ that link both views (e.g., synchronized selection, immediate rule checks) so users can move smoothly from exploration to planning. As a foundation for design, we will follow the design principles for a study planning assistant in higher education~\cite{bartel_design_2024}.
+
+\paragraph{Independent Recommendation System}  
+We leverage data collected through user interaction to develop an independent Recommender System. Recommendations are generated based on content-based filtering~\cite{esteban_helping_2020, vuong_personalized_2019} (considering personal circumstances, interests, and competencies), or collaborative filtering~\cite{bhumichitr_recommender_2017, esteban_helping_2020, al-badarenah_automated_2016} (considering similarities with previous student study paths from prior student users), or a combination of both.
+
+
+\paragraph{Integrating Recommendations into the Planning Workflow}
+We embed recommendations directly into the graph–table workflow at key decision points (e.g., course selection, term placement, unmet requirements). Suggestions are contextual and briefly explained, with simple controls to accept, defer, or dismiss. Three types of recommendations are implemented: (1) similar courses, offering alternatives with comparable topics; (2) interest-matching courses, based on content-based filtering aligned with stated interests or preferred competency areas; and (3) peer-informed choices, derived through collaborative filtering from courses frequently taken by students with similar plans or profiles. The user study described above will also examine where and how these recommendations are most helpful within the planning workflow.
+
+
+\paragraph{User Study}
+Following \textit{ISO 9241-11}\footnote{https://www.iso.org/standard/63500.html}, we assess effectiveness, efficiency, and satisfaction in a task-based evaluation. Effectiveness and efficiency are captured through task performance data (e.g., task success, completion time, and errors). Satisfaction and perceived experience are measured using the \textit{User Experience Questionnaire (UEQ}\footnote{https://www.ueq-online.org/}) and the \textit{Technology Acceptance Model (TAM)\footnote{https://www.usersense.ch/wissensdatenbank/usability-metrics/technology-acceptance-model-tam}} subscales for Perceived Usefulness and Perceived Ease of Use. We use a counterbalanced within-subjects design with two matched persona-based planning scenarios: participants complete one with the hybrid graph–table interface and one with a baseline (spreadsheet/paper). Participants also complete a personal planning task for qualitative feedback.
+
+
+% -------------------------------------------------
+\section{State of the Art}
+\label{sec:relatedWork}
+% -------------------------------------------------
+
+Existing approaches to study planning address the problem from different angles but remain fragmented. Graph-based tools such as STOPS~\cite{auvinen_stops_2014}, early visualization prototypes~\cite{rollande_graph_2013}, and recent elective-course systems~\cite{trippel_developing_2025} make prerequisite structures transparent and support exploration. While they effectively reveal dependencies, they typically stop short of semester scheduling and workload management.
+
+Complementary scheduling-oriented tools, such as the Study Planning Assistant~\cite{hirmer_requirements_2022}, individualized path planner~\cite{judel_supporting_2023}, and advising dashboards~\cite{baucks_dashboard_2023}, focus on timelines and progression. CourseRank~\cite{bercovitz_courserank_2009} integrates search, ratings, and scheduling within one institutional context, and other systems address local program needs~\cite{laghari_academic_2023}.
+
+Analytics-driven approaches mine institutional data to detect risks, compliance, and typical paths~\cite{schulte_large_2017, buck-emden_analyse_2018, wang_discovering_2015, wagner_combined_2023}. Curriculum-mapping tools support alignment and coverage analyses~\cite{harden_curriculum_2001, archambault_curriculum_2015, kapucu_competency-based_2017}, while recent study-path analytics inform program-level planning and quality assurance~\cite{roepke_study_2024}. These insights are valuable but often tied to LMS or CMS infrastructures and rarely embedded in student-facing planners.
+
+Recommender systems propose courses using collaborative, content-based, or hybrid filtering~\cite{bhumichitr_recommender_2017, wong_sequence_2018, esteban_helping_2020, al-badarenah_automated_2016, vuong_personalized_2019}, as well as optimization-based planners~\cite{srisamutr_course_2018}, though most are evaluated offline rather than in integrated tools. An exception is PlanGlow, an explainable, controllable LLM-driven planner emphasizing transparent recommendations~\cite{chun_planglow_2025}.
+
+This thesis advances the field by uniting graph-based visualization, semester-planning tables and ERS into a single student-facing tool. Unlike prior work, it generates its own planning data during use, enabling process analytics independent of institutional systems and delivering real-time, contextualized recommendations within the planning workflow. The research question thus extends beyond computing recommendations, it asks how these can be seamlessly embedded into student planning to support more informed, real-world study decisions. Design principles for digital study-planning assistants guide the development~\cite{bartel_design_2024}.
+
+
+% -------------------------------------------------
+\section{Context within the Master Program}
+\label{sec:masterProgram}
+% -------------------------------------------------
+
+The thesis aligns with the Software Engineering Master’s program by addressing  areas such as software engineering, human-computer interaction, and data science, and conceptually relates to the TU Wien courses Learning Analytics (VU) and Learning Technologies (SE) through its educational focus.
+% -------------------------------------------------
+\newpage
+\printbibliography
+\end{document}
