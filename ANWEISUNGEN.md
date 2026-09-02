@@ -100,6 +100,8 @@ This is the rule the whole pass is built on, and it is stated first because near
 
 This has already caught real misattributions here (`esteban_helping_2020` for prerequisite relationships; Ma et al. 2021 for ease-of-use; Bodily & Verbert articles-vs-systems; Braun & Clarke page anchors and phase names; Wong cited as a standard technique when it is a doctoral-consortium proposal). Assume more remain.
 
+**When a source cannot be obtained.** An unopened source may **not** carry a direct quotation, a specific number, or a finding attributed to that study. It **may** stand as a conventional attribution for an established concept a reader could confirm from any textbook in the field. Every such case is recorded in §14's log as a deliberate decision, with the reason, so that it reads as a judgement made rather than a check skipped. If neither applies, the sentence is reworded to what an available source supports, or the claim goes.
+
 **Every factual claim about the tool** is checked against the **evaluated tag** of `hypridplanner`, not against `main` and not against a refactor branch. Claims about the system participants used must be true of the version they used. Post-study changes go only in §7.8 (Revisions After the Evaluation Study) and must say they were not in front of a participant.
 
 **Every number** traces to one artefact (§9).
@@ -323,7 +325,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 ## 14. Material I still need from you
 
-**Sources cited in the thesis with no PDF anywhere in the repo or project.** Until each is opened, its claim is unverified. Ranked by how much weight it carries:
+**Sources cited in the thesis with no PDF anywhere in the repo or project.** Until each is opened, its claim is unverified. Ranked by how much weight it carries. *Delivered 2026-09-02: Wienand et al. 2024 and Arnold & Pistilli 2012, both verified (§14). Shneiderman 1983 was committed but the file is a one-page browser print of the IEEE Xplore viewer, not the article.*
 
 | Source | Where it carries weight | Why it matters |
 |---|---|---|
@@ -345,4 +347,27 @@ Order is chosen so that the chapters whose content is still moving come after th
 - Whether **TU Wien Informatics' current AI-use policy** has been checked with René or Selina, since it shapes the disclosure text.
 - Access to the **evaluation study's `analysis/` folder** (stage logs, findings matrix, completion audit, `US Results.xlsx`) if you want any number re-derived rather than taken on trust — it lives on your Mac, not in this repo.
 
+**Per-source disposition, set 2026-09-02.** Four must be opened; the rest are reworkable if they cannot be obtained.
+
+| Source | Disposition |
+|---|---|
+| **Davis 1989** | **Must open.** Ch. 8 claims his reliability coefficients and "validated scales" — a specific numerical claim. `10.2307/249008` |
+| **Nielsen 1993** | **Must open.** Carries the severity scale behind every rating in Table 8.8. Book, Academic Press |
+| **Caulfield 2013** | **Must open.** A retraction claim against a published result cannot rest on an unread source. Also: the bib title does not match the post findable online — settle which piece and which author |
+| **Greenwald 1976** | **Must open.** Cited as the warrant for not counterbalancing, the design choice most likely to be pressed at the defence. `10.1037/0033-2909.83.2.314` |
+| Vessey 1991 | Reworkable. The claim made of it is the paper's own central thesis. `10.1111/j.1540-5915.1991.tb00344.x` |
+| Laugwitz 2008 | Reworkable. UEQ structure already verified against the deployed instrument. Free from ueq-online.org |
+| ISO 9241-11 | Reworkable. Only the three dimensions are cited; they are in the free ANSI preview |
+| ISO 9241-210 | Reworkable. `context/related-work/77520.html` is the catalogue page carrying the four HCD activities |
+| Ware 2004 | Reworkable. Cited for the concept it is known for; no quotation or number |
+| Palmer 1992 | Reworkable. Same |
+| Saldaña 2013 | Reworkable. Conventional method attribution |
+| Denley 2012 | Reworkable, or droppable. Descriptive only. Free EDUCAUSE ebook |
+| Shneiderman 1983 | Re-download from IEEE Xplore; the committed file is the viewer wrapper |
+
 **Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice. Verified in prior sessions and not to be re-checked: Munzner 2009 (all six claims), Braun & Clarke 2022 (page anchors and phase names corrected against the book), Trippel & Röpke 2025, Auvinen 2014, Hirmer 2022, Nielsen 1994 (both heuristics), Sandelowski 2001, Gale 2013, Bhumichitr 2017, Bodily & Verbert 2017 (93 *articles*, 17 %/6 % are shares of articles), Bartel et al. 2024 (nine principles; user-centred design and study-programme-specific personalisation are **one combined principle**).
+
+Verified 2026-09-02, against the PDFs delivered that day:
+
+- **Wienand et al. 2024** — all three uses hold. The quotation "index card-like presentation" is exact and sits beside the frustration finding it rests on; the Dashboard's three-level progress-bar pattern and the "might feel lost on how much progress they already made" quotation are both on p. 691–693; DP9 is literally "motivational elements". The domain caveat in Ch. 6 is what makes the transfer defensible and must stay.
+- **Arnold & Pistilli 2012** — the whole sentence holds: the algorithm is "run on-demand by instructors", the output is "a red, yellow or green signal", the inputs include performance and LMS interaction, and §3.1–3.2 report both the grade and the retention outcomes. "Reported to improve" is the correct hedge.
