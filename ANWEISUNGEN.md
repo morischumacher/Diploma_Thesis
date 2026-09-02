@@ -54,9 +54,11 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 ## 0a. Open when work resumes (3 September)
 
-1. ~~Decide what happens to Methodology §2.6, "Expected Results".~~ **Resolved 2 September: cut.** It was a proposal section that had survived into the finished thesis, listing deliverables rather than expectations and duplicating Ch. 1's contributions. The part worth keeping, how the evaluation's three strands are evidenced and why they are descriptive rather than causal, moved into Ch. 1 §1.4 Contributions as a closing paragraph. Ch. 9 §9.7's cross-reference now points at Ch. 1 §1.4 instead of the deleted label.
-2. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
+1. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
+2. **Improve the consistency checker** (`tools/check.py`). Moritz asked for time on this specifically. The brief: every miss so far has been an edit in one place silently invalidating a claim in another, which a chapter-by-chapter read cannot catch. See §10 item 18 (proposed) and the miss log.
 3. The two stale `overleaf-*` branches to delete once Overleaf has pulled `main`.
+
+*Closed 2 September:* Methodology §2.6 "Expected Results" was cut (PR #19). Its evaluation-evidence paragraph moved to Ch. 1 §1.4 Contributions; Ch. 9 §9.7 now cross-references Ch. 1 §1.4.
 
 ---
 
@@ -162,6 +164,18 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 Two further rules that no scanner can check. **A claim verb must match the evidence:** *establishes* only where the design supports the inference, *suggests* or *indicates* for an exploratory pattern, and any finding sentence names its source (a code, a table, a section). And **no rhetorical questions** in prose — a question in the thesis's own voice is either a research question or a sentence that should have been a statement.
 
 **No vague summary-hedges.** "leaves a clear gap" → name the gap; "in spirit closest to X" → "most closely aligned with X"; "a large and varied field" → "a substantial and heterogeneous field". Avoid loose intensifiers (*really, very, themselves*).
+
+**No self-flattering comparison — the "rather than" rule.** Do not write a sentence whose comparative half exists only to make this thesis's choice look better than an alternative nobody proposed. The forms are *X rather than Y*, *not Y but X*, *X instead of Y*, *X as opposed to Y*. The construction is banned whenever Y is an inferior option the thesis did not take and does not otherwise discuss: Y is then a foil, and the sentence is persuading rather than reporting. State what was done and let the reader judge it.
+
+*The test.* Cover the comparative half. If the sentence still carries every fact the reader needs, the half was decoration — cut it. It stays only if removing it loses information, **and** Y is one of:
+
+1. **A source's own contrast**, reported as that source's claim. "Munzner asks that assumptions be stated rather than left implicit."
+2. **A limitation**, where the unchosen half is the *stronger* option this thesis did not reach. "The evidence is inferential, drawn from adjacent systems rather than from research that tests hybrid interfaces against alternatives." Here the comparison costs us something, so it is not flattery.
+3. **A precise category distinction** the reader needs both halves of, where both terms are real and neither is a strawman. "descriptive rather than causal"; "perceived rather than actual completion"; "decision support rather than decision automation".
+
+*Banned, with the fix.* "rest on two records rather than on self-report alone" → name the two records. "treats that as an empirical question rather than a design assumption" → say what was asked and of whom. The tell is that Y describes a weaker way of doing our own work that no one in the thesis is doing.
+
+*Density.* Even where every use is allowed, they should not stack: three in four sentences reads as a tic regardless of whether each is defensible on its own. `tools/check.py` warns on any paragraph, list item or table row holding two or more. The warning is a prompt to defend each one against the test above, not an automatic cut — a parallel pair of limitations ("self-reported success measures perceived rather than actual completion, and the interface log records which panels were configured rather than where attention was") earns its two. The per-sentence judgement stays manual.
 
 **No meta-discourse.** Delete sentences that describe the writing rather than say something. Known sites: `design.tex` §6.2 opening and §6.11 opening; `evaluation.tex` §8.1 sentence 2 and §8.2 sentence 3; `methodology.tex` chapter opening; `fromthemestorequirements.tex` opening (keep the RQ1-completion sentence). A chapter's structure is visible from its headings.
 
