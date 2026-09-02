@@ -1,0 +1,67 @@
+\contentsline {todo}{BLOCKER: Danksagung ist leer}{vii}{section*.3}%
+\contentsline {todo}{BLOCKER: Acknowledgements is empty}{ix}{section*.5}%
+\contentsline {todo}{BLOCKER: Kurzfassung ist leer}{xi}{section*.7}%
+\contentsline {todo}{BLOCKER: Abstract is empty}{xiii}{section*.9}%
+\contentsline {todo}{BLOCKER: Title-page metadata}{xxiii}{section*.13}%
+\contentsline {todo}{BLOCKER: Empty front and back matter}{xxiii}{section*.14}%
+\contentsline {todo}{MAJOR: Empty index and acronym list}{xxiii}{section*.15}%
+\contentsline {todo}{MAJOR: Sweep every ``dependenc*'' occurrence}{xxiii}{section*.16}%
+\contentsline {todo}{MINOR: Build hygiene}{xxiv}{section*.17}%
+\contentsline {todo}{YOUR REV: Is the Related Work argument in line with this one?}{1}{section*.18}%
+\contentsline {todo}{MAJOR: RQ1 wording, and the bound the findings require}{2}{section*.19}%
+\contentsline {todo}{MINOR: RQ2 carries the same clause}{2}{section*.20}%
+\contentsline {todo}{YOUR REV: Check RQ3 is actually answered in the Evaluation}{2}{section*.21}%
+\contentsline {todo}{MAJOR: RQ3 drops the recommendations clause}{3}{section*.22}%
+\contentsline {todo}{YOUR REV: Re-check the contributions after Evaluation and Discussion are final}{3}{section*.23}%
+\contentsline {todo}{MINOR: Meta-discourse opening}{5}{section*.24}%
+\contentsline {todo}{MINOR: Expand ECTS at first use}{7}{section*.26}%
+\contentsline {todo}{MAJOR: A second load-bearing assumption is never declared}{9}{section*.27}%
+\contentsline {todo}{MAJOR: State how the executed design differs from the proposal}{9}{section*.28}%
+\contentsline {todo}{BLOCKER: Three data-handling decisions only you can settle}{10}{section*.29}%
+\contentsline {todo}{MINOR: Shorten Section~\ref {sec:paradigm}'s second half}{10}{section*.30}%
+\contentsline {todo}{MINOR: Three unavailable sources carry this paragraph}{15}{section*.31}%
+\contentsline {todo}{MINOR: One of the five ``broad consensus'' sources is descriptive}{16}{section*.32}%
+\contentsline {todo}{MAJOR: ``Dependency-revealing'' over-promises}{17}{section*.33}%
+\contentsline {todo}{MAJOR: This quotation does not match RQ1}{19}{section*.34}%
+\contentsline {todo}{YOUR REV: Forward reference to Steps~2 and~4 from Data Preparation}{26}{section*.45}%
+\contentsline {todo}{MINOR: Verify the initial-code count against the source}{27}{section*.47}%
+\contentsline {todo}{BLOCKER: This chapter reports no findings}{29}{section*.48}%
+\contentsline {todo}{YOUR REV: Why does the traceability chain appear only here?}{29}{section*.49}%
+\contentsline {todo}{MINOR: ``Link to Subsequent Chapters'' runs about a page for two sentences of content}{30}{section*.50}%
+\contentsline {todo}{MINOR: Opening scaffolding}{31}{section*.51}%
+\contentsline {todo}{MINOR: Cross-check the counts against Appendix~\ref {app:feature-specs}}{33}{section*.52}%
+\contentsline {todo}{MAJOR: Chapter-wide housekeeping}{36}{section*.54}%
+\contentsline {todo}{YOUR REV: Move the two single-course nodes into the Course column}{40}{section*.56}%
+\contentsline {todo}{MINOR: Meta-discourse}{40}{section*.58}%
+\contentsline {todo}{MINOR: Three perceptual sources are unavailable}{40}{section*.59}%
+\contentsline {todo}{YOUR REV: Figure~\ref {fig:status-encoding} text is too light}{43}{section*.61}%
+\contentsline {todo}{MAJOR: Wienand et al.\ 2024 is cited but has never been opened}{45}{section*.64}%
+\contentsline {todo}{YOUR REV: Figure~\ref {fig:card-text} annotation text}{45}{section*.65}%
+\contentsline {todo}{MINOR: Figure caption lengths}{51}{section*.70}%
+\contentsline {todo}{MINOR: Meta-discourse at the section opening}{60}{section*.73}%
+\contentsline {todo}{YOUR REV: Figure~\ref {fig:rec-panel} text}{61}{section*.74}%
+\contentsline {todo}{MINOR: The deployment claim is unverified end to end}{65}{section*.76}%
+\contentsline {todo}{YOUR REV: Update the graph screenshot}{69}{section*.80}%
+\contentsline {todo}{MINOR: Expand StEOP at first use}{72}{section*.85}%
+\contentsline {todo}{MAJOR: Verify the curriculum-as-data claim against the evaluated tag}{72}{section*.86}%
+\contentsline {todo}{YOUR REV: The compliance-engine description feels too long}{73}{section*.87}%
+\contentsline {todo}{MAJOR: The Wong citation does not support the clause it carries}{74}{section*.88}%
+\contentsline {todo}{MINOR: Confirm the two inert channels for the evaluated tag}{75}{section*.89}%
+\contentsline {todo}{MINOR: Figure caption lengths}{75}{section*.90}%
+\contentsline {todo}{YOUR REV: The cardinalities in Figure~\ref {fig:impl-data-model} are wrong}{76}{section*.91}%
+\contentsline {todo}{YOUR REV: The post-study corrections section is far too long}{78}{section*.93}%
+\contentsline {todo}{MAJOR: Verify ``five have been closed, each with a regression test''}{78}{section*.94}%
+\contentsline {todo}{YOUR REV: Use one opening pattern for every chapter that names an RQ}{81}{section*.95}%
+\contentsline {todo}{MAJOR: This restatement of RQ3 does not match Chapter~\ref {chap:introduction}}{81}{section*.96}%
+\contentsline {todo}{MAJOR: E-G18 is attributed to the wrong participant}{93}{section*.105}%
+\contentsline {todo}{MINOR: Check the P10 framing against his next utterance}{94}{section*.106}%
+\contentsline {todo}{MINOR: Table~\ref {tab:problems} caption}{95}{section*.108}%
+\contentsline {todo}{MAJOR: This sentence depends on an unverified claim}{100}{section*.112}%
+\contentsline {todo}{MINOR: Re-check this section once the RQ wording is settled}{103}{section*.113}%
+\contentsline {todo}{MINOR: Vessey 1991 has no PDF in the repository}{105}{section*.120}%
+\contentsline {todo}{YOUR REV: Make the redesign-versus-reparameterise split concrete}{112}{section*.129}%
+\contentsline {todo}{BLOCKER: AI-tools disclosure is empty}{115}{section*.131}%
+\contentsline {todo}{BLOCKER: Erklaerung zu KI-Hilfsmitteln ist leer}{117}{section*.133}%
+\contentsline {todo}{MINOR: Two sweeps for this appendix}{141}{section*.155}%
+\contentsline {todo}{MINOR: Housekeeping for this appendix}{162}{section*.195}%
+\contentsline {todo}{MAJOR: Four glossary entries are missing}{170}{section*.197}%
