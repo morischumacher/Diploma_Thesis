@@ -114,6 +114,7 @@ Because obligation types cannot be reduced to a single flat enumeration shared a
 
 Furthermore, the system must handle alternative course formats without breaking these compliance and obligation rules. A small number of modules are officially offered in two structural formats: an integrated lecture-exercise course (VU) or a split lecture-plus-exercise pair (VO~+~UE). Both variants inherit the parent module's single obligation category. When a student selects one variant, the system automatically treats the alternative as satisfied, ensuring the module cannot be double-counted under two different course codes. The recommendation engine (Section~\ref{sec:rec-types-evidence}) is similarly designed to recognise these variant pairs, ensuring that a course already covered by an added variant is never redundantly recommended.
 
+%% REV (the courses should move to the left side where the other courses are, so a longer edge from exam subject B, so the edge is brighing the module level)
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
@@ -241,6 +242,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
 
 \emph{Icon-only status} was rejected because icons are already reserved for actions on cards (Section~\ref{sec:action-buttons}), and using one visual element both to show state and to change it would blur representation and interaction.
 
+%% REV (the text in this figure is hard to read, please color it black, just for the done state it should be gray inside)
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize, scale=0.85, transform shape]
@@ -354,6 +356,7 @@ To achieve this, the design minimises text and adapts it to the informational ro
 
 An exam-subject card is read for orientation, so it carries the subject name and the extent of what it contains, and nothing further. A module header is read to answer one question, whether the module's quota is met, so it aggregates: name, total ECTS, obligation type and a status indicator. A course card is where an actual placement decision is made, and it is divided into three fixed zones. Its header carries the short course-code abbreviation and the course-type indicator, applying Bartel et al.~\cite{bartel_design_2024} principle of relying on recognised university identifiers rather than inventing interface shorthand. Its title is the primary identifier and is clamped to two lines, which keeps card heights uniform for the snap-grid alignment system and keeps dense plans scannable. Its footer carries the three most frequently needed attributes: ECTS value, obligation type and status.
 
+%% (REV make sure to color the text in the figure black (the one on the right side))
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
@@ -393,6 +396,7 @@ An exam-subject card is read for orientation, so it carries the subject name and
 \caption{Text carried at each hierarchy level. The exam-subject card states only extent, the module header aggregates progress, and the course card divides its text into three zones of fixed height.}
 \label{fig:card-text}
 \end{figure}
+
 
 Three alternatives were weighed and rejected, each on the same trade between information and height: \emph{richer metadata on course cards} roughly doubles card height for information a routine placement does not need (C54); \emph{module headers reduced to name and ECTS} force an expand or a Dashboard visit to read progress; and \emph{a full course list in the module header} makes a collapsed module nearly as tall as an expanded one. 
 % ------------------------------------------------------------
@@ -683,8 +687,6 @@ The Graph View provides a structured, network-based environment for exploring th
 To align with natural reading habits in Western contexts, participants suggested a horizontal layout, noting it is ``\textit{nicer if it goes left to right, because we read left to right}'' (Feature~\ref{feat:010}, C32). This direction maps increasing depth to increasing specificity while answering participants' questions about spatial meaning (``\textit{Is there any meaning to the vertical position?}'', C27).
 
 Based on this, the curriculum tree renders left-to-right across four depth levels (Programme $\to$ Exam Subject $\to$ Module $\to$ Course; Figure~\ref{fig:graph-schema}). Exam subjects are stacked as distinct horizontal bands on the vertical axis, fulfilling Feature~\ref{feat:010}, Req.~2's \emph{structured layout mode} and directly answering C27: vertical band membership explicitly encodes the exam subject. Two alternatives were weighed against this. The Figma prototype's \emph{radial layout} (Section~\ref{sec:prototype-elicitation}) placed the programme at the centre with subjects radiating outward; it was re-derived and replaced because depth is then encoded as distance from a centre rather than as reading direction, which is what C32 asked for, and because a radial arrangement leaves no free axis on which subject membership could be encoded. A \emph{force-directed layout} was rejected because node positions would be recomputed whenever the graph is expanded or filtered, which would destroy the spatial memory Feature~\ref{feat:013}, Req.~2 requires the layout to preserve.
-
-This layout commits both axes, and that has a consequence worth stating plainly, because Research Question~1 names the understanding of course dependencies among the needs this work set out to serve. The horizontal axis encodes containment depth and the vertical axis encodes exam-subject membership, so a prerequisite relation, which runs between two courses and respects neither, cannot be given a position by the layout; it can only be overlaid on it. The graph as designed therefore draws two kinds of edge over one arrangement of nodes: containment edges from a parent to its child, which the axes place, and the curriculum's formal prerequisite pairs, which cross the exam-subject bands in a distinct edge style and are togglable so that they can be taken off the canvas when they are not wanted (Feature~\ref{feat:003}, Req.~2). What keeps that overlay cheap rather than cluttering is how little sequence the curricula in scope actually carry: the Bachelor programme encodes two prerequisite pairs across its 101 courses, \emph{Einführung in die Programmierung~1} before \emph{Einführung in die Programmierung~2} and \emph{Software Engineering} before \emph{Software Engineering Projekt}, and the Master programme encodes only the thesis before its defence and its seminar. What both curricula do encode is eligibility gates, the introductory phase in the Bachelor and the core-before-elective condition inside a Master focus area, and a gate is a condition to be satisfied rather than an edge to be drawn. Conditions are what the compliance engine evaluates and the Dashboard reports (Section~\ref{sec:compliance}), which is where they belong. This divides Feature~\ref{feat:003} across the two layers rather than assigning it wholly to one. Req.~2, the hard prerequisite relation, is carried in both: the engine blocks a placement that violates a pair, and the graph draws the pair. Req.~3, the soft or recommended relation, is carried in the checking layer alone, as a non-blocking Dashboard advisory, and the reason is a data one rather than a layout one: recommended sequence has no institutional grounding in either curriculum, so at design time there was no authoritative set of pairs to draw (Feature~\ref{feat:003}, Delineation; OOS3). A layout that gave sequence an axis of its own, rather than an overlay, would have had two edges to place and would have cost the subject-band encoding that Chapter~\ref{chap:evaluation} shows students did use; in a curriculum that genuinely encodes sequence, that trade would run the other way. Chapter~\ref{chap:evaluation} returns to what follows from this asymmetry for the students who asked to see recommended ordering at the point of decision and did not receive it, and Section~\ref{sec:impl-prereq-edges} describes the soft-dependency edge layer added to the tool after the evaluation study.
 
 \begin{figure}[htbp]
 \centering
@@ -978,7 +980,7 @@ Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible witho
 To meet these requirements without disrupting the user's spatial context, the Recommendation Panel is designed as an independent left-side drawer, positioned adjacent to the course catalogue (Section~\ref{sec:sidebar-design}). It can be toggled open or closed without affecting the canvas viewport, active filters, or node selections. Crucially, recommendations are strictly confined to this panel. No badges, tints, or rings are added to courses on the main canvas or in the catalogue. This strict isolation guarantees that recommendations cannot trigger a disruptive graph re-layout, and it avoids perceptual collisions with the dynamically assigned subject-colour palette (Section~\ref{sec:subject-colour}). 
 
 The panel displays a scrollable list of recommendation cards, each draggable onto a semester lane (Section~\ref{sec:interaction-paths}) and each carrying the evidence the requirement asks for without displacing the course information a decision needs (Figure~\ref{fig:rec-panel}). A card names the family that produced it, the course by code, title and term availability, the human-readable reason (Section~\ref{sec:rec-types-evidence}), truncated with a show-more control so a long reason cannot push the card's other content out of view, the ECTS value and obligation type, and the same action buttons a course card carries elsewhere (Section~\ref{sec:action-buttons}). A toggle bar at the top of the panel shows or hides individual families, and those preferences persist across sessions as part of the student's profile.
-
+%% REV(make sure also this text on the left side of the figure is black)
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
