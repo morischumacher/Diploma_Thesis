@@ -78,6 +78,8 @@ The front of the thesis (RQ1, RQ2, the Related Work gap statement) promises unde
 - **Additions are expected to outweigh cuts**: Ch. 4 findings section (§1.4), abstract, Kurzfassung, acknowledgements, AI-tools disclosure. Budget for ~190 pp at submission and stop worrying about it.
 
 ### 1.3 Working mode — branch + PR, one chapter at a time
+
+**Never push to `main` directly.** Every change goes on a branch and into a pull request, and what it does is explained in the chat before it is opened. This holds even for merge resolutions and for changes that look purely mechanical — Moritz reviews in GitHub and pulls into Overleaf from `main`, so an unannounced commit on `main` arrives in his editor without him having seen it. Set 2026-09-02 after two direct pushes.
 A fine-grained PAT scoped to `Diploma_Thesis` (Contents read/write, Pull requests read/write) is provided; rotate it after submission. Loop per chapter:
 
 1. Pull `main`. Re-read the chapter end to end, not the diff.
@@ -121,6 +123,22 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 **English variety: British.** `programme` (degree programme) never `program`; `-ise/-isation` (visualisation, personalisation, prioritisation, organised, recognised, anonymised, synthesises); `colour`, `behaviour`, `catalogue`, `judgement`, `labelled`, `modelling`, `analyse`, `favour`. Current state is clean apart from three `color` inside TikZ (correct, they are commands) — keep it that way. When sweeping, exclude LaTeX commands (`\itemize`, `\scriptsize`, `\normalsize`, `\definecolor`) from `-ize`/`color` searches.
 
 **Scientific register.** No slang or phrasal-verb casualness: *figure out* → determine/identify; *kind of X* → a type of X, or cut; *a thing* → a concrete noun; also avoid *get around, end up, come up with, deal with, turn out, a lot of, pretty much, basically*. Four `kind of` remain (design ×2, evaluation ×2) — two are inside participant quotations and stay verbatim; the other two go.
+
+**Scientific register — the specific checks.** `tools/check.py` scans for all of these; the judgement calls after them are yours.
+
+| Reject | Because | Instead |
+|---|---|---|
+| *actually, really, quite, obviously, simply, truly, indeed* | rhetorical emphasis doing no analytical work | delete |
+| *very, extremely, highly* | unmeasured degree | give the degree, or delete |
+| *a number of, numerous, a variety of* | the thesis usually knows the number | give the number |
+| *figure out, come up with, deal with, end up, turn out, get around, leave it to* | conversational | determine, formulate, address, result in, prove to be, avoid, delegate to |
+| *proves, demonstrates that, confirms that* | stronger than any design here supports | establishes / indicates / is consistent with |
+| *it is worth noting, it should be noted, needless to say* | says nothing | delete and state the point |
+| *the tool knows / wants / decides* | anthropomorphism | the engine reports / the rule blocks |
+| *we believe, we feel, we think* | stance without an argument | we argue (with the argument), or state the claim |
+| *I, my, me* | the thesis uses "we" for research acts | we |
+
+Two further rules that no scanner can check. **A claim verb must match the evidence:** *establishes* only where the design supports the inference, *suggests* or *indicates* for an exploratory pattern, and any finding sentence names its source (a code, a table, a section). And **no rhetorical questions** in prose — a question in the thesis's own voice is either a research question or a sentence that should have been a statement.
 
 **No vague summary-hedges.** "leaves a clear gap" → name the gap; "in spirit closest to X" → "most closely aligned with X"; "a large and varied field" → "a substantial and heterogeneous field". Avoid loose intensifiers (*really, very, themselves*).
 
@@ -267,6 +285,11 @@ A chapter is finished only when every line below is true. This is the checklist 
 13. All `%% REV`, `%% AIREV` and `\todo{}` markers in the chapter resolved and removed.
 14. §12 status table updated.
 16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
+17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
+
+A chapter may be closed with notes still in it, but only in two states, and the note must say which: **deferred by decision** (kept open on purpose, with the reason and the point at which it is revisited — e.g. Ch. 1's contributions note, which waits on Ch. 8 and Ch. 9), and **verified** (a record that a source or a number was checked, kept so it is not checked twice). Any other open note means the chapter is not done.
+
+**Curriculum analytics is out of the thesis** (Moritz, 2026-09-02). It was in the proposal, but Related Work never covered it and it plays no part in either gap the thesis argues, so the Introduction no longer previews it. `archambault_curriculum_2015`, `buck-emden_analyse_2018` and `kapucu_competency-based_2017` are now uncited.
 15. Every `dependenc*` occurrence in the chapter checked against the glossary mapping (§1.1).
 
 ---
@@ -309,7 +332,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 | # | Chapter | State | Main work |
 |---|---|---|---|
-| 1 | Introduction | needs edit | RQ wording (§1.1, §6), contributions list, 3 open `%% REV` |
+| 1 | Introduction | **done 2026-09-02**, two items left for Moritz | All 7 review comments resolved; ED/ERS paragraph rewritten to Ch. 3's argument; TU Wien and both curricula footnoted; contributions sized; Outlook credits Ch. 9 with RQ3. Open for a decision: the opening paragraph's citation fit (Morsy/Wong/Schulte), and whether curriculum analytics returns via Ch. 3 |
 | 2 | Methodology | needs edit | second assumption (`%% AIREV`), proposal-deviation paragraph, data-handling `\todo`, ECTS/StEOP expansion |
 | 3 | Related Work | needs edit | Positioning gap wording (§1.1), Ma et al. claim already softened — re-verify, five-paper "broad consensus" sentence |
 | 4 | Formative Study | **needs new section** | Findings section (§1.4), quotation style sweep, `\todo` on forward references, "Link to Subsequent Chapters" cut to two sentences |

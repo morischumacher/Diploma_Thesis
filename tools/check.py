@@ -87,6 +87,16 @@ def main():
               [f for f in TEX if f.startswith(('chapters/', 'appendix/'))]
     AMERICAN = r'\b(color|colors|behavior|behaviors|catalog|catalogs|judgment|favor|labeled|modeling|analyze|analyzed|fulfillment|program|programs|visualization|personalization|prioritization|organized|recognized|minimize|utilize|emphasize|individualized)\b'
     SLANG = r'\b(figure out|kind of|a lot of|pretty much|basically|end up|deal with|come up with|turn out|get around)\b'
+    LANGUAGE = [
+        ('hedge or intensifier', r'\b(actually|really|quite|obviously|simply|truly|indeed|very|extremely|highly)\b'),
+        ('vague quantifier (give the number)', r'\b(a number of|numerous|a lot of|a variety of)\b'),
+        ('conversational verb', r'\b(figure out|come up with|deal with|end up|turn out|get around|leave it to|bring up)\b'),
+        ('overclaiming verb', r'\b(prove[sd]?|demonstrates? that|shows conclusively|confirms that)\b'),
+        ('filler hedge', r'(leaves a clear gap|in spirit|a large and varied|it is worth noting|it should be noted|needless to say)'),
+        ('anthropomorphism', r'\b(the (?:tool|system|engine|graph|table) (?:wants|knows|thinks|believes|decides|feels))\b'),
+        ('stance without argument', r'\b(we (?:believe|feel|think))\b'),
+        ('first-person singular', r'(?<![A-Za-z])(I|my|me)(?![A-Za-z])'),
+    ]
     for f in targets:
         t = bodies[f]
         for pat, msg in [(AMERICAN, 'American spelling'), ('—', 'em dash in prose'),
@@ -100,6 +110,17 @@ def main():
             if hits:
                 c = collections.Counter(h if isinstance(h, str) else h[0] for h in hits)
                 warn(f'{f}: {msg} x{len(hits)} {dict(c.most_common(5))}')
+        # Quotations are reproduced as spoken and are outside the house register,
+        # so strip them before the language scan or every "I" a participant said
+        # is reported as a defect.
+        prose = re.sub(r'\\TD(?:block|major|minor|rev|ok)\{.*', '', t)
+        prose = re.sub(r'\\enquote\{[^{}]*\}', ' ', prose)
+        prose = re.sub(r'\\begin\{quote\}.*?\\end\{quote\}', ' ', prose, flags=re.S)
+        for what, pat in LANGUAGE:
+            hits = re.findall(pat, prose)
+            if hits:
+                c = collections.Counter(h if isinstance(h, str) else h[0] for h in hits)
+                warn('%s: %s x%d %s' % (f, what, len(hits), dict(c.most_common(5))))
         for cap in caption_bodies(t):
             p = plain(cap)
             lim = 350 if '\\begin{table' in t[:t.find(cap)][-4000:] else 200
