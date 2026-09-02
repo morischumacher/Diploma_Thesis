@@ -286,6 +286,10 @@ A chapter is finished only when every line below is true. This is the checklist 
 14. §12 status table updated.
 16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
 17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
+
+A chapter may be closed with notes still in it, but only in two states, and the note must say which: **deferred by decision** (kept open on purpose, with the reason and the point at which it is revisited — e.g. Ch. 1's contributions note, which waits on Ch. 8 and Ch. 9), and **verified** (a record that a source or a number was checked, kept so it is not checked twice). Any other open note means the chapter is not done.
+
+**Curriculum analytics is out of the thesis** (Moritz, 2026-09-02). It was in the proposal, but Related Work never covered it and it plays no part in either gap the thesis argues, so the Introduction no longer previews it. `archambault_curriculum_2015`, `buck-emden_analyse_2018` and `kapucu_competency-based_2017` are now uncited.
 15. Every `dependenc*` occurrence in the chapter checked against the glossary mapping (§1.1).
 
 ---
