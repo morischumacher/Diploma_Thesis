@@ -101,7 +101,9 @@ The test is **can the thesis be wrong because of it?** If yes it is an assumptio
 ### 1.3 Working mode — branch + PR, one chapter at a time
 
 **Never push to `main` directly.** Every change goes on a branch and into a pull request, and what it does is explained in the chat before it is opened. This holds even for merge resolutions and for changes that look purely mechanical — Moritz reviews in GitHub and pulls into Overleaf from `main`, so an unannounced commit on `main` arrives in his editor without him having seen it. Set 2026-09-02 after two direct pushes.
-A fine-grained PAT scoped to `Diploma_Thesis` (Contents read/write, Pull requests read/write) is provided; rotate it after submission. Loop per chapter:
+**A merged branch is closed.** Once its PR is merged, never commit to that branch again: the commits sit on a merged head, no PR is watching them, and they silently never reach `main`. Any further work starts with `git checkout -b <new> origin/main`. Set 2026-09-02, after two commits were pushed to the #19 branch after #19 had been merged and had to be recovered as #20.
+
+A fine-grained PAT scoped to `Diploma_Thesis` (Contents read/write, Pull requests read/write) is provided; rotate it after submission. Never pass it to `git push -u`, which writes it into `.git/config`. Loop per chapter:
 
 1. Pull `main`. Re-read the chapter end to end, not the diff.
 2. Post the chapter's finding list here first (defects, inconsistencies, citations to verify) and agree what changes.
