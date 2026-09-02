@@ -1,0 +1,1 @@
+Methodology literature and notes: qualitative analysis approaches, research design references, evaluation methodology sources (e.g. thematic analysis, UEQ/TAM instrument background). Used for grounding the Analysis Method sections in the Formative Study chapter and the methodology description in the Evaluation chapter.
