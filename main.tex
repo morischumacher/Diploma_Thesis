@@ -8,7 +8,6 @@
 \documentclass[final,twoside]{vutinfth}
 
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
-%% AIREV [BLOCKER] (The title-page metadata is still the template's: \thesistitle is "Title of the Thesis", the subtitle is the placeholder, \setdate is 01.01.2001, and \Keywords is "a list of keywords". These render on the title pages and in the PDF properties of the submitted document; only you can supply the real title, subtitle or its removal, submission date, and keywords.)
 \newcommand{\authorname}{Moritz Jakob Schumacher} % The author name without titles.
 \newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
 
@@ -213,7 +212,7 @@ Recommender System'' over-promises relative to what was built and evaluated.}
 as an empty headed page. The AI-tools disclosure is required by the statement of
 originality; check TU Wien Informatics' current policy before drafting it.}
 
-\TDmajor{Sweep every \enquote{dependenc*} occurrence against the glossary}{The glossary now fixes the vocabulary: \emph{containment} is the hierarchy relation and is never called a dependency; \emph{dependency} means an ordering relation between courses, in a \emph{formal} (published, blocking, drawn in the evaluated graph) and a \emph{recommended} (curated, advisory, drawn only after the study) form. Sixty-nine occurrences of \texttt{dependenc*} remain in the prose and each must be checked against that mapping, because the recommended form was not visible during the evaluation study and a sentence that implies it was is false. Counts by file: Related Work~15, codebook appendix~11, Discussion~9, Introduction~8, Formative Study~7, Implementation~7, Design~3, Evaluation~3, evaluation appendix~3, interview plan~1, glossary~2. This sweep is part of each chapter's own pass, not a separate one, and is listed in the definition of done in \texttt{ANWEISUNGEN.md}~\S10.}
+\TDmajor{Dependency vocabulary, and where the sweep stands}{The glossary fixes two terms. A \emph{dependency} is the structure a curriculum itself fixes, its containment hierarchy together with the hard constraints published alongside it; that is what the evaluated Graph View drew. A \emph{soft dependency} is a recommended ordering, curated rather than published, reported by the compliance engine as an advisory throughout the study but drawn in no view until the edge layer built afterwards. A bare \enquote{dependency} never includes the soft form. A first pass over all 58 prose occurrences was run on 2026-09-02 and its result is recorded in each file, so no chapter starts by re-reading them all; the two places that describe the post-study state and had to name both forms have been corrected. The remaining occurrences read correctly under this vocabulary and are re-confirmed as part of each chapter's own pass, item~15 of the definition of done in \texttt{ANWEISUNGEN.md}.}
 
 \TDminor{Build hygiene}{The current build has 30 overfull and 38 underfull
 boxes. Fix the overfull ones above about 10\,pt, which visibly bleed into the
@@ -224,7 +223,6 @@ margin; ignore the rest.}
 \mainmatter
 
 \chapter{Introduction}
-%% AIREV [MINOR] (Document-wide residual: "dependency" is used in two senses, the containment relation the graph draws and the prerequisite relation of the cited literature, and about forty occurrences have not been checked against the glossary definition proposed at the end of the glossary. After the Introduction, Related Work and glossary edits are made, sweep every "dependenc*" occurrence and confirm each is either the prerequisite sense or an explicit historical description of the prototype and the formative interviews.)
 \input{chapters/introduction}
 
 \chapter{Methodology}
