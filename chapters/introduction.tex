@@ -1,9 +1,12 @@
 \label{chap:introduction}
-
+%% (rev) does the new gloassary entry of dependency invalidates any occurenceis of the word here, espacially in the research questions?. Check each of them)
+%% REV (also a question, would you include a link in words which are in the glossary, simiar like the refs)
 Students in higher education face growing challenges in planning their studies. Curricula often involve complex prerequisites, electives, and institutional rules that are difficult to navigate using static study guides or standard plans~\cite{schulte_large_2017, morsy_study_2019}. Individual circumstances, such as failed courses, varying study speeds, or limited access to advisors, further complicate planning and can affect performance, graduation times, and motivation~\cite{wong_sequence_2018}.
 
 Existing approaches address these issues but remain limited. Graph-based systems focus mainly on visualising curriculum structure and course dependencies~\cite{auvinen_stops_2014, rollande_graph_2013, trippel_developing_2025}, while table-based planning tools emphasise semester-level scheduling~\cite{hirmer_requirements_2022, judel_supporting_2023}, typically in isolation from one another. This motivates investigating a hybrid approach: integrating a graph and a table into a single planning workflow so students can understand structure and dependencies (graph) and manage their schedule and workload (table).
 \TDrev{Is the Related Work argument in line with this one?}{Your comment. Chapter~\ref{chap:related-work} now argues the same two gaps in the same order (graph versus table, then ED versus ERS), so the paragraphs are aligned; what differs is that Related Work states the gap as a \emph{dependency-revealing} graph, which the note in that chapter's Positioning section addresses.}
+%% REV (my point is the following: First please read the realted work, and extract what the story of recommender systems and dashboards is there. The story there ends with the need of having both in a unified tool and embedd them there in there in the workflow(simplifiying it). The point here about these systems is just how recommender are embedded. So Just in the last block here we have to look that we make the same point like in the tesis.)
+
 Curriculum analytics approaches offer valuable institutional insight into study paths
 ~\cite{schulte_large_2017, archambault_curriculum_2015, buck-emden_analyse_2018, kapucu_competency-based_2017}, but are rarely embedded directly in a student-facing planning tool. More adaptive solutions, such as Educational Recommender Systems (ERS), show strong algorithmic potential~\cite{bhumichitr_recommender_2017, wong_sequence_2018, esteban_helping_2020, srisamutr_course_2018, al-badarenah_automated_2016}, yet, to our knowledge, have not been embedded into student-facing planning environments either. This raises the question of to what extent such recommendations can support students within their planning workflow.
 
@@ -12,11 +15,15 @@ Curriculum analytics approaches offer valuable institutional insight into study 
 \section{Research Questions}
 \label{sec:research-questions}
 
-Building on the challenges and gaps outlined above, this thesis investigates the design, implementation, and experience of a hybrid graph-table study planner, built for and evaluated against two degree programmes at the Faculty of Informatics of TU~Wien, the Bachelor in Computer Science and the Master in Software Engineering. We formulate three research questions:
+Building on the challenges and gaps outlined above, this thesis investigates the design, implementation, and experience of a hybrid graph-table study planner, built for and evaluated against two degree programmes at the Faculty of Informatics of %% REV (introduce apprevention) 
+TU~Wien, the Bachelor in Computer Science and the Master in Software Engineering. %% REV(please add the curriculms as foodnote links)
+We formulate three research questions:
 
 \textbf{Research Question 1} \emph{What are students' needs and resulting requirements for a hybrid graph-table interface that supports programme-level study planning and understanding of curriculum structure and course dependencies?}
+%% REV (since we now have a strict 
 
 This question is addressed by a formative needfinding study conducted with an interactive but non-functional prototype (Chapter~\ref{chap:formative-study}), whose findings are translated into a ranked features-and-requirements specification (Chapter~\ref{chap:from-themes-to-requirements}). Throughout this thesis, \emph{course dependencies} means an ordering relation a curriculum encodes, in the two forms the glossary distinguishes, the formal prerequisites a curriculum publishes and the recommended orderings a tool may curate; how much of either the two programmes in scope actually carry is itself a finding, reported in Chapter~\ref{chap:evaluation}.
+%% REV (is this still in line with the lates changes we made to the dependency glossary)
 
 Building on these requirements, the second sub-question concerns the design and construction of the tool itself:
 
@@ -25,10 +32,10 @@ Building on these requirements, the second sub-question concerns the design and 
 This question is addressed by the Design chapter (Chapter~\ref{chap:design}), which derives each design decision from a requirement, prior evidence, or an explicitly stated assumption, and by the Implementation chapter (Chapter~\ref{chap:implementation}), which realises that design as a working system.
 
 Finally, the third sub-question examines how the implemented system is received by its intended users:
-\TDrev{Check RQ3 is actually answered in the Evaluation}{Your comment. It is: Chapter~\ref{chap:evaluation} maps each of the three ISO~9241-11 dimensions to a measure, and Chapter~\ref{chap:discussion}, Section~\ref{sec:disc-rq-answers} answers all three explicitly. One mismatch remains, in the next note.}
+
 \textbf{Research Question 3} \emph{How do students experience the hybrid interface in terms of user experience (effectiveness, efficiency, and satisfaction)?}
 
-This question is addressed by an evaluation study with students (Chapter~\ref{chap:evaluation}) to assess the implemented tool.
+This question is addressed by an evaluation study with students (Chapter~\ref{chap:evaluation}) to assess the implemented tool and the Discussion (Chapter~\ref{chap:discussion}).
 
 \section{Contributions}
 \label{sec:contributions}
@@ -36,6 +43,7 @@ This question is addressed by an evaluation study with students (Chapter~\ref{ch
 This thesis makes the following contributions:
 
 \TDrev{Re-check the contributions after Evaluation and Discussion are final}{Your comment. Contributions three and four now track Chapter~\ref{chap:evaluation}'s two headline results closely. Two checks remain: contribution two says the tool \enquote{embeds explainable recommendations}, which is true of the design but only four of six families were live during the study, and contribution one should state the specification's size (13 features, 55 requirements) so it is countable.}
+%% REV (please add the study specification, but please still mark a todo for after the eval and discussion chapter to recheck the precise contributions)
 \begin{itemize}
     \item \textbf{A requirements specification for study planning.} A ranked features-and-requirements specification for a study-planning tool, grounded in formative interview evidence (Chapter~\ref{chap:from-themes-to-requirements}).
     \item \textbf{A hybrid graph-table planning tool.} The design and implementation of a web-based tool that unites a curriculum graph and a schedule-managing table over a single shared plan, checks that plan against the regulations of two degree programmes in real time, and embeds explainable recommendations within the planning workflow (Chapters~\ref{chap:design}--\ref{chap:implementation}).
@@ -47,3 +55,4 @@ This thesis makes the following contributions:
 \label{sec:outlook}
 
 The remainder of this thesis is organised as follows. Chapter~\ref{chap:methodology} sets out the research paradigm, process, and scope that frame the work. Chapter~\ref{chap:related-work} reviews related systems and establishes the research gap. Chapter~\ref{chap:formative-study} reports the formative needfinding study, and Chapter~\ref{chap:from-themes-to-requirements} translates its findings into a features-and-requirements specification; together these answer Research Question~1. Chapter~\ref{chap:design} and Chapter~\ref{chap:implementation} design and build the hybrid tool, answering Research Question~2. Chapter~\ref{chap:evaluation} evaluates the tool with students, answering Research Question~3, and Chapter~\ref{chap:discussion} discusses the findings, limitations, and directions for future work.
+%% REV (would you say the discussion is not also answering the rq3, here its excluded, whats you stack on this?
