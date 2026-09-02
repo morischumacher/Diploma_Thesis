@@ -52,6 +52,14 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 ---
 
+## 0a. Open when work resumes (3 September)
+
+1. **Decide what happens to Methodology §2.6, "Expected Results".** It is a proposal section that survived into the finished thesis: it lists deliverables rather than expectations, and duplicates Ch. 1's contributions and Ch. 9 §9.7. Three options: **delete it**; **keep the heading and write genuine expectations** (only if the outline template mandates the section, and it risks reading as hindsight); or **keep the section and change its job** to what kind of knowledge each output can produce, which is a methodology question no other section answers and is not duplicated. The deciding fact is whether the TU Wien Informatics outline template requires a section by that name.
+2. **Read Chapter 2 end to end** now that all thirteen comments are resolved, before starting Chapter 3.
+3. PR #18 to merge, and the two stale `overleaf-*` branches to delete once Overleaf has pulled `main`.
+
+---
+
 ## 1. Decisions taken in this session
 
 ### 1.1 The dependency seam — resolved by qualifying the front, not the back
