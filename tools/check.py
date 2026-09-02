@@ -102,6 +102,9 @@ def main():
     ]
     for f in targets:
         t = bodies[f]
+        # the glossary defines the study names, so it may use their variants
+        if f.endswith('glossary.tex'):
+            t = re.sub(r'\b(needfinding study|summative study)\b', '', t)
         for pat, msg in [(AMERICAN, 'American spelling'), ('—', 'em dash in prose'),
                          (r'``', 'TeX quotes -- house form is \\enquote{}'),
                          (SLANG, 'colloquialism'),
