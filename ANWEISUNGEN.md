@@ -287,7 +287,9 @@ A chapter is finished only when every line below is true. This is the checklist 
 16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
 17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
 
-A chapter may be closed with notes still in it, but only in two states, and the note must say which: **deferred by decision** (kept open on purpose, with the reason and the point at which it is revisited — e.g. Ch. 1's contributions note, which waits on Ch. 8 and Ch. 9), and **verified** (a record that a source or a number was checked, kept so it is not checked twice). Any other open note means the chapter is not done.
+**A note that has been dealt with is deleted, not marked done.** Set 2026-09-02. The thesis carries only outstanding work; a green "verified" block in the middle of a chapter is noise for the person reading it, and there were eleven of them. What was checked and what it showed goes in §14's log instead, which is where someone looks to avoid re-checking. The `\TDok` macro is retired.
+
+The only note that may remain in a closed chapter is one **deferred by decision** — kept open on purpose, saying why and when it is revisited. Ch. 1's contributions note is the example: it waits on Ch. 8 and Ch. 9. Any other open note means the chapter is not done.
 
 **Curriculum analytics is out of the thesis** (Moritz, 2026-09-02). It was in the proposal, but Related Work never covered it and it plays no part in either gap the thesis argues, so the Introduction no longer previews it. `archambault_curriculum_2015`, `buck-emden_analyse_2018` and `kapucu_competency-based_2017` are now uncited.
 15. Every `dependenc*` occurrence in the chapter checked against the glossary mapping (§1.1).
@@ -416,7 +418,15 @@ Order is chosen so that the chapters whose content is still moving come after th
 | Denley 2012 | Reworkable, or droppable. Descriptive only. Free EDUCAUSE ebook |
 | Shneiderman 1983 | Re-download from IEEE Xplore; the committed file is the viewer wrapper |
 
+**Never touched, whatever a sweep says.** Questionnaire item 2 in the evaluation appendix reads "The interface improved my productivity when dealing with course dependencies and constraints". It is the instrument as administered and is reproduced verbatim, so it sits outside the house vocabulary by necessity.
+
 **Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice. Verified in prior sessions and not to be re-checked: Munzner 2009 (all six claims), Braun & Clarke 2022 (page anchors and phase names corrected against the book), Trippel & Röpke 2025, Auvinen 2014, Hirmer 2022, Nielsen 1994 (both heuristics), Sandelowski 2001, Gale 2013, Bhumichitr 2017, Bodily & Verbert 2017 (93 *articles*, 17 %/6 % are shares of articles), Bartel et al. 2024 (nine principles; user-centred design and study-programme-specific personalisation are **one combined principle**).
+
+Verified 2026-09-02 (moved here from in-document notes when those were retired):
+
+- **Chapter 1, opening paragraph.** `judel_supporting_2023` carries the exemplary-plan sentence: its abstract states the plan in the examination regulations "may only fit as long as no adjustments have to be made", and that a failed examination or a postponed module calls for an individual plan. `schulte_large_2017` carries the advisor sentence — "degree and course advisors and student support units find it challenging to provide evidence based advise to students". `morsy_study_2019` carries the outcome clause, and its conclusion is associational, not causal: students clustered by graduation GPA and time to degree differ in when and in what sequence they take courses. Hence "are associated with". `wong_sequence_2018` was dropped from that paragraph, and the claim about motivation with it, since no source supported either.
+- **Chapter 1, dashboards sentence.** `schwendimann2017` and `verbert_learning_2020` review learning-analytics dashboards in general, explicitly covering dashboards "ready-made to serve administrators, teachers", so alone they were wider than the sentence. `loboda_mastery_2014` anchors it: *Mastery Grids* is a student-facing "social progress visualization" built on open learner modelling and evaluated in a classroom. `bodily_review_2017` carries "almost always built separately" — 17 % of 93 reviewed articles integrate both.
+- **Dependency sweep.** 58 prose occurrences checked against the glossary. Sound in Ch. 1, Ch. 4, Ch. 6, Ch. 9 and the codebook appendix. Still flagged at their sites: Related Work's "broad, multi-layered structural dependencies", and Implementation's two non-course uses.
 
 Verified 2026-09-02, against the PDFs delivered that day:
 

@@ -73,7 +73,6 @@
 \definecolor{tdmajor}{RGB}{255,236,208}
 \definecolor{tdminor}{RGB}{253,247,190}
 \definecolor{tdrev}{RGB}{221,234,252}
-\definecolor{tdok}{RGB}{219,242,222}
 
 \newcommand{\rvnote}[4]{%
   \ifreviewnotes
@@ -84,7 +83,6 @@
 \newcommand{\TDmajor}[2]{\rvnote{tdmajor}{MAJOR}{#1}{#2}}
 \newcommand{\TDminor}[2]{\rvnote{tdminor}{MINOR}{#1}{#2}}
 \newcommand{\TDrev}[2]{\rvnote{tdrev}{YOUR REV}{#1}{#2}}
-\newcommand{\TDok}[2]{\rvnote{tdok}{VERIFIED}{#1}{#2}}
 
 % Link a term to its entry in the appendix glossary. House convention: used at
 % the term's first occurrence in the thesis, and only there.
@@ -198,10 +196,10 @@ document. Each entry links to the note at the place it applies. The whole
 apparatus disappears when \verb|\reviewnotesfalse| is set in \texttt{main.tex}.
 Severities: \textbf{BLOCKER} prints wrongly in the submitted PDF as it stands;
 \textbf{MAJOR} is a correctness or argument defect; \textbf{MINOR} is style,
-length or housekeeping; \textbf{YOUR REV} is one of your own review comments,
-promoted from a source comment so it is visible while reading; \textbf{VERIFIED}
-records a citation opened against its source and found to hold, so it is not
-checked twice.
+length or housekeeping and \textbf{YOUR REV} is one of your own review
+comments, promoted from a source comment so it is visible while reading. A note
+that has been dealt with is deleted rather than marked done; what was checked and
+what it showed is recorded in \texttt{ANWEISUNGEN.md}, not here.
 \listoftodos
 
 \TDblock{Title-page metadata}{\texttt{\textbackslash thesistitle} is still
@@ -216,8 +214,6 @@ Recommender System'' over-promises relative to what was built and evaluated.}
 \texttt{kitools} are empty files that \texttt{main.tex} inputs, so each renders
 as an empty headed page. The AI-tools disclosure is required by the statement of
 originality; check TU Wien Informatics' current policy before drafting it.}
-
-\TDmajor{Dependency vocabulary, and where the sweep stands}{The glossary fixes two terms. A \emph{dependency} is the structure a curriculum itself fixes, its containment hierarchy together with the hard constraints published alongside it; that is what the evaluated Graph View drew. A \emph{soft dependency} is a recommended ordering, curated rather than published, reported by the compliance engine as an advisory throughout the study but drawn in no view until the edge layer built afterwards. A bare \enquote{dependency} never includes the soft form. A first pass over all 58 prose occurrences was run on 2026-09-02 and its result is recorded in each file, so no chapter starts by re-reading them all; the two places that describe the post-study state and had to name both forms have been corrected. The remaining occurrences read correctly under this vocabulary and are re-confirmed as part of each chapter's own pass, item~15 of the definition of done in \texttt{ANWEISUNGEN.md}.}
 
 \TDminor{Build hygiene}{The current build has 30 overfull and 38 underfull
 boxes. Fix the overfull ones above about 10\,pt, which visibly bleed into the
