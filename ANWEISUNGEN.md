@@ -46,7 +46,7 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 | Sampled frames | **2,179** (Scenario A 1,197 + Scenario B 982) |
 | Evaluation codes | 99 total: 68 E-P, 22 E-G, 9 E-N |
 | Unmet capabilities | 27 distinct |
-| Programmes in scope | 2 — BSc Computer Science UE 033 521, MSc Software Engineering UE 066 937 |
+| Programmes in scope | 2 — BSc Computer Science UE 033 521, MSc **Software Engineering** UE 066 937. *Not* "Software Engineering & Internet Computing": the programme was renamed, confirmed against the curriculum's own title page (Senate 16 June 2025, in force 1 October 2025) |
 | Bachelor programme total | 180 ECTS, 101 courses |
 | Scope boundaries | OOS1–OOS4 |
 
