@@ -8,6 +8,10 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[Exam Subject] The second level of the curriculum hierarchy (Programme $\to$ Exam Subject $\to$ Module $\to$ Course), a named grouping of modules within a programme (Section~\ref{sec:curriculum-abstraction}).
   \item[Module] The third level of the curriculum hierarchy; a named unit containing one or more courses, carrying a single obligation category (Section~\ref{sec:curriculum-abstraction}).
   \item[Course (course item)] The fourth, most granular level of the curriculum hierarchy; refers to any course-item entry regardless of teaching format (VO, UE, VU, PR, etc.).
+  \item[Containment] The hierarchy relation Programme $\to$ Exam Subject $\to$ Module $\to$ Course (Section~\ref{sec:curriculum-abstraction}), and what the Graph View's default edges draw. It is never called a dependency in this thesis.
+  \item[Dependency] Used in this thesis only for an ordering relation between courses, in two forms. A \emph{formal} (hard) prerequisite is fixed by the curriculum itself; the compliance engine blocks on it, and the Graph View of the evaluated system drew it as a togglable overlay (Section~\ref{sec:graph-ltr}). A \emph{recommended} (soft) ordering is curated rather than published; the compliance engine reported it as a non-blocking advisory throughout the evaluation study, but no view drew it, and the edge layer that does was built afterwards (Section~\ref{sec:impl-prereq-edges}). A bare \enquote{dependency} means the two taken together; where only one form is meant, it is named.
+  \item[ECTS] European Credit Transfer and Accumulation System credit, the unit in which curriculum workload is expressed throughout this thesis. One full-time semester is 30~ECTS under the Bologna process.
+  \item[StEOP] \emph{Studieneingangs- und Orientierungsphase}, the introductory phase of an Austrian Bachelor programme: a defined set of courses that gates progression into the rest of the curriculum. The Bachelor programme in scope has one; the Master programme does not.
   \item[Obligation category / obligation type] Whether a module is mandatory, constrained elective, or fully elective (Section~\ref{sec:obligation}); the underlying institutional taxonomy differs between the Bachelor and Master programmes (Section~\ref{sec:course-obligation-abstraction}).
   \item[Planning status] The lifecycle state of a course in a student's plan: not planned, parked, planned, or done (Section~\ref{sec:lifecycle}).
   \item[Parking Stage] The intermediate holding area for shortlisted courses that have not yet been assigned to a semester (Section~\ref{sec:parking}).
@@ -23,10 +27,6 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[Recommendation Panel] The independently-toggleable left-side panel showing per-family course recommendations with inspectable evidence (Section~\ref{sec:rec-panel}).
   \item[Compliance Engine] The backend rule engine invoked after every planning action, returning fulfilment status, ECTS statistics, hard violations, and soft warnings (Section~\ref{sec:compliance}).
   \item[Dashboard] The persistent right-panel component showing compliance and progress information at four aggregation levels (Section~\ref{sec:dashboard}).
+  \item[Scenario A / Scenario B] The two conditions of the evaluation study (Section~\ref{sec:eval-conditions}). Scenario~A is a Cybersecurity persona planned with the Graph View unavailable; Scenario~B is an Artificial Intelligence persona planned with the full tool. Every participant met them in that order.
   \item[Semester Picker] The menu used to assign a course to a semester or the Parking Stage from wherever it is triggered (Section~\ref{sec:semester-picker}).
-\end{description}
-
-\TDmajor{Four glossary entries are missing}{(1)~\textbf{Dependency}, the word this thesis most needs to pin down, has no entry, and the text uses it in three senses: the containment relation the graph draws, the formal or hard prerequisite relation the curriculum publishes and the compliance engine blocks on, and the recommended or soft ordering the engine holds as an advisory. State all three and say which one a bare ``dependency'' means. (2)~\textbf{ECTS}, used 124 times and expanded nowhere. (3)~\textbf{StEOP}, used eight times and expanded nowhere. (4)~\textbf{Scenario~A / Scenario~B}, the two conditions, referred to by name throughout Chapters~\ref{chap:evaluation} and~\ref{chap:discussion}.}
-
-\begin{description}\item[]
 \end{description}
