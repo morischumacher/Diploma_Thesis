@@ -165,6 +165,18 @@ Two further rules that no scanner can check. **A claim verb must match the evide
 
 **No vague summary-hedges.** "leaves a clear gap" → name the gap; "in spirit closest to X" → "most closely aligned with X"; "a large and varied field" → "a substantial and heterogeneous field". Avoid loose intensifiers (*really, very, themselves*).
 
+**No self-flattering comparison — the "rather than" rule.** Do not write a sentence whose comparative half exists only to make this thesis's choice look better than an alternative nobody proposed. The forms are *X rather than Y*, *not Y but X*, *X instead of Y*, *X as opposed to Y*. The construction is banned whenever Y is an inferior option the thesis did not take and does not otherwise discuss: Y is then a foil, and the sentence is persuading rather than reporting. State what was done and let the reader judge it.
+
+*The test.* Cover the comparative half. If the sentence still carries every fact the reader needs, the half was decoration — cut it. It stays only if removing it loses information, **and** Y is one of:
+
+1. **A source's own contrast**, reported as that source's claim. "Munzner asks that assumptions be stated rather than left implicit."
+2. **A limitation**, where the unchosen half is the *stronger* option this thesis did not reach. "The evidence is inferential, drawn from adjacent systems rather than from research that tests hybrid interfaces against alternatives." Here the comparison costs us something, so it is not flattery.
+3. **A precise category distinction** the reader needs both halves of, where both terms are real and neither is a strawman. "descriptive rather than causal"; "perceived rather than actual completion"; "decision support rather than decision automation".
+
+*Banned, with the fix.* "rest on two records rather than on self-report alone" → name the two records. "treats that as an empirical question rather than a design assumption" → say what was asked and of whom. The tell is that Y describes a weaker way of doing our own work that no one in the thesis is doing.
+
+*Density.* Even where every use is allowed, they should not stack: three in four sentences reads as a tic regardless of whether each is defensible on its own. `tools/check.py` warns on any paragraph, list item or table row holding two or more. The warning is a prompt to defend each one against the test above, not an automatic cut — a parallel pair of limitations ("self-reported success measures perceived rather than actual completion, and the interface log records which panels were configured rather than where attention was") earns its two. The per-sentence judgement stays manual.
+
 **No meta-discourse.** Delete sentences that describe the writing rather than say something. Known sites: `design.tex` §6.2 opening and §6.11 opening; `evaluation.tex` §8.1 sentence 2 and §8.2 sentence 3; `methodology.tex` chapter opening; `fromthemestorequirements.tex` opening (keep the RQ1-completion sentence). A chapter's structure is visible from its headings.
 
 **Voice: `we` for research acts, "this thesis" for the document.** Both are already in use (42 vs 50) and both are correct — the rule is *which* is used where, not which one wins. `we` when the sentence describes something the researcher did ("we sampled every recording", "we do not interpret the small differences"). "This thesis" when the sentence describes the document or its scope ("this thesis covers two programmes"). Never "the author" in running prose, and never "I".

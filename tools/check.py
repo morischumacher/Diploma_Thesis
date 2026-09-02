@@ -127,6 +127,19 @@ def main():
             if hits:
                 c = collections.Counter(h if isinstance(h, str) else h[0] for h in hits)
                 warn('%s: %s x%d %s' % (f, what, len(hits), dict(c.most_common(5))))
+        # ANWEISUNGEN §3, the "rather than" rule. Whether a single comparison is
+        # a real distinction or a strawman is a judgement no regex can make, so
+        # only the pile-up is flagged: two or more in one paragraph is a tic
+        # even when each one would pass on its own.
+        COMPARE = r'\brather than\b|\binstead of\b|\bas opposed to\b|\bnot merely\b|\bnot simply\b'
+        # A list item and a table row are each their own unit of prose, so they
+        # are split out; otherwise a whole itemize counts as one paragraph.
+        units = re.split(r'\n\s*\n|\\item\b|\\\\', prose)
+        for para in units:
+            n = len(re.findall(COMPARE, para))
+            if n >= 2:
+                opener = ' '.join(para.split())[:60]
+                warn(f'{f}: {n} self-comparisons in one paragraph: {opener}')
         for cap in caption_bodies(t):
             p = plain(cap)
             lim = 350 if '\\begin{table' in t[:t.find(cap)][-4000:] else 200
