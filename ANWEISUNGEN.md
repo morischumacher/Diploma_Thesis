@@ -281,6 +281,23 @@ Before every PR, run the repo check script (`tools/check.py`, to be committed): 
 
 ---
 
+## 11a. Submission state — what must be removed
+
+The review apparatus is designed to leave with one edit, and this is verified, not assumed: building with the toggle flipped gives **184 pages, no errors, and zero residue** (no "Review Annotations" page, no To-Do index, no coloured boxes, no severity words anywhere in the extracted text).
+
+**`python3 tools/check.py --submission`** checks all of the following and fails on any of them.
+
+1. **`main.tex`: `\reviewnotestrue` → `\reviewnotesfalse`.** This one line removes every `\TDblock` / `\TDmajor` / `\TDminor` / `\TDrev` / `\TDok` note, the "Review Annotations" chapter and its ToC entry, the generated To-Do index, and the explanatory paragraph. Nothing else in the document changes.
+2. **No `%% REV` or `%% AIREV` comments left in any source file.** These are invisible in the PDF but are working notes and should not ship in the sources.
+3. **`main.tex` metadata:** real title, subtitle (or removed), submission date, keywords. All four still print the template's placeholders today.
+4. **No empty `formalities/` file.** Abstract, Kurzfassung, acknowledgements, Danksagung and both AI-tools disclosures are `\input` by `main.tex`, so an empty file renders as an empty headed page.
+5. **No raw `\todo{}`** — all five have been converted; the check catches any reintroduced.
+6. **Clean build:** no errors, no undefined references, no undefined citations.
+
+Two things the check deliberately does *not* do. It does not delete the notes from the sources: `\reviewnotesfalse` is enough for the submitted PDF, and keeping them means the annotated version can be rebuilt afterwards. And it says nothing about `ANWEISUNGEN.md`, `CONTROL.md`, `REVIEW.md`, `tools/` or `context/` — none of them reaches the PDF. Whether they stay in the repository is a separate decision, and `context/` in particular holds the consent PDF flagged in §13.
+
+---
+
 ## 12. Chapter status and order of work
 
 Order is chosen so that the chapters whose content is still moving come after the ones that fix the vocabulary.

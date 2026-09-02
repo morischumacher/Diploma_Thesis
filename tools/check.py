@@ -34,6 +34,8 @@ def plain(s):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--chapter', help='restrict style checks to one file')
+    ap.add_argument('--submission', action='store_true',
+                    help='check the document is in submission state (see ANWEISUNGEN section 15)')
     args = ap.parse_args()
 
     texts = {f: read(f) for f in TEX}
@@ -103,6 +105,31 @@ def main():
             lim = 350 if '\\begin{table' in t[:t.find(cap)][-4000:] else 200
             if not (100 <= len(p) <= lim):
                 warn(f'{f}: caption {len(p)} chars (limit 100-{lim}): {p[:60]}')
+
+    if args.submission:
+        print('\n--- submission state ---')
+        m = read('main.tex')
+        if re.search(r'^\\reviewnotestrue', m, re.M):
+            bad('main.tex still has \\reviewnotestrue: notes and the To-Do index will print')
+        for pat, what in [(r'Title of the Thesis', 'placeholder thesis title'),
+                          (r'Optional Subtitle of the Thesis', 'placeholder subtitle'),
+                          (r'\\setdate\{01\}\{01\}\{2001\}', 'placeholder date'),
+                          (r'a\\sep list\\sep of\\sep keywords', 'placeholder keywords')]:
+            if re.search(pat, m):
+                bad('main.tex still carries the %s' % what)
+        for f in sorted(glob.glob('formalities/*.tex')):
+            body = strip_comments(read(f))
+            body = re.sub(r'\\TD(block|major|minor|rev|ok)\{.*', '', body, flags=re.S)
+            if not body.strip():
+                bad('%s is empty and is \\input by main.tex' % f)
+        for f, t2 in bodies.items():
+            for pat, what in [(r'\\todo\{', 'a raw \\todo'),
+                              (r'\\TD(?:block|major|minor|rev|ok)\{', 'a review note')]:
+                n = len(re.findall(pat, t2))
+                if n: warn('%s still contains %d x %s (hidden by \\reviewnotesfalse, but delete before archiving)' % (f, n, what))
+        for f, t2 in texts.items():
+            n = len(re.findall(r'%%\s*(?:AI)?REV', t2))
+            if n: bad('%s still has %d unresolved %%%% REV comment(s)' % (f, n))
 
     print('\nBLOCKING CHECKS FAILED' if fail else '\nall blocking checks passed')
     return 1 if fail else 0

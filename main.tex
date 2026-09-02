@@ -8,7 +8,6 @@
 \documentclass[final,twoside]{vutinfth}
 
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
-%% AIREV [BLOCKER] (The title-page metadata is still the template's: \thesistitle is "Title of the Thesis", the subtitle is the placeholder, \setdate is 01.01.2001, and \Keywords is "a list of keywords". These render on the title pages and in the PDF properties of the submitted document; only you can supply the real title, subtitle or its removal, submission date, and keywords.)
 \newcommand{\authorname}{Moritz Jakob Schumacher} % The author name without titles.
 \newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
 
@@ -224,7 +223,6 @@ margin; ignore the rest.}
 \mainmatter
 
 \chapter{Introduction}
-%% AIREV [MINOR] (Document-wide residual: "dependency" is used in two senses, the containment relation the graph draws and the prerequisite relation of the cited literature, and about forty occurrences have not been checked against the glossary definition proposed at the end of the glossary. After the Introduction, Related Work and glossary edits are made, sweep every "dependenc*" occurrence and confirm each is either the prerequisite sense or an explicit historical description of the prototype and the formative interviews.)
 \input{chapters/introduction}
 
 \chapter{Methodology}
