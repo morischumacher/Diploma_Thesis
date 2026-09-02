@@ -70,6 +70,17 @@ The front of the thesis (RQ1, RQ2, the Related Work gap statement) promises unde
 - **The only occurrences that had to change immediately are the post-study ones**, because there a bare "dependency" would silently exclude the soft form the edge layer added. Both were corrected: Ch. 7 §7.8.2 and Ch. 9 §9.8 now read "a view drawing dependencies and soft dependencies together" instead of "a dependency-revealing view". Everywhere else the word already reads correctly under the new definition and is re-confirmed during that chapter's own pass, item 15 of the definition of done.
 - **Two flagged for their chapter's pass:** Related Work's "broad, multi-layered structural dependencies", which is this thesis's own argument and is what Ch. 8–9 report these curricula do not have; and Implementation's two non-course uses ("Dependencies point downward only" is the software-module sense; "focus-area dependency matrix" is a gate). One must never be touched: questionnaire item 2 in the evaluation appendix is the instrument as administered.
 
+### 1.1a Scope, assumption, limitation — where the line runs
+Asked by Moritz on 2026-09-02, and worth keeping because the three are easy to conflate.
+
+| | Question it answers | What breaks if it is wrong |
+|---|---|---|
+| **Scope** | what did we choose not to cover? | nothing — coverage is narrower, conclusions stay true |
+| **Assumption** | what did we take as true without testing it? | conclusions *inside* scope become wrong |
+| **Limitation** | what follows from how we worked? | nothing new — it bounds how far findings travel |
+
+The test is **can the thesis be wrong because of it?** If yes it is an assumption; if it is merely not covered it is scope; if it is a residue of how the work was done it is a limitation. One item may appear twice but never as the same sentence: the *choice* goes under Scope, the *consequence* under Limitations.
+
 ### 1.2 Length — polish, do not restructure
 `REVIEW.md`'s shortening plan is **wrong on its headline item**: Chapter 5 already carries only the summary table, and the full feature specs already live in Appendix A.3. Corrected position:
 
@@ -137,6 +148,8 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 | *the tool knows / wants / decides* | anthropomorphism | the engine reports / the rule blocks |
 | *we believe, we feel, we think* | stance without an argument | we argue (with the argument), or state the claim |
 | *I, my, me* | the thesis uses "we" for research acts | we |
+| an em dash (—) | not house punctuation, in the thesis or in anything drafted in chat | a comma, or restructure |
+| *study 1, study 2, the needfinding study, the user study* | the two studies have fixed names | the formative study / the evaluation study |
 
 Two further rules that no scanner can check. **A claim verb must match the evidence:** *establishes* only where the design supports the inference, *suggests* or *indicates* for an exploratory pattern, and any finding sentence names its source (a code, a table, a section). And **no rhetorical questions** in prose — a question in the thesis's own voice is either a research question or a sentence that should have been a statement.
 
@@ -335,7 +348,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | # | Chapter | State | Main work |
 |---|---|---|---|
 | 1 | Introduction | **done 2026-09-02**, two items left for Moritz | All 7 review comments resolved; ED/ERS paragraph rewritten to Ch. 3's argument; TU Wien and both curricula footnoted; contributions sized; Outlook credits Ch. 9 with RQ3. Open for a decision: the opening paragraph's citation fit (Morsy/Wong/Schulte), and whether curriculum analytics returns via Ch. 3 |
-| 2 | Methodology | needs edit | second assumption (`%% AIREV`), proposal-deviation paragraph, data-handling `\todo`, ECTS/StEOP expansion |
+| 2 | Methodology | **done 2026-09-02** | All 13 review comments resolved; four factual errors corrected (participant codes, frame-sampling source, anonymisation claim, "laboratory study"); scope split into artefact and evidence with OOS5 added; assumptions reduced to two bullets; validity block cut to internal and construct. Open: the proposal-deviation paragraph |
 | 3 | Related Work | needs edit | Positioning gap wording (§1.1), Ma et al. claim already softened — re-verify, five-paper "broad consensus" sentence |
 | 4 | Formative Study | **needs new section** | Findings section (§1.4), quotation style sweep, `\todo` on forward references, "Link to Subsequent Chapters" cut to two sentences |
 | 5 | From Themes to Requirements | light | opening meta-discourse, cross-check the 13/55 counts against Appendix A.3 |

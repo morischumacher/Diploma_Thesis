@@ -95,7 +95,10 @@ def main():
         ('filler hedge', r'(leaves a clear gap|in spirit|a large and varied|it is worth noting|it should be noted|needless to say)'),
         ('anthropomorphism', r'\b(the (?:tool|system|engine|graph|table) (?:wants|knows|thinks|believes|decides|feels))\b'),
         ('stance without argument', r'\b(we (?:believe|feel|think))\b'),
-        ('first-person singular', r'(?<![A-Za-z])(I|my|me)(?![A-Za-z])'),
+        ('first-person singular', r'(?<![A-Za-z])(I(?![0-9])|my|me)(?![A-Za-z])'),
+        ('em dash in prose', r'\u2014'),
+        ('study named by ordinal', r'\b[Ss]tudy[~ ]?[12]\b'),
+        ('study-name variant', r'\b(needfinding study|summative study|first study|second study|user study)\b'),
     ]
     for f in targets:
         t = bodies[f]
