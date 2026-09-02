@@ -399,7 +399,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | **Vessey 1991** (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | The theory the central design claim is read through |
 | **Davis 1989** (TAM) | Ch. 8 instruments | The instrument's provenance |
 | **Laugwitz et al. 2008** (UEQ) | Ch. 8 instruments | Same |
-| **ISO 9241-11** and **ISO 9241-210** | Ch. 2, Ch. 5, Ch. 8 (the three-dimension mapping) | The framework RQ3 is answered against |
+| **ISO 9241-210** | Ch. 5 (the human-centred design activities) | Optional. The catalogue page in `context/related-work/77520.html` carries the scope text those four activities come from. *ISO 9241-11 was on this list and is now verified — see the log.* |
 | **Nielsen 1993** (*Usability Engineering*) | Ch. 8 severity ratings | The severity scale's source |
 | **Saldaña 2013** (coding manual) | Ch. 4 analysis method | Method citation |
 | **Ware 2004**, **Palmer 1992**, **Shneiderman 1983** | Ch. 6 encoding decisions | Conventional uses, but each is cited for a specific perceptual claim |
@@ -413,7 +413,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 - Whether **TU Wien Informatics' current AI-use policy** has been checked with René or Selina, since it shapes the disclosure text.
 - Access to the **evaluation study's `analysis/` folder** (stage logs, findings matrix, completion audit, `US Results.xlsx`) if you want any number re-derived rather than taken on trust — it lives on your Mac, not in this repo.
 
-**Per-source disposition, set 2026-09-02.** Four must be opened; the rest are reworkable if they cannot be obtained.
+**Per-source disposition, set 2026-09-02.** Four were marked must-open; ISO 9241-11 has since been verified, leaving three. The rest are reworkable if they cannot be obtained.
 
 | Source | Disposition |
 |---|---|
@@ -421,10 +421,9 @@ Order is chosen so that the chapters whose content is still moving come after th
 | **Nielsen 1993** | **Must open.** Carries the severity scale behind every rating in Table 8.8. Book, Academic Press |
 | **Caulfield 2013** | **Must open.** A retraction claim against a published result cannot rest on an unread source. Also: the bib title does not match the post findable online — settle which piece and which author |
 | **Greenwald 1976** | **Must open.** Cited as the warrant for not counterbalancing, the design choice most likely to be pressed at the defence. `10.1037/0033-2909.83.2.314` |
-| ~~**ISO 9241-11**~~ | **Verified 2026-09-02** without buying the standard, see the log |
 | Vessey 1991 | Reworkable. The claim made of it is the paper's own central thesis. `10.1111/j.1540-5915.1991.tb00344.x` |
 | Laugwitz 2008 | Reworkable. UEQ structure already verified against the deployed instrument. Free from ueq-online.org |
-| ISO 9241-11 | ~~Reworkable~~ **verified 2026-09-02** — see the log below |
+| ~~ISO 9241-11~~ | **Verified 2026-09-02** from the free ANSI preview, without buying the standard. See the log. |
 | ISO 9241-210 | Reworkable. `context/related-work/77520.html` is the catalogue page carrying the four HCD activities |
 | Ware 2004 | Reworkable. Cited for the concept it is known for; no quotation or number |
 | Palmer 1992 | Reworkable. Same |
