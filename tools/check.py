@@ -83,7 +83,7 @@ def main():
     # --- style ------------------------------------------------------------
     targets = [args.chapter] if args.chapter else \
               [f for f in TEX if f.startswith(('chapters/', 'appendix/'))]
-    AMERICAN = r'\b(color|colors|behavior|behaviour?s|catalog|catalogs|judgment|favor|labeled|modeling|analyze|analyzed|fulfillment|program|programs|visualization|personalization|prioritization|organized|recognized|minimize|utilize|emphasize|individualized)\b'
+    AMERICAN = r'\b(color|colors|behavior|behaviors|catalog|catalogs|judgment|favor|labeled|modeling|analyze|analyzed|fulfillment|program|programs|visualization|personalization|prioritization|organized|recognized|minimize|utilize|emphasize|individualized)\b'
     SLANG = r'\b(figure out|kind of|a lot of|pretty much|basically|end up|deal with|come up with|turn out|get around)\b'
     for f in targets:
         t = bodies[f]
