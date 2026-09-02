@@ -78,6 +78,8 @@ The front of the thesis (RQ1, RQ2, the Related Work gap statement) promises unde
 - **Additions are expected to outweigh cuts**: Ch. 4 findings section (§1.4), abstract, Kurzfassung, acknowledgements, AI-tools disclosure. Budget for ~190 pp at submission and stop worrying about it.
 
 ### 1.3 Working mode — branch + PR, one chapter at a time
+
+**Never push to `main` directly.** Every change goes on a branch and into a pull request, and what it does is explained in the chat before it is opened. This holds even for merge resolutions and for changes that look purely mechanical — Moritz reviews in GitHub and pulls into Overleaf from `main`, so an unannounced commit on `main` arrives in his editor without him having seen it. Set 2026-09-02 after two direct pushes.
 A fine-grained PAT scoped to `Diploma_Thesis` (Contents read/write, Pull requests read/write) is provided; rotate it after submission. Loop per chapter:
 
 1. Pull `main`. Re-read the chapter end to end, not the diff.
