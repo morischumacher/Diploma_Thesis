@@ -54,9 +54,11 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 ## 0a. Open when work resumes (3 September)
 
-1. ~~Decide what happens to Methodology §2.6, "Expected Results".~~ **Resolved 2 September: cut.** It was a proposal section that had survived into the finished thesis, listing deliverables rather than expectations and duplicating Ch. 1's contributions. The part worth keeping, how the evaluation's three strands are evidenced and why they are descriptive rather than causal, moved into Ch. 1 §1.4 Contributions as a closing paragraph. Ch. 9 §9.7's cross-reference now points at Ch. 1 §1.4 instead of the deleted label.
-2. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
+1. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
+2. **Improve the consistency checker** (`tools/check.py`). Moritz asked for time on this specifically. The brief: every miss so far has been an edit in one place silently invalidating a claim in another, which a chapter-by-chapter read cannot catch. See §10 item 18 (proposed) and the miss log.
 3. The two stale `overleaf-*` branches to delete once Overleaf has pulled `main`.
+
+*Closed 2 September:* Methodology §2.6 "Expected Results" was cut (PR #19). Its evaluation-evidence paragraph moved to Ch. 1 §1.4 Contributions; Ch. 9 §9.7 now cross-references Ch. 1 §1.4.
 
 ---
 
