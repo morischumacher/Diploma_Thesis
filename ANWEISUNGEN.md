@@ -52,6 +52,14 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 ---
 
+## 0a. Open when work resumes (3 September)
+
+1. ~~Decide what happens to Methodology §2.6, "Expected Results".~~ **Resolved 2 September: cut.** It was a proposal section that had survived into the finished thesis, listing deliverables rather than expectations and duplicating Ch. 1's contributions. The part worth keeping, how the evaluation's three strands are evidenced and why they are descriptive rather than causal, moved into Ch. 1 §1.4 Contributions as a closing paragraph. Ch. 9 §9.7's cross-reference now points at Ch. 1 §1.4 instead of the deleted label.
+2. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
+3. The two stale `overleaf-*` branches to delete once Overleaf has pulled `main`.
+
+---
+
 ## 1. Decisions taken in this session
 
 ### 1.1 The dependency seam — resolved by qualifying the front, not the back
