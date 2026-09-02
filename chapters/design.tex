@@ -14,8 +14,6 @@ The tool's scope follows directly from Chapter~\ref{chap:methodology} and~\ref{c
 
 % ============================================================
 
-\TDmajor{Chapter-wide housekeeping}{Four sweeps belong to this chapter and are recorded once here rather than at every site. (1)~\emph{Quotation style}: this chapter mixes 38 instances of \texttt{``\textbackslash textit\{\dots\}''} with 24 of \texttt{\textbackslash enquote\{\dots\}}. The house form is \texttt{\textbackslash enquote} without italics; the same sweep applies to Chapter~\ref{chap:evaluation} and both appendices, 148 instances in total. (2)~\emph{Emphasis}: 121 of the thesis's 198 \texttt{\textbackslash emph} uses are in this chapter. Reserve it for a term's first introduction, the label opening a rejected-alternative sentence, and genuine single-word contrast. (3)~\emph{Em dashes}: three remain here and nowhere else in the thesis. (4)~\emph{Rejected alternatives}: where an alternative was never genuinely live, cut the paragraph to one sentence; keep the four that were actually weighed in full. Expected saving 4 to 6 pages.}
-
 \section{General Architectural Design}
 \label{sec:general}
 This section establishes the frame every later section builds on, and moves from the outside inwards. It first divides the screen into panels, then settles what occupies the centre panel and why only one view may occupy it at a time. It closes with the two abstractions, curriculum structure and course obligation, that every visual encoding and every compliance rule in the later sections refers back to.
@@ -23,7 +21,7 @@ This section establishes the frame every later section builds on, and moves from
 % ------------------------------------------------------------
 \subsection{Three-Panel Shell}
 \label{sec:three-panels}
-The outermost design decision is how the screen is divided, because that division fixes where every component described later in this chapter lives. Participants described planning as analogous to working at a physical desk (``\textit{like a desk… you just push things around}'' (C21)), which presupposes simultaneous access to multiple activities rather than sequential navigation between them. Feature~\ref{feat:004}, Req.~1 requires that the catalogue and the planning canvas be simultaneously visible, so a course can be added while observing the canvas update. Feature~\ref{feat:003}, Req.~1 requires compliance feedback to update in real time, ruling out placing it behind a tab where it would stop being ambient. Nielsen's recognition-rather-than-recall heuristic~\cite{nielsen1994} calls for minimising the user's memory load. A fixed region per function satisfies this directly: its position is stable, so a student recognises where a function lives instead of having to recall which mode a shared region currently holds.
+The outermost design decision is how the screen is divided, because that division fixes where every component described later in this chapter lives. Participants described planning as analogous to working at a physical desk (\enquote{like a desk… you just push things around} (C21)), which presupposes simultaneous access to multiple activities rather than sequential navigation between them. Feature~\ref{feat:004}, Req.~1 requires that the catalogue and the planning canvas be simultaneously visible, so a course can be added while observing the canvas update. Feature~\ref{feat:003}, Req.~1 requires compliance feedback to update in real time, ruling out placing it behind a tab where it would stop being ambient. Nielsen's recognition-rather-than-recall heuristic~\cite{nielsen1994} calls for minimising the user's memory load. A fixed region per function satisfies this directly: its position is stable, so a student recognises where a function lives instead of having to recall which mode a shared region currently holds.
 
 Based on this evidence, the interface is divided into three spatially fixed, simultaneously visible panels (Figure~\ref{fig:three-panels}): a left panel offering three context-sensitive modes (course catalogue in Table View, filter controls in Graph View, and the independently-toggleable Recommendation Panel), a centre panel hosting the active canvas (Table or Graph View), and a right panel hosting the Dashboard, which reports compliance and progress regardless of the active view. The sidebar-plus-canvas half of this structure is carried forward from the prototype unchanged; the two genuine additions are the right-panel Dashboard, which did not exist in the prototype (obligation was shown only as inline node indicators there) and was added in direct response to Feature~\ref{feat:003}, Req.~1, and the independent Recommendation Panel, in response to Feature~\ref{feat:012}, Req.~2.
 
@@ -73,14 +71,14 @@ A \emph{tab-based layout} was rejected because it makes the catalogue and the ca
 
 \subsection{Unified Interactive Canvas for Both Views}
 \label{sec:canvas}
-Within that shell, the centre panel is where planning actually happens, and the next two subsections settle what it is made of. Spatial metaphors recurred when participants described that activity: ``\textit{like a desk… you just push things around}'' (C21), ``\textit{I'd rather place them how I want}'' (C28). A static, column-sorted table cannot express spatial priority, distance-based de-emphasis, or personal groupings that participants explicitly requested (C28, C29). Feature~\ref{feat:013}, Req.~1 (free grouping) and Feature~\ref{feat:013}, Req.~2 (positions persist) require the canvas to hold arbitrary item positions. Shneiderman's direct manipulation principle~\cite{shneiderman1983} supports a drag metaphor generally: the user moves items toward where they want them rather than navigating a form.
+Within that shell, the centre panel is where planning actually happens, and the next two subsections settle what it is made of. Spatial metaphors recurred when participants described that activity: \enquote{like a desk… you just push things around} (C21), \enquote{I'd rather place them how I want} (C28). A static, column-sorted table cannot express spatial priority, distance-based de-emphasis, or personal groupings that participants explicitly requested (C28, C29). Feature~\ref{feat:013}, Req.~1 (free grouping) and Feature~\ref{feat:013}, Req.~2 (positions persist) require the canvas to hold arbitrary item positions. Shneiderman's direct manipulation principle~\cite{shneiderman1983} supports a drag metaphor generally: the user moves items toward where they want them rather than navigating a form.
 
 Based on this, both the Table View and the Graph View are rendered on an \emph{interactive, pannable, zoomable canvas}. Items (course, modules, table, graph structure) are positioned as absolute objects on the canvas. Users navigate by panning (scrolling the canvas in any direction) and zooming. Dragging items updates their position in real time. A configurable snap grid enforces positional alignment after a drag gesture for the Table View, producing ordered layouts without demanding fine motor precision. The visual representation of any item is identical in both views; sharing the same canvas model for both means the item definition is authored once (Feature~\ref{feat:004}, Req.~4: two-way synchronisation), eliminating the risk of visual inconsistency between views.
 
 % ------------------------------------------------------------
 \subsection{Graph and Table View: Mutually Exclusive Centre Panel}
 \label{sec:mutual-exclusion}
-Both views compete for the same resource, horizontal space, and for different reasons: the Graph View needs width to show the curriculum tree at legible node sizes, the Table View to give every semester a column wide enough for its course cards. At standard screen widths there is not enough of it for both at a usable scale. Participants themselves differentiated the two views by purpose: ``\textit{graph used for exploration, not planning}'' (C20), which supports mutual exclusivity rather than permanent co-display.
+Both views compete for the same resource, horizontal space, and for different reasons: the Graph View needs width to show the curriculum tree at legible node sizes, the Table View to give every semester a column wide enough for its course cards. At standard screen widths there is not enough of it for both at a usable scale. Participants themselves differentiated the two views by purpose: \enquote{graph used for exploration, not planning} (C20), which supports mutual exclusivity rather than permanent co-display.
 
 Based on this, only one, Table View or Graph View, occupies the centre panel at any time. This division of labour, Graph View for exploration, Table View for commitment, was already present in the prototype (Chapter~\ref{chap:formative-study}) and was not questioned by any formative-study participant. The active view is toggled by a control in the toolbar.
 
@@ -180,9 +178,11 @@ Furthermore, the system must handle alternative course formats without breaking 
 \label{fig:curriculum-hierarchy}
 \end{figure}
 
+\TDok{Dependency sweep, this chapter: 3 occurrences}{All three are in the recommendation-families section and name the relation explicitly (\enquote{Sequence or dependency}, \enquote{Names the dependency relation}, \enquote{surfacing structural dependencies}). Consistent with the glossary; nothing to change.}
+
 \section{Visual Design of Curriculum Elements}
 \label{sec:visual}
-\TDminor{Meta-discourse}{The opening clause describes the section rather than saying anything; start at ``To satisfy''.}
+\TDminor{Meta-discourse}{The opening clause describes the section rather than saying anything; start at \enquote{To satisfy}.}
 To satisfy the core requirement for a visual-first, low-text interface (Feature~\ref{feat:011}, Req.~1; C54), the design minimises textual clutter by leveraging visual channels.
 
 % ------------------------------------------------------------
@@ -191,7 +191,7 @@ To satisfy the core requirement for a visual-first, low-text interface (Feature~
 \subsection{Course Obligation Encoding}
 \label{sec:obligation}
 
-Obligation type was named as a primary filter dimension: ``\textit{mandatory… narrow elective… broad elective}'' (C42). Obligation type must be readable on every card without opening any popover, because it is the most common criterion for deciding whether to explore a course further.
+Obligation type was named as a primary filter dimension: \enquote{mandatory… narrow elective… broad elective} (C42). Obligation type must be readable on every card without opening any popover, because it is the most common criterion for deciding whether to explore a course further.
 
 Based on Section~\ref{sec:course-obligation-abstraction}, a course or a module can have three obligation types: mandatory, constrained elective, fully elective (Figure~\ref{fig:obligation-rings}). This is encoded using the \emph{perceived border weight} channel~\cite{ware2004}: a thick border denotes mandatory; a medium border denotes constrained elective; a thin border denotes fully elective. A short text label naming the obligation category is additionally shown in the card footer, again as a secondary, redundant confirmation rather than the primary channel.
 
@@ -233,7 +233,7 @@ A \emph{multiple concentric border rings} treatment (e.g.\ one ring for elective
 \subsection{Planning Status Encoding}
 \label{sec:status}
 
-Feature~\ref{feat:002}, Req.~4 requires that the system distinguishes not-planned, planned, and completed states using consistent visual encodings across both views. Participants requested visual differentiation of states: ``\textit{greyed out}'' and ``\textit{star means finished}'' (C19), and ``\textit{colour-based marking for rapid recognition}'' (C19). Feature~\ref{feat:011}, Req.~2 specifies that completed items should be faded while preserving an accessible record.
+Feature~\ref{feat:002}, Req.~4 requires that the system distinguishes not-planned, planned, and completed states using consistent visual encodings across both views. Participants requested visual differentiation of states: \enquote{greyed out} and \enquote{star means finished} (C19), and \enquote{colour-based marking for rapid recognition} (C19). Feature~\ref{feat:011}, Req.~2 specifies that completed items should be faded while preserving an accessible record.
 
 To achieve this, each module and course card encodes its planning status using two pre-attentive visual channels: fill lightness and border saturation. Hue is explicitly avoided here because it is reserved for the subject-colour hierarchy (Section~\ref{sec:subject-colour}). Since lightness and saturation are perceptually separable from hue, both encoding systems can coexist without visual interference. The system distinguishes four distinct states:
 
@@ -241,7 +241,7 @@ To achieve this, each module and course card encodes its planning status using t
   \item Not planned: white fill, full-saturation subject-colour border.
   \item Parked: white fill, full-saturation subject-colour border, identical to not-planned; the parked state is distinguished by a text label in the card footer.
   \item Planned: light grey fill, full-saturation subject-colour border.
-  \item Done: reduced opacity overall, border desaturated to neutral grey; the card ``recedes'' visually.
+  \item Done: reduced opacity overall, border desaturated to neutral grey; the card \enquote{recedes} visually.
 \end{itemize}
 The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent confusion, a short text label (e.g., \enquote{planned}, \enquote{done}) in the card footer acts as a redundant confirmation of the visual state. It does not replace the visual encoding, but rather supports it. Because lightness and saturation are subtler than colour changes, relying on them alone could cause students to miss their planning status. Adding this small text label ensures clarity while still honouring the visual-first, low-text design required by Feature~\ref{feat:011}, Req.~1 (C54).
 
@@ -256,7 +256,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   \fill[white, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
   \draw[subjectblue, line width=2pt, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
   \node[text=gray!25,font=\tiny,text width=1.8cm,align=center] at (1.0,1.8) {Course Name};
-  \node[text=gray!25,font=\tiny] at (1.0,1.2) {4.5 ECTS};
+  \node[text=gray!25,font=\tiny] at (1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries] at (1.0,-0.4) {Not Planned};
   \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (1.0,-1.0) 
   {white fill, coloured border};
@@ -267,7 +267,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
     \fill[subjectblue!15, rounded corners=2pt] (\ox+0.1,\ch-0.5) rectangle (\ox+0.9,\ch-0.15);
     \node[font=\tiny, text=subjectblue] at (\ox+0.5,\ch-0.32) {Parked};
     \node[text=gray!25,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.55) {Course Name};
-    \node[text=gray!25,font=\tiny] at (\ox+1.0,1.0) {4.5 ECTS};
+    \node[text=gray!25,font=\tiny] at (\ox+1.0,1.0) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Parked};
     \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {white fill, label badge};
@@ -276,7 +276,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
     \fill[plannedfill, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
     \draw[subjectblue, line width=2pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
     \node[text=gray!45,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
-    \node[text=gray!45,font=\tiny] at (\ox+1.0,1.2) {4.5 ECTS};
+    \node[text=gray!45,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Planned};
     \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {grey fill, coloured border};
@@ -287,7 +287,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   % (Section obligation), and must not read as a status difference here.
   \draw[doneborder, line width=2pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
   \node[text=gray!70,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
-  \node[text=gray!70,font=\tiny] at (\ox+1.0,1.2) {4.5 ECTS};
+  \node[text=gray!70,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries,text=gray!70] at (\ox+1.0,-0.4) {Done};
   \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0) {light grey fill, light grey border and text};
 \end{tikzpicture}
@@ -380,7 +380,7 @@ An exam-subject card is read for orientation, so it carries the subject name and
   % --- Module header ---
   \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0,-1.5) rectangle (4.4,-0.5);
   \node[font=\scriptsize\bfseries, anchor=west] at (0.18,-0.82) {Module A1};
-  \node[font=\tiny, anchor=east] at (4.22,-0.82) {12 ECTS};
+  \node[font=\tiny, anchor=east] at (4.22,-0.82) {12~ECTS};
   \node[font=\tiny, anchor=west] at (0.18,-1.2) {Mandatory \textperiodcentered\ 2 of 4 done};
   \draw[tick] (4.4,-1.0) -- (5.0,-1.0);
   \node[ann] at (5.05,-1.0) {read for one question, whether the quota is met: aggregated progress};
@@ -391,7 +391,7 @@ An exam-subject card is read for orientation, so it carries the subject name and
   \draw[tick] (0,-4.05) -- (4.4,-4.05);
   \node[font=\tiny] at (2.2,-2.28) {NS \ $|$ \ VU \ $|$ \ winter};
   \node[font=\scriptsize\bfseries, text width=3.9cm, align=center] at (2.2,-3.3) {Network Security};
-  \node[font=\tiny] at (2.2,-4.28) {6 ECTS \textperiodcentered\ Mandatory \textperiodcentered\ planned};
+  \node[font=\tiny] at (2.2,-4.28) {6~ECTS \textperiodcentered\ Mandatory \textperiodcentered\ planned};
 
   \draw[tick] (4.4,-2.28) -- (5.0,-2.28);
   \node[ann] at (5.05,-2.28) {header: official abbreviation, course type, term};
@@ -416,7 +416,7 @@ The subsections below proceed from the overall workflow a student follows, to th
 \subsection{Planning Workflow}
 \label{sec:workflow}
 
-Students build their curricula in an exploration-first sequence. As one participant noted, finding interesting courses is ``\textit{cool as a first step… not thinking yet about which semester}'' (C20). Students distinctly separate the act of exploring options from the act of committing them to a timeline, explicitly stating that the ``\textit{graph [is] used for exploration, not planning}'' (C20). 
+Students build their curricula in an exploration-first sequence. As one participant noted, finding interesting courses is \enquote{cool as a first step… not thinking yet about which semester} (C20). Students distinctly separate the act of exploring options from the act of committing them to a timeline, explicitly stating that the \enquote{graph [is] used for exploration, not planning} (C20). 
 
 To support this mental model and provide a guided onboarding experience (Feature~\ref{feat:006}, Req.~1), the interface introduces an intermediate staging area between discovery and semester assignment (Feature~\ref{feat:004}, Req.~2). Consequently, the tool is designed around a three-stage planning workflow (Figure~\ref{fig:workflow}):
 \begin{enumerate}
@@ -545,7 +545,7 @@ The return path from \emph{planned} to \emph{parked} needs no control of its own
 A \emph{free-form tag system} was rejected because the compliance engine needs a machine-readable planned-versus-done distinction to compute progress, which arbitrary user tags cannot supply; an intermediate \emph{in-progress} state was excluded because the tool works at semester granularity (OOS2).
 \subsection{Drag-and-Drop and Button Interaction Paths}
 \label{sec:interaction-paths}
-Students expect both explicit button actions for planning and direct spatial manipulation, often asking to ``\textit{drag and drop somehow}'' (C21, C44). Consequently, the design treats these not as mutually exclusive choices, but as complementary interaction paths (Feature~\ref{feat:004}). Providing a visible button-based equivalent for every drag action aligns with Nielsen's recognition-rather-than-recall heuristic~\cite{nielsen1994}. Visible buttons make available actions salient immediately, rather than forcing users to guess if a drag gesture is supported. This dual approach ensures accessibility for students unable to perform precise drag gestures (e.g., using a trackpad or with motor impairments) and supports workflows where dragging is impossible, such as adding a course directly from the Graph View. Furthermore, students require robust, data-safe replanning capabilities (Feature~\ref{feat:004}, Req.~3; Feature~\ref{feat:008}, Req.~1, Req.~4). By leveraging the shared planning-state model (Section~\ref{sec:canvas}), moving a planned course acts as a direct state update. Because the Compliance Engine (Section~\ref{sec:compliance}) recomputes dynamically after every action, rapid replanning becomes a natural, immediate consequence of these interaction paths.
+Students expect both explicit button actions for planning and direct spatial manipulation, often asking to \enquote{drag and drop somehow} (C21, C44). Consequently, the design treats these not as mutually exclusive choices, but as complementary interaction paths (Feature~\ref{feat:004}). Providing a visible button-based equivalent for every drag action aligns with Nielsen's recognition-rather-than-recall heuristic~\cite{nielsen1994}. Visible buttons make available actions salient immediately, rather than forcing users to guess if a drag gesture is supported. This dual approach ensures accessibility for students unable to perform precise drag gestures (e.g., using a trackpad or with motor impairments) and supports workflows where dragging is impossible, such as adding a course directly from the Graph View. Furthermore, students require robust, data-safe replanning capabilities (Feature~\ref{feat:004}, Req.~3; Feature~\ref{feat:008}, Req.~1, Req.~4). By leveraging the shared planning-state model (Section~\ref{sec:canvas}), moving a planned course acts as a direct state update. Because the Compliance Engine (Section~\ref{sec:compliance}) recomputes dynamically after every action, rapid replanning becomes a natural, immediate consequence of these interaction paths.
 
 To realise this, the interface provides two complementary mechanisms for every core action. Drag-and-drop serves as the primary mechanism for \emph{spatial repositioning}. Students can move a course card between the curriculum pool, a semester lane, and the Parking Stage, or freely reorder cards within a specific lane. In contrast, buttons serve as the primary mechanism for \emph{state transitions}, such as adding a course to the plan (which opens the semester picker detailed in Section~\ref{sec:semester-picker}), marking a course as completed, or removing it. These paths overlap seamlessly. For instance, dragging a parked course into a semester lane simultaneously performs a spatial move and a state transition to \emph{planned}. Additionally, dragging a card past the last visible semester lane automatically generates a new lane in place. This mirrors the progressive reveal of the button-triggered semester picker (Section~\ref{sec:semester-picker}), allowing students to extend their timeline without switching interaction contexts.
 
@@ -649,7 +649,7 @@ Term availability filters the menu options strictly. The student's workload capa
 \subsection{Notes, Hours, and Grade Popover}
 \label{sec:popover}
 
-A recurring request was to personalise the planning space. Participants asked a tool where they could ``\textit{enter grades and hours and visualise}'' them (C12) while having ``\textit{space to write something next to it}'' (C47). To support this, the system must retain user-owned planning fields (specifically notes, grades, and workload estimates) across data refreshes (Feature~\ref{feat:001}, Req.~4) and allow inline note-taking per course (Feature~\ref{feat:004}, Req.~5).
+A recurring request was to personalise the planning space. Participants asked a tool where they could \enquote{enter grades and hours and visualise} them (C12) while having \enquote{space to write something next to it} (C47). To support this, the system must retain user-owned planning fields (specifically notes, grades, and workload estimates) across data refreshes (Feature~\ref{feat:001}, Req.~4) and allow inline note-taking per course (Feature~\ref{feat:004}, Req.~5).
 
 To achieve this without breaking the spatial context of the canvas, tapping the info icon on a course card opens an inline popover anchored directly to the card. The surrounding cards remain visible, and the canvas position is not altered. The popover contains three user-owned fields: a free-text notes field, a numeric estimated hours per week field, and a grade field. 
 
@@ -680,7 +680,7 @@ When a student manually adds a single course that belongs to a multi-course modu
 
 \section{Visual Legend Design}
 \label{sec:legend}
-Feature~\ref{feat:010} documents that the visual encodings are not self-evident on first exposure: participants asked ``\textit{what do these stand for?}'' (C41) and reported that shorthand labels are ``\textit{not intuitively understandable}'' (C40). Feature~\ref{feat:010}, Req.~1 requires an always-available legend explaining symbols, colours, and status encodings. This is a second, more targeted realisation of the same \enquote{clearly comprehensive content} principle (Bartel et al.~\cite{bartel_design_2024}) that the first-use tooltip sequence addresses more generally (Section~\ref{sec:onboarding}); the paper's specific recommendation of a \enquote{help bar (context-sensitive help)} describes almost exactly a togglable, on-demand legend rather than a one-off tutorial a student sees once and cannot return to.
+Feature~\ref{feat:010} documents that the visual encodings are not self-evident on first exposure: participants asked \enquote{what do these stand for?} (C41) and reported that shorthand labels are \enquote{not intuitively understandable} (C40). Feature~\ref{feat:010}, Req.~1 requires an always-available legend explaining symbols, colours, and status encodings. This is a second, more targeted realisation of the same \enquote{clearly comprehensive content} principle (Bartel et al.~\cite{bartel_design_2024}) that the first-use tooltip sequence addresses more generally (Section~\ref{sec:onboarding}); the paper's specific recommendation of a \enquote{help bar (context-sensitive help)} describes almost exactly a togglable, on-demand legend rather than a one-off tutorial a student sees once and cannot return to.
 
 Based on this, a togglable legend panel, opened from a toolbar control and closable on demand, restates every visual encoding established elsewhere in this chapter in one place: the four planning-status states (Section~\ref{sec:status}), the subject-colour hierarchy (Section~\ref{sec:subject-colour}), and the obligation-type border encoding (Section~\ref{sec:obligation}). The legend is presented as sample cards rendered with the actual interface's own styling, rather than a text description, keeping it visually consistent with what it explains and avoiding a separate description that would need to stay synchronised with the encoding whenever it changes.
 
@@ -693,7 +693,7 @@ The Graph View provides a structured, network-based environment for exploring th
 % ------------------------------------------------------------
 \subsection{Left-to-Right Hierarchical Layout}
 \label{sec:graph-ltr}
-To align with natural reading habits in Western contexts, participants suggested a horizontal layout, noting it is ``\textit{nicer if it goes left to right, because we read left to right}'' (Feature~\ref{feat:010}, C32). This direction maps increasing depth to increasing specificity while answering participants' questions about spatial meaning (``\textit{Is there any meaning to the vertical position?}'', C27).
+To align with natural reading habits in Western contexts, participants suggested a horizontal layout, noting it is \enquote{nicer if it goes left to right, because we read left to right} (Feature~\ref{feat:010}, C32). This direction maps increasing depth to increasing specificity while answering participants' questions about spatial meaning (\enquote{Is there any meaning to the vertical position?}, C27).
 
 Based on this, the curriculum tree renders left-to-right across four depth levels (Programme $\to$ Exam Subject $\to$ Module $\to$ Course; Figure~\ref{fig:graph-schema}). Exam subjects are stacked as distinct horizontal bands on the vertical axis, fulfilling Feature~\ref{feat:010}, Req.~2's \emph{structured layout mode} and directly answering C27: vertical band membership explicitly encodes the exam subject. Two alternatives were weighed against this. The Figma prototype's \emph{radial layout} (Section~\ref{sec:prototype-elicitation}) placed the programme at the centre with subjects radiating outward; it was re-derived and replaced because depth is then encoded as distance from a centre rather than as reading direction, which is what C32 asked for, and because a radial arrangement leaves no free axis on which subject membership could be encoded. A \emph{force-directed layout} was rejected because node positions would be recomputed whenever the graph is expanded or filtered, which would destroy the spatial memory Feature~\ref{feat:013}, Req.~2 requires the layout to preserve.
 
@@ -812,7 +812,7 @@ Based on this, the curriculum tree renders left-to-right across four depth level
 \subsection{Personal Customisability of Node Positions}
 \label{sec:card-ordering}
 
-Bartel et al.'s~\cite{bartel_design_2024} combined principle of user-centred design and study-programme-specific personalisation advocates giving students active control over their planning environment. Motivated by this theoretical foundation and direct user feedback (C28: ``\textit{place items how I want}''), the system allows students to override the default algorithmic layout. This is formalised in Feature~\ref{feat:010}, Req.~2, which specifies both a structured and a free layout mode, and Feature~\ref{feat:013}, Req.~2, which requires these custom spatial arrangements to persist.
+Bartel et al.'s~\cite{bartel_design_2024} combined principle of user-centred design and study-programme-specific personalisation advocates giving students active control over their planning environment. Motivated by this theoretical foundation and direct user feedback (C28: \enquote{place items how I want}), the system allows students to override the default algorithmic layout. This is formalised in Feature~\ref{feat:010}, Req.~2, which specifies both a structured and a free layout mode, and Feature~\ref{feat:013}, Req.~2, which requires these custom spatial arrangements to persist.
 
 To satisfy these requirements while protecting the vertical subject-band structure established in Section~\ref{sec:graph-ltr}, customisability is deliberately restricted to the horizontal axis. A student may drag any node left or right within its column, and the resulting offset persists across sessions, fulfilling the free layout mode. The vertical axis remains managed by the system to prevent layout corruption, keeping subject bands intact. 
 
@@ -822,7 +822,7 @@ To satisfy these requirements while protecting the vertical subject-band structu
 \subsection{Density Control and Multi-Dimensional Filtering}
 \label{sec:collapse-and-filters}
 
-A fully expanded 120-ECTS Master programme contains well over 100 nodes simultaneously, which overwhelms orientation before a student knows the layout (Feature~\ref{feat:009}, C50: ``\textit{with graphs it kind of explodes}''). Furthermore, students need to filter this content without losing context or deleting selections (Feature~\ref{feat:009}, Req.~1--3, C42).
+A fully expanded 120-ECTS Master programme contains well over 100 nodes simultaneously, which overwhelms orientation before a student knows the layout (Feature~\ref{feat:009}, C50: \enquote{with graphs it kind of explodes}). Furthermore, students need to filter this content without losing context or deleting selections (Feature~\ref{feat:009}, Req.~1--3, C42).
 
 To address density, each exam subject and module node is individually collapsible. The default state on first load is fully collapsed to the exam-subject level to allow exploration. Collapse state persists across sessions; when collapsed, the module body is replaced by a structural placeholder of identical dimensions to prevent layout reflow. Three batch presets (\emph{Collapse all}, \emph{Expand all}, and \emph{Restore my layout}) provide single-action control over overall density.
 
@@ -840,21 +840,21 @@ The Table View translates study planning into a shared spatial canvas designed f
 % ------------------------------------------------------------
 \subsection{Spatial Model of the Table View}
 \label{sec:table-spatial}
-Participants visualised their ideal arrangement as ``\textit{like a table, semesters in columns, courses in rows}'' (C18). Representing semesters as vertical columns maps naturally onto a left-to-right reading direction and reinforces the concept of laying out a study plan chronologically (C21). Feature~\ref{feat:004}, Req.~6 further requires manual ordering and at least one automatic ordering mode, which presupposes a spatial model in which position remains meaningful and stable. Bartel et al.~\cite{bartel_design_2024} user-centred design and study-programme-specific personalisation principle motivates keeping the vertical axis free for the student's own ordering rather than a system-imposed one, consistent with the same customisability argument used for card ordering elsewhere in this chapter (Section~\ref{sec:card-ordering}). Fixed lane widths are also necessary for the snap-grid system and for visual comparison across adjacent semesters: irregular columns would weaken alignment and make course distribution harder to assess at a glance.
+Participants visualised their ideal arrangement as \enquote{like a table, semesters in columns, courses in rows} (C18). Representing semesters as vertical columns maps naturally onto a left-to-right reading direction and reinforces the concept of laying out a study plan chronologically (C21). Feature~\ref{feat:004}, Req.~6 further requires manual ordering and at least one automatic ordering mode, which presupposes a spatial model in which position remains meaningful and stable. Bartel et al.~\cite{bartel_design_2024} user-centred design and study-programme-specific personalisation principle motivates keeping the vertical axis free for the student's own ordering rather than a system-imposed one, consistent with the same customisability argument used for card ordering elsewhere in this chapter (Section~\ref{sec:card-ordering}). Fixed lane widths are also necessary for the snap-grid system and for visual comparison across adjacent semesters: irregular columns would weaken alignment and make course distribution harder to assess at a glance.
 
 % ------------------------------------------------------------
 \subsection{Semester Lanes and Header Information}
 \label{sec:semester-lanes}
 
-Semester overload often becomes visible only once ``\textit{the damage is done}'' (Feature~\ref{feat:005}, C20), so the load signal has to sit exactly where course-allocation decisions are made. Participants also asked for ``\textit{space to write something next to it}'' (Feature~\ref{feat:004}, C47). Bartel et al.~\cite{bartel_design_2024} \enquote{clear presentation of curriculum information} principle explicitly recommends that \enquote{course names (including module affiliation)} and similar decision-relevant attributes be \enquote{displayed directly} rather than requiring a further click, from which the ECTS total in the lane header follows.
+Semester overload often becomes visible only once \enquote{the damage is done} (Feature~\ref{feat:005}, C20), so the load signal has to sit exactly where course-allocation decisions are made. Participants also asked for \enquote{space to write something next to it} (Feature~\ref{feat:004}, C47). Bartel et al.~\cite{bartel_design_2024} \enquote{clear presentation of curriculum information} principle explicitly recommends that \enquote{course names (including module affiliation)} and similar decision-relevant attributes be \enquote{displayed directly} rather than requiring a further click, from which the ECTS total in the lane header follows.
 
-Based on this, the lane header displays the semester label (e.g., ``WS 2024/25'') together with a continuously updated ECTS total, following progressive disclosure: ECTS load is permanently visible because it is needed continuously, whereas secondary indicators, estimated hours per week, ECTS-weighted mean grade, per-course notes, and a free-text semester note field, are available on demand through an on-demand popover rather than turning the lane header into a visually dense control area. A student can choose between two automatic sort modes, alphabetical or by ECTS weight, applied within each lane, while allowing users to return to their manual arrangement afterwards.
+Based on this, the lane header displays the semester label (e.g., \enquote{WS 2024/25}) together with a continuously updated ECTS total, following progressive disclosure: ECTS load is permanently visible because it is needed continuously, whereas secondary indicators, estimated hours per week, ECTS-weighted mean grade, per-course notes, and a free-text semester note field, are available on demand through an on-demand popover rather than turning the lane header into a visually dense control area. A student can choose between two automatic sort modes, alphabetical or by ECTS weight, applied within each lane, while allowing users to return to their manual arrangement afterwards.
 
 \emph{Showing semester totals only in the Dashboard} was rejected because the Dashboard is a separate overview component and does not provide immediate feedback during course placement. \emph{Keeping all semester statistics permanently visible} was rejected because it would increase background clutter during active planning, even though these details are only intermittently needed.
 
 \subsection{Parking Stage}
 \label{sec:parking}
-The Shortlist stage of the planning workflow (Section~\ref{sec:workflow}) needs a place on the canvas, described by participants as ``\textit{a pool with the courses where I can move them}'' (C21). It is realised as a Parking Stage positioned directly to the left of the active semester lanes, holding courses that have been explored and saved but not yet committed to a term. To visually separate it from active planning, the Parking Stage intentionally omits chronological and workload indicators, acting purely as a holding area. Because it shares the same continuous canvas as the semester lanes, students can directly evaluate parked courses alongside their committed schedule, seamlessly dragging items into a target semester when deciding  e.g. whether a course belongs in Semester 3 or Semester 4. If a student needs to focus exclusively on their active timeline without distractions, this staging area can be collapsed to reduce visual noise.
+The Shortlist stage of the planning workflow (Section~\ref{sec:workflow}) needs a place on the canvas, described by participants as \enquote{a pool with the courses where I can move them} (C21). It is realised as a Parking Stage positioned directly to the left of the active semester lanes, holding courses that have been explored and saved but not yet committed to a term. To visually separate it from active planning, the Parking Stage intentionally omits chronological and workload indicators, acting purely as a holding area. Because it shares the same continuous canvas as the semester lanes, students can directly evaluate parked courses alongside their committed schedule, seamlessly dragging items into a target semester when deciding  e.g. whether a course belongs in Semester 3 or Semester 4. If a student needs to focus exclusively on their active timeline without distractions, this staging area can be collapsed to reduce visual noise.
 
 An alternative staging layout was considered but rejected. \emph{Representing parked courses as a disconnected sidebar list} was rejected because it breaks the spatial mapping of the course lifecycle (Section~\ref{sec:lifecycle}). Since \emph{parked} is an intermediate state between \emph{not planned} and \emph{planned}, its physical location must reflect this progression. Placing the Parking Stage directly on the canvas between the search sidebar (\emph{not planned}) and the semester lanes (\emph{planned}) creates a logical, left-to-right pipeline. Forcing parked courses back into a sidebar would visually regress them to the exploration phase and disrupt fluid drag-and-drop comparisons.
 
@@ -872,14 +872,14 @@ The searchable course catalogue sidebar is carried over directly from the protot
 % ============================================================
 \section{Onboarding and First-Use Design}
 \label{sec:onboarding}
-The sections above describe a tool in use. This one describes the state it starts in, before the student has a plan or a configured programme. The transition to self-managed study planning was described as a ``\textit{shock}'' (C59) and as ``\textit{one of the most difficult things for first-years}'' (C59). Starting with an empty and unconfigured canvas would likely intensify this problem: without basic programme information, the system cannot display meaningful ECTS targets, semester labels, or compliance rules, which may make the tool seem unclear or incomplete. Feature~\ref{feat:006}, Req.~2 further records that planning needs differ between early-stage students, who mainly follow mandatory courses, and later-stage students, who make more individual choices. Bartel et al.~\cite{bartel_design_2024} \enquote{clearly comprehensive content} principle recommends specifically \enquote{a tool guide for first-time use}, on the grounds that a digital study assistant is a novel kind of application for most students and cannot assume prior familiarity; the tooltip sequence below is the direct realisation of that recommendation.
+The sections above describe a tool in use. This one describes the state it starts in, before the student has a plan or a configured programme. The transition to self-managed study planning was described as a \enquote{shock} (C59) and as \enquote{one of the most difficult things for first-years} (C59). Starting with an empty and unconfigured canvas would likely intensify this problem: without basic programme information, the system cannot display meaningful ECTS targets, semester labels, or compliance rules, which may make the tool seem unclear or incomplete. Feature~\ref{feat:006}, Req.~2 further records that planning needs differ between early-stage students, who mainly follow mandatory courses, and later-stage students, who make more individual choices. Bartel et al.~\cite{bartel_design_2024} \enquote{clearly comprehensive content} principle recommends specifically \enquote{a tool guide for first-time use}, on the grounds that a digital study assistant is a novel kind of application for most students and cannot assume prior familiarity; the tooltip sequence below is the direct realisation of that recommendation.
 
 Based on this, a programme setup dialog is shown on first login, before the student reaches the canvas. It collects the degree programme and the start semester (season and year), the minimum needed to configure ECTS targets, compliance rules, semester labels, and term-availability constraints. After setup, an empty plan triggers a pre-fill offer: the student may accept a template plan based on a standard first-attempt schedule for the selected programme, or decline and build from scratch (Feature~\ref{feat:001}, Req.~5). A lightweight tooltip sequence is shown on first visit to each major view, guiding the student through the workflow (Feature~\ref{feat:006}, Req.~1). The setup dialog establishes the necessary context from the outset, while the optional pre-fill plan addresses the cold-start problem by offering an initial orientation without constraining students who prefer to plan independently.
 
 % ============================================================
 \section{Compliance Engine Design}
 \label{sec:compliance}
-Manual compliance checking was described as effortful and unreliable: Feature~\ref{feat:003}, C13: ``\textit{Excel doesn't know your requirements… you have to double and triple check everything}''. Bartel et al.~\cite{bartel_design_2024} \enquote{\emph{support during planning difficulties}} principle calls specifically for design that contributes to avoiding planning errors and for \enquote{clearly recognisable warnings and hints in case of planning obstacles}, which real-time, automatic checking directly provides. Feature~\ref{feat:003}, Req.~1 (real-time fulfilment update), Req.~2 (hard rules blocking), Req.~3 (soft warnings non-blocking), Req.~4 (missing list updated in real time), and Req.~5 (compliance shared across views) together call for a single authoritative check invoked on every change, and institutional rules changing between academic years calls for that check to live somewhere updatable without an application release.
+Manual compliance checking was described as effortful and unreliable: Feature~\ref{feat:003}, C13: \enquote{Excel doesn't know your requirements… you have to double and triple check everything}. Bartel et al.~\cite{bartel_design_2024} \enquote{\emph{support during planning difficulties}} principle calls specifically for design that contributes to avoiding planning errors and for \enquote{clearly recognisable warnings and hints in case of planning obstacles}, which real-time, automatic checking directly provides. Feature~\ref{feat:003}, Req.~1 (real-time fulfilment update), Req.~2 (hard rules blocking), Req.~3 (soft warnings non-blocking), Req.~4 (missing list updated in real time), and Req.~5 (compliance shared across views) together call for a single authoritative check invoked on every change, and institutional rules changing between academic years calls for that check to live somewhere updatable without an application release.
 
 Based on this, a dedicated rule engine is invoked after every frontend planning action (course added, moved, removed; status toggled, etc.), returning the resulting overall status, per-category ECTS statistics, a list of hard violations (unmet prerequisites or quota breaches), and a list of soft advisory warnings (recommended sequencing observations). Hard violations are surfaced as persistent, non-dismissible notifications; soft warnings as dismissible Dashboard notices; both update in real time, removing the compliance-checking loop from user memory. Judel et al.~\cite{judel_supporting_2023} describe an almost identical hard/soft distinction in a closely related study-planning tool, recommendations versus requirements, with each surfaced through distinct visual indicators rather than one undifferentiated warning; the compliance engine's separate treatments follow the same distinction.
 
@@ -889,7 +889,7 @@ What the engine reports matters as much as when it reports it. Bartel et al.'s c
 \section{Progress Dashboard Design}
 \label{sec:dashboard}
 
-Students conceptualise their progress at multiple granularities (current semester, upcoming semesters, and the overall programme; C1) and require an always-current, ambient placement to constantly answer, ``\textit{where am I right now?}'' (C16). Furthermore, they explicitly want to separate what they have merely chosen from what they have actually completed (C19). 
+Students conceptualise their progress at multiple granularities (current semester, upcoming semesters, and the overall programme; C1) and require an always-current, ambient placement to constantly answer, \enquote{where am I right now?} (C16). Furthermore, they explicitly want to separate what they have merely chosen from what they have actually completed (C19). 
 
 To address this, the Dashboard aggregates multiple progress indicators into a unified visual display~\cite{schwendimann2017}. Wienand et al.~\cite{wienand_design_2024} report the same concern from the other side: having made their own courses more flexible, they anticipated that students \enquote{might feel lost on how much progress they already made}, and answered it with progress bars at three nested levels, the chapter, the sub-chapter, and the whole course. Following that pattern, the Dashboard expands the student's mental model into four distinct, decision-relevant granularities (Figure~\ref{fig:dashboard-levels}):
 
@@ -986,7 +986,7 @@ This section covers the design of how recommendations are \emph{displayed and in
 
 \subsection{Recommendation Panel}
 \label{sec:rec-panel}
-Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible without resetting the canvas viewport, selection, or filters. Formative interviews motivated offloading this information into a separate panel (``\textit{otherwise it's too much on one page}'', C55) while explicitly warning against any feature that risks ``\textit{destroying the graph}'' (C43; Feature~\ref{feat:012}, Req.~1). Furthermore, Feature~\ref{feat:007}, Req.~2 and Req.~3 require explicit rationale and inspectable evidence per recommendation, which demands dedicated screen space. 
+Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible without resetting the canvas viewport, selection, or filters. Formative interviews motivated offloading this information into a separate panel (\enquote{otherwise it's too much on one page}, C55) while explicitly warning against any feature that risks \enquote{destroying the graph} (C43; Feature~\ref{feat:012}, Req.~1). Furthermore, Feature~\ref{feat:007}, Req.~2 and Req.~3 require explicit rationale and inspectable evidence per recommendation, which demands dedicated screen space. 
 
 To meet these requirements without disrupting the user's spatial context, the Recommendation Panel is designed as an independent left-side drawer, positioned adjacent to the course catalogue (Section~\ref{sec:sidebar-design}). It can be toggled open or closed without affecting the canvas viewport, active filters, or node selections. Crucially, recommendations are strictly confined to this panel. No badges, tints, or rings are added to courses on the main canvas or in the catalogue. This strict isolation guarantees that recommendations cannot trigger a disruptive graph re-layout, and it avoids perceptual collisions with the dynamically assigned subject-colour palette (Section~\ref{sec:subject-colour}). 
 
@@ -1020,7 +1020,7 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
     {Foundations of System Security};
   \node[font=\tiny, text=black!70, text width=4.9cm, anchor=north west, align=left] at (0.45,-3.6)
     {\emph{similar to Einführung in Security}\quad \textsc{show all}};
-  \node[font=\tiny, anchor=west] at (0.45,-4.72) {6 ECTS \ \textperiodcentered\ \ Fully elective};
+  \node[font=\tiny, anchor=west] at (0.45,-4.72) {6~ECTS \ \textperiodcentered\ \ Fully elective};
   \node[btn, anchor=east] (b1) at (5.55,-4.72) {add};
 
   % card 2, cropped by the panel edge to show the list scrolls
@@ -1052,15 +1052,15 @@ This centralised panel represents a deliberate departure from the earlier protot
 
 \subsection{Recommendation Families and Evidence}
 \label{sec:rec-types-evidence}
-Participants were sceptical toward recommendations that appear to be ``\textit{based on nothing}''; as C23 noted, ``\textit{I'm always very critical of recommendations, because the system can't know what my life is like.}'' To build trust, Feature~\ref{feat:007} (Req.~1--3) requires that recommendations are not just provided, but explicitly grounded in a specific, inspectable rationale. This aligns with Ma et al.~\cite{ma_courseq_2021} empirical findings that adding visual explanations to a recommendation algorithm produces significantly higher ratings for perceived transparency and user trust than presenting the exact same algorithm as a plain ranked list.
+Participants were sceptical toward recommendations that appear to be \enquote{based on nothing}; as C23 noted, \enquote{I'm always very critical of recommendations, because the system can't know what my life is like.} To build trust, Feature~\ref{feat:007} (Req.~1--3) requires that recommendations are not just provided, but explicitly grounded in a specific, inspectable rationale. This aligns with Ma et al.~\cite{ma_courseq_2021} empirical findings that adding visual explanations to a recommendation algorithm produces significantly higher ratings for perceived transparency and user trust than presenting the exact same algorithm as a plain ranked list.
 
 Rather than blending signals into an opaque, unified score, the system categorises recommendations into distinct \emph{families}. Each family evaluates a specific signal and displays a compact, human-readable evidence note directly on the recommendation card (Section~\ref{sec:rec-panel}).
 
 The system defines six recommendation families. Three are baseline families, always available, evaluating signals that need neither the student's profile nor data about other students:
 \begin{enumerate}
-  \item \textbf{Interest match} ($\star$): Courses matching the student's stated profile interests (Section~\ref{sec:profile}). \emph{Evidence text:} Specifies the matched interest (e.g., ``matches your interests: focuses on Machine Learning'').
-  \item \textbf{Predefined similarity} ($\approx$): Courses expert-curated in the metadata as similar to a course the student has already planned or completed. \emph{Evidence text:} Names the reference course and the curated rationale (e.g., ``similar to Web Engineering [shares a project-based assessment]'').
-  \item \textbf{Sequence or dependency} ($\to$): Courses serving as a prerequisite or logical follow-up to courses already in the plan. \emph{Evidence text:} Names the dependency relation (e.g., ``prerequisite of Advanced Databases, which you have planned''). This realises Bartel et al.~\cite{bartel_design_2024} principle of clearly presenting curriculum information by surfacing structural dependencies students cannot easily read from a raw handbook.
+  \item \textbf{Interest match} ($\star$): Courses matching the student's stated profile interests (Section~\ref{sec:profile}). \emph{Evidence text:} Specifies the matched interest (e.g., \enquote{matches your interests: focuses on Machine Learning}).
+  \item \textbf{Predefined similarity} ($\approx$): Courses expert-curated in the metadata as similar to a course the student has already planned or completed. \emph{Evidence text:} Names the reference course and the curated rationale (e.g., \enquote{similar to Web Engineering [shares a project-based assessment]}).
+  \item \textbf{Sequence or dependency} ($\to$): Courses serving as a prerequisite or logical follow-up to courses already in the plan. \emph{Evidence text:} Names the dependency relation (e.g., \enquote{prerequisite of Advanced Databases, which you have planned}). This realises Bartel et al.~\cite{bartel_design_2024} principle of clearly presenting curriculum information by surfacing structural dependencies students cannot easily read from a raw handbook.
 \end{enumerate}
 
 Three further families are conditional, evaluated only when the signal they need exists:
@@ -1068,7 +1068,7 @@ Three further families are conditional, evaluated only when the signal they need
   \setcounter{enumi}{3}
   \item \textbf{Internship lens} ($\triangleright$): Courses relevant to the student's stated career direction. \emph{Evidence text:} Identifies the triggered career direction.
   \item \textbf{Follow-on from a completed course}: Courses that prior students commonly took after a course this student has already completed. \emph{Evidence text:} Names the completed course and the share (e.g., \enquote{62\,\% of students who completed Databases also took this}).
-  \item \textbf{Peer / collaborative filtering}: Courses chosen by students whose plans resemble this one. To avoid overstating the data's confidence, the \emph{Evidence text} explicitly distinguishes between a genuine peer comparison (``62\,\% of students with a similar plan chose this'') and a cold-start overall popularity fallback when data is sparse (``popular choice: 40\,\% of prior students took this''). An honestly labelled weaker signal is inherently more trustworthy than a confident-sounding one.
+  \item \textbf{Peer / collaborative filtering}: Courses chosen by students whose plans resemble this one. To avoid overstating the data's confidence, the \emph{Evidence text} explicitly distinguishes between a genuine peer comparison (\enquote{62\,\% of students with a similar plan chose this}) and a cold-start overall popularity fallback when data is sparse (\enquote{popular choice: 40\,\% of prior students took this}). An honestly labelled weaker signal is inherently more trustworthy than a confident-sounding one.
 \end{enumerate}
 
 A \emph{single unified ranking} blending all six signals was rejected as the black box C23 objects to. \emph{Membership in several families at once} was rejected because merging rationale texts clutters the card; first-match-wins guarantees one transparent reason. \emph{Permanently expanded evidence} was rejected for the panel height it costs, and \emph{identical phrasing regardless of data quality} because it would overstate the algorithm's confidence.

@@ -213,19 +213,7 @@ Recommender System'' over-promises relative to what was built and evaluated.}
 as an empty headed page. The AI-tools disclosure is required by the statement of
 originality; check TU Wien Informatics' current policy before drafting it.}
 
-\TDmajor{Empty index and acronym list}{\texttt{glossaries} is loaded with
-\texttt{[acronym,toc]} and \texttt{main.tex} calls both
-\texttt{\textbackslash printindex} and \texttt{\textbackslash printglossaries},
-but the thesis contains no \texttt{\textbackslash newacronym}, no
-\texttt{\textbackslash gls} and no \texttt{\textbackslash index}, so both render
-as empty pages. Recommended: comment both out and keep the Appendix glossary as
-the only glossary.}
-
-\TDmajor{Sweep every ``dependenc*'' occurrence}{Once the glossary carries a
-Dependency entry naming the three senses used here (containment; formal or hard
-prerequisite; recommended or soft ordering), check each of the roughly forty
-occurrences resolves to the sense intended. A bare ``dependency'' means the
-prerequisite sense after that entry exists.}
+\TDmajor{Sweep every \enquote{dependenc*} occurrence against the glossary}{The glossary now fixes the vocabulary: \emph{containment} is the hierarchy relation and is never called a dependency; \emph{dependency} means an ordering relation between courses, in a \emph{formal} (published, blocking, drawn in the evaluated graph) and a \emph{recommended} (curated, advisory, drawn only after the study) form. Sixty-nine occurrences of \texttt{dependenc*} remain in the prose and each must be checked against that mapping, because the recommended form was not visible during the evaluation study and a sentence that implies it was is false. Counts by file: Related Work~15, codebook appendix~11, Discussion~9, Introduction~8, Formative Study~7, Implementation~7, Design~3, Evaluation~3, evaluation appendix~3, interview plan~1, glossary~2. This sweep is part of each chapter's own pass, not a separate one, and is listed in the definition of done in \texttt{ANWEISUNGEN.md}~\S10.}
 
 \TDminor{Build hygiene}{The current build has 30 overfull and 38 underfull
 boxes. Fix the overfull ones above about 10\,pt, which visibly bleed into the
@@ -290,10 +278,13 @@ margin; ignore the rest.}
 %\addcontentsline{toc}{chapter}{List of Algorithms}
 
 % Add an index.
-\printindex % Rerun build-thesis or build-all when removing the index through commenting.
+% Nothing in this thesis is \index-ed, so \printindex renders an empty page.
+%\printindex
 
 % Add a glossary.
-\printglossaries % Rerun build-thesis or build-all when removing it through commenting.
+% No \newacronym or \gls is used; the appendix glossary is the only glossary, so
+% \printglossaries would render an empty page.
+%\printglossaries
 
 % Add a bibliography.
 \bibliographystyle{alpha}
