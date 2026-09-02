@@ -348,7 +348,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | # | Chapter | State | Main work |
 |---|---|---|---|
 | 1 | Introduction | **done 2026-09-02**, two items left for Moritz | All 7 review comments resolved; ED/ERS paragraph rewritten to Ch. 3's argument; TU Wien and both curricula footnoted; contributions sized; Outlook credits Ch. 9 with RQ3. Open for a decision: the opening paragraph's citation fit (Morsy/Wong/Schulte), and whether curriculum analytics returns via Ch. 3 |
-| 2 | Methodology | **done 2026-09-02** | All 13 review comments resolved; four factual errors corrected (participant codes, frame-sampling source, anonymisation claim, "laboratory study"); scope split into artefact and evidence with OOS5 added; assumptions reduced to two bullets; validity block cut to internal and construct. No paragraph gathering the deviations from the proposal: Moritz decided against it, 2026-09-02. Remaining: `iso9241_11` is cited here and still unopened (§14) |
+| 2 | Methodology | **done 2026-09-02** | All 13 review comments resolved; four factual errors corrected (participant codes, frame-sampling source, anonymisation claim, "laboratory study"); scope split into artefact and evidence with OOS5 added; assumptions reduced to two bullets; validity block cut to internal and construct. No paragraph gathering the deviations from the proposal: Moritz decided against it, 2026-09-02. Both citations verified. Chapter closed |
 | 3 | Related Work | needs edit | Positioning gap wording (§1.1), Ma et al. claim already softened — re-verify, five-paper "broad consensus" sentence |
 | 4 | Formative Study | **needs new section** | Findings section (§1.4), quotation style sweep, `\todo` on forward references, "Link to Subsequent Chapters" cut to two sentences |
 | 5 | From Themes to Requirements | light | opening meta-discourse, cross-check the 13/55 counts against Appendix A.3 |
@@ -399,7 +399,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | **Vessey 1991** (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | The theory the central design claim is read through |
 | **Davis 1989** (TAM) | Ch. 8 instruments | The instrument's provenance |
 | **Laugwitz et al. 2008** (UEQ) | Ch. 8 instruments | Same |
-| **ISO 9241-11** and **ISO 9241-210** | Ch. 2, Ch. 5, Ch. 8 (the three-dimension mapping) | The framework RQ3 is answered against |
+| **ISO 9241-210** | Ch. 5 (the human-centred design activities) | Optional. The catalogue page in `context/related-work/77520.html` carries the scope text those four activities come from. *ISO 9241-11 was on this list and is now verified — see the log.* |
 | **Nielsen 1993** (*Usability Engineering*) | Ch. 8 severity ratings | The severity scale's source |
 | **Saldaña 2013** (coding manual) | Ch. 4 analysis method | Method citation |
 | **Ware 2004**, **Palmer 1992**, **Shneiderman 1983** | Ch. 6 encoding decisions | Conventional uses, but each is cited for a specific perceptual claim |
@@ -413,7 +413,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 - Whether **TU Wien Informatics' current AI-use policy** has been checked with René or Selina, since it shapes the disclosure text.
 - Access to the **evaluation study's `analysis/` folder** (stage logs, findings matrix, completion audit, `US Results.xlsx`) if you want any number re-derived rather than taken on trust — it lives on your Mac, not in this repo.
 
-**Per-source disposition, set 2026-09-02.** Four must be opened; the rest are reworkable if they cannot be obtained.
+**Per-source disposition, set 2026-09-02.** Four were marked must-open; ISO 9241-11 has since been verified, leaving three. The rest are reworkable if they cannot be obtained.
 
 | Source | Disposition |
 |---|---|
@@ -423,7 +423,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | **Greenwald 1976** | **Must open.** Cited as the warrant for not counterbalancing, the design choice most likely to be pressed at the defence. `10.1037/0033-2909.83.2.314` |
 | Vessey 1991 | Reworkable. The claim made of it is the paper's own central thesis. `10.1111/j.1540-5915.1991.tb00344.x` |
 | Laugwitz 2008 | Reworkable. UEQ structure already verified against the deployed instrument. Free from ueq-online.org |
-| ISO 9241-11 | Reworkable. Only the three dimensions are cited; they are in the free ANSI preview |
+| ~~ISO 9241-11~~ | **Verified 2026-09-02** from the free ANSI preview, without buying the standard. See the log. |
 | ISO 9241-210 | Reworkable. `context/related-work/77520.html` is the catalogue page carrying the four HCD activities |
 | Ware 2004 | Reworkable. Cited for the concept it is known for; no quotation or number |
 | Palmer 1992 | Reworkable. Same |
@@ -436,6 +436,8 @@ Order is chosen so that the chapters whose content is still moving come after th
 **Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice. Verified in prior sessions and not to be re-checked: Munzner 2009 (all six claims), Braun & Clarke 2022 (page anchors and phase names corrected against the book), Trippel & Röpke 2025, Auvinen 2014, Hirmer 2022, Nielsen 1994 (both heuristics), Sandelowski 2001, Gale 2013, Bhumichitr 2017, Bodily & Verbert 2017 (93 *articles*, 17 %/6 % are shares of articles), Bartel et al. 2024 (nine principles; user-centred design and study-programme-specific personalisation are **one combined principle**).
 
 Verified 2026-09-02 (moved here from in-document notes when those were retired):
+
+- **ISO 9241-11:2018**, verified without buying the standard. Clause 3 is paywalled, but the introduction, which is inside the free ANSI preview at `webstore.ansi.org/preview-pages/ISO/preview_ISO+9241-11-2018.pdf`, states the definition in the standard's own words: usability is "the extent to which a system, product or service can be used by specified users to achieve specified goals with **effectiveness, efficiency and satisfaction** in a specified context of use". That is exactly and only what the two citing sentences claim, in Ch. 2 §2.6 and Ch. 8 §8.1, both of which map codes to "an ISO 9241-11 dimension". Second edition, published 2018-03; the bibliography entry now records both. One thing to know rather than to act on: the 2018 edition reframes usability as *an outcome of use* rather than as a property to be measured, so if a later chapter ever describes the three dimensions as a checklist, that is the wording to watch.
 
 - **Chapter 1, opening paragraph.** `judel_supporting_2023` carries the exemplary-plan sentence: its abstract states the plan in the examination regulations "may only fit as long as no adjustments have to be made", and that a failed examination or a postponed module calls for an individual plan. `schulte_large_2017` carries the advisor sentence — "degree and course advisors and student support units find it challenging to provide evidence based advise to students". `morsy_study_2019` carries the outcome clause, and its conclusion is associational, not causal: students clustered by graduation GPA and time to degree differ in when and in what sequence they take courses. Hence "are associated with". `wong_sequence_2018` was dropped from that paragraph, and the claim about motivation with it, since no source supported either.
 - **Chapter 1, dashboards sentence.** `schwendimann2017` and `verbert_learning_2020` review learning-analytics dashboards in general, explicitly covering dashboards "ready-made to serve administrators, teachers", so alone they were wider than the sentence. `loboda_mastery_2014` anchors it: *Mastery Grids* is a student-facing "social progress visualization" built on open learner modelling and evaluated in a classroom. `bodily_review_2017` carries "almost always built separately" — 17 % of 93 reviewed articles integrate both.
