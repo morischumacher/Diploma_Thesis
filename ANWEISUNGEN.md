@@ -60,9 +60,11 @@ The front of the thesis (RQ1, RQ2, the Related Work gap statement) promises unde
 3. The reason the overlay is thin is the **curricula**, not the design: outside StEOP and within-module ordering, the two TU Wien curricula publish almost no sequencing.
 
 **Edits that follow** (to be made when we reach each chapter, kept close to the proposal's wording):
-- **RQ1 / RQ2 (Ch. 1):** keep the proposal-derived wording, add the bounding clause once — dependencies *as the curriculum encodes them*. Do not weaken to pure "structure"; the proposal says "course dependencies" and the RQs must stay recognisably the proposal's.
+- **RQ1 / RQ2 (Ch. 1) — done in Pass 0.** The RQ sentences are untouched. One sentence after RQ1's explanatory paragraph bounds the term: *course dependencies* means an ordering relation a curriculum encodes, in the two glossary forms, and how much of either the two programmes carry is itself a finding.
+- **RQ3 stays interface-only — Moritz's decision, 2026-09-02.** "and its embedded recommendations" is deliberately *not* in RQ3. Naming recommendations in the question would presuppose a second component before the formative study had decided one was wanted; the hybrid graph-table concept is the only component this thesis assumes, and that assumption is declared in Ch. 2. Had the formative study found recommendations unwelcome, an RQ naming them would have been wrong. Ch. 8 and Ch. 9 were aligned to Ch. 1 rather than the reverse, and Ch. 8 now says explicitly that the recommendation panel is one component of the interface under test rather than a separate object of the question.
 - **Ch. 3 Positioning:** replace "a browsable, dependency-revealing graph" with a formulation that names what is revealed: a browsable curriculum graph that renders programme structure together with the curriculum's formal prerequisites. Same claim, no over-promise.
-- **Glossary:** add a **Dependency** entry distinguishing three senses used in this thesis — *containment* (the hierarchy the graph draws), *formal / hard prerequisite* (published by the curriculum, blocking in the compliance engine, drawn as an overlay), *recommended / soft ordering* (curated, advisory, not drawn in the evaluated version). After that entry exists, a bare "dependency" in running prose means the prerequisite sense; sweep every `dependenc*` occurrence once and make each one explicit.
+- **Glossary — done in Pass 0.** Two entries, not one with three senses. **Containment** is the hierarchy relation and *is never called a dependency*. **Dependency** covers only the ordering relation between courses, in two forms: *formal* (published by the curriculum, blocking in the compliance engine, drawn in the evaluated graph) and *recommended* (curated, advisory, reported by the engine throughout the study but drawn in no view until afterwards). A bare "dependency" means the two together; where one form is meant it is named.
+- **The sweep is per chapter, not a single pass.** 69 `dependenc*` occurrences remain and each needs judgement against that mapping — in particular, any sentence implying the recommended form was visible during the evaluation study is false. Counts: Related Work 15, codebook appendix 11, Discussion 9, Introduction 8, Formative Study 7, Implementation 7, Design 3, Evaluation 3, evaluation appendix 3, glossary 2, interview plan 1. It is item 15 of the definition of done.
 
 ### 1.2 Length — polish, do not restructure
 `REVIEW.md`'s shortening plan is **wrong on its headline item**: Chapter 5 already carries only the summary table, and the full feature specs already live in Appendix A.3. Corrected position:
@@ -142,7 +144,7 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 | Participant quotations | See below — this is currently the largest single inconsistency in the thesis. |
 | Oxford comma | Used consistently. Keep. |
 
-**Participant quotations — one form, applied everywhere.** The thesis currently mixes ``` ``\textit{…}'' ``` (148 occurrences: Design, Evaluation, both appendices) with `\enquote{…}` (47: Formative Study, Related Work, Design). Pick one and sweep. **Recommended: `\enquote{…}` with no italics**, because (a) `csquotes` handles nesting and language-sensitive marks, (b) italics on long quotations is hostile to read, and (c) it matches the chapter that most carefully sets up its quoting practice (Ch. 4). Attribution follows the closing quote as `(C21)` for formative themes and `(P09)` for evaluation participants; block quotations for anything over roughly two lines.
+**Participant quotations — settled 2026-09-02, `\enquote{}` with no italics.** This is the standard form, not merely the cheaper sweep: `csquotes` exists for exactly this and handles nesting and language-sensitive marks, and academic style (Chicago, APA) sets short quotations in quotation marks without italics, reserving italics for emphasis and titles. 161 instances of the `` ``…'' `` forms were converted in Pass 0; none remain. Attribution follows the closing quote as `(C21)` for formative themes and `(P09)` for evaluation participants. Quotations longer than about forty words take a `quote` environment without quotation marks — the longest quotation in the thesis is currently 154 characters, so none does.
 
 **Translations must be declared.** Both studies were conducted in German. Chapter 4 §4.5.1 and Chapter 8 §8.1.6 each carry one sentence saying the quoted excerpts are the author's translations and the German originals are held with the transcripts. Check that sentence exists in both before either chapter is closed, because without it the word "verbatim" is claimed and not delivered.
 
@@ -258,6 +260,7 @@ A chapter is finished only when every line below is true. This is the checklist 
 12. Brace balance verified; the full build runs clean (§11); no new overfull box over 10 pt.
 13. All `%% REV`, `%% AIREV` and `\todo{}` markers in the chapter resolved and removed.
 14. §12 status table updated.
+15. Every `dependenc*` occurrence in the chapter checked against the glossary mapping (§1.1).
 
 ---
 
@@ -295,6 +298,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 | — | Abstract / Kurzfassung | **empty** | write last, from the finished chapters |
 | — | Acknowledgements / Danksagung | **empty** | yours to write |
 | — | AI-tools disclosure (EN + DE) | **empty** | draft from the git history; check TU Wien's current policy first |
+| — | Pass 0 (cross-cutting) | **done 2026-09-02** | glossary vocabulary, RQ wording settled and propagated, Related Work gap reworded, 161 quotations converted, ECTS and StEOP expanded, empty index and acronym list removed |
 | — | `main.tex` metadata | **placeholder** | title, subtitle, date, keywords — blocker, see §13 |
 
 ---

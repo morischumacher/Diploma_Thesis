@@ -28,7 +28,7 @@ C5 & 5 & Needs structure/guidance when programme shifts from fixed curriculum to
 \addlinespace
 C6 & 6 & Needs support for course choice + feasibility planning (content-/interest-driven, what's doable) & FEATURE-005 \\
 \addlinespace
-C7 & 5 & Needs a triggered ``bring structure'' moment to be supported (timing of when planning becomes important) & FEATURE-006 \\
+C7 & 5 & Needs a triggered \enquote{bring structure} moment to be supported (timing of when planning becomes important) & FEATURE-006 \\
 \addlinespace
 C8 & 2 & Needs features that reduce overwhelm and emotional burden from planning & FEATURE-011 \\
 \addlinespace
@@ -84,7 +84,7 @@ C33 & 2 & Needs tool to be tailored to the specific programme structure to be ad
 \addlinespace
 C34 & 4 & Needs possibility to continue collaboration / participate in follow-up & \textit{Methodological artefact --- Artefact of asking participants for new round of interview} \\
 \addlinespace
-C35 & 4 & Needs semester capacity targeting (e.g., aim for ~30 ECTS) and capacity-based planning & FEATURE-005 \\
+C35 & 4 & Needs semester capacity targeting (e.g., aim for ~30~ECTS) and capacity-based planning & FEATURE-005 \\
 \addlinespace
 C36 & 1 & Needs semester collision detection and early exam schedule availability & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS} \\
 \addlinespace
@@ -114,7 +114,7 @@ C48 & 2 & Needs competency- and learning-outcome-based planning support (self-as
 \addlinespace
 C49 & 2 & Needs support for balancing assessment types and distributing workload/exam load across the year & FEATURE-005 \\
 \addlinespace
-C50 & 1 & Needs scalable visualisation via abstraction (avoid graph ``explosion''; show summaries, keep details elsewhere; graph optional) & FEATURE-009 \\
+C50 & 1 & Needs scalable visualisation via abstraction (avoid graph \enquote{explosion}; show summaries, keep details elsewhere; graph optional) & FEATURE-009 \\
 \addlinespace
 C51 & 1 & Needs lightweight content clarification beyond official descriptions (external lookup) & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS or any other platform} \\
 \addlinespace
@@ -130,9 +130,9 @@ C56 & 3 & Needs support for quick replanning when external disruptions happen (l
 \addlinespace
 C57 & 2 & Needs module-based overview representation as a planning mental model (modules as primary units) & FEATURE-002 \\
 \addlinespace
-C58 & 1 & Needs explicit ``planning burden reduction'' (system should take over cognitive load) & FEATURE-011 \\
+C58 & 1 & Needs explicit \enquote{planning burden reduction} (system should take over cognitive load) & FEATURE-011 \\
 \addlinespace
-C59 & 2 & Needs onboarding/support for the planning transition when entering university (planning ``shock'') & FEATURE-006 \\
+C59 & 2 & Needs onboarding/support for the planning transition when entering university (planning \enquote{shock}) & FEATURE-006 \\
 \addlinespace
 C60 & 1 & Needs risk-aware planning support (buffers, failure-risk awareness, conservative planning) & \textit{Excluded --- Out of Scope: No automated Planner} \\
 \addlinespace
@@ -140,14 +140,12 @@ C61 & 1 & Needs configurable ordering + auto-alignment behaviours in planning vi
 \addlinespace
 C62 & 1 & Needs automation/data integration to reduce errors from manual spreadsheet workflows & FEATURE-001 \\
 \addlinespace
-C63 & 1 & Needs recommendation presentation that highlights institutional ``recommended curriculum'' (explicit labelling/trust cue) & FEATURE-003 \\
+C63 & 1 & Needs recommendation presentation that highlights institutional \enquote{recommended curriculum} (explicit labelling/trust cue) & FEATURE-003 \\
 \addlinespace
-C64 & 1 & Needs an overload-safe course catalogue experience (avoid ``dumping everything''; relevance-filtered suggestions) & FEATURE-009 \\
+C64 & 1 & Needs an overload-safe course catalogue experience (avoid \enquote{dumping everything}; relevance-filtered suggestions) & FEATURE-009 \\
 \addlinespace
 \end{longtable}
 \normalsize
-\TDminor{Two sweeps for this appendix}{(1)~It carries 66 instances of the \texttt{``\textbackslash textit\{\dots\}''} quotation form; the house form is \texttt{\textbackslash enquote}. (2)~The initial-code count (435) must match Chapter~\ref{chap:formative-study} and the glossary, and be checked against \texttt{First Open Coding.docx}, where an earlier count found 438.}
-
 \section{Feature Specifications}
 \label{app:feature-specs}
 
@@ -160,7 +158,7 @@ This appendix records the thirteen features derived in Chapter~\ref{chap:from-th
 \textbf{Importance score 20.} Associated themes: C9, C10, C11, C12, C15, C37, C62.
 
 \paragraph{Description and user evidence.}
-Participants plan through a self-assembled tool ecology rather than one system, combining spreadsheets, notes and the institutional platform TISS (C10), which is itself described as unclear and computationally passive: ``\textit{the overview isn't clear… it doesn't calculate anything}'' (C9). Transferring course data out of it by hand is burdensome and error-prone, ``\textit{very error-prone… manual… you might slip in the row}'' (C62), which motivates automatic import. The ecology is sustained by informal peer reuse, a friend's spreadsheet passed on because ``\textit{no finished Excel from the university}'' exists (C11), and participants want a better representation than TISS offers, with personal tracking fields and visualisation (C12, C15, C37).
+Participants plan through a self-assembled tool ecology rather than one system, combining spreadsheets, notes and the institutional platform TISS (C10), which is itself described as unclear and computationally passive: \enquote{the overview isn't clear… it doesn't calculate anything} (C9). Transferring course data out of it by hand is burdensome and error-prone, \enquote{very error-prone… manual… you might slip in the row} (C62), which motivates automatic import. The ecology is sustained by informal peer reuse, a friend's spreadsheet passed on because \enquote{no finished Excel from the university} exists (C11), and participants want a better representation than TISS offers, with personal tracking fields and visualisation (C12, C15, C37).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -179,7 +177,7 @@ Import from generic spreadsheet-like structures (e.g., CSV) is out of scope, sin
 \textbf{Importance score 19.} Associated themes: C1, C16, C18, C19, C57.
 
 \paragraph{Description and user evidence.}
-Participants plan at three simultaneous granularities, the current semester, the coming ones, and whole-programme progress ``\textit{in percent or visually}'' (C1), and lack an always-current answer to ``\textit{where am I right now?}'', compensating by scrolling through transcripts (C16). Progress is conceptualised in credits or modules, ``\textit{twelve of eighteen ECTS done}'' or ``\textit{per module a bar}'' (C16, C57), and wanted prospectively: ``\textit{if I add that, then in the future I would have 25\% fulfilled}'' (C18). A strict separation of \emph{planned} from \emph{completed} is described as essential, visually encoded, and motivating: ``\textit{satisfying when it becomes less and less… I need a reward}'' (C19).
+Participants plan at three simultaneous granularities, the current semester, the coming ones, and whole-programme progress \enquote{in percent or visually} (C1), and lack an always-current answer to \enquote{where am I right now?}, compensating by scrolling through transcripts (C16). Progress is conceptualised in credits or modules, \enquote{twelve of eighteen ECTS done} or \enquote{per module a bar} (C16, C57), and wanted prospectively: \enquote{if I add that, then in the future I would have 25\% fulfilled} (C18). A strict separation of \emph{planned} from \emph{completed} is described as essential, visually encoded, and motivating: \enquote{satisfying when it becomes less and less… I need a reward} (C19).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -199,13 +197,13 @@ The tool's minimum planning granularity is the semester, consistent with the ove
 \textbf{Importance score 18.} Associated themes: C13, C17, C30, C31, C33, C63.
 
 \paragraph{Description and user evidence.}
-Current artefacts do not operationalise curriculum rules, leaving the checking to the student: ``\textit{Excel doesn't know your requirements… it doesn't detect errors… you have to double and triple check everything and hope it fits}'' (C13). Beyond category quotas, participants ask for dependency handling, ``\textit{I'm missing the dependencies between courses}'', expecting warnings or blocks on invalid sequences (C31) and citing both hard pairs (``\textit{EP1 and EP2… they directly build on each other}'') and soft preferences (C30); trust rises when sequencing is institutionally grounded and marked as such (C63). They also want continuous fulfilment feedback, ``\textit{you've already fulfilled five of seven requirements}'' (C17), and tie adoption to programme-specific tailoring (C33).
+Current artefacts do not operationalise curriculum rules, leaving the checking to the student: \enquote{Excel doesn't know your requirements… it doesn't detect errors… you have to double and triple check everything and hope it fits} (C13). Beyond category quotas, participants ask for dependency handling, \enquote{I'm missing the dependencies between courses}, expecting warnings or blocks on invalid sequences (C31) and citing both hard pairs (\enquote{EP1 and EP2… they directly build on each other}) and soft preferences (C30); trust rises when sequencing is institutionally grounded and marked as such (C63). They also want continuous fulfilment feedback, \enquote{you've already fulfilled five of seven requirements} (C17), and tie adoption to programme-specific tailoring (C33).
 
 \paragraph{Requirements.}
 \begin{enumerate}
-    \item The system computes requirement fulfilment in real time at programme and category levels (e.g., ``5 of 7 fulfilled'', \% completion), updating when a course is planned or marked completed.
+    \item The system computes requirement fulfilment in real time at programme and category levels (e.g., \enquote{5 of 7 fulfilled}, \% completion), updating when a course is planned or marked completed.
     \item The system encodes hard rules, prerequisites, and sequencing constraints in real time and prevents scheduling that violates them (blocking).
-    \item The system encodes soft/recommended prerequisites and issues a non-blocking warning that explains the recommendation (e.g., ``would be good if you take course X before course Y'').
+    \item The system encodes soft/recommended prerequisites and issues a non-blocking warning that explains the recommendation (e.g., \enquote{would be good if you take course X before course Y}).
     \item The system identifies and lists what is missing (requirements/categories and actionable course options) and updates the missing list in real time.
     \item The compliance logic is shared across Graph and Table views, such that dependency structure and requirement status are consistent regardless of representation.
 \end{enumerate}
@@ -218,7 +216,7 @@ Institutional grounding of soft/recommended constraints is not available, since 
 \textbf{Importance score 15.} Associated themes: C20, C21, C44, C47, C61.
 
 \paragraph{Description and user evidence.}
-Participants describe a two-stage model, the graph for exploration and the table for committing, and are explicit that the activities are distinct: ``\textit{graph used for exploration, not planning}'' (C20). Exploration is comprehensive and reassuring, ``\textit{show all… immediately a picture… then I say plus, plus, plus}'', valued for ``\textit{less FOMO that I missed something again}'' (C20). Bridging the two calls for an intermediate holding space, ``\textit{a pool with the courses where I can move them}'', with spatial consistency preserved, ``\textit{like a desk… you just push things around}'' (C21), and committing for an explicit action with semester selection (C44). Table preferences favour familiarity, note-taking space (C47) and both manual and automatic ordering (C61).
+Participants describe a two-stage model, the graph for exploration and the table for committing, and are explicit that the activities are distinct: \enquote{graph used for exploration, not planning} (C20). Exploration is comprehensive and reassuring, \enquote{show all… immediately a picture… then I say plus, plus, plus}, valued for \enquote{less FOMO that I missed something again} (C20). Bridging the two calls for an intermediate holding space, \enquote{a pool with the courses where I can move them}, with spatial consistency preserved, \enquote{like a desk… you just push things around} (C21), and committing for an explicit action with semester selection (C44). Table preferences favour familiarity, note-taking space (C47) and both manual and automatic ordering (C61).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -236,7 +234,7 @@ Participants describe a two-stage model, the graph for exploration and the table
 \textbf{Importance score 14.} Associated themes: C6, C35, C48, C49.
 
 \paragraph{Description and user evidence.}
-Course selection is often initially interest-driven (C6), but participants consistently frame planning \emph{quality} as bounded by feasibility: ``\textit{at a glance… what is actually possible}'' (C6). Feasibility is anchored most concretely in ECTS load: participants target specific credit volumes (``\textit{so that I'm registered for around thirty}'', C35) and describe iteratively reducing an over-ambitious plan (``\textit{31 ECTS… that's too much… reduced to about 21 ECTS}'', C35). Beyond raw volume, workload \emph{mix} matters: participants balance project-based against exam-based courses and try to avoid exam clustering: ``\textit{four exams in January… for me that would be too much}'' (C49). Finally, self-assessed readiness shapes selection: participants avoid courses that conflict with perceived weaknesses (``\textit{if you're not good at programming, then maybe don't take programming-heavy courses}'', C48) and describe planning as an iterative, reflective process across semesters (C48).
+Course selection is often initially interest-driven (C6), but participants consistently frame planning \emph{quality} as bounded by feasibility: \enquote{at a glance… what is actually possible} (C6). Feasibility is anchored most concretely in ECTS load: participants target specific credit volumes (\enquote{so that I'm registered for around thirty}, C35) and describe iteratively reducing an over-ambitious plan (\enquote{31~ECTS… that's too much… reduced to about 21~ECTS}, C35). Beyond raw volume, workload \emph{mix} matters: participants balance project-based against exam-based courses and try to avoid exam clustering: \enquote{four exams in January… for me that would be too much} (C49). Finally, self-assessed readiness shapes selection: participants avoid courses that conflict with perceived weaknesses (\enquote{if you're not good at programming, then maybe don't take programming-heavy courses}, C48) and describe planning as an iterative, reflective process across semesters (C48).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -253,12 +251,12 @@ Requirement 3 was derived from the data but was not carried into the implemented
 \textbf{Importance score 14.} Associated themes: C5, C7, C59.
 
 \paragraph{Description and user evidence.}
-Planning needs shift systematically over the study trajectory. Early semesters are typically followed by a prescribed curriculum: ``\textit{the first semester was simply what was prescribed… the standard package with 29 ECTS}'' (C5). Autonomy then increases, particularly in the Master's programme (``\textit{in the master's… only the first semester, and then free choice}'', C5), creating a recognisable transition point at which structured planning becomes necessary: ``\textit{from around the third semester you realise: `Okay, now I need to start bringing some structure in'}'' (C7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (C7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: ``\textit{the whole adjustment from technical high school to university… totally new to have to plan everything yourself}'', described by some as among the most difficult aspects of starting university (C59).
+Planning needs shift systematically over the study trajectory. Early semesters are typically followed by a prescribed curriculum: \enquote{the first semester was simply what was prescribed… the standard package with 29~ECTS} (C5). Autonomy then increases, particularly in the Master's programme (\enquote{in the master's… only the first semester, and then free choice}, C5), creating a recognisable transition point at which structured planning becomes necessary: \enquote{from around the third semester you realise: `Okay, now I need to start bringing some structure in'} (C7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (C7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: \enquote{the whole adjustment from technical high school to university… totally new to have to plan everything yourself}, described by some as among the most difficult aspects of starting university (C59).
 
 \paragraph{Requirements.}
 \begin{enumerate}
     \item The product provides a guided first workflow: Show all $\to$ shortlist $\to$ add to semester plan, with contextual in-product tips shown the first time each step is encountered.
-    \item Onboarding adapts guidance to user stage (e.g., early-semester ``follow the standard package'' vs.\ later-semester ``build your own structure''), based on minimal inputs (e.g., current semester/programme stage).
+    \item Onboarding adapts guidance to user stage (e.g., early-semester \enquote{follow the standard package} vs.\ later-semester \enquote{build your own structure}), based on minimal inputs (e.g., current semester/programme stage).
 \end{enumerate}
 
 
@@ -267,7 +265,7 @@ Planning needs shift systematically over the study trajectory. Early semesters a
 \textbf{Importance score 13.} Associated themes: C23, C24, C45, C52.
 
 \paragraph{Description and user evidence.}
-The default stance toward recommendations is sceptical, because the system cannot observe personal constraints: ``\textit{I'm always very critical of recommendations, because the system can't know what my life is like… how many hours I work}'' (C23). Trust is described as emerging from inspectable evidence, a system like ``\textit{a living, well-documented Wikipedia}'' (C23). Several explainable logics are endorsed: content- and dependency-based suggestions (C23), sequence guidance grounded in explicit relations (C45), and behavioural signals where available (C24). Peer and career-aligned suggestions are acceptable only as optional signals, ``\textit{not as a main feature… for a reference point}'' (C23, C52), and autonomy is insisted on throughout: ``\textit{I want to have the freedom}'' (C23).
+The default stance toward recommendations is sceptical, because the system cannot observe personal constraints: \enquote{I'm always very critical of recommendations, because the system can't know what my life is like… how many hours I work} (C23). Trust is described as emerging from inspectable evidence, a system like \enquote{a living, well-documented Wikipedia} (C23). Several explainable logics are endorsed: content- and dependency-based suggestions (C23), sequence guidance grounded in explicit relations (C45), and behavioural signals where available (C24). Peer and career-aligned suggestions are acceptable only as optional signals, \enquote{not as a main feature… for a reference point} (C23, C52), and autonomy is insisted on throughout: \enquote{I want to have the freedom} (C23).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -287,14 +285,14 @@ Recommendation signals based on scarcity or course-visitor data are excluded, si
 \textbf{Importance score 9.} Associated themes: C4, C46, C56.
 
 \paragraph{Description and user evidence.}
-Participants describe study plans as inherently unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: ``\textit{because I always worked alongside, it never worked out… I had to start shifting things}'' (C4), framed against a sustainability goal of managing studies ``\textit{100\% and still be able to live a little}'' (C4). Externally, last-minute changes in course offerings are cited directly: ``\textit{not offered… shortly before semester start}'', with replacement courses being hard to find (C56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are ``\textit{not the system's problem}'' (C46).
+Participants describe study plans as inherently unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: \enquote{because I always worked alongside, it never worked out… I had to start shifting things} (C4), framed against a sustainability goal of managing studies \enquote{100\% and still be able to live a little} (C4). Externally, last-minute changes in course offerings are cited directly: \enquote{not offered… shortly before semester start}, with replacement courses being hard to find (C56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are \enquote{not the system's problem} (C46).
 
 \paragraph{Requirements.}
 \begin{enumerate}
     \item Users can move a planned course to another semester, and the system immediately updates capacity, progress, and curriculum compliance/requirements status.
     \item Users can define a constraint profile (e.g., part-time status, max ECTS, pacing preferences) that drives feasibility summaries and warnings during replanning.
     \item When a course is unavailable (via data update or manual flag), the system indicates impacted requirements/categories, and provides alternative course suggestions where available.
-    \item The system supports ``quick replanning'' interactions that preserve the existing plan structure (e.g., semester grouping and statuses) while enabling efficient substitution or rescheduling.
+    \item The system supports \enquote{quick replanning} interactions that preserve the existing plan structure (e.g., semester grouping and statuses) while enabling efficient substitution or rescheduling.
 \end{enumerate}
 
 \paragraph{Delineation.}
@@ -305,7 +303,7 @@ Automated detection of course unavailability is out of scope, since no live CMS/
 \textbf{Importance score 6.} Associated themes: C42, C50, C64.
 
 \paragraph{Description and user evidence.}
-Participants describe overload when confronted with the full catalogue or a dense graph: ``\textit{way too much at the beginning}'' (C42), an ``\textit{extreme number of courses thrown at you}'' that loses the overview (C64). The filter needs are stated concretely and cover status, category, ECTS range, obligation type and semester, with mandatory courses expected to stay visible by default (all C42). Beyond filtering they ask for abstraction, since ``\textit{with graphs, it kind of explodes}'' (C50), proposing collapse and expand to control density (C42).
+Participants describe overload when confronted with the full catalogue or a dense graph: \enquote{way too much at the beginning} (C42), an \enquote{extreme number of courses thrown at you} that loses the overview (C64). The filter needs are stated concretely and cover status, category, ECTS range, obligation type and semester, with mandatory courses expected to stay visible by default (all C42). Beyond filtering they ask for abstraction, since \enquote{with graphs, it kind of explodes} (C50), proposing collapse and expand to control density (C42).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -320,13 +318,13 @@ Participants describe overload when confronted with the full catalogue or a dens
 \textbf{Importance score 5.} Associated themes: C27, C28, C32, C40, C41.
 
 \paragraph{Description and user evidence.}
-Participants report interpretability problems with the graph on first exposure: ``\textit{at first glance I wouldn't know}'' its purpose (C41), and shorthand labels are ``\textit{not intuitively understandable}'' (C40). Spatial layout compounds this: participants question the arrangement (``\textit{the arrangement confuses me… why such big padding}'') and explicitly ask whether vertical position carries meaning (C27), a question the layout, as designed, does not actually answer visually. Participants also express a reading-direction preference: ``\textit{nicer if it goes left to right, because we read left to right}'' (C32). Alongside this, participants request the freedom to arrange items according to their own logic rather than a fully system-imposed layout: ``\textit{I'd rather do it like that, because then I can place them how I want}'' (C28); offering a free-arrangement option, alongside the structured default, is what lets both needs, a legible default layout and personal rearrangement, coexist rather than compete.
+Participants report interpretability problems with the graph on first exposure: \enquote{at first glance I wouldn't know} its purpose (C41), and shorthand labels are \enquote{not intuitively understandable} (C40). Spatial layout compounds this: participants question the arrangement (\enquote{the arrangement confuses me… why such big padding}) and explicitly ask whether vertical position carries meaning (C27), a question the layout, as designed, does not actually answer visually. Participants also express a reading-direction preference: \enquote{nicer if it goes left to right, because we read left to right} (C32). Alongside this, participants request the freedom to arrange items according to their own logic rather than a fully system-imposed layout: \enquote{I'd rather do it like that, because then I can place them how I want} (C28); offering a free-arrangement option, alongside the structured default, is what lets both needs, a legible default layout and personal rearrangement, coexist rather than compete.
 
 \paragraph{Requirements.}
 \begin{enumerate}
     \item The Graph includes an always-available legend explaining symbols, colours, and status encodings, and stating what the current layout does or does not encode (including vertical and horizontal positioning).
     \item The tool offers at least two layout modes: (a) structured layout (left-to-right progression) and (b) free layout (user-arranged).
-    \item On first use, the graph view provides a short guided tooltip flow that enables users to correctly answer ``what is this view for?''
+    \item On first use, the graph view provides a short guided tooltip flow that enables users to correctly answer \enquote{what is this view for?}
     \item If the layout mode does not encode meaning (e.g., vertical or horizontal position), the UI explicitly communicates this to prevent misinterpretation.
 \end{enumerate}
 
@@ -336,7 +334,7 @@ Participants report interpretability problems with the graph on first exposure: 
 \textbf{Importance score 5.} Associated themes: C8, C54, C58.
 
 \paragraph{Description and user evidence.}
-Participants describe study planning as affectively demanding. Confronting remaining requirements can trigger distress: ``\textit{very depressing, because only then did I see how much I still lack}'' (C8), including acute stress episodes during planning (C8). In parallel, participants describe visual clarity and polish as directly reducing perceived burden: a preference for low-text, icon-based interfaces (``\textit{with icons… not much text}''; ``\textit{too much text is off-putting}''), self-identifying as visually oriented (``\textit{I'm more visual}''), and linking an appealing interface to motivation to use it at all (all C54). The same low-clutter preference bears on completed items specifically: keeping every finished course fully rendered at full visual weight indefinitely would work against the low-text, uncluttered interface C54 calls for, without the record actually needing to be prominent once a course is done. Participants further indicate that the system should visibly take structuring work off their hands: ``\textit{that the plan already takes quite a bit off your shoulders}'' (C58).
+Participants describe study planning as affectively demanding. Confronting remaining requirements can trigger distress: \enquote{very depressing, because only then did I see how much I still lack} (C8), including acute stress episodes during planning (C8). In parallel, participants describe visual clarity and polish as directly reducing perceived burden: a preference for low-text, icon-based interfaces (\enquote{with icons… not much text}; \enquote{too much text is off-putting}), self-identifying as visually oriented (\enquote{I'm more visual}), and linking an appealing interface to motivation to use it at all (all C54). The same low-clutter preference bears on completed items specifically: keeping every finished course fully rendered at full visual weight indefinitely would work against the low-text, uncluttered interface C54 calls for, without the record actually needing to be prominent once a course is done. Participants further indicate that the system should visibly take structuring work off their hands: \enquote{that the plan already takes quite a bit off your shoulders} (C58).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -354,7 +352,7 @@ None beyond the overall scope boundaries (Section~\ref{sec:overall-scope}, Secti
 \textbf{Importance score 4.} Associated themes: C43, C55.
 
 \paragraph{Description and user evidence.}
-Participants want recommendations to preserve the integrity of the exploration space rather than transform it: ``\textit{marked… but not destroying the graph}'' (C43), explicitly contrasting removal-based filtering with lightweight marking, and naming ``\textit{glowing borders}'' as a desired treatment (C43). At the same time, they are concerned about clutter, motivating a separate, controllable space for recommendation detail: ``\textit{otherwise it's too much on one page}'', framed as its own subsection for recommendations (C55). Participants also expect already-completed items to remain visible in context rather than being removed once a recommendation is shown (C43/C55).
+Participants want recommendations to preserve the integrity of the exploration space rather than transform it: \enquote{marked… but not destroying the graph} (C43), explicitly contrasting removal-based filtering with lightweight marking, and naming \enquote{glowing borders} as a desired treatment (C43). At the same time, they are concerned about clutter, motivating a separate, controllable space for recommendation detail: \enquote{otherwise it's too much on one page}, framed as its own subsection for recommendations (C55). Participants also expect already-completed items to remain visible in context rather than being removed once a recommendation is shown (C43/C55).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -371,7 +369,7 @@ None beyond the overall scope boundaries (Section~\ref{sec:overall-scope}, Secti
 \textbf{Importance score 3.} Associated themes: C28, C29.
 
 \paragraph{Description and user evidence.}
-Participants describe free spatial arrangement as a cognitive externalisation strategy for expressing prioritisation, certainty, and personal relevance: ``\textit{I'd rather do it like that, because then I can place them how I want… draw some wiggle room}'', using vertical position to encode certainty (``\textit{up top… definitely… down here… I'm unsure}'') and describing it as supporting their own mental grouping (all C28). In parallel, participants want grouping to be under their own control rather than system-imposed, asking directly how groups are formed and whether they can be changed (C29), and requesting the ability to freely create and name their own groupings: ``\textit{the possibility to freely create groups… and name them how I want}'' (C29). They also raise the expectation that such groups should not be constrained by semester boundaries (C29).
+Participants describe free spatial arrangement as a cognitive externalisation strategy for expressing prioritisation, certainty, and personal relevance: \enquote{I'd rather do it like that, because then I can place them how I want… draw some wiggle room}, using vertical position to encode certainty (\enquote{up top… definitely… down here… I'm unsure}) and describing it as supporting their own mental grouping (all C28). In parallel, participants want grouping to be under their own control rather than system-imposed, asking directly how groups are formed and whether they can be changed (C29), and requesting the ability to freely create and name their own groupings: \enquote{the possibility to freely create groups… and name them how I want} (C29). They also raise the expectation that such groups should not be constrained by semester boundaries (C29).
 
 \paragraph{Requirements.}
 \begin{enumerate}
