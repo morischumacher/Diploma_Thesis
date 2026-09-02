@@ -74,6 +74,7 @@
 \definecolor{tdmajor}{RGB}{255,236,208}
 \definecolor{tdminor}{RGB}{253,247,190}
 \definecolor{tdrev}{RGB}{221,234,252}
+\definecolor{tdok}{RGB}{219,242,222}
 
 \newcommand{\rvnote}[4]{%
   \ifreviewnotes
@@ -84,6 +85,7 @@
 \newcommand{\TDmajor}[2]{\rvnote{tdmajor}{MAJOR}{#1}{#2}}
 \newcommand{\TDminor}[2]{\rvnote{tdminor}{MINOR}{#1}{#2}}
 \newcommand{\TDrev}[2]{\rvnote{tdrev}{YOUR REV}{#1}{#2}}
+\newcommand{\TDok}[2]{\rvnote{tdok}{VERIFIED}{#1}{#2}}
 
 % Preamble for appendix
 % Required packages:
@@ -193,7 +195,9 @@ apparatus disappears when \verb|\reviewnotesfalse| is set in \texttt{main.tex}.
 Severities: \textbf{BLOCKER} prints wrongly in the submitted PDF as it stands;
 \textbf{MAJOR} is a correctness or argument defect; \textbf{MINOR} is style,
 length or housekeeping; \textbf{YOUR REV} is one of your own review comments,
-promoted from a source comment so it is visible while reading.
+promoted from a source comment so it is visible while reading; \textbf{VERIFIED}
+records a citation opened against its source and found to hold, so it is not
+checked twice.
 \listoftodos
 
 \TDblock{Title-page metadata}{\texttt{\textbackslash thesistitle} is still
