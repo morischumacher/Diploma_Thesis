@@ -1,0 +1,1 @@
+Papers, prior work, and literature relevant to positioning this thesis (e.g. educational recommender systems, curriculum visualization, study planning tools). Used for grounding related-work material -- currently integrated into the Introduction chapter rather than a standalone chapter (see CONTROL.md Section 2).
