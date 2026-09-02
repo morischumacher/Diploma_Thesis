@@ -155,6 +155,44 @@ def main():
             n = len(re.findall(r'%%\s*(?:AI)?REV', t2))
             if n: bad('%s still has %d unresolved %%%% REV comment(s)' % (f, n))
 
+    # --- abbreviations: introduced at their first use in reading order ------
+    ORDER = ['chapters/introduction.tex', 'chapters/methodology.tex',
+             'chapters/relatedwork.tex', 'chapters/needfindingwithprototype.tex',
+             'chapters/fromthemestorequirements.tex', 'chapters/design.tex',
+             'chapters/implementation.tex', 'chapters/evaluation.tex',
+             'chapters/discussion.tex', 'appendix/formative-interview-plan.tex',
+             'appendix/codebook-and-traceability.tex',
+             'appendix/evaluation-appendix.tex', 'appendix/glossary.tex']
+    # abbreviation -> pattern its expansion must match, at or before first bare use
+    ABBREV = {
+        'GDPR':  r'General Data Protection Regulation',
+        'TAM':   r'Technology Acceptance Model',
+        'UEQ':   r'User Experience Questionnaire',
+        'ECTS':  r'European Credit Transfer',
+        'StEOP': r'Studieneingangs',
+        'ERS':   r'Educational Recommender System',
+        'ED':    r'Educational Dashboard',
+        'OOS':   r'out[- ]of[- ]scope',
+        'CMS':   r'course management',
+        'LMS':   r'learning management',
+        'GPA':   r'grade[- ]point average',
+        'TA':    r'thematic analysis',
+    }
+    doc = ''
+    for f in ORDER:
+        if f not in bodies:
+            continue
+        doc += re.sub(r'\\TD(?:block|major|minor|rev|ok)\{.*', '', bodies[f]) + '\n'
+    for ab, expansion in ABBREV.items():
+        hits = list(re.finditer(r'(?<![A-Za-z\\])' + re.escape(ab) + r'(?![A-Za-z])', doc))
+        if len(hits) < 2:
+            continue
+        i = hits[0].start()
+        exp = re.search(expansion, doc[:i + len(ab) + 40], re.I)
+        if not exp:
+            warn('%s used %d times, first use not introduced: ...%s...'
+                 % (ab, len(hits), re.sub(r'\s+', ' ', doc[max(0, i-70):i+len(ab)+12])))
+
     print('\nBLOCKING CHECKS FAILED' if fail else '\nall blocking checks passed')
     return 1 if fail else 0
 

@@ -189,7 +189,7 @@ Two further rules that no scanner can check. **A claim verb must match the evide
 
 **Fixed names.** Use exactly these, capitalised as shown, everywhere: Table View, Graph View, Parking Stage, Dashboard, Recommendation Panel, Compliance Engine, Semester Picker, Course Catalogue. The artefact is *the tool* or *the study planner*; the instrument is *the study-guide application* (the questionnaire web app). The two studies are **the formative study** and **the evaluation study** — never "study 1 / study 2".
 
-**Every abbreviation is expanded at first use in the running text, then used bare.** Currently broken:
+**Every abbreviation is expanded at its first use in reading order across the whole document, then used bare.** *Reading order*, not first use in the chapter being edited: that distinction is what this rule kept getting wrong. `tools/check.py` now enforces it, walking the chapters in the order `main.tex` inputs them and requiring each abbreviation's expansion to appear at or before its first bare occurrence. Previously broken, all now fixed:
 
 | Abbreviation | Status | Action |
 |---|---|---|
