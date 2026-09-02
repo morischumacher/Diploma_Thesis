@@ -4,30 +4,56 @@
 This glossary defines domain-specific and thesis-specific terms used regularly throughout the chapters, in the sense they carry in this thesis specifically.
 
 \begin{description}
+  \phantomsection\label{gls:programme}
   \item[Programme] A degree programme at TU Wien; this thesis covers the Bachelor Informatics and Master Software Engineering programmes specifically (Chapter~\ref{chap:methodology}, Section~\ref{sec:overall-scope}).
+  \phantomsection\label{gls:exam-subject}
   \item[Exam Subject] The second level of the curriculum hierarchy (Programme $\to$ Exam Subject $\to$ Module $\to$ Course), a named grouping of modules within a programme (Section~\ref{sec:curriculum-abstraction}).
+  \phantomsection\label{gls:module}
   \item[Module] The third level of the curriculum hierarchy; a named unit containing one or more courses, carrying a single obligation category (Section~\ref{sec:curriculum-abstraction}).
+  \phantomsection\label{gls:course}
   \item[Course (course item)] The fourth, most granular level of the curriculum hierarchy; refers to any course-item entry regardless of teaching format (VO, UE, VU, PR, etc.).
+  \phantomsection\label{gls:containment}
   \item[Containment] The hierarchy relation Programme $\to$ Exam Subject $\to$ Module $\to$ Course (Section~\ref{sec:curriculum-abstraction}), and what the Graph View's default edges draw. It is one half of what this thesis calls a dependency; the other is the formal prerequisite relation.
+  \phantomsection\label{gls:dependency}
   \item[Dependency] The structure a curriculum itself fixes: its containment hierarchy, together with the hard constraints published alongside it, chiefly the formal prerequisites the compliance engine blocks on. This is what the Graph View of the evaluated system rendered, containment as its default edges and the formal prerequisite pairs as a togglable overlay (Section~\ref{sec:graph-ltr}). A bare \enquote{dependency} in this thesis always means this, and never includes the soft form below.
+  \phantomsection\label{gls:soft-dependency}
   \item[Soft dependency] A recommended ordering between courses: courses it is advisable, but not compulsory, to take one before the other. These are curated for this tool rather than published by either curriculum, which is why they are advisory. The compliance engine reported them as non-blocking advisories throughout the evaluation study, but no view drew them; the edge layer that does was built afterwards, in response to participant feedback (Section~\ref{sec:impl-prereq-edges}). A claim that covers both forms names both.
+  \phantomsection\label{gls:ects}
   \item[ECTS] European Credit Transfer and Accumulation System credit, the unit in which curriculum workload is expressed throughout this thesis. One full-time semester is 30~ECTS under the Bologna process.
+  \phantomsection\label{gls:steop}
   \item[StEOP] \emph{Studieneingangs- und Orientierungsphase}, the introductory phase of an Austrian Bachelor programme: a defined set of courses that gates progression into the rest of the curriculum. The Bachelor programme in scope has one; the Master programme does not.
+  \phantomsection\label{gls:obligation-category}
   \item[Obligation category / obligation type] Whether a module is mandatory, constrained elective, or fully elective (Section~\ref{sec:obligation}); the underlying institutional taxonomy differs between the Bachelor and Master programmes (Section~\ref{sec:course-obligation-abstraction}).
+  \phantomsection\label{gls:planning-status}
   \item[Planning status] The lifecycle state of a course in a student's plan: not planned, parked, planned, or done (Section~\ref{sec:lifecycle}).
+  \phantomsection\label{gls:parking-stage}
   \item[Parking Stage] The intermediate holding area for shortlisted courses that have not yet been assigned to a semester (Section~\ref{sec:parking}).
+  \phantomsection\label{gls:prototype}
   \item[Prototype] The Figma prototype used to elicit requirements in the formative study (Chapter~\ref{chap:formative-study}), distinct from the implemented tool this thesis's Design and Implementation chapters describe.
+  \phantomsection\label{gls:theme}
   \item[Theme (C-identifier)] One of the 64 consolidated, design-relevant need categories produced by grouping the initial interview codes (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}); cited in running text by its identifier, e.g.\ (C21). Each theme carries the interviews and verbatim excerpts that informed it. The full set is given in Section~\ref{app:codebook}.
+  \phantomsection\label{gls:code}
   \item[Code] An individual, inductively developed label attached to a coded excerpt during initial coding (Chapter~\ref{chap:formative-study}, Section~\ref{sec:initial-coding}). The 435 initial codes are the input to theme consolidation and are not cited individually in this thesis; the themes they were grouped into are.
+  \phantomsection\label{gls:feature}
   \item[Feature (FEATURE-XXX)] One of the 13 features derived from themes in Chapter~\ref{chap:from-themes-to-requirements}, each carrying a set of numbered requirements.
+  \phantomsection\label{gls:requirement}
   \item[Requirement (Req.)] A single numbered requirement under a feature. Within Chapter~\ref{chap:from-themes-to-requirements}, a feature's own heading uses its name directly (e.g.\ FEATURE-005); from Design onward, a feature is cited by its cross-reference label, e.g.\ Feature~\ref{feat:005}, Req.~Y, so the citation always resolves to the feature's current number even if features are renumbered.
+  \phantomsection\label{gls:oos}
   \item[OOS (Out of Scope)] One of the four system-wide scope boundaries (OOS1--OOS4); OOS1 and OOS2 are general and stated in the Methodology chapter (Section~\ref{sec:overall-scope}), OOS3 and OOS4 are specific and stated in Chapter~\ref{chap:from-themes-to-requirements} (Section~\ref{sec:overall-scope-refined}) alongside the findings that justify them.
+  \phantomsection\label{gls:nested-model}
   \item[Nested Model] Munzner's nested model for visualisation design and validation~\cite{munzner2009}, used as this thesis's umbrella structuring framework (Chapter~\ref{chap:methodology}, Section~\ref{sec:paradigm}).
+  \phantomsection\label{gls:table-view}
   \item[Table View] The primary planning canvas: semesters as vertical columns containing course cards, organised for commitment-stage planning (Section~\ref{sec:table-spatial}).
+  \phantomsection\label{gls:graph-view}
   \item[Graph View] The exploratory canvas: the curriculum rendered as a left-to-right hierarchical layout, organised for browsing and sensemaking rather than planning (Section~\ref{sec:graph-ltr}).
+  \phantomsection\label{gls:recommendation-panel}
   \item[Recommendation Panel] The independently-toggleable left-side panel showing per-family course recommendations with inspectable evidence (Section~\ref{sec:rec-panel}).
+  \phantomsection\label{gls:compliance-engine}
   \item[Compliance Engine] The backend rule engine invoked after every planning action, returning fulfilment status, ECTS statistics, hard violations, and soft warnings (Section~\ref{sec:compliance}).
+  \phantomsection\label{gls:dashboard}
   \item[Dashboard] The persistent right-panel component showing compliance and progress information at four aggregation levels (Section~\ref{sec:dashboard}).
+  \phantomsection\label{gls:scenario-a}
   \item[Scenario A / Scenario B] The two conditions of the evaluation study (Section~\ref{sec:eval-conditions}). Scenario~A is a Cybersecurity persona planned with the Graph View unavailable; Scenario~B is an Artificial Intelligence persona planned with the full tool. Every participant met them in that order.
+  \phantomsection\label{gls:semester-picker}
   \item[Semester Picker] The menu used to assign a course to a semester or the Parking Stage from wherever it is triggered (Section~\ref{sec:semester-picker}).
 \end{description}

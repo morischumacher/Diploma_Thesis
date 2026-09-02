@@ -168,6 +168,8 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 | UEQ, ED, ERS, TA, OOS, CMS/LMS, GDPR | expanded correctly | keep |
 | VU / VO / UE / PR | used, covered by the glossary's Course entry | keep |
 
+**Glossary terms are hyperlinked at their first occurrence in the thesis, and only there.** Settled 2026-09-02 on Moritz's instruction. Every entry in `appendix/glossary.tex` carries a `\phantomsection\label{gls:<slug>}` anchor (26 of them), and `\gterm{<slug>}{<display text>}` links to it: `\gterm{dependency}{course dependencies}`. This is a house convention, so it applies to every chapter, not only the one where it was introduced — a chapter is not done until its first mentions of glossary terms are linked. Done so far: Ch. 1 (`dependency`). Not linking a term more than once is deliberate; a link on every occurrence turns running prose into a field of boxes.
+
 **Acronym list and index are currently empty pages.** `main.tex` loads `glossaries[acronym,toc]` and calls `\printindex` and `\printglossaries`, but the thesis contains no `\newacronym`, no `\gls`, and no `\index{}`. Decide once: either populate a real acronym list with `\newacronym` for the table above, or comment out `\printindex` and `\printglossaries` and keep the hand-written Appendix glossary as the only glossary. **Recommended: comment out both**, keep the Appendix glossary, add the four missing entries. An empty index in a submitted thesis reads as an unfinished build.
 
 **A repeated thesis-specific proper noun needs a glossary entry.** The Appendix glossary is thesis content and is held to every rule in this file. Missing entries to add: **Dependency** (§1.1), **ECTS**, **StEOP**, **Scenario A / Scenario B**.
@@ -264,6 +266,7 @@ A chapter is finished only when every line below is true. This is the checklist 
 12. Brace balance verified; the full build runs clean (§11); no new overfull box over 10 pt.
 13. All `%% REV`, `%% AIREV` and `\todo{}` markers in the chapter resolved and removed.
 14. §12 status table updated.
+16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
 15. Every `dependenc*` occurrence in the chapter checked against the glossary mapping (§1.1).
 
 ---

@@ -86,6 +86,11 @@
 \newcommand{\TDrev}[2]{\rvnote{tdrev}{YOUR REV}{#1}{#2}}
 \newcommand{\TDok}[2]{\rvnote{tdok}{VERIFIED}{#1}{#2}}
 
+% Link a term to its entry in the appendix glossary. House convention: used at
+% the term's first occurrence in the thesis, and only there.
+%   \gterm{dependency}{course dependencies}
+\newcommand{\gterm}[2]{\hyperref[gls:#1]{#2}}
+
 % Preamble for appendix
 % Required packages:
 \usepackage{longtable,booktabs,array,ragged2e}
