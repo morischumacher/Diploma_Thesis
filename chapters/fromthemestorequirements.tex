@@ -2,6 +2,8 @@
 
 This chapter translates the design-relevant themes identified in Chapter~\ref{chap:formative-study} into concrete features and testable requirements. This transition follows the logic of human-centred design, in which design is grounded in an explicit understanding of users, tasks, and environments and proceeds through the specification of user requirements, the production of design solutions, and later evaluation against those requirements \cite{iso9241_210}. At the same time, it aligns with requirements engineering, which is concerned with identifying stakeholder needs and documenting them in a form suitable for analysis, communication, and subsequent implementation \cite{nuseibeh_requirements_2000}. In doing so, this chapter completes the answer to Research Question~1 begun in Chapter~\ref{chap:formative-study}, yielding the features-and-requirements specification that the Design and Implementation chapters realise.
 
+\TDminor{Opening scaffolding}{Keep the sentence stating that this chapter completes the answer to Research Question~1; the rest of the opening paragraph describes the chapter rather than saying anything, and the headings already do that work.}
+
 \section{From Themes to Requirements}
 \label{sec:derivation-process}
 
@@ -32,6 +34,8 @@ The metric is a sum rather than a mean, and that choice is deliberate. Summing p
 The ranking separates the specification into three bands. The four highest-scoring features (scores 15--20) are the planning substrate: getting curriculum data into the system without manual transcription (FEATURE-001), showing progress against the programme at three granularities (FEATURE-002), enforcing the curriculum's own rules (FEATURE-003), and moving a course from exploration in the graph to commitment in the table (FEATURE-004). These four define the hybrid graph--table concept that the rest of the thesis builds and tests. A middle band (scores 9--14) adds the judgement layer participants described around that substrate: semester feasibility (FEATURE-005), explainable recommendation (FEATURE-007), stage-appropriate onboarding (FEATURE-006), and replanning under disruption (FEATURE-008). The remaining five (scores 3--6) concern how the representation behaves once it is populated: density control (FEATURE-009), graph interpretability (FEATURE-010), visual and affective load (FEATURE-011), non-destructive recommendation display (FEATURE-012), and user-defined spatial grouping (FEATURE-013).
 
 Two features contain requirements that were derived from the data but not carried into the implemented system, because of resource and time constraints during development: FEATURE-005, Req.~3 (self-assessed readiness profiles) and FEATURE-013, Reqs.~1, 3, and~4 (named, cross-view groups). Both are stated in the respective Delineation in Section~\ref{app:feature-specs} and are taken up as shortfalls in Chapter~\ref{chap:discussion}. All other exclusions recorded in a Delineation follow from the scope boundaries OOS1--OOS4 rather than from what was built.
+
+\TDminor{Cross-check the counts against Appendix~\ref{app:feature-specs}}{The chapter claims thirteen features carrying fifty-five requirements, and the table's own Reqs.\ column sums to 55. Confirm the appendix specifications carry the same per-feature counts, and that the four requirements named as not implemented (Feature~\ref{feat:005}, Req.~3 and Feature~\ref{feat:013}, Reqs.~1, 3 and~4) appear in both places.}
 
 \begin{table}[htpb]
     \centering

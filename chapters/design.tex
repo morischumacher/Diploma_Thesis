@@ -14,6 +14,8 @@ The tool's scope follows directly from Chapter~\ref{chap:methodology} and~\ref{c
 
 % ============================================================
 
+\TDmajor{Chapter-wide housekeeping}{Four sweeps belong to this chapter and are recorded once here rather than at every site. (1)~\emph{Quotation style}: this chapter mixes 38 instances of \texttt{``\textbackslash textit\{\dots\}''} with 24 of \texttt{\textbackslash enquote\{\dots\}}. The house form is \texttt{\textbackslash enquote} without italics; the same sweep applies to Chapter~\ref{chap:evaluation} and both appendices, 148 instances in total. (2)~\emph{Emphasis}: 121 of the thesis's 198 \texttt{\textbackslash emph} uses are in this chapter. Reserve it for a term's first introduction, the label opening a rejected-alternative sentence, and genuine single-word contrast. (3)~\emph{Em dashes}: three remain here and nowhere else in the thesis. (4)~\emph{Rejected alternatives}: where an alternative was never genuinely live, cut the paragraph to one sentence; keep the four that were actually weighed in full. Expected saving 4 to 6 pages.}
+
 \section{General Architectural Design}
 \label{sec:general}
 This section establishes the frame every later section builds on, and moves from the outside inwards. It first divides the screen into panels, then settles what occupies the centre panel and why only one view may occupy it at a time. It closes with the two abstractions, curriculum structure and course obligation, that every visual encoding and every compliance rule in the later sections refers back to.
@@ -114,7 +116,7 @@ Because obligation types cannot be reduced to a single flat enumeration shared a
 
 Furthermore, the system must handle alternative course formats without breaking these compliance and obligation rules. A small number of modules are officially offered in two structural formats: an integrated lecture-exercise course (VU) or a split lecture-plus-exercise pair (VO~+~UE). Both variants inherit the parent module's single obligation category. When a student selects one variant, the system automatically treats the alternative as satisfied, ensuring the module cannot be double-counted under two different course codes. The recommendation engine (Section~\ref{sec:rec-types-evidence}) is similarly designed to recognise these variant pairs, ensuring that a course already covered by an added variant is never redundantly recommended.
 
-%% REV (the courses should move to the left side where the other courses are, so a longer edge from exam subject B, so the edge is brighing the module level)
+\TDrev{Move the two single-course nodes into the Course column}{Your comment on Figure~\ref{fig:curriculum-hierarchy}: the two courses hanging off Exam Subject~B should sit in the Course column with the others, with a longer edge from Exam Subject~B crossing the Module level, so the figure shows the collapse rather than describing it.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
@@ -180,9 +182,12 @@ Furthermore, the system must handle alternative course formats without breaking 
 
 \section{Visual Design of Curriculum Elements}
 \label{sec:visual}
-This section details the visual encoding strategies used to represent the curriculum and user planning states. To satisfy the core requirement for a visual-first, low-text interface (Feature~\ref{feat:011}, Req.~1; C54), the design minimises textual clutter by leveraging visual channels.
+\TDminor{Meta-discourse}{The opening clause describes the section rather than saying anything; start at ``To satisfy''.}
+To satisfy the core requirement for a visual-first, low-text interface (Feature~\ref{feat:011}, Req.~1; C54), the design minimises textual clutter by leveraging visual channels.
 
 % ------------------------------------------------------------
+\TDminor{Three perceptual sources are unavailable}{Ware 2004 (border-weight channel), Palmer 1992 (common region) and Shneiderman 1983 (direct manipulation) have no PDF in \texttt{context/}. Each is cited for a specific perceptual claim rather than in passing, so each needs opening once. Nielsen 1993, cited for the severity scale in Chapter~\ref{chap:evaluation}, is missing for the same reason.}
+
 \subsection{Course Obligation Encoding}
 \label{sec:obligation}
 
@@ -242,7 +247,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
 
 \emph{Icon-only status} was rejected because icons are already reserved for actions on cards (Section~\ref{sec:action-buttons}), and using one visual element both to show state and to change it would blur representation and interaction.
 
-%% REV (the text in this figure is hard to read, please color it black, just for the done state it should be gray inside)
+\TDrev{Figure~\ref{fig:status-encoding} text is too light}{Your comment: set the card text black, and keep grey only inside the Done state.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize, scale=0.85, transform shape]
@@ -354,9 +359,11 @@ Overly dense text was reported as off-putting (C54). To support an always-curren
 
 To achieve this, the design minimises text and adapts it to the informational role of each hierarchy level. Wienand et al.~\cite{wienand_design_2024}, designing an e-learning platform for a different domain, report that a complicated navigation structure was a source of student frustration in the system they replaced, and chunk their own content so that each unit is displayed as a tile, giving what they call an \enquote{index card-like presentation}. The parallel is with the chunking rather than with the domain: this interface adopts a similarly card-based layout to avoid dense text (C54), so the text within each unit is strictly constrained, and each level carries only what a decision at that level needs (Figure~\ref{fig:card-text}).
 
+\TDmajor{Wienand et al.\ 2024 is cited but has never been opened}{This paragraph quotes the source directly (``index card-like presentation'') and Section~\ref{sec:dashboard} takes its three-level progress-bar pattern from it. There is no PDF anywhere in \texttt{context/}, and the bibliography entry describes an e-learning platform for enterprise-systems training, a different domain from study planning. A direct quotation from an unopened source in another domain is the most exposed citation in the thesis. Open access at \texttt{doi:10.1007/s44217-024-00165-z}; five minutes settles both uses.}
+
 An exam-subject card is read for orientation, so it carries the subject name and the extent of what it contains, and nothing further. A module header is read to answer one question, whether the module's quota is met, so it aggregates: name, total ECTS, obligation type and a status indicator. A course card is where an actual placement decision is made, and it is divided into three fixed zones. Its header carries the short course-code abbreviation and the course-type indicator, applying Bartel et al.~\cite{bartel_design_2024} principle of relying on recognised university identifiers rather than inventing interface shorthand. Its title is the primary identifier and is clamped to two lines, which keeps card heights uniform for the snap-grid alignment system and keeps dense plans scannable. Its footer carries the three most frequently needed attributes: ECTS value, obligation type and status.
 
-%% (REV make sure to color the text in the figure black (the one on the right side))
+\TDrev{Figure~\ref{fig:card-text} annotation text}{Your comment: the annotations down the right-hand side should be black.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
@@ -669,6 +676,8 @@ When a student manually adds a single course that belongs to a multi-course modu
 
 
 % ------------------------------------------------------------
+\TDminor{Figure caption lengths}{Against the house range of 100 to 200 characters: \texttt{fig:three-panels} is 207, \texttt{fig:curriculum-hierarchy} 215, \texttt{fig:workflow} 202 and \texttt{fig:state-machine} 94. All four are close; trim or extend on the next pass through this chapter.}
+
 \section{Visual Legend Design}
 \label{sec:legend}
 Feature~\ref{feat:010} documents that the visual encodings are not self-evident on first exposure: participants asked ``\textit{what do these stand for?}'' (C41) and reported that shorthand labels are ``\textit{not intuitively understandable}'' (C40). Feature~\ref{feat:010}, Req.~1 requires an always-available legend explaining symbols, colours, and status encodings. This is a second, more targeted realisation of the same \enquote{clearly comprehensive content} principle (Bartel et al.~\cite{bartel_design_2024}) that the first-use tooltip sequence addresses more generally (Section~\ref{sec:onboarding}); the paper's specific recommendation of a \enquote{help bar (context-sensitive help)} describes almost exactly a togglable, on-demand legend rather than a one-off tutorial a student sees once and cannot return to.
@@ -973,6 +982,8 @@ This section covers the design of how recommendations are \emph{displayed and in
 
 % ------------------------------------------------------------
 
+\TDminor{Meta-discourse at the section opening}{The two sentences opening Section~\ref{sec:recommendations} say what the section covers and what it does not. The headings carry both; cut them.}
+
 \subsection{Recommendation Panel}
 \label{sec:rec-panel}
 Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible without resetting the canvas viewport, selection, or filters. Formative interviews motivated offloading this information into a separate panel (``\textit{otherwise it's too much on one page}'', C55) while explicitly warning against any feature that risks ``\textit{destroying the graph}'' (C43; Feature~\ref{feat:012}, Req.~1). Furthermore, Feature~\ref{feat:007}, Req.~2 and Req.~3 require explicit rationale and inspectable evidence per recommendation, which demands dedicated screen space. 
@@ -980,7 +991,7 @@ Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible witho
 To meet these requirements without disrupting the user's spatial context, the Recommendation Panel is designed as an independent left-side drawer, positioned adjacent to the course catalogue (Section~\ref{sec:sidebar-design}). It can be toggled open or closed without affecting the canvas viewport, active filters, or node selections. Crucially, recommendations are strictly confined to this panel. No badges, tints, or rings are added to courses on the main canvas or in the catalogue. This strict isolation guarantees that recommendations cannot trigger a disruptive graph re-layout, and it avoids perceptual collisions with the dynamically assigned subject-colour palette (Section~\ref{sec:subject-colour}). 
 
 The panel displays a scrollable list of recommendation cards, each draggable onto a semester lane (Section~\ref{sec:interaction-paths}) and each carrying the evidence the requirement asks for without displacing the course information a decision needs (Figure~\ref{fig:rec-panel}). A card names the family that produced it, the course by code, title and term availability, the human-readable reason (Section~\ref{sec:rec-types-evidence}), truncated with a show-more control so a long reason cannot push the card's other content out of view, the ECTS value and obligation type, and the same action buttons a course card carries elsewhere (Section~\ref{sec:action-buttons}). A toggle bar at the top of the panel shows or hides individual families, and those preferences persist across sessions as part of the student's profile.
-%% REV(make sure also this text on the left side of the figure is black)
+\TDrev{Figure~\ref{fig:rec-panel} text}{Your comment: the text on the left side of the figure should be black too.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,

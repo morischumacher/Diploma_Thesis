@@ -62,6 +62,29 @@
 \usepackage[a-2b,mathxmp]{pdfx}      % Enables PDF/A compliance. Loads the package hyperref and has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists of acronyms. This package has to be included last.
 
+% ---------------------------------------------------------------------------
+% Review annotations (ANWEISUNGEN.md, session of 2026-09-02).
+% Set \reviewnotesfalse before the final build: every note and the To-Do index
+% disappear and nothing else about the document changes.
+% ---------------------------------------------------------------------------
+\newif\ifreviewnotes
+\reviewnotestrue
+
+\definecolor{tdblocker}{RGB}{252,224,224}
+\definecolor{tdmajor}{RGB}{255,236,208}
+\definecolor{tdminor}{RGB}{253,247,190}
+\definecolor{tdrev}{RGB}{221,234,252}
+
+\newcommand{\rvnote}[4]{%
+  \ifreviewnotes
+    \todo[inline, backgroundcolor=#1, bordercolor=#1!55!black,
+          caption={#2: #3}]{\textbf{#2 --- #3.} #4}%
+  \fi}
+\newcommand{\TDblock}[2]{\rvnote{tdblocker}{BLOCKER}{#1}{#2}}
+\newcommand{\TDmajor}[2]{\rvnote{tdmajor}{MAJOR}{#1}{#2}}
+\newcommand{\TDminor}[2]{\rvnote{tdminor}{MINOR}{#1}{#2}}
+\newcommand{\TDrev}[2]{\rvnote{tdrev}{YOUR REV}{#1}{#2}}
+
 % Preamble for appendix
 % Required packages:
 \usepackage{longtable,booktabs,array,ragged2e}
@@ -159,6 +182,51 @@
 
 % Add a table of contents (toc).
 \tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+
+\ifreviewnotes
+\cleardoublepage
+\chapter*{Review Annotations}
+\addcontentsline{toc}{chapter}{Review Annotations}
+This index is generated from the review annotations placed throughout the
+document. Each entry links to the note at the place it applies. The whole
+apparatus disappears when \verb|\reviewnotesfalse| is set in \texttt{main.tex}.
+Severities: \textbf{BLOCKER} prints wrongly in the submitted PDF as it stands;
+\textbf{MAJOR} is a correctness or argument defect; \textbf{MINOR} is style,
+length or housekeeping; \textbf{YOUR REV} is one of your own review comments,
+promoted from a source comment so it is visible while reading.
+\listoftodos
+
+\TDblock{Title-page metadata}{\texttt{\textbackslash thesistitle} is still
+``Title of the Thesis'', the subtitle is the template placeholder,
+\texttt{\textbackslash setdate} is 01.01.2001 and \texttt{\textbackslash Keywords}
+is ``a list of keywords''. These print on both title pages and in the PDF
+document properties. The proposal's title is a candidate, though ``Embedded
+Recommender System'' over-promises relative to what was built and evaluated.}
+
+\TDblock{Empty front and back matter}{\texttt{abstract}, \texttt{kurzfassung},
+\texttt{acknowledgements}, \texttt{danksagung}, \texttt{aitools} and
+\texttt{kitools} are empty files that \texttt{main.tex} inputs, so each renders
+as an empty headed page. The AI-tools disclosure is required by the statement of
+originality; check TU Wien Informatics' current policy before drafting it.}
+
+\TDmajor{Empty index and acronym list}{\texttt{glossaries} is loaded with
+\texttt{[acronym,toc]} and \texttt{main.tex} calls both
+\texttt{\textbackslash printindex} and \texttt{\textbackslash printglossaries},
+but the thesis contains no \texttt{\textbackslash newacronym}, no
+\texttt{\textbackslash gls} and no \texttt{\textbackslash index}, so both render
+as empty pages. Recommended: comment both out and keep the Appendix glossary as
+the only glossary.}
+
+\TDmajor{Sweep every ``dependenc*'' occurrence}{Once the glossary carries a
+Dependency entry naming the three senses used here (containment; formal or hard
+prerequisite; recommended or soft ordering), check each of the roughly forty
+occurrences resolves to the sense intended. A bare ``dependency'' means the
+prerequisite sense after that entry exists.}
+
+\TDminor{Build hygiene}{The current build has 30 overfull and 38 underfull
+boxes. Fix the overfull ones above about 10\,pt, which visibly bleed into the
+margin; ignore the rest.}
+\fi
 
 % Switch to arabic numbering and start the enumeration of chapters in the table of content.
 \mainmatter
