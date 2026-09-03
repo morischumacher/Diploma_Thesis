@@ -48,7 +48,7 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 | Unmet capabilities | 27 distinct |
 | Programmes in scope | 2 — BSc Computer Science UE 033 521, MSc **Software Engineering** UE 066 937. *Not* "Software Engineering & Internet Computing": the programme was renamed, confirmed against the curriculum's own title page (Senate 16 June 2025, in force 1 October 2025) |
 | Bachelor programme total | 180 ECTS, 101 courses |
-| Scope boundaries | OOS1–OOS4 |
+| Scope boundaries | OOS1–OOS5 (see §5; OOS5 bounds what is claimed, so the exclusion sites legitimately cite OOS1–OOS4) |
 
 **The evaluation study has two counts, and which one is correct depends on the verb.** Twelve sessions were conducted; eleven are analysed. P08 was excluded because the session ran without a screen recording, and the analysis method needs both records. Neither number is "the" number:
 
@@ -222,6 +222,10 @@ Two further rules that no scanner can check. **A claim verb must match the evide
 ## 5. Terminology and abbreviations
 
 **Fixed names.** Use exactly these, capitalised as shown, everywhere: Table View, Graph View, Parking Stage, Dashboard, Recommendation Panel, Compliance Engine, Semester Picker, Course Catalogue. The artefact is *the tool* or *the study planner*; the instrument is *the study-guide application* (the questionnaire web app). The two studies are **the formative study** and **the evaluation study** — never "study 1 / study 2".
+
+**The OOS labels are document-wide, not a Chapter 2 local.** OOS1 to OOS5 are defined once, in Chapter 2 §2.3, and then used as bare labels in five other places: Chapter 4 (naming which OOS item excluded which theme), Chapter 5 §5.1 (restating OOS3 and OOS4 with the evidence that justifies them), Chapter 6 §6.1 (treating them as settled inputs to design), the codebook appendix, and the glossary. Adding, removing or renumbering one is therefore an edit to six files. What breaks is never the definition; it is the **counts and ranges** elsewhere: "all four boundaries", "OOS1--OOS4", and any sentence claiming where a given item is stated.
+
+Broken twice already by the same change. Adding OOS5 on 2026-09-02 left Chapter 5 saying "all four boundaries" (fixed then), and left `design.tex` §6.1 saying "all four OOS boundaries" and the glossary saying "one of the four system-wide scope boundaries (OOS1--OOS4)" with a stale account of where each item lives (both fixed 2026-09-03, found only because Moritz asked for this note). `tools/check.py` now derives the count from the definitions in `methodology.tex` and fails on any range or spelled count that disagrees, so the third time is caught by the build.
 
 **Every abbreviation is expanded at its first use in reading order across the whole document, then used bare.** *Reading order*, not first use in the chapter being edited: that distinction is what this rule kept getting wrong. `tools/check.py` now enforces it, walking the chapters in the order `main.tex` inputs them and requiring each abbreviation's expansion to appear at or before its first bare occurrence. Previously broken, all now fixed:
 
@@ -467,7 +471,13 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 **Never touched, whatever a sweep says.** Questionnaire item 2 in the evaluation appendix reads "The interface improved my productivity when dealing with course dependencies and constraints". It is the instrument as administered and is reproduced verbatim, so it sits outside the house vocabulary by necessity.
 
-**Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice. Verified in prior sessions and not to be re-checked: Munzner 2009 (all six claims), Braun & Clarke 2022 (page anchors and phase names corrected against the book), Trippel & Röpke 2025, Auvinen 2014, Hirmer 2022, Nielsen 1994 (both heuristics), Sandelowski 2001, Gale 2013, Bhumichitr 2017, Bodily & Verbert 2017 (93 *articles*, 17 %/6 % are shares of articles), Bartel et al. 2024 (nine principles; user-centred design and study-programme-specific personalisation are **one combined principle**).
+**Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice.
+
+**A source is cleared per claim, not per key.** A verified entry covers the citation instances that existed when it was written, and nothing else. New instances of a cleared key inherit a green mark they never earned, which is how the Munzner overclaim survived: the entry read "all six claims" while the thesis had grown to eight instances. Entries therefore record the instance count at verification time, and a source that gains instances is re-opened for the new ones only.
+
+**Munzner 2009, re-checked 2026-09-03.** 8 instances. The six original claims stand. The seventh, added in Overleaf after Chapter 2 closed, read "Munzner explicitly anticipates such an adaptation" of using a requirements specification as the level-2 output. **She does not.** §2.3 is firm that the level-2 output is operations and data types, and no passage anticipates anything richer. Two things in the paper do support the weaker claim that the model accommodates it: §7 says the model "combines well with" van Wijk's requirements-first process, applied to the three design levels; and in §4.2 and §4.4 she reads the abstraction level of MatrixExplorer (Henry and Fekete) and LiveRAC (her own co-authored system) as an explicit requirements list containing generic operations. Section~2.1 now cites the second of these. Do not restore "anticipates", "recommends" or "endorses" for this source: §4 is post-hoc analysis of published papers, not a design method she proposes. Our own spec meets her stated condition, the generic operations appearing in the appendix requirements (`filter` 13, `select` 14, `overview` 6, `sort` 2), not in Chapter 5's prose.
+
+Verified in prior sessions and not to be re-checked: Braun & Clarke 2022 (page anchors and phase names corrected against the book), Trippel & Röpke 2025, Auvinen 2014, Hirmer 2022, Nielsen 1994 (both heuristics), Sandelowski 2001, Gale 2013, Bhumichitr 2017, Bodily & Verbert 2017 (93 *articles*, 17 %/6 % are shares of articles), Bartel et al. 2024 (nine principles; user-centred design and study-programme-specific personalisation are **one combined principle**).
 
 Verified 2026-09-02 (moved here from in-document notes when those were retired):
 
