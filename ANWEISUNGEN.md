@@ -542,3 +542,62 @@ Verified 2026-09-02, against the PDFs delivered that day:
 
 - **Wienand et al. 2024** — all three uses hold. The quotation "index card-like presentation" is exact and sits beside the frustration finding it rests on; the Dashboard's three-level progress-bar pattern and the "might feel lost on how much progress they already made" quotation are both on p. 691–693; DP9 is literally "motivational elements". The domain caveat in Ch. 6 is what makes the transfer defensible and must stay.
 - **Arnold & Pistilli 2012** — the whole sentence holds: the algorithm is "run on-demand by instructors", the output is "a red, yellow or green signal", the inputs include performance and LMS interaction, and §3.1–3.2 report both the grade and the retention outcomes. "Reported to improve" is the correct hedge.
+
+---
+
+## 15. The final pass
+
+Run **once**, after every chapter is closed and every PR merged, on the built PDF and not on the source. This is not the per-chapter Definition of Done (§10) run nine more times. §10 is deliberately blind to everything outside the chapter in hand, and every defect this project has produced has been of exactly that kind: an edit in one place quietly invalidating a claim somewhere else. The final pass exists to catch what a chapter-by-chapter read structurally cannot.
+
+**Preconditions.** All chapters marked done in §12. No open `\TDblock`, `\TDmajor` or `\TDminor` anywhere. Every §0 forward-dependency row worked. Every blocker in §13 closed or consciously accepted.
+
+### A. Mechanical gates
+
+Automated, and nothing else starts until they are green.
+
+1. `python3 tools/check.py` passes with no blocking failures, and every remaining warning has been looked at and consciously accepted.
+2. `python3 tools/check.py --submission` passes: notes off, no `%% REV`, real metadata, no empty `formalities/` file, no raw `\todo`, clean build (§11a).
+3. Full build clean: no errors, **zero undefined references, zero undefined citations**.
+4. Notes-off build produces zero residue: no Review Annotations chapter, no To-Do index, no coloured boxes, no severity word anywhere in the extracted text.
+5. Bibliography: every cited key present, and a decision recorded for each uncited entry (cut it or use it). Currently 26 uncited.
+6. Abbreviations expanded at first use **in reading order across the whole document**, not per chapter.
+7. Every glossary term hyperlinked with `\gterm` at its first occurrence in the thesis.
+8. Every figure and table referenced in prose; caption lengths within §7.
+
+### B. Cross-chapter consistency
+
+The part no chapter pass can do. Work from §0's consistency register and check every number, name and count **everywhere it appears**, not where it was last edited.
+
+9. Every value in the §0 register, at every site. Participant counts follow the verb rule: twelve run, eleven analysed, `/11` denominators.
+10. Every claim one chapter makes **about another chapter's content**. Chapters 1, 2 and 9 all assert what Chapter 8 found; those assertions are checked against the finished Chapter 8, not against memory. The §0 forward-dependency table is the starting list, not the complete one.
+11. The research questions: character-identical wherever quoted, and each one actually answered where the thesis says it is answered.
+12. Terminology and fixed names per §5. A bare "dependency" never includes the soft form.
+13. Tables against their source artefacts, row by row. Chapter 8's tables were built by hand once and did not match the appendix; assume the same of any table not generated from data.
+14. Every citation still supports the claim it is attached to, using §14's instance counts: any key whose count has grown since it was cleared is re-opened for the new instances only.
+
+### C. Is it clear that this research is exploratory?
+
+**The specific review Moritz asked for, 2026-09-03.** Read the whole thesis once with this single question in mind. The work is a design study: two small samples at one institution, one fixed scenario order, one coder, and descriptive statistics. That is a legitimate and appropriate design, and it is not a weakness to be hidden. The failure mode is not admitting it in the limitations, which the thesis already does. The failure mode is **prose elsewhere that quietly reads as more than exploratory**, so that an examiner meets a confident claim in Chapter 1 or 9 and only finds the qualification in §2.4.
+
+Check, in this order, because the risk rises as you go:
+
+15. **The front matter.** Abstract, Kurzfassung, and the conclusion. These are written last, when everything else is already careful, and they are where the framing is most likely to be lost. They must say what kind of study this is, in their own words, not rely on the reader reaching Chapter 2. Both files are empty today, so this is a writing instruction as much as a check.
+16. **Claim verbs against evidence, everywhere** (§3, §10 item 17). *Establishes*, *demonstrates*, *shows*, *proves*, *confirms* are almost never right here. *Indicates*, *suggests*, *is consistent with*, *describes* usually are. A single sign test on eleven participants supports none of the strong verbs.
+17. **Causal language.** Eleven participants, a fixed scenario order, and no counterbalancing mean the design describes what students did; it cannot attribute a behaviour to a component. Any sentence of the form "the graph caused / led to / improved X" is wrong regardless of how the data looks.
+18. **The word "significant"** used loosely where no test was run, and every reported number checked for whether it is descriptive or inferential. UEQ and TAM results are a descriptive layer and must read as one.
+19. **Frequencies.** Every one carries its denominator, and none is presented as if it generalised. `9/11` is nine of eleven students in this study, not 82 % of students.
+20. **Generalisation claims.** Chapter 9 §9.7 separates what is specific to the hybrid from what might carry further. Nothing elsewhere in the thesis should quietly claim the wider version.
+21. **The contributions (§1.4) and the RQ answers (§9.1)** read together, back to back. These are the two places a reader looks for the headline, they are written at different times, and they are the most likely pair to drift apart in confidence.
+
+A useful test for any suspect sentence: **could this claim be false and the thesis still be fine?** If yes, the sentence is describing a finding and needs its hedge. If no, it is describing what was done and can be stated plainly.
+
+### D. The read
+
+22. Read the **printed PDF** end to end, in one sitting, notes off. Not the source, not a diff, not chapter by chapter. Anything that has never been read in sequence has never been read.
+23. Read Chapters 1, 2 and 9 again immediately afterwards, in that order, as a set. They are the argument; the middle chapters are the evidence.
+
+### E. Submission hygiene
+
+24. §11a in full, plus PDF/A validity, correct metadata, and the declaration and disclosure files complete.
+25. The data-protection items in §13 settled: the consent PDF carrying a real name and birthdate in git history, and the retention of the recordings.
+
