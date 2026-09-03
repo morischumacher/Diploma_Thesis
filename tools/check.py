@@ -241,6 +241,50 @@ def main():
                     ctx = re.sub(r'\s+', ' ', t[max(0, m.start() - 45):m.start() + 55])
                     bad(f'{f}: says "{m.group(0)}" where {n} OOS items are defined: ...{ctx}...')
 
+    # --- evaluation participant counts -----------------------------------
+    # Twelve sessions were conducted, eleven are analysed (P08, no screen
+    # recording). Which number is right depends on the verb, so the blocking
+    # checks are only the phrasings that are contradictions on their face;
+    # everything else is listed for a human to judge.
+    # Judged per clause, not per window: "Twelve sessions were conducted and
+    # eleven are analysed" is the canonical sentence and holds both numbers, so
+    # a window-based match flags the one sentence that is definitely right.
+    def clauses(text):
+        return re.split(r'[.;:,]|\band\b|\bwhereas\b|\bwhile\b', text)
+
+    CONTRADICTIONS = [
+        (lambda c: re.search(r'\beleven\b', c, re.I)
+                   and re.search(r'\b(?:sessions?|interviews?)\b', c, re.I)
+                   and re.search(r'\b(?:conducted|were run|were held|ran|held)\b', c, re.I),
+         'eleven sessions conducted: twelve were conducted, eleven analysed'),
+        (lambda c: re.search(r'\btwelve\b', c, re.I) and re.search(r'\banalys', c, re.I),
+         'twelve analysed: eleven are analysed'),
+        # A denominator, not one number in a slash-separated sequence: the
+        # appendix plan tables hold ECTS runs like 32/31/32/30/27/12/16.
+        (lambda c: re.search(r'(?<![\d/])\d+\s*/\s*12(?![\d/])', c),
+         'denominator /12: frequencies are over the eleven analysed participants'),
+    ]
+    EVAL_FILES = ('chapters/evaluation.tex', 'chapters/discussion.tex',
+                  'chapters/implementation.tex', 'chapters/methodology.tex',
+                  'chapters/introduction.tex', 'appendix/evaluation-appendix.tex',
+                  'appendix/glossary.tex')
+    seen = []
+    for f in EVAL_FILES:
+        t = bodies.get(f)
+        if not t:
+            continue
+        prose = re.sub(r'\\TD(?:block|major|minor|rev|ok)\{.*', '', t)
+        for c in clauses(prose):
+            for test, msg in CONTRADICTIONS:
+                if test(c):
+                    bad('%s: %s: ...%s...' % (f, msg, re.sub(r'\s+', ' ', c.strip())[:90]))
+        for m in re.finditer(r'\b(eleven|twelve)\b[^.]{0,45}?'
+                             r'\b(participants?|students?|sessions?)\b', prose, re.I):
+            seen.append(re.sub(r'\s+', ' ', m.group(0)))
+    if seen:
+        warn('%d evaluation count statements (12 run / 11 analysed; check each '
+             'against §0): %s ...' % (len(seen), ' | '.join(seen[:4])))
+
     print('\nBLOCKING CHECKS FAILED' if fail else '\nall blocking checks passed')
     return 1 if fail else 0
 
