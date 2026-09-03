@@ -101,6 +101,15 @@ def main():
         ('study-name variant', r'\b(needfinding study|summative study|first study|second study|user study)\b'),
     ]
     for f in targets:
+        # %% REV markers live in comments, so this one check reads the raw
+        # file. Running it on the comment-stripped body, as it did until
+        # 2026-09-03, meant it could never fire: sixteen open REV comments sat
+        # in relatedwork.tex with the checker silent. Only --submission caught
+        # them, and only at the very end.
+        n_rev = len(re.findall(r'%%\s*(?:AI)?REV', texts[f]))
+        if n_rev:
+            warn('%s: %d unresolved %%%% REV comment(s)' % (f, n_rev))
+
         t = bodies[f]
         # the glossary defines the study names, so it may use their variants
         if f.endswith('glossary.tex'):
@@ -110,7 +119,6 @@ def main():
                          (SLANG, 'colloquialism'),
                          (r'\bwill\b', 'future tense "will"'),
                          (r'\d+ ECTS', 'ECTS without ~'),
-                         (r'%%\s*(AI)?REV', 'unresolved source comment'),
                          (r'\\todo\{', 'raw \\todo -- use \\TDblock/\\TDmajor/\\TDminor/\\TDrev')]:
             hits = re.findall(pat, t)
             if hits:
