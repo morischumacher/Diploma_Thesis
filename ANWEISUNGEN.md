@@ -50,6 +50,16 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 | Bachelor programme total | 180 ECTS, 101 courses |
 | Scope boundaries | OOS1–OOS4 |
 
+**The evaluation study has two counts, and which one is correct depends on the verb.** Twelve sessions were conducted; eleven are analysed. P08 was excluded because the session ran without a screen recording, and the analysis method needs both records. Neither number is "the" number:
+
+| The sentence is about | Number | Examples |
+|---|---|---|
+| What was run, recruited, consented, used | **twelve** | "twelve moderated observational sessions"; "the system used in the evaluation study" |
+| What was analysed, coded, counted, concluded | **eleven** | "the eleven analysed participants"; every finding, every table, every claim |
+| A frequency denominator | **/11** | a smaller denominator (9/9, 4/9) marks a code that could not be evidenced in every session and must say so where it appears |
+
+Never write "eleven sessions were conducted" or "twelve analysed". Never a `/12` denominator. Where the count is incidental to the point, prefer naming the study over counting heads: `implementation.tex` §7.9 said "the system the eleven participants used", which is wrong because twelve used it, and now says "the system used in the evaluation study". `tools/check.py` fails on the contradictory phrasings and lists every count statement for review.
+
 ---
 
 ## 0a. Open when work resumes (3 September)
