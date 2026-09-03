@@ -33,6 +33,17 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 **Table 8.8 does not match its own appendix.** Found 2026-09-02 by comparing every row of the problems table against the codebook and the code matrix. E-P15's row is a different code entirely (chapter: "The graph makes soft dependencies visible", 6/11; codebook: "Layout-axis configuration popup surfaces mid-task", 1/11) and contradicts §8.7 and Ch. 9. E-P50 is 9/9 in the matrix and in the chapter's own prose but 9/11 in the table; E-P68 is 4/9 in both but 4/11 in the table. E-P29 is severity 2–3 in the table and 2 in the codebook. **Run this comparison for Table 8.9 and the unmet-capabilities table too before Ch. 8 is closed** — one systematic mismatch means the tables were not generated from the artefacts.
 
+**What closing Chapter 8 must trigger.** Chapters 1 and 2 are closed while Chapter 8 is still open, so four sentences in them assert Chapter 8 *content* rather than merely pointing at it. Each is a hostage to an unfinished chapter, and none of them is visible from inside Chapter 8. When Chapter 8 closes, re-check all four before anything else:
+
+| Where | Rests on |
+|---|---|
+| Ch. 1 §1.4, contribution 3 | the graph displaces the catalogue at the find step and not at the commit step |
+| Ch. 1 §1.4, contribution 4 | every participant reported success where no plan met its brief |
+| Ch. 1 §1.4, closing paragraph | frame-sampled log, participant-level frequencies, ISO 9241-11 dimensions, fixed scenario order, eleven analysed |
+| Ch. 2 §2.5, "What a curriculum encodes" | two formal prerequisite pairs, near-empty overlay, and Ch. 8's own bounding sentence. **A drafted correction is already in the chapter as a `\TDrev`**, deferred 2026-09-03 because Ch. 8 is not final: the current second sentence claims the evaluation tested the premise, which Ch. 8 explicitly disclaims. |
+
+Ch. 1's contributions already carry a `\TDrev` for the first three. Ch. 2's is the note added 2026-09-03.
+
 **Consistency register — the canonical values.** Any number below appears in more than one chapter. Change it in one place and you must change it everywhere; never introduce a variant.
 
 | Quantity | Canonical value |
@@ -67,6 +78,7 @@ Never write "eleven sessions were conducted" or "twelve analysed". Never a `/12`
 1. **Read Chapter 2 end to end** now that all thirteen comments are resolved and §2.6 is gone, before starting Chapter 3.
 2. **Improve the consistency checker** (`tools/check.py`). Moritz asked for time on this specifically. The brief: every miss so far has been an edit in one place silently invalidating a claim in another, which a chapter-by-chapter read cannot catch. See §10 item 18 (proposed) and the miss log.
 3. The two stale `overleaf-*` branches to delete once Overleaf has pulled `main`.
+4. **When Chapter 8 closes**, work the forward-dependency table in §0 before anything else. Two of the four items are known-wrong today and are waiting on it.
 
 *Closed 2 September:* Methodology §2.6 "Expected Results" was cut (PR #19). Its evaluation-evidence paragraph moved to Ch. 1 §1.4 Contributions; Ch. 9 §9.7 now cross-references Ch. 1 §1.4.
 
