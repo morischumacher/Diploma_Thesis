@@ -209,6 +209,38 @@ def main():
             warn('%s used %d times, first use not introduced: ...%s...'
                  % (ab, len(hits), re.sub(r'\s+', ' ', doc[max(0, i-70):i+len(ab)+12])))
 
+    # --- OOS count agreement (blocking) ----------------------------------
+    # The OOS items are defined once in methodology.tex and then counted and
+    # ranged over in five other files. Adding one has twice left a stale "all
+    # four boundaries" or "OOS1--OOS4" behind, so the count is derived from the
+    # definitions and every count and range elsewhere must agree with it.
+    WORD = {2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven'}
+    defined = sorted(int(n) for n in
+                     re.findall(r'\\textbf\{OOS(\d+),', bodies.get('chapters/methodology.tex', '')))
+    if defined:
+        n = max(defined)
+        if defined != list(range(1, n + 1)):
+            bad(f'OOS items defined in methodology.tex are not contiguous: {defined}')
+        for f, t in bodies.items():
+            # A range is only wrong if it claims more items than exist. A prefix
+            # sub-range can be deliberate: OOS5 bounds what the thesis claims
+            # rather than what the artefact omits, so the exclusion sites in
+            # Chapter 4 and the codebook legitimately say OOS1--OOS4.
+            for m in re.finditer(r'OOS1\s*-{2,3}\s*OOS(\d+)', t):
+                k = int(m.group(1))
+                if k > n:
+                    bad(f'{f}: range {m.group(0)} but only {n} OOS items are defined')
+                elif k < n:
+                    warn(f'{f}: range {m.group(0)} is a sub-range of OOS1--OOS{n}; '
+                         'confirm it is deliberate')
+            # A count attached to the word "boundaries" is a totality claim and
+            # must match. This is what went stale twice.
+            for m in re.finditer(r'\b(two|three|four|five|six|seven)\s+'
+                                 r'(?:OOS\s+|scope\s+)?boundaries\b', t, re.I):
+                if m.group(1).lower() != WORD[n]:
+                    ctx = re.sub(r'\s+', ' ', t[max(0, m.start() - 45):m.start() + 55])
+                    bad(f'{f}: says "{m.group(0)}" where {n} OOS items are defined: ...{ctx}...')
+
     print('\nBLOCKING CHECKS FAILED' if fail else '\nall blocking checks passed')
     return 1 if fail else 0
 
