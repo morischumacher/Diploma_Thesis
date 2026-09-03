@@ -349,6 +349,7 @@ A chapter is finished only when every line below is true. This is the checklist 
 14. §12 status table updated.
 16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
 17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
+18. **No rhetorical build-up.** A sentence whose only work is to announce that something notable follows is not a statement, and an examiner reads it as padding. Delete it and let the next sentence carry the point. The test is mechanical: cover the sentence, and if no fact is lost, it was build-up. Known forms, one of them written by me in Chapter 3 on 2026-09-03 and caught by Moritz: *One system has attracted sustained attention.* · *It is worth noting that…* · *Interestingly,…* · *This raises an important question.* · *A closer look reveals…* · *Notably,…* used as a paragraph opener. The related trap is the comparative lead-in that exists to flatter the thesis, which §3's "rather than" rule covers separately.
 
 **A note that has been dealt with is deleted, not marked done.** Set 2026-09-02. The thesis carries only outstanding work; a green "verified" block in the middle of a chapter is noise for the person reading it, and there were eleven of them. What was checked and what it showed goes in §14's log instead, which is where someone looks to avoid re-checking. The `\TDok` macro is retired.
 
