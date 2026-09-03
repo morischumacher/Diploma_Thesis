@@ -12,6 +12,12 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[Module] The third level of the curriculum hierarchy; a named unit containing one or more courses, carrying a single obligation category (Section~\ref{sec:curriculum-abstraction}).
   \phantomsection\label{gls:course}
   \item[Course (course item)] The fourth, most granular level of the curriculum hierarchy; refers to any course-item entry regardless of teaching format (VO, UE, VU, PR, etc.).
+  \phantomsection\label{gls:collaborative-filtering}
+  \item[Collaborative filtering] Recommending an item to a student on the evidence of what similar students did, without reading the item's content. Contrasted with content-based filtering below; a hybrid recommender combines the two. Used in this thesis for one of the recommendation families (Section~\ref{sec:impl-recommender}), where the prior-student histories it draws on are synthetically generated (Chapter~\ref{chap:methodology}, OOS5).
+
+  \phantomsection\label{gls:content-based-filtering}
+  \item[Content-based filtering] Recommending an item on the evidence of its own attributes and a profile of what the student has engaged with before, without reference to other students.
+
   \phantomsection\label{gls:containment}
   \item[Containment] The hierarchy relation Programme $\to$ Exam Subject $\to$ Module $\to$ Course (Section~\ref{sec:curriculum-abstraction}), and what the Graph View's default edges draw. It is one half of what this thesis calls a dependency; the other is the formal prerequisite relation.
   \phantomsection\label{gls:dependency}

@@ -123,6 +123,8 @@ The test is **can the thesis be wrong because of it?** If yes it is an assumptio
 ### 1.3 Working mode — branch + PR, one chapter at a time
 
 **Never push to `main` directly.** Every change goes on a branch and into a pull request, and what it does is explained in the chat before it is opened. This holds even for merge resolutions and for changes that look purely mechanical — Moritz reviews in GitHub and pulls into Overleaf from `main`, so an unannounced commit on `main` arrives in his editor without him having seen it. Set 2026-09-02 after two direct pushes.
+**A merged branch is closed, and `tools/push.sh` now enforces it.** Push with `GH_TOKEN=... tools/push.sh`, never with a bare `git push`: it asks GitHub whether a PR for this branch has been merged and refuses if commits sit past the merge point. Written 2026-09-03 after the rule below failed three times in one day. The naive test, whether the branch tip is an ancestor of `main`, does not work, because after the merge the branch grows past the merged commit and looks live again.
+
 **A merged branch is closed.** Once its PR is merged, never commit to that branch again: the commits sit on a merged head, no PR is watching them, and they silently never reach `main`. Any further work starts with `git checkout -b <new> origin/main`. Set 2026-09-02, after two commits were pushed to the #19 branch after #19 had been merged and had to be recovered as #20.
 
 A fine-grained PAT scoped to `Diploma_Thesis` (Contents read/write, Pull requests read/write) is provided; rotate it after submission. Never pass it to `git push -u`, which writes it into `.git/config`. Loop per chapter:
@@ -349,6 +351,7 @@ A chapter is finished only when every line below is true. This is the checklist 
 14. §12 status table updated.
 16. Glossary terms hyperlinked with `\gterm` at their first occurrence in the thesis (§5).
 17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
+18. **No rhetorical build-up.** A sentence whose only work is to announce that something notable follows is not a statement, and an examiner reads it as padding. Delete it and let the next sentence carry the point. The test is mechanical: cover the sentence, and if no fact is lost, it was build-up. Known forms, one of them written by me in Chapter 3 on 2026-09-03 and caught by Moritz: *One system has attracted sustained attention.* · *It is worth noting that…* · *Interestingly,…* · *This raises an important question.* · *A closer look reveals…* · *Notably,…* used as a paragraph opener. The related trap is the comparative lead-in that exists to flatter the thesis, which §3's "rather than" rule covers separately.
 
 **A note that has been dealt with is deleted, not marked done.** Set 2026-09-02. The thesis carries only outstanding work; a green "verified" block in the middle of a chapter is noise for the person reading it, and there were eleven of them. What was checked and what it showed goes in §14's log instead, which is where someone looks to avoid re-checking. The `\TDok` macro is retired.
 
