@@ -39,10 +39,7 @@ The prototype gave participants something concrete to react to, instead of askin
 The prototype's underlying concept, a hybrid interface combining a node-link graph with a semester table, was not itself derived from these interviews. As stated in the Methodology chapter (Section~\ref{sec:overall-assumptions}), the need for this combination is motivated by the related-work review (Chapter~\ref{chap:related-work}) and treated as a starting assumption going into the formative study, not as a hypothesis tested against alternatives. The formative study's role was accordingly to elicit requirements \emph{within} this hybrid concept, which panels, encodings, and interactions it should have, rather than to establish whether a hybrid interface was the right concept in the first place.
 
 \paragraph{What the prototype represented.}
-The prototype represented a hybrid study-planning concept with three closely related interaction spaces.
-
-\emph{Table View.}
-The Table View presented the plan as a lane-based semester canvas. A left sidebar labelled \enquote{Course Catalogue} contained searchable curriculum entries and colour-coded subject-level catalogue items. Course obligation was indicated by the curriculum specific indicators (Mandatory (M), Core (C) , Elective (E)). The main area consisted of semester columns arranged from left to right, each showing a running total in European Credit Transfer and Accumulation System (ECTS) credits in the column header. Within these columns, individual courses could be placed as cards, and multi-course modules could also be represented as grouped containers containing several subordinate course cards. The prototype thereby illustrated semester allocation, visual comparison across semesters, and the distinction between different curriculum levels such as exam subject, module, and course. It also suggested rearrangement as a core planning action, since courses and grouped modules were visually represented as movable planning objects. This Table View is illustrated in Figure~\ref{fig:prototype-tableview}.
+The prototype represented the hybrid concept as three linked interaction spaces, shown in Figures~\ref{fig:prototype-tableview} to~\ref{fig:prototype-recommendation} and described there. The \emph{Table View} laid the plan out as semester lanes fed from a searchable catalogue sidebar, with running ECTS totals per semester. The \emph{Graph View} showed the same curriculum as a node-link structure of exam subjects, modules and courses, with filters for what to display. Recommendation actions were reachable from both views, so that a suggested course could be inspected and placed without leaving the surface the participant was already on. What mattered for elicitation is that both views operate on one plan, and that moving between them is possible at any point; the visual particulars are secondary and are left to the figures.
 
 \begin{figure}[htbp]
     \centering
@@ -51,19 +48,12 @@ The Table View presented the plan as a lane-based semester canvas. A left sideba
     \label{fig:prototype-tableview}
 \end{figure}
 
-
-\emph{Graph View.}
-The Graph View represented the curriculum as a node-link structure organised around colour-coded exam-subject nodes. A filter sidebar on the left exposed controls for subject-level visibility and general graph options, including \enquote{Show only Added Courses}, \enquote{Show Formal Prerequisites}, \enquote{Show All}, and \enquote{Collapse All}. Within the graph itself, subject, module, and course elements were shown as distinct nodes connected by edges, making hierarchical relations and dependency-like structures explorable in a way that differed from the semester-based Table View. Course obligation was again indicated by the curriculum specific indicators (Mandatory (M), Core (C) , Elective (E)). Planned courses where marked with a star. Collapsed branches were indicated visually, allowing focus on specific regions of the curriculum, making it possible to discuss abstraction and focus mechanisms as part of the exploration workflow. This Graph View is illustrated in Figure~\ref{fig:prototype-graphview}.
-
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{pictures/Prototype_GraphView.pdf}
     \caption{Graph View of the prototype: exam subjects, modules, and courses as colour-coded nodes, with filter controls, planned-course markers, and collapsible branches.}
     \label{fig:prototype-graphview}
 \end{figure}
-
-\emph{Recommendation and planning interactions.}
-The prototype also included explicit interaction hooks for recommendation-supported exploration, present in both views: in the Table View, recommendation-related actions were available from the sidebar; in the Graph View, they were attached directly to course nodes and a dedicated overlay. In the Graph View, course cards exposed actions such as \enquote{SIMILAR COURSES} and \enquote{ADD TO PLAN}. In addition, a separate recommendation overlay visualised a selected focal course together with related courses connected to it, alongside actions such as \enquote{ADD TO PLAN} and \enquote{REMOVE FROM PLAN}. The overlay also included a semester-selection control, making it possible to discuss how exploratory recommendations might translate into concrete placement decisions in the semester plan. This part of the prototype was used to probe when recommendation support would be useful, how visible it should be, and how tightly it should be integrated with planning actions. This interaction concept is illustrated in Figure~\ref{fig:prototype-recommendation}.
 
 \begin{figure}[htbp]
     \centering
@@ -161,9 +151,8 @@ Three themes illustrate the character of the evidence behind these labels. On pr
 
 \subsection{Output Artefacts and Traceability}
 \label{sec:output-traceability}
-The analysis produced three main artefacts: (1) a table of initial codes linked to verbatim evidence, (2) the consolidated theme codebook, and (3) a prevalence-informed prioritisation overview for implementation scoping. Together, these artefacts formed an explicit decision trail from transcript excerpt to code, from code to theme, and from theme to later requirement.
 
-The second of these is this chapter's substantive result and the input Chapter~\ref{chap:from-themes-to-requirements} works from. The 64 themes are listed in Section~\ref{app:codebook} with, for each, its prevalence across the six interviews and its disposition: 51 were carried into the features-and-requirements specification, and 11 were excluded at Step~3 as lying outside the thesis's scope, five of them because they would require a live connection to the institutional systems (OOS3), two a community feature (OOS4), two automated planning (OOS1), one course-level planning (OOS2), and one a mobile application. Two further themes record artefacts of the interview procedure itself, namely the clarification of what \enquote{study planning} meant in this study and participants' willingness to be contacted for a later phase, and are not design-relevant findings. Themes are cited throughout the remainder of this thesis by their identifier, for example (C21).
+The analysis produced three artefacts: a table of initial codes linked to verbatim evidence, the consolidated theme codebook, and the prevalence-informed prioritisation of Step~4. The codebook is this chapter's substantive result and the input Chapter~\ref{chap:from-themes-to-requirements} works from; it is reproduced in Appendix~\ref{app:codebook}, where each theme carries the interviews it recurred in, its disposition, and the feature it maps to. Every theme can therefore be traced back to the codes and excerpts that produced it and forward to the requirement it motivated.
 
 \subsection{Link to Subsequent Chapters}
 \label{sec:link-subsequent-chapters}
