@@ -238,6 +238,8 @@ Two further rules that no scanner can check. **A claim verb must match the evide
 
 **Fixed names.** Use exactly these, capitalised as shown, everywhere: Table View, Graph View, Parking Stage, Dashboard, Recommendation Panel, Compliance Engine, Semester Picker, Course Catalogue. The artefact is *the tool* or *the study planner*; the instrument is *the study-guide application* (the questionnaire web app). The two studies are **the formative study** and **the evaluation study** — never "study 1 / study 2".
 
+**Themes are T1--T64, codes are unlabelled.** Renamed from C1--C64 on 2026-09-04, because "C" read as *code* while the identifiers name *themes*, which is the level above codes. The rename touched 392 occurrences in five files (codebook appendix 242, `design.tex` 68, `fromthemestorequirements.tex` 51, `needfindingwithprototype.tex` 30, glossary 1). The 435 initial codes have no identifiers and are never cited individually; only themes are. One deliberate exception exists and must stay: `design.tex` has a generic TikZ figure with a node labelled "Module C1", which is not a theme. `tools/check.py` fails the build on any other bare `C<number>`.
+
 **The OOS labels are document-wide, not a Chapter 2 local.** OOS1 to OOS5 are defined once, in Chapter 2 §2.3, and then used as bare labels in five other places: Chapter 4 (naming which OOS item excluded which theme), Chapter 5 §5.1 (restating OOS3 and OOS4 with the evidence that justifies them), Chapter 6 §6.1 (treating them as settled inputs to design), the codebook appendix, and the glossary. Adding, removing or renumbering one is therefore an edit to six files. What breaks is never the definition; it is the **counts and ranges** elsewhere: "all four boundaries", "OOS1--OOS4", and any sentence claiming where a given item is stated.
 
 Broken twice already by the same change. Adding OOS5 on 2026-09-02 left Chapter 5 saying "all four boundaries" (fixed then), and left `design.tex` §6.1 saying "all four OOS boundaries" and the glossary saying "one of the four system-wide scope boundaries (OOS1--OOS4)" with a stale account of where each item lives (both fixed 2026-09-03, found only because Moritz asked for this note). `tools/check.py` now derives the count from the definitions in `methodology.tex` and fails on any range or spelled count that disagrees, so the third time is caught by the build.
@@ -443,7 +445,11 @@ Order is chosen so that the chapters whose content is still moving come after th
 - The "defects have since been corrected, each with a regression test" sentence is scoped ("the first of them have been fixed"; Ch. 7 says five, with regression tests). Re-verify against the repo once, then close.
 - Appendix B.7 is regenerated at N=11 and now agrees with Discussion Table 9.1.
 - The Ch. 7 §7.4.1 broken sentence is complete.
-- Codes-vs-themes is resolved: the appendix now calls C1–C64 themes, matching the chapters and the glossary.
+- Codes-vs-themes is resolved: the appendix now calls T1–T64 themes, matching the chapters and the glossary (renamed from C1–C64 on 2026-09-04, §5).
+
+**Parked, raised by Moritz, to be settled later.**
+
+- `appendix/glossary.tex` line 26, the *Soft dependency* entry: "they are mentioned, but are advisory". The entry defines a soft dependency as a recommended ordering; the open question is whether the thesis is consistent about what the system does with one. Deferred 2026-09-04 on Moritz's instruction; the `%% REV` comment stays in the file so the checker keeps counting it.
 
 **Still open from that review and worth re-checking during the relevant chapter pass:** the E-G18 attribution to P06; the P10 "not placing from the graph at all" framing; the Wienand et al. citations (§14); whether the two inert recommendation channels were inert in `v1.0-evaluated` specifically.
 
