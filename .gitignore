@@ -19,6 +19,8 @@
 *.ind
 *.xmpdata
 *.xmpi
+*.fdb_latexmk
+*.fls
 main.pdf
 *.ilg
 main.tdo
