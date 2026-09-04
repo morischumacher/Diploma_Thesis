@@ -449,7 +449,12 @@ Order is chosen so that the chapters whose content is still moving come after th
 - The Ch. 7 §7.4.1 broken sentence is complete.
 - Codes-vs-themes is resolved: the appendix now calls T1–T64 themes, matching the chapters and the glossary (renamed from C1–C64 on 2026-09-04, §5).
 
-**Two quotations in Chapter 6 have no source.** Found 2026-09-04 while building the codebook appendix. `design.tex` attributes \enquote{like a table, semesters in columns, courses in rows} to T18 and \enquote{the damage is done} to T20, both as participant speech. Neither appears anywhere in the formative interview data (all 435 code rows and all 437 theme excerpts were searched, in German and English) nor in the round-two material. Both are listed in the `UNSOURCED` exception in `tools/check.py`; removing an entry there is the fix, once each is either replaced by a real excerpt or rewritten as the design statement it actually is.
+**Two quotations in Chapter 6 had no source. Resolved 2026-09-04.** A second scan covering the six raw transcripts, the open-coding document, the generated codebook table, the translations file, the round-two notes and results, and the evaluation appendix settled both.
+
+- \enquote{like a table, semesters in columns, courses in rows}, attributed to T18, **is the moderator's own speech.** The only occurrence of *Spalten* in any transcript is in I4, where Moritz describes the prototype: "Eine Tabelle, in dem man Items tracken kann. Tabelle, drei Spalten in dem Fall". It was reported as participants' visualisation of their ideal arrangement, under a theme (future-state preview) that has nothing to do with layout. 6.7 now rests on T47, \enquote{I simply find it easier with tables}, plus the prototype's unchallenged column arrangement.
+- \enquote{the damage is done}, attributed to T20, **has no source anywhere**, in either language. It is no longer a quotation; the sentence states the point and cites T35 and T4, which are the themes that actually carry semester load.
+
+`UNSOURCED` in `tools/check.py` is now empty and must stay empty: every quotation attributed to a theme has to appear in the codebook table, and the build fails otherwise. **Whenever a quotation is attributed to a participant, check that the speaker is the participant.**
 
 **Parked, raised by Moritz, to be settled later.**
 
