@@ -77,6 +77,18 @@ def main():
     if uncited:
         warn(f'{len(uncited)} bib entries never cited: {", ".join(uncited[:6])}...')
 
+    # --- themes are T-identifiers, never C-identifiers (blocking) ---------
+    # The themes were renamed C1--C64 to T1--T64 so that they stop reading as
+    # codes, which is the level below them. A stray C-identifier is either a
+    # missed occurrence or a copy of an older draft, and both are wrong.
+    for f, t in bodies.items():
+        for m in re.finditer(r'(?<![\w/-])C(\d{1,2})\b', t):
+            line = t[:m.start()].count('\n') + 1
+            ctx = t[max(0, m.start() - 40):m.end() + 10].replace('\n', ' ')
+            if 'Module C1' in ctx:      # generic A/B/C figure in design.tex
+                continue
+            bad(f'{f}:{line}: C-identifier {m.group(0)}; themes are T1--T64')
+
     # --- structural: every \includegraphics resolves (blocking) -----------
     # main.tex stopped producing a PDF because pictures/Full_view_crop.png was
     # referenced and absent, and every check still reported green: the checker
