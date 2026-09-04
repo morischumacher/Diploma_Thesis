@@ -92,13 +92,11 @@ def main():
     # --- every theme-tagged quotation is in the codebook (blocking) -------
     # The codebook appendix reproduces all 437 interview excerpts, so a
     # quotation attributed to a theme anywhere in the thesis has to appear
-    # there. Two quotations attributed to themes match nothing in either
-    # study's data; they are listed below and await a decision, and the list
-    # is meant to shrink to nothing, not to grow.
-    UNSOURCED = {
-        'like a table, semesters in columns, courses in rows',   # design.tex, T18
-        'the damage is done',                                    # design.tex, T20
-    }
+    # there. Two quotations once sat in an exceptions list here because they
+    # matched nothing in either study's data. Both were removed from Chapter 6
+    # on 2026-09-04 -- one was the moderator's own words, the other had no
+    # source at all -- so the list is empty and must stay that way.
+    UNSOURCED = set()
 
     def qnorm(s):
         s = s.lower().replace('\\%', '%').replace('~', ' ')
