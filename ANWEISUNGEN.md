@@ -332,7 +332,7 @@ Requirements precede Features — that is the derivation order (Ch. 5 states it)
 - Percentages: `\,\%` throughout (58 uses, consistent — keep).
 - ECTS: **`~ECTS` with a non-breaking space**, e.g. `30~ECTS`. Currently 25 of 33 comply; eight use a plain space. Sweep.
 - Cross-reference words take a non-breaking space: `Section~`, `Chapter~`, `Figure~`, `Table~`, `Feature~`, `Req.~`. Compliant today except a handful of `Table ` instances (all of which are the panel name "Table View", not references — do not "fix" those).
-- Spell out numbers under ten in prose ("six participants", "eleven analysed"), use digits for measurements and identifiers.
+- Spell out numbers under ten in prose ("six participants"), use digits from ten up and for measurements and identifiers. Swept 2026-09-04: the specification is **13 features carrying 55 numbered requirements** in all five places that state it (Ch. 1, Ch. 5 twice, Ch. 9, both appendix intros); "eleven analysed" stays spelled out because it is the participant count, which §0 fixes in words.
 
 ---
 
