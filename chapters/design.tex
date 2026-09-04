@@ -10,7 +10,7 @@ Together with Chapter~\ref{chap:implementation}, this chapter answers the second
 \textit{How can we design and implement a hybrid interface that combines graph-based visualisation with table-based planning to help students plan their studies and understand curriculum structure and course dependencies, based on those requirements?}
 \end{quote}
 
-The chapter is therefore organised by design dimension rather than by region of the screen: first the general architecture, then the visual encoding of curriculum elements, then interaction, and only then the individual views and features. This follows from the level Munzner's model places the chapter at. An encoding such as the obligation channel, the subject-colour hierarchy or the course lifecycle is a property of the design, not of a panel: the same encoding appears in the Graph View, in the Table View and in the catalogue, and it has to be derived once from the evidence that motivates it rather than three times from wherever it happens to be visible. Organising by screen region would split each of those decisions across the regions that display it. The view- and feature-specific sections that follow the three dimension sections therefore describe only what is genuinely particular to a view or a feature, and refer back to the encodings rather than restating them.
+The chapter is therefore organised by design dimension rather than by region of the screen: first the general architecture and the data model it rests on, then the visual encoding of curriculum elements, then interaction, and only then the individual views and features. This follows from the level Munzner's model places the chapter at, whose unit of design is the encoding or interaction technique, and which treats visual encoding and interaction as one level because the two are mutually interdependent~\cite[p.~922]{munzner2009}. An encoding such as the obligation channel, the subject-colour hierarchy or the course lifecycle is a property of the design, not of a panel: the same encoding appears in the Graph View, in the Table View and in the catalogue, and it has to be derived once from the evidence that motivates it rather than three times from wherever it happens to be visible. Organising by screen region would split each of those decisions across the regions that display it. The view- and feature-specific sections that follow the three dimension sections therefore describe only what is genuinely particular to a view or a feature, and refer back to the encodings rather than restating them.
 
 The design decisions presented below are guided by the 9 Design Principles for a Study Planning Assistant in Higher Education established by Bartel et al.~\cite{bartel_design_2024}, alongside the direct empirical evidence gathered from the formative interviews. A core recurring theme derived from these interviews is the necessity of a \emph{visual-first, low-text design} (Feature~\ref{feat:011}, Req.~1, grounded in T54's repeated preference for icon- and colour-based communication over text, e.g.\ \enquote{too much text is off-putting}). 
 
@@ -20,9 +20,9 @@ The tool's scope follows directly from Chapter~\ref{chap:methodology} and~\ref{c
 
 % ============================================================
 
-\section{General Architectural Design}
+\section{General Architecture and Data Model}
 \label{sec:general}
-This section establishes the frame every later section builds on, and moves from the outside inwards. It first divides the screen into panels, then settles what occupies the centre panel and why only one view may occupy it at a time. It closes with the two abstractions, curriculum structure and course obligation, that every visual encoding and every compliance rule in the later sections refers back to.
+This section establishes the frame every later section builds on, and moves from the outside inwards. It first divides the screen into panels, then settles what occupies the centre panel and why only one view may occupy it at a time. Its last two subsections leave the screen and describe the data model instead: the curriculum structure and the course obligation categories the interface is given to display. They are placed here because they are inputs to every visual encoding and every compliance rule in the later sections, which name their categories and cannot be derived without them.
 
 % ------------------------------------------------------------
 \subsection{Three-Panel Shell}
@@ -405,7 +405,7 @@ Three alternatives were weighed and rejected, each on the same trade between inf
 
 \section{Interaction Design}
 \label{sec:interaction}
-The subsections below proceed from the overall workflow a student follows, to the underlying state model that workflow operates on, to the general interaction principles (dual drag/button paths, context-sensitive actions) applied throughout, to the specific mechanisms (semester picker, popover, module interaction) built from those principles.
+The subsections below proceed from the overall workflow a student follows, to the underlying state model that workflow operates on, to the general interaction principles (dual drag/button paths, context-sensitive actions) applied throughout, to the specific mechanisms (semester picker, popover, module interaction) built from those principles. Because these principles hold across both views, they are stated before the views themselves. Two surfaces they act on are therefore named here and designed later: a \emph{semester lane}, the column holding the courses assigned to one semester, and the \gterm{parking-stage}{Parking Stage}, the area beside those lanes holding courses saved but not yet assigned to a term (both Section~\ref{sec:table-view}).
 
 
 \subsection{Planning Workflow}
@@ -416,7 +416,7 @@ Students build their curricula in an exploration-first sequence. As one particip
 To support this mental model and provide a guided onboarding experience (Feature~\ref{feat:006}, Req.~1), the interface introduces an intermediate staging area between discovery and semester assignment (Feature~\ref{feat:004}, Req.~2). Consequently, the tool is designed around a three-stage planning workflow (Figure~\ref{fig:workflow}):
 \begin{enumerate}
   \item \textbf{Browse:} The student opens the Graph View or the Sidebar and explores the full curriculum using search, filters, and collapse controls to manage visual density.
-  \item \textbf{Shortlist:} The student parks interesting courses into the \gterm{parking-stage}{Parking Stage} without needing to commit them to a specific semester.
+  \item \textbf{Shortlist:} The student parks interesting courses into the Parking Stage without needing to commit them to a specific semester.
   \item \textbf{Assign:} The student switches to the Table View and drags parked courses into semester lanes, or uses the semester picker to assign them directly.
 \end{enumerate}
 
