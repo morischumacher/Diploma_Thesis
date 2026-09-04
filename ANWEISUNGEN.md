@@ -445,7 +445,11 @@ Order is chosen so that the chapters whose content is still moving come after th
 - The "defects have since been corrected, each with a regression test" sentence is scoped ("the first of them have been fixed"; Ch. 7 says five, with regression tests). Re-verify against the repo once, then close.
 - Appendix B.7 is regenerated at N=11 and now agrees with Discussion Table 9.1.
 - The Ch. 7 §7.4.1 broken sentence is complete.
-- Codes-vs-themes is resolved: the appendix now calls C1–C64 themes, matching the chapters and the glossary.
+- Codes-vs-themes is resolved: the appendix now calls T1–T64 themes, matching the chapters and the glossary (renamed from C1–C64 on 2026-09-04, §5).
+
+**Parked, raised by Moritz, to be settled later.**
+
+- `appendix/glossary.tex` line 26, the *Soft dependency* entry: "they are mentioned, but are advisory". The entry defines a soft dependency as a recommended ordering; the open question is whether the thesis is consistent about what the system does with one. Deferred 2026-09-04 on Moritz's instruction; the `%% REV` comment stays in the file so the checker keeps counting it.
 
 **Still open from that review and worth re-checking during the relevant chapter pass:** the E-G18 attribution to P06; the P10 "not placing from the graph at all" framing; the Wienand et al. citations (§14); whether the two inert recommendation channels were inert in `v1.0-evaluated` specifically.
 
