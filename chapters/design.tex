@@ -65,7 +65,7 @@ A \emph{tab-based layout} was rejected because it makes the catalogue and the ca
   \node[text width=2.6cm, align=center, font=\scriptsize] at (9.6,4.3)
     {Compliance \&\\Progress\\Dashboard};
 \end{tikzpicture}
-\caption{Three-panel shell. The left panel's catalogue and filter controls follow the active view; the Recommendation Panel toggles independently of it. Centre: the active canvas. Right: the always-visible Dashboard.}
+\caption{Three-panel shell. The left panel's catalogue and filter controls follow the active view, while the Recommendation Panel toggles independently. Centre: the active canvas. Right: the Dashboard.}
 \label{fig:three-panels}
 \end{figure}
 
@@ -114,7 +114,6 @@ Because obligation types cannot be reduced to a single flat enumeration shared a
 
 Furthermore, the system must handle alternative course formats without breaking these compliance and obligation rules. A small number of modules are officially offered in two structural formats: an integrated lecture-exercise course (VU) or a split lecture-plus-exercise pair (VO~+~UE). Both variants inherit the parent module's single obligation category. When a student selects one variant, the system automatically treats the alternative as satisfied, ensuring the module cannot be double-counted under two different course codes. The recommendation engine (Section~\ref{sec:rec-types-evidence}) is similarly designed to recognise these variant pairs, ensuring that a course already covered by an added variant is never redundantly recommended.
 
-\TDrev{Move the two single-course nodes into the Course column}{Your comment on Figure~\ref{fig:curriculum-hierarchy}: the two courses hanging off Exam Subject~B should sit in the Course column with the others, with a longer edge from Exam Subject~B crossing the Module level, so the figure shows the collapse rather than describing it.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
@@ -138,8 +137,8 @@ Furthermore, the system must handle alternative course formats without breaking 
   \node[modul] (m1)   at (7.0, 2.0) {Module 1};
   \node[modul] (m2)   at (7.0, 0.4) {Module 2};
   
-  \node[cours] (c5)   at (7.0,-1.0) {Course};
-  \node[cours] (c6)   at (7.0,-1.8) {Course};
+  \node[cours] (c5)   at (10.5,-1.0) {Course};
+  \node[cours] (c6)   at (10.5,-1.8) {Course};
   
   % 4th Level (Standard Courses)
   \node[cours] (c1)   at (10.5, 2.4) {Course};
@@ -169,18 +168,15 @@ Furthermore, the system must handle alternative course formats without breaking 
   \node[font=\tiny, text=black!70] at (7.0,-2.95)  {Module};
   \node[font=\tiny, text=black!70] at (10.5,-2.95) {Course};
 
-  % The two single-course modules: the module level is not drawn, the course takes its place.
-  \draw[{Stealth[length=3pt]}-, gray!55, thin] (8.15,-1.4) -- (9.3,-1.4);
-  \node[font=\tiny, text=black!70, text width=2.9cm, align=center] at (10.6,-1.4)
-    {no module level here: these modules hold one course};
+  % The two single-course modules: the module node is not drawn, so the edge
+  % from the exam subject crosses the module column to reach the course.
 \end{tikzpicture}
-\caption{Four-level curriculum hierarchy. Modules holding several courses (top) keep their intermediate node. A module holding exactly one course (bottom) is not drawn at all: the course takes its place in the module column.}
+\caption{Four-level curriculum hierarchy. Modules holding several courses keep their intermediate node; a module holding exactly one course is not drawn, and its course attaches directly to the exam subject.}
 \label{fig:curriculum-hierarchy}
 \end{figure}
 
 \section{Visual Design of Curriculum Elements}
 \label{sec:visual}
-\TDminor{Meta-discourse}{The opening clause describes the section rather than saying anything; start at \enquote{To satisfy}.}
 To satisfy the core requirement for a visual-first, low-text interface (Feature~\ref{feat:011}, Req.~1; T54), the design minimises textual clutter by leveraging visual channels.
 
 % ------------------------------------------------------------
@@ -245,7 +241,6 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
 
 \emph{Icon-only status} was rejected because icons are already reserved for actions on cards (Section~\ref{sec:action-buttons}), and using one visual element both to show state and to change it would blur representation and interaction.
 
-\TDrev{Figure~\ref{fig:status-encoding} text is too light}{Your comment: set the card text black, and keep grey only inside the Done state.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize, scale=0.85, transform shape]
@@ -253,10 +248,10 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   % Card 1: Not Planned
   \fill[white, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
   \draw[subjectblue, line width=2pt, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
-  \node[text=gray!25,font=\tiny,text width=1.8cm,align=center] at (1.0,1.8) {Course Name};
-  \node[text=gray!25,font=\tiny] at (1.0,1.2) {4.5~ECTS};
+  \node[text=black,font=\tiny,text width=1.8cm,align=center] at (1.0,1.8) {Course Name};
+  \node[text=black,font=\tiny] at (1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries] at (1.0,-0.4) {Not Planned};
-  \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (1.0,-1.0) 
+  \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (1.0,-1.0) 
   {white fill, coloured border};
     % Card 2: Parked
     \def\ox{2.5}
@@ -264,19 +259,19 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
     \draw[subjectblue, line width=2pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
     \fill[subjectblue!15, rounded corners=2pt] (\ox+0.1,\ch-0.5) rectangle (\ox+0.9,\ch-0.15);
     \node[font=\tiny, text=subjectblue] at (\ox+0.5,\ch-0.32) {Parked};
-    \node[text=gray!25,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.55) {Course Name};
-    \node[text=gray!25,font=\tiny] at (\ox+1.0,1.0) {4.5~ECTS};
+    \node[text=black,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.55) {Course Name};
+    \node[text=black,font=\tiny] at (\ox+1.0,1.0) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Parked};
-    \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
+    \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {white fill, label badge};
     % Card 3: Planned
     \def\ox{5.0}
     \fill[plannedfill, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
     \draw[subjectblue, line width=2pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
-    \node[text=gray!45,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
-    \node[text=gray!45,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
+    \node[text=black,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
+    \node[text=black,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Planned};
-    \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
+    \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {grey fill, coloured border};
   % Card 4: Done -- explicitly light colours rather than a subtle opacity scope, so the fade is actually visible on the page
   \def\ox{7.5}
@@ -287,7 +282,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   \node[text=gray!70,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
   \node[text=gray!70,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries,text=gray!70] at (\ox+1.0,-0.4) {Done};
-  \node[font=\tiny,text=gray!55,text width=2.1cm,align=center] at (\ox+1.0,-1.0) {light grey fill, light grey border and text};
+  \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0) {light grey fill, light grey border and text};
 \end{tikzpicture}
 \caption{Four-state planning status encoding. Status is communicated through fill lightness and border saturation.}
 \label{fig:status-encoding}
@@ -359,11 +354,10 @@ To achieve this, the design minimises text and adapts it to the informational ro
 
 An exam-subject card is read for orientation, so it carries the subject name and the extent of what it contains, and nothing further. A module header is read to answer one question, whether the module's quota is met, so it aggregates: name, total ECTS, obligation type and a status indicator. A course card is where an actual placement decision is made, and it is divided into three fixed zones. Its header carries the short course-code abbreviation and the course-type indicator, applying Bartel et al.~\cite{bartel_design_2024} principle of relying on recognised university identifiers rather than inventing interface shorthand. Its title is the primary identifier and is clamped to two lines, which keeps card heights uniform for the snap-grid alignment system and keeps dense plans scannable. Its footer carries the three most frequently needed attributes: ECTS value, obligation type and status.
 
-\TDrev{Figure~\ref{fig:card-text} annotation text}{Your comment: the annotations down the right-hand side should be black.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
-  ann/.style={font=\tiny, text=black!70, anchor=west, text width=4.6cm, align=left},
+  ann/.style={font=\tiny, text=black, anchor=west, text width=4.6cm, align=left},
   tick/.style={gray!55, thin}]
 
   % --- Exam subject card ---
@@ -475,7 +469,7 @@ Importantly, the workflow remains flexible and does not force staging for every 
     (\bw/2, -0.1) to[out=-20, in=-160] node[below, font=\scriptsize] {Direct Assign} (8.0+\bw/2, -0.1);
 
 \end{tikzpicture}
-\caption{Three-stage planning workflow: Browse (Graph View), Shortlist (Parking Stage), and Assign (Table View, committing to a semester). Students can also bypass the Shortlist stage to assign courses directly.}
+\caption{Three-stage planning workflow: Browse (Graph View), Shortlist (Parking Stage) and Assign (Table View, committing to a semester). The Shortlist stage can be bypassed and a course assigned directly.}
 \label{fig:workflow}
 \end{figure}
 
@@ -525,7 +519,7 @@ To support clear user comprehension, the interface requires a strict distinction
   \draw[tr] (DO.north west) -- node[lbl, above, sloped, pos=0.18] {Remove} (NP.south east);
 
 \end{tikzpicture}
-\caption{Course lifecycle state machine. Every course exists in exactly one of four states at any time.}
+\caption{Course lifecycle state machine. Every course is in exactly one of four states at any time, and every transition the interface offers is drawn here.}
 \label{fig:state-machine}
 \end{figure}
 
@@ -672,7 +666,6 @@ When a student manually adds a single course that belongs to a multi-course modu
 
 
 % ------------------------------------------------------------
-\TDminor{Figure caption lengths}{Against the house range of 100 to 200 characters: \texttt{fig:three-panels} is 207, \texttt{fig:curriculum-hierarchy} 215, \texttt{fig:workflow} 202 and \texttt{fig:state-machine} 94. All four are close; trim or extend on the next pass through this chapter.}
 
 \section{Visual Legend Design}
 \label{sec:legend}
@@ -973,12 +966,10 @@ The capacity profile is pre-populated with a default target of 30~ECTS per semes
 % ============================================================
 \section{Recommendation Presentation Design}
 \label{sec:recommendations}
-This section covers the design of how recommendations are \emph{displayed and interacted with}. The design of the underlying recommendation logic is treated separately; here the concern is how a recommendation, once computed, reaches the student without disrupting the planning context they have built.
 
 
 % ------------------------------------------------------------
 
-\TDminor{Meta-discourse at the section opening}{The two sentences opening Section~\ref{sec:recommendations} say what the section covers and what it does not. The headings carry both; cut them.}
 
 \subsection{Recommendation Panel}
 \label{sec:rec-panel}
@@ -987,14 +978,13 @@ Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible witho
 To meet these requirements without disrupting the user's spatial context, the Recommendation Panel is designed as an independent left-side drawer, positioned adjacent to the course catalogue (Section~\ref{sec:sidebar-design}). It can be toggled open or closed without affecting the canvas viewport, active filters, or node selections. Crucially, recommendations are strictly confined to this panel. No badges, tints, or rings are added to courses on the main canvas or in the catalogue. This strict isolation guarantees that recommendations cannot trigger a disruptive graph re-layout, and it avoids perceptual collisions with the dynamically assigned subject-colour palette (Section~\ref{sec:subject-colour}). 
 
 The panel displays a scrollable list of recommendation cards, each draggable onto a semester lane (Section~\ref{sec:interaction-paths}) and each carrying the evidence the requirement asks for without displacing the course information a decision needs (Figure~\ref{fig:rec-panel}). A card names the family that produced it, the course by code, title and term availability, the human-readable reason (Section~\ref{sec:rec-types-evidence}), truncated with a show-more control so a long reason cannot push the card's other content out of view, the ECTS value and obligation type, and the same action buttons a course card carries elsewhere (Section~\ref{sec:action-buttons}). A toggle bar at the top of the panel shows or hides individual families, and those preferences persist across sessions as part of the student's profile.
-\TDrev{Figure~\ref{fig:rec-panel} text}{Your comment: the text on the left side of the figure should be black too.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
   chip/.style={draw=gray!55, fill=gray!8, rounded corners=5pt, inner sep=1.6pt, font=\tiny},
   badge/.style={draw=gray!55, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny},
-  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny, text=black!75},
-  ann/.style={font=\tiny, text=black!70, anchor=west, text width=3.9cm, align=left},
+  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny},
+  ann/.style={font=\tiny, anchor=west, text width=3.9cm, align=left},
   tick/.style={gray!55, thin}]
 
   % panel
@@ -1014,7 +1004,7 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
   \node[font=\tiny, anchor=west] at (0.45,-2.55) {FSAS \ $|$ \ VU \ $|$ \ winter};
   \node[font=\scriptsize\bfseries, text width=4.9cm, anchor=north west, align=left] at (0.45,-2.85)
     {Foundations of System Security};
-  \node[font=\tiny, text=black!70, text width=4.9cm, anchor=north west, align=left] at (0.45,-3.6)
+  \node[font=\tiny, text width=4.9cm, anchor=north west, align=left] at (0.45,-3.6)
     {\emph{similar to Einführung in Security}\quad \textsc{show all}};
   \node[font=\tiny, anchor=west] at (0.45,-4.72) {6~ECTS \ \textperiodcentered\ \ Fully elective};
   \node[btn, anchor=east] (b1) at (5.55,-4.72) {add};
@@ -1024,7 +1014,7 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
   \node[badge, anchor=east] at (5.55,-5.4) {Other students};
   \node[font=\tiny, anchor=west] at (0.45,-5.75) {SSD \ $|$ \ VU \ $|$ \ summer};
   \node[font=\scriptsize\bfseries, anchor=west] at (0.45,-6.15) {Semistrukturierte Daten};
-  \node[font=\tiny, text=black!70, anchor=west] at (0.45,-6.55) {\emph{62\,\% of similar students chose this}};
+  \node[font=\tiny, anchor=west] at (0.45,-6.55) {\emph{62\,\% of similar students chose this}};
 
   % annotations
   \draw[tick] (t3.east) -- (6.4,-1.05);
