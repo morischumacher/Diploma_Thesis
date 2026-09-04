@@ -89,6 +89,37 @@ def main():
                 continue
             bad(f'{f}:{line}: C-identifier {m.group(0)}; themes are T1--T64')
 
+    # --- every theme-tagged quotation is in the codebook (blocking) -------
+    # The codebook appendix reproduces all 437 interview excerpts, so a
+    # quotation attributed to a theme anywhere in the thesis has to appear
+    # there. Two quotations attributed to themes match nothing in either
+    # study's data; they are listed below and await a decision, and the list
+    # is meant to shrink to nothing, not to grow.
+    UNSOURCED = {
+        'like a table, semesters in columns, courses in rows',   # design.tex, T18
+        'the damage is done',                                    # design.tex, T20
+    }
+
+    def qnorm(s):
+        s = s.lower().replace('\\%', '%').replace('~', ' ')
+        s = re.sub(r"[^a-z0-9%? ]+", ' ', s)
+        return re.sub(r'\s+', ' ', s).strip()
+
+    codebook = ''
+    if os.path.exists('appendix/theme-codebook-table.tex'):
+        codebook = qnorm(read('appendix/theme-codebook-table.tex'))
+    if codebook:
+        for f, t in bodies.items():
+            for m in re.finditer(r'\\enquote\{([^{}]*)\}([^.;]{0,60})', t):
+                q, tail = m.group(1), m.group(2)
+                if not re.search(r'\bT\d{1,2}\b', tail) or q in UNSOURCED:
+                    continue
+                for seg in re.split(r'…|\\ldots', q):
+                    if len(qnorm(seg)) >= 12 and qnorm(seg) not in codebook:
+                        line = t[:m.start()].count('\n') + 1
+                        bad('%s:%d: quotation attributed to a theme is not in '
+                            'the codebook: "%s"' % (f, line, seg.strip()[:60]))
+
     # --- structural: every \includegraphics resolves (blocking) -----------
     # main.tex stopped producing a PDF because pictures/Full_view_crop.png was
     # referenced and absent, and every check still reported green: the checker

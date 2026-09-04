@@ -1,0 +1,322 @@
+{
+ "1": {
+  "label": "Needs multi-level study planning overview (semester → future semesters → whole programme) with visual progress",
+  "n": 5,
+  "status_source": "FEATURE-002"
+ },
+ "10": {
+  "label": "Needs to work with / unify tools \\& sources (uni system + lightweight personal methods)",
+  "n": 6,
+  "status_source": "FEATURE-001"
+ },
+ "11": {
+  "label": "Needs peer-validated planning artefacts and reusable templates",
+  "n": 1,
+  "status_source": "FEATURE-001"
+ },
+ "12": {
+  "label": "Needs a planning view that improves on the institutional UI (visualisation + notes + grades)",
+  "n": 2,
+  "status_source": "FEATURE-001"
+ },
+ "13": {
+  "label": "Needs system-aware requirement checking (rules/requirements encoded) instead of manual tracking",
+  "n": 6,
+  "status_source": "FEATURE-003"
+ },
+ "14": {
+  "label": "Needs automatic updates / low-maintenance upkeep when curriculum changes",
+  "n": 2,
+  "status_source": "Excluded --- Out of Scope: no live connection to CMS or LMS"
+ },
+ "15": {
+  "label": "Needs integrated tool aligned with university requirements + personal needs",
+  "n": 2,
+  "status_source": "FEATURE-001"
+ },
+ "16": {
+  "label": "Needs progress tracking + status dashboard (credits, \\%, missing modules, end date visibility)",
+  "n": 5,
+  "status_source": "FEATURE-002"
+ },
+ "17": {
+  "label": "Needs automatic requirement-fulfilment feedback (overall + categories)",
+  "n": 1,
+  "status_source": "FEATURE-003"
+ },
+ "18": {
+  "label": "Needs future-state preview + completion forecasting",
+  "n": 2,
+  "status_source": "FEATURE-002"
+ },
+ "19": {
+  "label": "Needs a clear distinction planned vs completed, with intuitive completion visuals + motivating feedback",
+  "n": 5,
+  "status_source": "FEATURE-002"
+ },
+ "2": {
+  "label": "Needs granular course-level visibility (appointments, deadlines, exam dates)",
+  "n": 3,
+  "status_source": "Excluded --- Out of scope: No within semester planner"
+ },
+ "20": {
+  "label": "Needs an exploration-first workflow (show all → select → then plan semesters)",
+  "n": 5,
+  "status_source": "FEATURE-004"
+ },
+ "21": {
+  "label": "Needs course pool + drag/drop planning while preserving spatial layout",
+  "n": 4,
+  "status_source": "FEATURE-004"
+ },
+ "22": {
+  "label": "Needs automatic plan generation after selection (less manual dragging), respecting constraints and typical paths",
+  "n": 1,
+  "status_source": "Excluded --- Out of Scope: No automated Planner"
+ },
+ "23": {
+  "label": "Needs recommendations that are trustworthy and user-relevant (not generic; grounded; can use peer data carefully)",
+  "n": 6,
+  "status_source": "FEATURE-007"
+ },
+ "24": {
+  "label": "Needs recommendations based on behavioral signals (popularity, scarcity, prior courses)",
+  "n": 2,
+  "status_source": "FEATURE-007"
+ },
+ "25": {
+  "label": "Needs social alignment / cohort visibility to reduce isolation and enable repeated peer contact",
+  "n": 1,
+  "status_source": "Excluded --- Out of Scope: no community feature"
+ },
+ "26": {
+  "label": "Needs workload/effort estimation support beyond ECTS to avoid misjudgement and regret",
+  "n": 5,
+  "status_source": "Excluded --- Out of Scope: no community feature"
+ },
+ "27": {
+  "label": "Needs clear UI meaning of spatial layout (explain encoding; padding; vertical position)",
+  "n": 1,
+  "status_source": "FEATURE-010"
+ },
+ "28": {
+  "label": "Needs freedom to arrange items visually to express uncertainty and personal prioritisation",
+  "n": 2,
+  "status_source": "FEATURE-013"
+ },
+ "29": {
+  "label": "Needs grouping mechanics controllable + flexible (named groups, spanning semesters, move behaviour)",
+  "n": 1,
+  "status_source": "FEATURE-013"
+ },
+ "3": {
+  "label": "Needs clear scope/definition of what planning includes (deadlines vs course list)",
+  "n": 2,
+  "status_source": "Methodological artefact --- Artefact of clarifying the scope"
+ },
+ "30": {
+  "label": "Needs to express soft/implicit dependencies and decide between grouping vs edges",
+  "n": 2,
+  "status_source": "FEATURE-003"
+ },
+ "31": {
+  "label": "Needs prerequisite/dependency representation (formal + recommended) and order enforcement/warnings",
+  "n": 6,
+  "status_source": "FEATURE-003"
+ },
+ "32": {
+  "label": "Needs graph layout consistent with reading direction or alternatively full rearrangement freedom",
+  "n": 1,
+  "status_source": "FEATURE-010"
+ },
+ "33": {
+  "label": "Needs tool to be tailored to the specific programme structure to be adopted and trusted",
+  "n": 2,
+  "status_source": "FEATURE-003"
+ },
+ "34": {
+  "label": "Needs possibility to continue collaboration / participate in follow-up",
+  "n": 4,
+  "status_source": "Methodological artefact --- Artefact of asking participants for new round of interview"
+ },
+ "35": {
+  "label": "Needs semester capacity targeting (e.g., aim for ~30~ECTS) and capacity-based planning",
+  "n": 4,
+  "status_source": "FEATURE-005"
+ },
+ "36": {
+  "label": "Needs semester collision detection and early exam schedule availability",
+  "n": 1,
+  "status_source": "Excluded --- Out of Scope: no live connection to CMS or LMS"
+ },
+ "37": {
+  "label": "Needs to reduce manual effort/time in planning (data entry, repetitive checking)",
+  "n": 3,
+  "status_source": "FEATURE-001"
+ },
+ "38": {
+  "label": "Needs planning that reflects actual course availability over time (offerings/timing constraints)",
+  "n": 5,
+  "status_source": "Excluded --- Out of Scope: no live connection to CMS or LMS"
+ },
+ "39": {
+  "label": "Needs drill-down access to official course information from the plan/graph",
+  "n": 3,
+  "status_source": "Excluded --- Out of Scope: no live connection to CMS or LMS"
+ },
+ "4": {
+  "label": "Needs planning that accounts for personal constraints and supports rescheduling/adjustment",
+  "n": 5,
+  "status_source": "FEATURE-008"
+ },
+ "40": {
+  "label": "Needs intuitive labels/legend for course types and symbols",
+  "n": 1,
+  "status_source": "FEATURE-010"
+ },
+ "41": {
+  "label": "Needs graph purpose/interpretability clarity (what it's for, how to read it)",
+  "n": 2,
+  "status_source": "FEATURE-010"
+ },
+ "42": {
+  "label": "Needs filters to reduce overload and support targeted browsing (negated + type/ECTS filters; hide/show)",
+  "n": 4,
+  "status_source": "FEATURE-009"
+ },
+ "43": {
+  "label": "Needs recommendation UI that annotates rather than hides, and keeps layout stable",
+  "n": 2,
+  "status_source": "FEATURE-012"
+ },
+ "44": {
+  "label": "Needs support to move from overview graph to actionable semester plan",
+  "n": 3,
+  "status_source": "FEATURE-004"
+ },
+ "45": {
+  "label": "Needs recommendations based on interests + content similarity + dependency relations",
+  "n": 4,
+  "status_source": "FEATURE-007"
+ },
+ "46": {
+  "label": "Needs planning that is robust to schedule instability (boundary of what system can/can't solve)",
+  "n": 1,
+  "status_source": "FEATURE-008"
+ },
+ "47": {
+  "label": "Needs a table-based semester planning view that supports prioritisation, notes, and preferred layout",
+  "n": 2,
+  "status_source": "FEATURE-004"
+ },
+ "48": {
+  "label": "Needs competency- and learning-outcome-based planning support (self-assessment, reflection, prerequisite readiness)",
+  "n": 2,
+  "status_source": "FEATURE-005"
+ },
+ "49": {
+  "label": "Needs support for balancing assessment types and distributing workload/exam load across the year",
+  "n": 2,
+  "status_source": "FEATURE-005"
+ },
+ "5": {
+  "label": "Needs structure/guidance when programme shifts from fixed curriculum to free choice",
+  "n": 5,
+  "status_source": "FEATURE-006"
+ },
+ "50": {
+  "label": "Needs scalable visualisation via abstraction (avoid graph \\enquote{explosion}; show summaries, keep details elsewhere; graph optional)",
+  "n": 1,
+  "status_source": "FEATURE-009"
+ },
+ "51": {
+  "label": "Needs lightweight content clarification beyond official descriptions (external lookup)",
+  "n": 1,
+  "status_source": "Excluded --- Out of Scope: no live connection to CMS or LMS or any other platform"
+ },
+ "52": {
+  "label": "Needs career/internship-aligned planning option (course choices toward internship readiness)",
+  "n": 1,
+  "status_source": "FEATURE-007"
+ },
+ "53": {
+  "label": "Needs frictionless, frequent access to the plan (mobile/ambient visibility) to enable real usage",
+  "n": 1,
+  "status_source": "Excluded --- Desktop-scale web application (Section~\\ref{sec:overall-scope})"
+ },
+ "54": {
+  "label": "Needs visual-first, low-text UI (icons, colour, animation, aesthetic polish) to support motivation and comprehension",
+  "n": 2,
+  "status_source": "FEATURE-011"
+ },
+ "55": {
+  "label": "Needs control of recommendation presentation (separation of spaces, avoid clutter; keep context)",
+  "n": 2,
+  "status_source": "FEATURE-012"
+ },
+ "56": {
+  "label": "Needs support for quick replanning when external disruptions happen (last-minute offering changes)",
+  "n": 3,
+  "status_source": "FEATURE-008"
+ },
+ "57": {
+  "label": "Needs module-based overview representation as a planning mental model (modules as primary units)",
+  "n": 2,
+  "status_source": "FEATURE-002"
+ },
+ "58": {
+  "label": "Needs explicit \\enquote{planning burden reduction} (system should take over cognitive load)",
+  "n": 1,
+  "status_source": "FEATURE-011"
+ },
+ "59": {
+  "label": "Needs onboarding/support for the planning transition when entering university (planning \\enquote{shock})",
+  "n": 2,
+  "status_source": "FEATURE-006"
+ },
+ "6": {
+  "label": "Needs support for course choice + feasibility planning (content-/interest-driven, what's doable)",
+  "n": 6,
+  "status_source": "FEATURE-005"
+ },
+ "60": {
+  "label": "Needs risk-aware planning support (buffers, failure-risk awareness, conservative planning)",
+  "n": 1,
+  "status_source": "Excluded --- Out of Scope: No automated Planner"
+ },
+ "61": {
+  "label": "Needs configurable ordering + auto-alignment behaviours in planning views (sort logic, snap-to-order)",
+  "n": 1,
+  "status_source": "FEATURE-004"
+ },
+ "62": {
+  "label": "Needs automation/data integration to reduce errors from manual spreadsheet workflows",
+  "n": 1,
+  "status_source": "FEATURE-001"
+ },
+ "63": {
+  "label": "Needs recommendation presentation that highlights institutional \\enquote{recommended curriculum} (explicit labelling/trust cue)",
+  "n": 1,
+  "status_source": "FEATURE-003"
+ },
+ "64": {
+  "label": "Needs an overload-safe course catalogue experience (avoid \\enquote{dumping everything}; relevance-filtered suggestions)",
+  "n": 1,
+  "status_source": "FEATURE-009"
+ },
+ "7": {
+  "label": "Needs a triggered \\enquote{bring structure} moment to be supported (timing of when planning becomes important)",
+  "n": 5,
+  "status_source": "FEATURE-006"
+ },
+ "8": {
+  "label": "Needs features that reduce overwhelm and emotional burden from planning",
+  "n": 2,
+  "status_source": "FEATURE-011"
+ },
+ "9": {
+  "label": "Needs institutional overview that is actually usable (uni system currently clunky / not computing / not clear)",
+  "n": 5,
+  "status_source": "FEATURE-001"
+ }
+}
