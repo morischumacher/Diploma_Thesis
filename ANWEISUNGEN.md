@@ -353,6 +353,12 @@ A chapter is finished only when every line below is true. This is the checklist 
 17. Scientific-register table in §3 applied, and every claim verb checked against the strength of the evidence behind it.
 18. **No rhetorical build-up.** A sentence whose only work is to announce that something notable follows is not a statement, and an examiner reads it as padding. Delete it and let the next sentence carry the point. The test is mechanical: cover the sentence, and if no fact is lost, it was build-up. Known forms, one of them written by me in Chapter 3 on 2026-09-03 and caught by Moritz: *One system has attracted sustained attention.* · *It is worth noting that…* · *Interestingly,…* · *This raises an important question.* · *A closer look reveals…* · *Notably,…* used as a paragraph opener. The related trap is the comparative lead-in that exists to flatter the thesis, which §3's "rather than" rule covers separately.
 
+**Every chapter opens with its full open-items list, before any work on it.** Set 2026-09-03 at Moritz's instruction, after Chapter 3's audit findings sat in a queue he had not agreed to and only surfaced when he asked, three chapters later. The rule has two halves.
+
+*At the start of a chapter*, survey it and put the complete list in front of him: every note by severity, every unverified citation, every number that disagrees with §0 or with its source artefact, every checker warning, and everything the chapter needs from him. Then start work. He decides what is deferred; that decision is not mine to make by filing something under a heading.
+
+*At the end of a chapter*, nothing may be described as done while a check I ran has open findings. If something should be deferred it is deferred **by his decision, in writing**, and it stays visible as a `\TDrev` in the chapter. "Done with a queue attached" is not done.
+
 **A note that has been dealt with is deleted, not marked done.** Set 2026-09-02. The thesis carries only outstanding work; a green "verified" block in the middle of a chapter is noise for the person reading it, and there were eleven of them. What was checked and what it showed goes in §14's log instead, which is where someone looks to avoid re-checking. The `\TDok` macro is retired.
 
 The only note that may remain in a closed chapter is one **deferred by decision** — kept open on purpose, saying why and when it is revisited. Ch. 1's contributions note is the example: it waits on Ch. 8 and Ch. 9. Any other open note means the chapter is not done.
