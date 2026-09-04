@@ -976,9 +976,37 @@ The capacity profile is pre-populated with a default target of 30~ECTS per semes
 % ------------------------------------------------------------
 
 
+\subsection{Recommendation Families and Evidence}
+\label{sec:rec-types-evidence}
+Participants were sceptical toward recommendations that appear to be \enquote{based on nothing}; as T23 noted, \enquote{I'm always very critical of recommendations, because the system can't know what my life is like.} To build trust, Feature~\ref{feat:007} (Req.~1--3) requires that recommendations are not just provided, but explicitly grounded in a specific, inspectable rationale. This aligns with Ma et al.~\cite{ma_courseq_2021} empirical findings that adding visual explanations to a recommendation algorithm produces significantly higher ratings for perceived transparency and user trust than presenting the exact same algorithm as a plain ranked list.
+
+Rather than blending signals into an opaque, unified score, the system categorises recommendations into distinct \emph{families}. Each family evaluates a specific signal and displays a compact, human-readable evidence note directly on its recommendation card.
+
+The system defines six recommendation families. Three are baseline families, always available, evaluating signals that need neither the student's profile nor data about other students:
+\begin{enumerate}
+  \item \textbf{Interest match} ($\star$): a course matching an interest the student named in the profile (Section~\ref{sec:profile}); the card names the matched interest.
+  \item \textbf{Predefined similarity} ($\approx$): a course curated in the catalogue as similar to one the student has planned or completed; the card names that course and the curated reason.
+  \item \textbf{Sequence or dependency} ($\to$): a prerequisite or follow-up of a course already in the plan; the card names the relation. This realises Bartel et al.~\cite{bartel_design_2024} principle of clearly presenting curriculum information by surfacing structural dependencies students cannot easily read from a raw handbook.
+\end{enumerate}
+
+Three further families are conditional, evaluated only when the signal they need exists:
+\begin{enumerate}
+  \setcounter{enumi}{3}
+  \item \textbf{Internship lens} ($\triangleright$): a course relevant to the career direction stated in the profile; the card names that direction.
+  \item \textbf{Follow-on from a completed course}: a course prior students commonly took after one this student has completed; the card gives that share.
+  \item \textbf{Peer / \gterm{collaborative-filtering}{collaborative filtering}}: a course chosen by students whose plans resemble this one; the card gives that share.
+\end{enumerate}
+
+The evidence is one short line in the student's own terms, for instance \enquote{matches your interests: focuses on Machine Learning}. Where the signal behind it can be weak, the line says so: the peer family distinguishes a genuine comparison with similar plans from a fallback to overall popularity when too few plans are available, because an honestly labelled weaker signal is more trustworthy than a confident-sounding one. What each family reads and how it scores a candidate is a matter of implementation and is described in Section~\ref{sec:impl-recommender}.
+
+A \emph{single unified ranking} blending all six signals was rejected as the black box T23 objects to. \emph{Membership in several families at once} was rejected because merging rationale texts clutters the card; first-match-wins guarantees one transparent reason. \emph{Permanently expanded evidence} was rejected for the panel height it costs, and \emph{identical phrasing regardless of data quality} because it would overstate the algorithm's confidence.
+
+% ------------------------------------------------------------
+
+
 \subsection{Recommendation Panel}
 \label{sec:rec-panel}
-Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible without resetting the canvas viewport, selection, or filters. Formative interviews motivated offloading this information into a separate panel (\enquote{otherwise it's too much on one page}, T55) while explicitly warning against any feature that risks \enquote{destroying the graph} (T43; Feature~\ref{feat:012}, Req.~1). Furthermore, Feature~\ref{feat:007}, Req.~2 and Req.~3 require explicit rationale and inspectable evidence per recommendation, which demands dedicated screen space. 
+Those families need a place to be shown. Feature~\ref{feat:012}, Req.~2 requires that recommendations be accessible without resetting the canvas viewport, selection, or filters. Formative interviews motivated offloading this information into a separate panel (\enquote{otherwise it's too much on one page}, T55) while explicitly warning against any feature that risks \enquote{destroying the graph} (T43; Feature~\ref{feat:012}, Req.~1). Furthermore, Feature~\ref{feat:007}, Req.~2 and Req.~3 require explicit rationale and inspectable evidence per recommendation, which demands dedicated screen space. 
 
 To meet these requirements without disrupting the user's spatial context, the Recommendation Panel is designed as an independent left-side drawer, positioned adjacent to the course catalogue (Section~\ref{sec:sidebar-design}). It can be toggled open or closed without affecting the canvas viewport, active filters, or node selections. Crucially, recommendations are strictly confined to this panel. No badges, tints, or rings are added to courses on the main canvas or in the catalogue. This strict isolation guarantees that recommendations cannot trigger a disruptive graph re-layout, and it avoids perceptual collisions with the dynamically assigned subject-colour palette (Section~\ref{sec:subject-colour}). 
 
@@ -1037,32 +1065,6 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
 
 
 This centralised panel represents a deliberate departure from the earlier prototype (Section~\ref{sec:prototype-elicitation}), which relied on per-node actions and floating overlays. A \emph{floating overlay} was rejected because it partially occludes the canvas and forces the user to manage window positions. \emph{Canvas-level annotations} (like pulsing rings on nodes) were rejected for adding visual clutter and risking colour-coding conflicts. A \emph{right-side placement} (tabbed with the Dashboard) was rejected in favour of the left side because recommendations and the catalogue serve the related purpose of finding courses, making adjacent placement more coherent. Regarding the toggles, a \emph{single global on/off switch} was rejected as too coarse for a student who may trust one recommendation family but distrust another, while \emph{hiding inactive families entirely} was rejected because it would prevent students from discovering unused features (e.g., the Internship family).
-
-% ------------------------------------------------------------
-
-
-\subsection{Recommendation Families and Evidence}
-\label{sec:rec-types-evidence}
-Participants were sceptical toward recommendations that appear to be \enquote{based on nothing}; as T23 noted, \enquote{I'm always very critical of recommendations, because the system can't know what my life is like.} To build trust, Feature~\ref{feat:007} (Req.~1--3) requires that recommendations are not just provided, but explicitly grounded in a specific, inspectable rationale. This aligns with Ma et al.~\cite{ma_courseq_2021} empirical findings that adding visual explanations to a recommendation algorithm produces significantly higher ratings for perceived transparency and user trust than presenting the exact same algorithm as a plain ranked list.
-
-Rather than blending signals into an opaque, unified score, the system categorises recommendations into distinct \emph{families}. Each family evaluates a specific signal and displays a compact, human-readable evidence note directly on the recommendation card (Section~\ref{sec:rec-panel}).
-
-The system defines six recommendation families. Three are baseline families, always available, evaluating signals that need neither the student's profile nor data about other students:
-\begin{enumerate}
-  \item \textbf{Interest match} ($\star$): Courses matching the student's stated profile interests (Section~\ref{sec:profile}). \emph{Evidence text:} Specifies the matched interest (e.g., \enquote{matches your interests: focuses on Machine Learning}).
-  \item \textbf{Predefined similarity} ($\approx$): Courses expert-curated in the metadata as similar to a course the student has already planned or completed. \emph{Evidence text:} Names the reference course and the curated rationale (e.g., \enquote{similar to Web Engineering [shares a project-based assessment]}).
-  \item \textbf{Sequence or dependency} ($\to$): Courses serving as a prerequisite or logical follow-up to courses already in the plan. \emph{Evidence text:} Names the dependency relation (e.g., \enquote{prerequisite of Advanced Databases, which you have planned}). This realises Bartel et al.~\cite{bartel_design_2024} principle of clearly presenting curriculum information by surfacing structural dependencies students cannot easily read from a raw handbook.
-\end{enumerate}
-
-Three further families are conditional, evaluated only when the signal they need exists:
-\begin{enumerate}
-  \setcounter{enumi}{3}
-  \item \textbf{Internship lens} ($\triangleright$): Courses relevant to the student's stated career direction. \emph{Evidence text:} Identifies the triggered career direction.
-  \item \textbf{Follow-on from a completed course}: Courses that prior students commonly took after a course this student has already completed. \emph{Evidence text:} Names the completed course and the share (e.g., \enquote{62\,\% of students who completed Databases also took this}).
-  \item \textbf{Peer / \gterm{collaborative-filtering}{collaborative filtering}}: Courses chosen by students whose plans resemble this one. To avoid overstating the data's confidence, the \emph{Evidence text} explicitly distinguishes between a genuine peer comparison (\enquote{62\,\% of students with a similar plan chose this}) and a cold-start overall popularity fallback when data is sparse (\enquote{popular choice: 40\,\% of prior students took this}). An honestly labelled weaker signal is inherently more trustworthy than a confident-sounding one.
-\end{enumerate}
-
-A \emph{single unified ranking} blending all six signals was rejected as the black box T23 objects to. \emph{Membership in several families at once} was rejected because merging rationale texts clutters the card; first-match-wins guarantees one transparent reason. \emph{Permanently expanded evidence} was rejected for the panel height it costs, and \emph{identical phrasing regardless of data quality} because it would overstate the algorithm's confidence.
 
 % ------------------------------------------------------------
 \subsection{Accept Flow}
