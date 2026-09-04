@@ -1,155 +1,17 @@
-This section presents the complete consolidated codebook produced during Step~2 of the formative study's analysis (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}): the 64 themes, labelled T1--T64, into which the 435 initial codes were grouped. For each theme it gives the number of interviews in which it recurred, its disposition after Step~3's scope-based review (Section~\ref{sec:scope-refinement}), and its mapping to the features derived in Chapter~\ref{chap:from-themes-to-requirements}. Source: the open-coding document of the formative study, \texttt{First\ Open\ Coding.docx}.
+This section presents the complete consolidated codebook produced during Step~2 of the formative study's analysis (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}): the 64 themes, labelled T1--T64, into which the 435 initial codes were grouped, and under each theme every interview excerpt that informed it. Each theme carries its label, the number of interviews it recurred in, and whether Step~3's scope-based review carried it forward or ruled it out (Section~\ref{sec:scope-refinement}), naming the scope boundary in the second case. The features the carried-forward themes fed into are not repeated here; each feature in Section~\ref{app:feature-specs} names the themes it rests on.
+
+The interviews were conducted in German. Excerpts are given in the author's English translation beside the German original, so that every translation can be checked against what was said; translations are the author's throughout. A few entries in the source document record an analytic observation in English instead of a spoken line, and those appear as written. An excerpt that informed more than one theme appears under each of them. Source: the open-coding document of the formative study, \texttt{First\ Open\ Coding.docx}; the appendix table is generated from it by \texttt{tools/build\_codebook.py}.
 
 \section{Theme Codebook}
 \label{app:codebook}
 \label{app:codebook-table}
 
-\small
-\begin{longtable}{@{}p{1.5cm}p{0.6cm}p{6.4cm}p{4.7cm}@{}}
-\toprule
-\textbf{Theme} & \textbf{$n$} & \textbf{Need (label)} & \textbf{Status} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Theme} & \textbf{$n$} & \textbf{Need (label)} & \textbf{Status} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-T1 & 5 & Needs multi-level study planning overview (semester → future semesters → whole programme) with visual progress & FEATURE-002 \\
-\addlinespace
-T2 & 3 & Needs granular course-level visibility (appointments, deadlines, exam dates) & \textit{Excluded --- Out of scope: No within semester planner} \\
-\addlinespace
-T3 & 2 & Needs clear scope/definition of what planning includes (deadlines vs course list) & \textit{Methodological artefact --- Artefact of clarifying the scope} \\
-\addlinespace
-T4 & 5 & Needs planning that accounts for personal constraints and supports rescheduling/adjustment & FEATURE-008 \\
-\addlinespace
-T5 & 5 & Needs structure/guidance when programme shifts from fixed curriculum to free choice & FEATURE-006 \\
-\addlinespace
-T6 & 6 & Needs support for course choice + feasibility planning (content-/interest-driven, what's doable) & FEATURE-005 \\
-\addlinespace
-T7 & 5 & Needs a triggered \enquote{bring structure} moment to be supported (timing of when planning becomes important) & FEATURE-006 \\
-\addlinespace
-T8 & 2 & Needs features that reduce overwhelm and emotional burden from planning & FEATURE-011 \\
-\addlinespace
-T9 & 5 & Needs institutional overview that is actually usable (uni system currently clunky / not computing / not clear) & FEATURE-001 \\
-\addlinespace
-T10 & 6 & Needs to work with / unify tools \& sources (uni system + lightweight personal methods) & FEATURE-001 \\
-\addlinespace
-T11 & 1 & Needs peer-validated planning artefacts and reusable templates & FEATURE-001 \\
-\addlinespace
-T12 & 2 & Needs a planning view that improves on the institutional UI (visualisation + notes + grades) & FEATURE-001 \\
-\addlinespace
-T13 & 6 & Needs system-aware requirement checking (rules/requirements encoded) instead of manual tracking & FEATURE-003 \\
-\addlinespace
-T14 & 2 & Needs automatic updates / low-maintenance upkeep when curriculum changes & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS} \\
-\addlinespace
-T15 & 2 & Needs integrated tool aligned with university requirements + personal needs & FEATURE-001 \\
-\addlinespace
-T16 & 5 & Needs progress tracking + status dashboard (credits, \%, missing modules, end date visibility) & FEATURE-002 \\
-\addlinespace
-T17 & 1 & Needs automatic requirement-fulfilment feedback (overall + categories) & FEATURE-003 \\
-\addlinespace
-T18 & 2 & Needs future-state preview + completion forecasting & FEATURE-002 \\
-\addlinespace
-T19 & 5 & Needs a clear distinction planned vs completed, with intuitive completion visuals + motivating feedback & FEATURE-002 \\
-\addlinespace
-T20 & 5 & Needs an exploration-first workflow (show all → select → then plan semesters) & FEATURE-004 \\
-\addlinespace
-T21 & 4 & Needs course pool + drag/drop planning while preserving spatial layout & FEATURE-004 \\
-\addlinespace
-T22 & 1 & Needs automatic plan generation after selection (less manual dragging), respecting constraints and typical paths & \textit{Excluded --- Out of Scope: No automated Planner} \\
-\addlinespace
-T23 & 6 & Needs recommendations that are trustworthy and user-relevant (not generic; grounded; can use peer data carefully) & FEATURE-007 \\
-\addlinespace
-T24 & 2 & Needs recommendations based on behavioral signals (popularity, scarcity, prior courses) & FEATURE-007 \\
-\addlinespace
-T25 & 1 & Needs social alignment / cohort visibility to reduce isolation and enable repeated peer contact & \textit{Excluded --- Out of Scope: no community feature} \\
-\addlinespace
-T26 & 5 & Needs workload/effort estimation support beyond ECTS to avoid misjudgement and regret & \textit{Excluded --- Out of Scope: no community feature} \\
-\addlinespace
-T27 & 1 & Needs clear UI meaning of spatial layout (explain encoding; padding; vertical position) & FEATURE-010 \\
-\addlinespace
-T28 & 2 & Needs freedom to arrange items visually to express uncertainty and personal prioritisation & FEATURE-013 \\
-\addlinespace
-T29 & 1 & Needs grouping mechanics controllable + flexible (named groups, spanning semesters, move behaviour) & FEATURE-013 \\
-\addlinespace
-T30 & 2 & Needs to express soft/implicit dependencies and decide between grouping vs edges & FEATURE-003 \\
-\addlinespace
-T31 & 6 & Needs prerequisite/dependency representation (formal + recommended) and order enforcement/warnings & FEATURE-003 \\
-\addlinespace
-T32 & 1 & Needs graph layout consistent with reading direction or alternatively full rearrangement freedom & FEATURE-010 \\
-\addlinespace
-T33 & 2 & Needs tool to be tailored to the specific programme structure to be adopted and trusted & FEATURE-003 \\
-\addlinespace
-T34 & 4 & Needs possibility to continue collaboration / participate in follow-up & \textit{Methodological artefact --- Artefact of asking participants for new round of interview} \\
-\addlinespace
-T35 & 4 & Needs semester capacity targeting (e.g., aim for ~30~ECTS) and capacity-based planning & FEATURE-005 \\
-\addlinespace
-T36 & 1 & Needs semester collision detection and early exam schedule availability & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS} \\
-\addlinespace
-T37 & 3 & Needs to reduce manual effort/time in planning (data entry, repetitive checking) & FEATURE-001 \\
-\addlinespace
-T38 & 5 & Needs planning that reflects actual course availability over time (offerings/timing constraints)  & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS} \\
-\addlinespace
-T39 & 3 & Needs drill-down access to official course information from the plan/graph & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS} \\
-\addlinespace
-T40 & 1 & Needs intuitive labels/legend for course types and symbols & FEATURE-010 \\
-\addlinespace
-T41 & 2 & Needs graph purpose/interpretability clarity (what it's for, how to read it) & FEATURE-010 \\
-\addlinespace
-T42 & 4 & Needs filters to reduce overload and support targeted browsing (negated + type/ECTS filters; hide/show) & FEATURE-009 \\
-\addlinespace
-T43 & 2 & Needs recommendation UI that annotates rather than hides, and keeps layout stable & FEATURE-012 \\
-\addlinespace
-T44 & 3 & Needs support to move from overview graph to actionable semester plan & FEATURE-004 \\
-\addlinespace
-T45 & 4 & Needs recommendations based on interests + content similarity + dependency relations & FEATURE-007 \\
-\addlinespace
-T46 & 1 & Needs planning that is robust to schedule instability (boundary of what system can/can't solve) & FEATURE-008 \\
-\addlinespace
-T47 & 2 & Needs a table-based semester planning view that supports prioritisation, notes, and preferred layout & FEATURE-004 \\
-\addlinespace
-T48 & 2 & Needs competency- and learning-outcome-based planning support (self-assessment, reflection, prerequisite readiness) & FEATURE-005 \\
-\addlinespace
-T49 & 2 & Needs support for balancing assessment types and distributing workload/exam load across the year & FEATURE-005 \\
-\addlinespace
-T50 & 1 & Needs scalable visualisation via abstraction (avoid graph \enquote{explosion}; show summaries, keep details elsewhere; graph optional) & FEATURE-009 \\
-\addlinespace
-T51 & 1 & Needs lightweight content clarification beyond official descriptions (external lookup) & \textit{Excluded --- Out of Scope: no live connection to CMS or LMS or any other platform} \\
-\addlinespace
-T52 & 1 & Needs career/internship-aligned planning option (course choices toward internship readiness) & FEATURE-007 \\
-\addlinespace
-T53 & 1 & Needs frictionless, frequent access to the plan (mobile/ambient visibility) to enable real usage & \textit{Excluded --- Desktop-scale web application (Section~\ref{sec:overall-scope})} \\
-\addlinespace
-T54 & 2 & Needs visual-first, low-text UI (icons, colour, animation, aesthetic polish) to support motivation and comprehension & FEATURE-011 \\
-\addlinespace
-T55 & 2 & Needs control of recommendation presentation (separation of spaces, avoid clutter; keep context) & FEATURE-012 \\
-\addlinespace
-T56 & 3 & Needs support for quick replanning when external disruptions happen (last-minute offering changes) & FEATURE-008 \\
-\addlinespace
-T57 & 2 & Needs module-based overview representation as a planning mental model (modules as primary units) & FEATURE-002 \\
-\addlinespace
-T58 & 1 & Needs explicit \enquote{planning burden reduction} (system should take over cognitive load) & FEATURE-011 \\
-\addlinespace
-T59 & 2 & Needs onboarding/support for the planning transition when entering university (planning \enquote{shock}) & FEATURE-006 \\
-\addlinespace
-T60 & 1 & Needs risk-aware planning support (buffers, failure-risk awareness, conservative planning) & \textit{Excluded --- Out of Scope: No automated Planner} \\
-\addlinespace
-T61 & 1 & Needs configurable ordering + auto-alignment behaviours in planning views (sort logic, snap-to-order) & FEATURE-004 \\
-\addlinespace
-T62 & 1 & Needs automation/data integration to reduce errors from manual spreadsheet workflows & FEATURE-001 \\
-\addlinespace
-T63 & 1 & Needs recommendation presentation that highlights institutional \enquote{recommended curriculum} (explicit labelling/trust cue) & FEATURE-003 \\
-\addlinespace
-T64 & 1 & Needs an overload-safe course catalogue experience (avoid \enquote{dumping everything}; relevance-filtered suggestions) & FEATURE-009 \\
-\addlinespace
-\end{longtable}
-\normalsize
+\input{appendix/theme-codebook-table}
+
 \section{Feature Specifications}
 \label{app:feature-specs}
 
-This appendix records the thirteen features derived in Chapter~\ref{chap:from-themes-to-requirements} in full. Chapter~\ref{chap:from-themes-to-requirements} states the derivation procedure and summarises the result in Table~\ref{tab:feature-summary}; the specifications themselves are reproduced here so that every requirement cited from the Design, Implementation, Evaluation, and Discussion chapters can be read in its own evidential context. Features appear in descending order of importance score, and each is presented in the same structure: title and identifier, associated themes, description and user evidence, derived requirements, and a delineation where one applies. The themes named under each feature are defined, with their codes and interview excerpts, in Section~\ref{app:codebook}.
+This appendix records the thirteen features derived in Chapter~\ref{chap:from-themes-to-requirements} in full. Chapter~\ref{chap:from-themes-to-requirements} states the derivation procedure and summarises the result in Table~\ref{tab:feature-summary}; the specifications themselves are reproduced here so that every requirement cited from the Design, Implementation, Evaluation, and Discussion chapters can be read in its own evidential context. Features appear in descending order of importance score, and each is presented in the same structure: title and identifier, associated themes, description and user evidence, derived requirements, and a delineation where one applies. The themes named under each feature are defined, with the interview excerpts that informed them, in Section~\ref{app:codebook}.
 
 \newcounter{featurenum}
 
@@ -197,13 +59,13 @@ The tool's minimum planning granularity is the semester, consistent with the ove
 \textbf{Importance score 18.} Associated themes: T13, T17, T30, T31, T33, T63.
 
 \paragraph{Description and user evidence.}
-Current artefacts do not operationalise curriculum rules, leaving the checking to the student: \enquote{Excel doesn't know your requirements… it doesn't detect errors… you have to double and triple check everything and hope it fits} (T13). Beyond category quotas, participants ask for dependency handling, \enquote{I'm missing the dependencies between courses}, expecting warnings or blocks on invalid sequences (T31) and citing both hard pairs (\enquote{EP1 and EP2… they directly build on each other}) and soft preferences (T30); trust rises when sequencing is institutionally grounded and marked as such (T63). They also want continuous fulfilment feedback, \enquote{you've already fulfilled five of seven requirements} (T17), and tie adoption to programme-specific tailoring (T33).
+Current artefacts do not operationalise curriculum rules, leaving the checking to the student: \enquote{Excel doesn't know your requirements… it doesn't detect errors… you have to double and triple check everything and hope it fits} (T13). Beyond category quotas, participants ask for dependency handling, \enquote{I'm missing… the dependencies between the subjects}, expecting warnings or blocks on invalid sequences (T31) and citing both hard pairs (\enquote{EP1 and EP2… they directly build on each other}) and soft preferences (T30); trust rises when sequencing is institutionally grounded and marked as such (T63). They also want continuous fulfilment feedback, \enquote{you've already fulfilled five of seven requirements} (T17), and tie adoption to programme-specific tailoring (T33).
 
 \paragraph{Requirements.}
 \begin{enumerate}
-    \item The system computes requirement fulfilment in real time at programme and category levels (e.g., \enquote{5 of 7 fulfilled}, \% completion), updating when a course is planned or marked completed.
+    \item The system computes requirement fulfilment in real time at programme and category levels (e.g., \enquote{you've already fulfilled five of seven requirements}, \% completion), updating when a course is planned or marked completed.
     \item The system encodes hard rules, prerequisites, and sequencing constraints in real time and prevents scheduling that violates them (blocking).
-    \item The system encodes soft/recommended prerequisites and issues a non-blocking warning that explains the recommendation (e.g., \enquote{would be good if you take course X before course Y}).
+    \item The system encodes soft/recommended prerequisites and issues a non-blocking warning that explains the recommendation (e.g., \enquote{not compulsory… but it would be good to do that one first}).
     \item The system identifies and lists what is missing (requirements/categories and actionable course options) and updates the missing list in real time.
     \item The compliance logic is shared across Graph and Table views, such that dependency structure and requirement status are consistent regardless of representation.
 \end{enumerate}
@@ -234,7 +96,7 @@ Participants describe a two-stage model, the graph for exploration and the table
 \textbf{Importance score 14.} Associated themes: T6, T35, T48, T49.
 
 \paragraph{Description and user evidence.}
-Course selection is often initially interest-driven (T6), but participants consistently frame planning \emph{quality} as bounded by feasibility: \enquote{at a glance… what is actually possible} (T6). Feasibility is anchored most concretely in ECTS load: participants target specific credit volumes (\enquote{so that I'm registered for around thirty}, T35) and describe iteratively reducing an over-ambitious plan (\enquote{31~ECTS… that's too much… reduced to about 21~ECTS}, T35). Beyond raw volume, workload \emph{mix} matters: participants balance project-based against exam-based courses and try to avoid exam clustering: \enquote{four exams in January… for me that would be too much} (T49). Finally, self-assessed readiness shapes selection: participants avoid courses that conflict with perceived weaknesses (\enquote{if you're not good at programming, then maybe don't take programming-heavy courses}, T48) and describe planning as an iterative, reflective process across semesters (T48).
+Course selection is often initially interest-driven (T6), but participants consistently frame planning \emph{quality} as bounded by feasibility: \enquote{at a glance… what is actually possible} (T6). Feasibility is anchored most concretely in ECTS load: participants target specific credit volumes (\enquote{so that I'm registered for around thirty}, T35) and describe iteratively reducing an over-ambitious plan (\enquote{31~ECTS… that's too much… brought it down… to about 21~ECTS}, T35). Beyond raw volume, workload \emph{mix} matters: participants balance project-based against exam-based courses and try to avoid exam clustering: \enquote{four exams in January… for me that would be too much} (T49). Finally, self-assessed readiness shapes selection: participants avoid courses that conflict with perceived weaknesses (\enquote{if you can't program well, then… maybe rather not take the programming-heavy subjects}, T48) and describe planning as an iterative, reflective process across semesters (T48).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -251,7 +113,7 @@ Requirement 3 was derived from the data but was not carried into the implemented
 \textbf{Importance score 14.} Associated themes: T5, T7, T59.
 
 \paragraph{Description and user evidence.}
-Planning needs shift systematically over the study trajectory. Early semesters are typically followed by a prescribed curriculum: \enquote{the first semester was simply what was prescribed… the standard package with 29~ECTS} (T5). Autonomy then increases, particularly in the Master's programme (\enquote{in the master's… only the first semester, and then free choice}, T5), creating a recognisable transition point at which structured planning becomes necessary: \enquote{from around the third semester you realise: `Okay, now I need to start bringing some structure in'} (T7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (T7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: \enquote{the whole adjustment from technical high school to university… totally new to have to plan everything yourself}, described by some as among the most difficult aspects of starting university (T59).
+Planning needs shift systematically over the study trajectory. Early semesters are typically followed by a prescribed curriculum: \enquote{the first semester was simply what was prescribed… the standard package with 29~ECTS} (T5). Autonomy then increases, particularly in the Master's programme (\enquote{In the Master's… only the first semester, and after that free choice}, T5), creating a recognisable transition point at which structured planning becomes necessary: \enquote{from around the third semester you realise: `Okay, now I need to start bringing some structure in'} (T7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (T7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: \enquote{the whole adjustment from technical high school to university… totally new to have to plan everything yourself}, described by some as among the most difficult aspects of starting university (T59).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -285,7 +147,7 @@ Recommendation signals based on scarcity or course-visitor data are excluded, si
 \textbf{Importance score 9.} Associated themes: T4, T46, T56.
 
 \paragraph{Description and user evidence.}
-Participants describe study plans as inherently unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: \enquote{because I always worked alongside, it never worked out… I had to start shifting things} (T4), framed against a sustainability goal of managing studies \enquote{100\% and still be able to live a little} (T4). Externally, last-minute changes in course offerings are cited directly: \enquote{not offered… shortly before semester start}, with replacement courses being hard to find (T56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are \enquote{not the system's problem} (T46).
+Participants describe study plans as inherently unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: \enquote{because I always worked alongside, it never worked out… I had to start shifting things} (T4), framed against a sustainability goal of managing studies \enquote{100\% and still be able to live a little} (T4). Externally, last-minute changes in course offerings are cited directly: \enquote{wasn't offered… shortly before the start of the semester}, with replacement courses being hard to find (T56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are \enquote{not the system's problem} (T46).
 
 \paragraph{Requirements.}
 \begin{enumerate}
