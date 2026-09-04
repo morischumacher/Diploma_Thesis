@@ -27,6 +27,33 @@ def caption_bodies(t):
             j += 1
         yield t[i:j-1]
 
+def strip_macro(t, name):
+    """Remove every \\name{...} span, counting braces.
+
+    A regex cannot do this: \\enquote{I said \\emph{that}} nests, and the
+    lazy pattern used until 2026-09-04 stopped at the inner brace, leaving
+    the quotation's words in the prose. Participant speech then tripped the
+    register checks, which is exactly what those checks must not police.
+    """
+    out, i = [], 0
+    tag = '\\' + name + '{'
+    while True:
+        j = t.find(tag, i)
+        if j < 0:
+            out.append(t[i:])
+            return ''.join(out)
+        out.append(t[i:j])
+        k, d = j + len(tag), 1
+        while d and k < len(t):
+            if t[k] == '{' and t[k-1] != '\\':
+                d += 1
+            elif t[k] == '}' and t[k-1] != '\\':
+                d -= 1
+            k += 1
+        out.append(' ')
+        i = k
+
+
 def plain(s):
     s = re.sub(r'\\[a-zA-Z]+\*?(\[[^\]]*\])?', '', s)
     return s.replace('{', '').replace('}', '').strip()
@@ -150,6 +177,8 @@ def main():
         ('em dash in prose', r'\u2014'),
         ('study named by ordinal', r'\b[Ss]tudy[~ ]?[12]\b'),
         ('study-name variant', r'\b(needfinding study|summative study|first study|second study|user study)\b'),
+        ('colloquialism', SLANG),
+        ('future tense "will"', r'\bwill\b'),
     ]
     for f in targets:
         # %% REV markers live in comments, so this one check reads the raw
@@ -167,8 +196,6 @@ def main():
             t = re.sub(r'\b(needfinding study|summative study)\b', '', t)
         for pat, msg in [(AMERICAN, 'American spelling'), ('—', 'em dash in prose'),
                          (r'``', 'TeX quotes -- house form is \\enquote{}'),
-                         (SLANG, 'colloquialism'),
-                         (r'\bwill\b', 'future tense "will"'),
                          (r'\d+ ECTS', 'ECTS without ~'),
                          (r'\\todo\{', 'raw \\todo -- use \\TDblock/\\TDmajor/\\TDminor/\\TDrev')]:
             hits = re.findall(pat, t)
@@ -179,10 +206,13 @@ def main():
         # so strip them before the language scan or every "I" a participant said
         # is reported as a defect.
         prose = re.sub(r'\\TD(?:block|major|minor|rev|ok)\{.*', '', t)
-        prose = re.sub(r'\\enquote\{[^{}]*\}', ' ', prose)
+        prose = strip_macro(prose, 'enquote')
         prose = re.sub(r'\\begin\{quote\}.*?\\end\{quote\}', ' ', prose, flags=re.S)
+        # UI labels are set in \emph in this thesis, and one of them is
+        # "Restore my layout". Only the first-person check needs them gone.
+        prose_fp = strip_macro(prose, 'emph')
         for what, pat in LANGUAGE:
-            hits = re.findall(pat, prose)
+            hits = re.findall(pat, prose_fp if what == 'first-person singular' else prose)
             if hits:
                 c = collections.Counter(h if isinstance(h, str) else h[0] for h in hits)
                 warn('%s: %s x%d %s' % (f, what, len(hits), dict(c.most_common(5))))
