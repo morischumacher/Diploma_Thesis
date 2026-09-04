@@ -92,6 +92,7 @@ def tex_escape(s):
     s = s.replace('\\', '').replace('&', '\\&').replace('_', '\\_')
     s = s.replace('#', '\\#').replace('$', '\\$')
     s = re.sub(r'(?<!\\)%', '\\\\%', s)
+    s = re.sub(r'(\d)\s+ECTS', r'\1~ECTS', s)   # house rule: no break before ECTS
     # straight quotes in the source become the house quotation form
     s = s.replace('\u201c', '\\enquote{').replace('\u201d', '}')
     s = s.replace('\u2018', '`').replace('\u2019', "'")
