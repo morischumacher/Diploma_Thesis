@@ -226,6 +226,7 @@ Two further rules that no scanner can check. **A claim verb must match the evide
 | Quotation marks | **`\enquote{}` everywhere.** `csquotes` is loaded. |
 | Participant quotations | See below — this is currently the largest single inconsistency in the thesis. |
 | Oxford comma | Used consistently. Keep. |
+| Page anchors in citations | **For direct quotations and close paraphrase of a specific passage only**, as `\cite[p.~10]{key}`. Not for a citation that supports a claim in general. This is why Chapter 4 carries ten and most chapters carry none: it is the only section that quotes and paraphrases a single book closely. Settled 2026-09-03; the alternative, dropping them, would make three verbatim quotations unlocatable in a 300-page book. |
 
 **Participant quotations — settled 2026-09-02, `\enquote{}` with no italics.** This is the standard form, not merely the cheaper sweep: `csquotes` exists for exactly this and handles nesting and language-sensitive marks, and academic style (Chicago, APA) sets short quotations in quotation marks without italics, reserving italics for emphasis and titles. 161 instances of the `` ``…'' `` forms were converted in Pass 0; none remain. Attribution follows the closing quote as `(C21)` for formative themes and `(P09)` for evaluation participants. Quotations longer than about forty words take a `quote` environment without quotation marks — the longest quotation in the thesis is currently 154 characters, so none does.
 
@@ -619,6 +620,7 @@ A useful test for any suspect sentence: **could this claim be false and the thes
 
 ### E. Submission hygiene
 
+24. **Re-check every page-anchored citation against the source**, Moritz's request 2026-09-03. There are twelve in the thesis, ten of them in Chapter 4, and each points at a specific page of Braun and Clarke. Page anchors are the citations an examiner is most likely to open, and the ones a later edit can silently invalidate. Establish the PDF-to-printed page offset first: for the Braun and Clarke file it is printed = PDF minus 35.
 24. §11a in full, plus PDF/A validity, correct metadata, and the declaration and disclosure files complete.
 25. The data-protection items in §13 settled: the consent PDF carrying a real name and birthdate in git history, and the retention of the recordings.
 
