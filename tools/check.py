@@ -77,6 +77,16 @@ def main():
     if uncited:
         warn(f'{len(uncited)} bib entries never cited: {", ".join(uncited[:6])}...')
 
+    # --- structural: every \includegraphics resolves (blocking) -----------
+    # main.tex stopped producing a PDF because pictures/Full_view_crop.png was
+    # referenced and absent, and every check still reported green: the checker
+    # read the source and never asked whether the files it points at exist.
+    for f, t in bodies.items():
+        for m in re.finditer(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]*)\}', t):
+            g = m.group(1)
+            if not any(os.path.exists(g + e) for e in ('', '.pdf', '.png', '.jpg', '.jpeg', '.eps')):
+                bad(f'{f}: \\includegraphics file not found: {g}')
+
     # --- structural: brace balance ---------------------------------------
     for f, t in texts.items():
         if t.count('{') != t.count('}'):
