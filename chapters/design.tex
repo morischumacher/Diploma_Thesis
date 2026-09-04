@@ -69,7 +69,7 @@ A \emph{tab-based layout} was rejected because it makes the catalogue and the ca
   \draw[gray!50, rounded corners=4pt, line width=0.7pt] (8.2,0) rectangle (11.0,5.5);
   \node[font=\footnotesize\bfseries] at (9.6,5.15) {Right Panel};
   \node[text width=2.6cm, align=center, font=\scriptsize] at (9.6,4.3)
-    {Compliance \&\\Progress\\Dashboard};
+    {Dashboard\\\textit{(compliance and progress)}};
 \end{tikzpicture}
 \caption{Three-panel shell. The left panel's catalogue and filter controls follow the active view, while the Recommendation Panel toggles independently. Centre: the active canvas. Right: the Dashboard.}
 \label{fig:three-panels}
@@ -880,10 +880,10 @@ Based on this, a dedicated rule engine is invoked after every frontend planning 
 What the engine reports matters as much as when it reports it. Bartel et al.'s call for \emph{clearly recognisable} warnings within the same \enquote{\emph{support during planning difficulties}} guideline requires feedback to be immediately intelligible: if a student has to pause and deduce which of their recent actions triggered a violation, the burden the automatic check was meant to remove has been shifted rather than resolved. Compliance messages are therefore constructed to name the specific course, semester and action that triggered them. Rather than reporting a category of violation, the engine uses the same underlying rule to produce a situation-specific message according to whether a course was just added, moved, or altered; generic static strings would force students to reconstruct their own interaction history, especially after several rapid adjustments.
 
 % ============================================================
-\section{Progress Dashboard Design}
+\section{Dashboard Design}
 \label{sec:dashboard}
 
-Students conceptualise their progress at multiple granularities (current semester, upcoming semesters, and the overall programme; T1) and require an always-current, ambient placement to constantly answer, \enquote{where am I right now?} (T16). Furthermore, they explicitly want to separate what they have merely chosen from what they have already completed (T19). 
+The Dashboard is the right panel of the three-panel shell (Section~\ref{sec:three-panels}) and the interface realisation of Feature~\ref{feat:002}. Students conceptualise their progress at multiple granularities (current semester, upcoming semesters, and the overall programme; T1) and require an always-current, ambient placement to constantly answer, \enquote{where am I right now?} (T16). Furthermore, they explicitly want to separate what they have merely chosen from what they have already completed (T19). 
 
 To address this, the Dashboard aggregates multiple progress indicators into a unified visual display~\cite{schwendimann2017}. Wienand et al.~\cite{wienand_design_2024} report the same concern from the other side: having made their own courses more flexible, they anticipated that students \enquote{might feel lost on how much progress they already made}, and answered it with progress bars at three nested levels, the chapter, the sub-chapter, and the whole course. Following that pattern, the Dashboard expands the student's mental model into four distinct, decision-relevant granularities (Figure~\ref{fig:dashboard-levels}):
 
@@ -953,7 +953,7 @@ Four alternatives were rejected. A \emph{single-level ECTS bar} hides category d
   \draw[-{Stealth[length=4pt]}, gray!50] (\pw+0.3,7.6) -- (\pw+0.9,7.6);
   \node[right, font=\tiny, text width=2.6cm] at (\pw+0.95,7.6) {Each level individually collapsible, order user-configurable};
 \end{tikzpicture}
-\caption{Progress Dashboard's four aggregation levels: Programme, Category, Semester, and Module. Each section collapses independently and the overall order is student-configurable.}
+\caption{The Dashboard's four aggregation levels: Programme, Category, Semester, and Module. Each section collapses independently and the overall order is student-configurable.}
 \label{fig:dashboard-levels}
 \end{figure}
 
