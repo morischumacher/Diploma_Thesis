@@ -523,6 +523,20 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 **Never touched, whatever a sweep says.** Questionnaire item 2 in the evaluation appendix reads "The interface improved my productivity when dealing with course dependencies and constraints". It is the instrument as administered and is reproduced verbatim, so it sits outside the house vocabulary by necessity.
 
+**Tool-claim verification log.** Claims about the tool, checked against `main` of `hypridplanner` under the §2 rule. Structural claims need no session question (see the ruling above); feature claims record one where it applies.
+
+**Chapter 1, all four claims, verified 2026-09-05 against commit `c00ef4f`.**
+
+| Claim (Section) | Verdict |
+|---|---|
+| Contribution 2: "unites a curriculum graph and a schedule-managing table over a single shared plan" | **Holds.** One reducer in `frontend/src/domain/plan/`; `coursesBySemester` is the single representation and both views are projections of it. A course's lane in the table is its node's `position.x`. |
+| Contribution 2: "checks that plan against the regulations of two degree programmes in real time" | **Holds, and "real time" is exact.** `useRuleCheckSync` posts to `/rulecheck` on every plan change with no debounce; only the *save* is debounced (500 ms). Two rule sets, selected by programme code. Note that Ch. 7's edit-flow figure says the opposite, calling the check part of a "debounced save-and-consult step". |
+| Contribution 2: "embeds explainable recommendations within the planning workflow" | **Holds of the artefact.** Six channels, each writing the sentence the student reads; cards are draggable into a lane. How many could fire during the sessions is the separate question the `\TDrev` on the contributions already carries. |
+| Contribution 3: the graph "renders no semester dimension against which that commitment could be judged" | **Holds.** `CurriculumGraphView` lays out by curriculum depth (`X_BY_LEVEL`, four fixed columns) and by exam-subject band; no semester enters the layout, and nodes are draggable on the horizontal axis only. |
+| Contribution 4: "the constraints it does not model are silent rather than wrong" | **Holds, and the two constraints can now be named.** The engine has no concept of an internship or exchange semester: `internship`, `exchange` and any term word appear nowhere in `app/rules/`. And the band's lower bound only advises: `_check_semester_load` adds an error above the maximum, a warning above the recommended load, and a "missing" note below it — with both thresholds taken from the payload, that is from the student's profile, not from the task. |
+
+**Found while checking, not stated anywhere in the thesis: the weekly-hours limits are never enforced.** The client sends `maxWeekHoursPerSemester` and `recommendedWeekHoursPerSemester` on every rule check (`useRuleCheckSync`), and `RuleCheckPayload` in `app/api/rulecheck.py` declares neither, so Pydantic drops them before `model_dump()`. The strings "week" and "hours" appear nowhere in `backend/`. What the two values do reach is the Dashboard's planned-hours section, which sums the estimates the student typed per course and colours one line against the *recommended* value; the *maximum* is used only to scale a bar. So a student can set a hard weekly-hours ceiling in the profile that nothing checks. This bears on Ch. 6 §6.11, on Ch. 1's contribution 4 as a third unmodelled constraint, and on E-P26, E-P33, E-P35, E-P57 and E-P61.
+
 **Citation verification log.** Every citation checked during a chapter pass is appended here with its verdict, so nothing is opened twice.
 
 **A source is cleared per claim, not per key.** A verified entry covers the citation instances that existed when it was written, and nothing else. New instances of a cleared key inherit a green mark they never earned, which is how the Munzner overclaim survived: the entry read "all six claims" while the thesis had grown to eight instances. Entries therefore record the instance count at verification time, and a source that gains instances is re-opened for the new ones only.
