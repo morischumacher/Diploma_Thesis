@@ -279,72 +279,104 @@ An empty plan triggers an offer (`PrefillNotifications.tsx`, top right): *Apply 
 
 ---
 
-## 4. Claims in the thesis, checked against this code
+## 4. The code check, chapter by chapter
 
-Verdicts: **holds** (the code does what the sentence says), **differs** (the code does something else; what it does is stated), **not on main** (the claimed change is absent), **cannot be settled here** (needs history or the live system).
+Verdicts: **holds** (the code does what the sentence says), **differs** (the code does something else; what it does is stated), **not on main** (the claimed change is absent), **cannot be settled here** (needs history or the live system). Chapters 7 to 9 are checked separately; this section covers 1 to 6.
 
-### 4.1 Section 7.8 — changes after the evaluation study
+### 4.1 Chapter 1 — Introduction
 
-| Claim | Verdict | What the code shows |
-|---|---|---|
-| E-P29: a winter/summer marker was added to the card in both views and the catalogue row | **holds as a feature, cannot be dated** | ☀️/❄️ on `CourseCard`, `GraphCourseNode`, catalogue rows and recommendation cards. Moritz states it predates the study. Nothing in the repository dates it. |
-| E-P50: one banner style split into three, and a rejection names the constraint | **holds as a feature, cannot be dated** | Refusal red (5 s sticky), checking blue, accepted green, other grey; milestone banner separate and green. The refusal text is the engine's message, which names the action, the course and the semester. |
-| E-G09 arithmetic: milestone denominator now from the curriculum in force | **differs** | The bachelor target is the literal `180` in `metrics.ts:159`; the master reads `target_total` from the engine's stats with `120` as fallback. |
-| E-P42: an empty recommendation tab now states why it is empty | **not on main** | There are no tabs. One list, one generic empty state: "No recommendations" or "All disabled". Moritz's account — the channels worked, participants had entered no interests — matches the code: `interest` and `internship` are silent without profile input. |
-| E-P27: study wording removed from the profile screen | **not on main** | "Disable Graph View (User Study Persona 1)" is in `ProfileModal.tsx:178` and `AuthGate.jsx:105`. |
-| E-P44: the soft-dependency edge layer | **holds in substance, differs in detail** | Soft relations are drawn (dashed) with the hard ones (solid) from `/curriculum/prerequisites`. But: one checkbox draws both kinds together, not a three-way "formal only / both / neither" group; the edge carries a short label ("recommended before"), not a tooltip in the Dashboard advisory's wording; and a third kind, the curriculum's *expected knowledge* (36 + 21 entries), is revealed per node — which Chapter 7 does not mention at all. |
-| E-P11 ticked in Table 8.8 (panel occludes the lanes) | **not on main** | The panel is still a fixed overlay at `left: 0` and the board is not shifted when it opens. Nothing in §7.8.1 describes a change to it. |
-| "Five have been closed, each with a regression test" | **cannot be settled here** | No E-P code is referenced by any test. `docs/known-defects.md` on `main` lists the study's defects without a fixed column and marks only code-reading findings as fixed. |
-
-### 4.2 Chapter 7 — the implementation as described
+Five claims about the tool. **All five hold.**
 
 | Claim | Verdict | What the code shows |
 |---|---|---|
-| React 18.3.1, Vite 5.4.20, React Flow 11.11.4, FastAPI, PostgreSQL | **holds** | Lock file and Dockerfile; Python 3.12. |
-| Vercel / Render / Neon | **Vercel holds; Render and Neon are documentation only** | `frontend/vercel.json` exists; the other two appear only in `docs/deploying.md`. |
-| Three frontend layers, each depending only on the one below | **holds** | domain / features / components; `App.jsx` assembles. |
-| The plan is a pure reducer; a change carries a counter, not a timestamp | **holds** | `reducer.ts`, `changeCounter`. |
-| Edits follow one direction: re-render immediately, save-and-consult debounced | **differs** | Only the **save** is debounced (500 ms). The rule check and the recommendations request fire on every change immediately, guarded by change ids. |
-| Backend layers: handlers hold no rules or SQL; use cases own the transaction boundary; recommender re-checks against the engine | **holds** | `api/` → `services/` → `repositories/`; `unit_of_work.write()`; `rules.py` trial placement. |
-| The curriculum is data in the two checkers' constructors, 391 lines, "the split is partial" | **differs** | On `main` the regulations are JSON documents in `app/curriculum/` (2.4) and the constructors read them; the four remaining literals were moved (`known-defects.md`). The split is complete, not partial. |
-| Two rule sets, deliberately separate, sharing only the wire format, result shape, entry point, rule-set shape and credit limits | **holds** | `rules/payload.py` docstring; ADR 0002. |
-| "focus-area dependency / gating matrix" in the master | **holds** | `core_by_exam_subject`, `_core_dependency_feedback`: warnings and missing, never a violation. |
-| StEOP gate in the bachelor | **holds** | `_check_pre_steop_courses`, 22 ECTS allowance, pool minimum 8. |
-| Multi-pass pipeline: aggregates, then constraints; two tiers; stats for the Dashboard | **holds** | 2.5. |
-| Six recommendation channels; knowledge-graph fixture with non-existent codes; `sequence` and `completed` never fire | **the fixture is gone** | No `knowledge.py`. `sequence` reads the curriculum ordering, `completed` reads the synthetic cohort; the recommender golden master has a test that every channel is exercised. Whether the two were inert *during the sessions* cannot be settled here. |
-| Interest matching weights and normalisation; curated similarity; cohort shares; popularity fallback | **holds** | 2.7; the fallback is flagged `cold_start`. |
-| 38 golden scenarios for the engine, 85 for the recommender | **holds** | `fixtures.json` 38 keys; `recommender_fixtures.json` 85 scenarios. |
-| Contract tests sanitise ids and timestamps; e2e drives a browser against the stack | **holds** | `test_api_contract.py`, `response_shapes.json`; Playwright starts both servers. |
-| Data model: strict hierarchy into a materialised JSON view; per-user plan as one document | **holds** | Figure 5. |
-| "A graph of 101 courses" | **differs** | 101 is the number of lookup keys in `course_to_module`. The seeded bachelor catalogue has 84 course rows; the graph draws one node per catalogue course. |
-| The questionnaire web application as a separate artefact | **not in this repository** | Only its storage endpoint is here. |
+| "unites a curriculum graph and a schedule-managing table over a single shared plan" | **holds** | One reducer; `coursesBySemester` is the single representation and both views are projections of it. A card's lane is its node's `position.x`. |
+| "checks that plan against the regulations of two degree programmes in real time" | **holds** | `useRuleCheckSync` posts on every plan change with no debounce; only the save is debounced. Two rule sets, selected by programme code. |
+| "embeds explainable recommendations within the planning workflow" | **holds of the artefact** | Six channels, each writing the sentence the student reads; cards are draggable into a lane. How many could fire during the sessions is a separate question. |
+| the graph "renders no semester dimension against which that commitment could be judged" | **holds** | Four fixed columns by curriculum depth, subject bands vertically, horizontal-only dragging. No semester enters the layout. |
+| "the constraints it does not model are silent rather than wrong" | **holds** | `internship`, `exchange` and every term word appear nowhere in `app/rules/`; `_check_semester_load` errors above the maximum, warns above the recommended load and only notes below it, with both thresholds from the profile rather than the task. |
 
-### 4.3 Chapter 6 — design claims that this code answers
+### 4.2 Chapter 2 — Methodology
+
+The scope boundaries are claims about what the artefact does not do. **All seven hold**, three with a nuance worth stating.
 
 | Claim | Verdict | What the code shows |
 |---|---|---|
-| Obligation is encoded in **border weight**, three steps (§6.2.1) | **holds** | Thick, medium, thin, in the subject colour; labels "Mandatory", "Enge Wahl (+) / Core (+)", "Breite Wahl (*) / Elective (*)". Implemented as stacked inset shadows that render as one border of the given weight. |
-| Four lifecycle states, transitions as drawn in Figure 6.8 | **holds** | Figure 7 here. `planned → parked` exists via the picker. |
+| "desktop-scale single-page web application; use on small screens is not addressed" | **holds** | A React SPA behind an index rewrite. `global.css` contains no media query, and the layout is built from fixed pixel widths (lanes 360 px, panels at fixed offsets, `position: fixed`). Small screens are not addressed, exactly as claimed. |
+| **OOS1**, no automated planning | **holds, two nuances** | The engine advises and blocks; nothing re-balances a plan. The prefill is a hand-written template per programme, not a computed plan, and the student accepts or declines it. Two things do write the plan without being asked: accepting that prefill, and `useTermAutoShift`, which relocates courses stranded by a change of start season or term override. Both are repairs or offers rather than planning on the student's behalf, but neither is mentioned where OOS1 is stated. |
+| **OOS2**, programme-level granularity | **holds** | `deadline`, `calendar` and `appointment` appear nowhere in the application. The finest unit anywhere is a course in a semester. |
+| **OOS3**, no live connection to the institutional systems | **holds** | No TISS, LMS, Moodle or scraping code; the catalogue is seeded by migration and served from a materialised view. |
+| **OOS4**, no community features | **holds** | No rating, review, comment, upload or sharing code of any kind. |
+| **OOS5**, recommendation quality is not a contribution; "standard techniques over synthetically generated prior-student histories" | **holds, one nuance** | The cohort in `peer.py` is synthetic and seeded from the programme code. But only two of the six channels read it (`peer`, `completed`); the other four read the student's own profile, the curated catalogue links and the curriculum's ordering. The sentence reads as though the whole recommender runs on synthetic data. |
+| "every curriculum rule the system checks … belongs to one of these two programmes, and the Compliance Engine holds a separate rule set for each" | **holds** | `checker_for` selects `rules/bachelor.py` or `rules/master.py`; no third rule set exists, and an unrecognised code is refused unless the caller passes `strict=False`. |
+
+### 4.3 Chapter 3 — Related Work
+
+One claim about the tool this thesis builds, inside the gap statement.
+
+| Claim | Verdict | What the code shows |
+|---|---|---|
+| the tool "unites a browsable curriculum graph, rendering programme structure together with the prerequisites the curriculum formally fixes, with a schedule-managing table over a single, synchronised plan" | **holds** | Containment as the default layout, prerequisites as a togglable overlay, one plan behind both views. |
+| — but the phrase "the prerequisites the curriculum formally fixes" | **open question, not a code defect** | The switch draws two kinds together: the Master's `prerequisites` (enforced) and the Bachelor's `soft_prereqs` (advisory). Both live in `app/curriculum/*.json` and `services/prerequisites.py` reads them as curriculum data, while the thesis glossary defines a soft dependency as "curated for this tool rather than published by either curriculum". Either the glossary is wrong about the two Bachelor pairs, or the curriculum document mislabels curated pairs as published ones. This cannot be settled from the code; it needs the curriculum PDF and Moritz. |
+
+Everything else in Chapter 3 is a claim about other people's systems and belongs to the citation audit, not here.
+
+### 4.4 Chapter 4 — Formative Study
+
+**Nothing to check.** The chapter is about the study and the non-functional Figma prototype. It makes no claim about the built tool.
+
+### 4.5 Chapter 5 — From Themes to Requirements
+
+The chapter's own prose holds; the requirement set behind it does not, in five places.
+
+| Claim | Verdict | What the code shows |
+|---|---|---|
+| 13 features carrying 55 numbered requirements | **holds** | Counted in the appendix. |
+| FEATURE-005 Req. 3 (self-assessed readiness) "not carried into the implemented system" | **holds** | `readiness`, `strength` and `risk` appear nowhere in the application. |
+| FEATURE-013 Reqs. 1, 3, 4 (named, cross-view groups) "not carried into the implemented system" | **holds** | No group is ever created, named or renamed by a student; `groupId` is always a curriculum module's identifier. |
+| FEATURE-013 Req. 2 (positions persist) "was implemented" | **holds** | `PlanCourse.position` in the plan and `nodePosById` in the graph view, both stored. |
+| **"Every other exclusion recorded in a Delineation follows from a scope boundary … or from a design decision stated there, not from what was built."** | **differs** | Four further requirements are unmet or partly met, and no Delineation records any of them. |
+
+The four:
+
+- **FEATURE-002 Req. 3**, "progress can be presented module-based (e.g. per-module bar representation) in addition to aggregate progress". There is no per-module progress anywhere in the Dashboard. `metrics.ts` computes `moduleProgressForDashboard` and returns it; **nothing consumes it**. What a student can see instead is the Bachelor focus area's "Required modules" checklist (a count, not a bar, and only for a chosen focus), and a module node in the graph carrying its course count and one status word.
+- **FEATURE-002 Req. 5**, "the system displays a projected completion semester/range based on the current plan". Nothing projects a completion semester. The Dashboard reports credits and percentages of the target; no code anywhere forecasts a finishing term.
+- **FEATURE-005 Req. 2**, a semester feasibility summary including "total ECTS, distribution of assessment types, and flags when user-defined thresholds are exceeded". Two of three: the totals and the flags exist; nothing shows a distribution of assessment types, and no assessment-type concept exists in the application at all.
+- **FEATURE-008 Req. 3**, when a course becomes unavailable the system "indicates impacted requirements/categories, and provides alternative course options". The manual flag exists (the per-course term override) and `useTermAutoShift` relocates what it strands, but nothing names the impacted requirements at that moment and nothing offers alternatives.
+
+Two further requirements are met differently from how they are written, which is a documentation question rather than a shortfall:
+
+- **FEATURE-007 Req. 4**, "users can enable/disable recommendation families individually" naming five. Five toggles exist in the profile (`interest`, `similarity`, `sequence`, `completed`, `internship`) and four chips in the panel (`interest`, `similarity`, `internship`, `peer`). So `peer` can be switched off only from the panel and `sequence` and `completed` only from the profile. Every family can be reached, but not from one place.
+- **FEATURE-012 Req. 1**, "recommendations are displayed as annotations (e.g. overlays/badges/highlights such as borders)". The tool does the opposite on purpose: recommendations are confined to the panel and nothing is drawn on the canvas or in the catalogue. The concern behind the requirement, not breaking the layout, is met more strongly than asked. Section 6.12.2 argues for it; FEATURE-012's Delineation says "None beyond the overall scope boundaries", so the departure is nowhere recorded in the specification.
+
+### 4.6 Chapter 6 — Design
+
+| Claim | Verdict | What the code shows |
+|---|---|---|
+| Obligation encoded in **border weight**, three steps (§6.2.1) | **holds** | Thick, medium, thin in the subject colour, implemented as stacked inset shadows that render as one border of the given weight. |
+| Four lifecycle states and the transitions of Figure 6.8 | **holds** | Including `planned → parked` through the picker. |
 | Parked state distinguished by a label on the card | **holds** | Footer word "parked". |
-| Header: abbreviation, course type, term | **holds** | Plus the term as an emoji rather than a word. |
-| Six recommendation families, five toggle chips in Figure 6.12, four symbols | **six families, six badges, four chips, five profile toggles** | 2.7 and 3.9. The "Sequence" chip in Figure 6.12 does not exist. |
-| Toggle bar preferences persist as part of the profile | **holds** | `recommendation_toggles`. |
-| Recommendations confined to the panel; nothing on the canvas or in the catalogue | **holds** | The patch is plumbed and never rendered. |
-| Accepted card removed from the panel | **holds** | Candidates exclude planned, done and parked codes on the next request. |
-| Filtering: six dimensions, disjunctive within, conjunctive across; relax-on-expand; collapse persists | **holds** | `filters.ts`, `relaxFiltersForExpandedSubtree`. |
-| Three batch presets: Collapse all, Expand all, **Restore my layout** | **differs** | Two buttons, Expand and Collapse; the previous collapse set is restored implicitly when the student next interacts. |
+| Course-card header: abbreviation, course type, term | **holds** | The term as ☀️ / ❄️ / ☀️❄️. |
+| Six recommendation families; five toggle chips in Figure 6.12; four family symbols | **differs** | Six families, six badges each with its own icon and label, **four** chips in the panel, five toggles in the profile. The "Sequence" chip in Figure 6.12 does not exist. |
+| Toggle preferences persist as part of the profile | **holds** | `recommendation_toggles`. |
+| Recommendations confined to the panel; nothing on the canvas or in the catalogue | **holds** | `renderRecommendationPatch` is imported by the card and the catalogue and called by neither; the card's call site is commented out. |
+| An accepted card is removed from the panel | **holds** | Candidates exclude planned, done and parked codes on the next request. |
+| Filtering: six dimensions, disjunctive within, conjunctive across; relax-on-expand; collapse survives filtering | **holds** | `filters.ts`, `relaxFiltersForExpandedSubtree`. |
+| Three batch presets: Collapse all, Expand all, **Restore my layout** | **differs** | Two buttons, Expand and Collapse. The previous collapse set is restored implicitly at the next interaction; there is no third control. |
 | Graph nodes draggable horizontally only, offsets persist | **holds** | `nodeXById`. |
-| Lane header: label and ECTS; on demand hours, weighted grade, notes | **holds** | `LaneColumn.jsx`. |
-| Two automatic sort modes, alphabetical or by ECTS | **holds** | Via the layout-semantics pill, plus "custom". |
-| Module backgrounds appear only on hover, click or drag | **holds (hover)** | `ModuleGroupBackground`. |
-| Setup dialog collects programme and start term (season, year) | **holds, plus the focus area and the study switch** | 3.11. |
-| Profile: soft target and hard maximum for ECTS and weekly hours; 30 ECTS default; interests and career direction start empty | **holds** | `DEFAULT_SEMESTER_LOAD_LIMITS` 42/30, 50/40. |
-| Dashboard: four levels Programme, Category, Semester, Module; two modes with independent order and collapse; milestones at 25/50/75/100 | **modes and milestones hold; the levels differ** | Sections are StEOP, focus, category, exam subject, semester, hours (planning) or grade (done), missing, warnings. There is no per-module progress section; module progress is on the module nodes and in the catalogue. |
-| Transferable skills listed as an obligation category (§6.10) | **it is a cap, not a category** | The bachelor engine applies a 6–9 ECTS cap and the master a 4.5 minimum; the interface's obligation categories are mandatory / core / elective. |
-| Compliance engine invoked after every action, returning status, per-category statistics, hard violations, soft warnings; messages name course, semester and action | **holds** | 2.5, 3.4. One nuance: the engine's `missing` list is a third output alongside errors and warnings. |
-| "Well over 100 nodes" in a fully expanded master programme | **plausible, not counted here** | 105 course rows, 100 modules, 17 subjects, most modules holding one course and drawn as a direct course node. |
+| Lane header: label and ECTS, with hours, weighted grade and notes on demand | **holds** | `LaneColumn.jsx`. |
+| **"two automatic sort modes … while allowing users to return to their manual arrangement afterwards"** (§6.6.2) | **differs** | Choosing alphabetical or ECTS **rewrites `position.y` for every card in the lane**. Returning to "no meaning" sorts by `position.y`, which is now the sorted order, so the manual arrangement is gone rather than restored. |
+| Module backgrounds appear only on hover, click or drag | **holds** | Hover, self or child. |
+| Setup dialog collects programme and start term | **holds** | It collects two more things the section does not name: the focus area, and the study's "Disable Graph View" switch. |
+| **Profile: "Exceeding hard limits triggers prominent visual warnings in the Dashboard; exceeding soft limits triggers subtler warnings"** (§6.11) | **differs, in both directions** | For ECTS the hard limit does not warn, it **blocks**: the engine returns an error, the change is refused and rolled back. For weekly hours nothing happens at all — see below. |
+| Dashboard: four levels Programme, Category, Semester, Module | **differs** | The sections are StEOP, focus, category, exam subject, semester, and hours or grade, plus missing and warnings. There is no module level. |
+| Two Dashboard modes with independent order and collapse; milestones at 25/50/75/100 % | **holds** | |
+| Transferable skills listed as an obligation category (§6.10) | **differs** | It is a credit cap (Bachelor 6–9, Master ≥ 4.5), not one of the three obligation tiers. |
+| Compliance engine invoked after every action, returning status, per-category statistics, hard violations and soft warnings; messages name course, semester and action | **holds** | With a third output alongside errors and warnings: the `missing` list. |
+| "A fully expanded 120-ECTS Master programme contains well over 100 nodes" | **holds** | 105 course rows, 100 modules, 17 exam subjects in the seeded Master catalogue. |
 
----
+**One number carried forward, because it is not a Chapter 6 claim.** Chapter 7 (Section 7.8.2) and Chapter 9 both write "a graph of 101 courses" for the Bachelor programme. That figure **differs**: 101 is the number of lookup keys in `course_to_module`, which counts course codes, titles and title variants, so the same course is counted more than once. The seeded Bachelor catalogue has 84 course rows. Both sentences are corrected in the Chapter 7 to 9 pass, not here.
+
+**The weekly-hours limits are never enforced.** The client sends `maxWeekHoursPerSemester` and `recommendedWeekHoursPerSemester` on every rule check; `RuleCheckPayload` declares neither, so Pydantic drops them before the checker is called, and "week" and "hours" appear nowhere in `backend/`. The two values reach only the Dashboard's planned-hours section, which sums the estimates the student typed per course and colours one line against the *recommended* value; the *maximum* is used only to scale a bar. A student can set a hard weekly-hours ceiling that nothing checks. This is what makes §6.11 wrong in the second direction, and it is a third constraint the completion signal does not model, alongside the exchange semester and the band's lower bound.
 
 ## 5. What Chapter 7 would keep, if this document were reduced to it
 
