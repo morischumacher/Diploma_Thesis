@@ -356,7 +356,7 @@ A chapter is finished only when every line below is true. This is the checklist 
 6. British spelling sweep; register sweep; no em dashes; no bold outside item labels; `\enquote{}` only; `\emph{}` thinned.
 7. Every abbreviation expanded at first use in this chapter.
 8. Figure captions 100–200 chars, table captions ≤350; caption placement correct.
-9. RQ text, if quoted, character-identical to Chapter 1.
+9. **A chapter that answers a research question opens by stating it**, in the same form as its siblings (a `quote` block in italics), character-identical to Chapter 1. The conditional wording this item used to carry, "if quoted", let Chapter 7 pass with no RQ at all: it referred to Research Question 2 by number while Chapters 4, 5 and 6 print theirs in full. Corrected 2026-09-05, on Moritz's catch. Chapter 8's inline variant is still a third form and is a final-pass item (§15 B).
 10. Terminology matches §5; the two studies named descriptively.
 11. Frequencies carry denominators; exploratory claims labelled.
 12. Brace balance verified; the full build runs clean (§11); no new overfull box over 10 pt.

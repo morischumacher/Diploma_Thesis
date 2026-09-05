@@ -1,5 +1,11 @@
 \label{chap:implementation}
-This chapter describes the tool that realises the design of Chapter~\ref{chap:design}, thereby completing, together with that chapter, the answer to Research Question~2. The tool is a contribution of this thesis, but it is not its subject: it is the instrument through which the design is evaluated. The chapter therefore records the architecture and the components that matter for reproducing the tool and for trusting the evaluation, and refers back to Chapter~\ref{chap:design} for the interface behaviour it realises rather than restating it. Alongside the study planner, a small questionnaire application was built to conduct the evaluation sessions; it is described briefly in Section~\ref{sec:impl-userstudy}.
+This chapter, together with Chapter~\ref{chap:design}, answers Research Question~2:
+
+\begin{quote}
+\textit{How can we design and implement a hybrid interface that combines graph-based visualisation with table-based planning to help students plan their studies and understand curriculum structure and course dependencies, based on those requirements?}
+\end{quote}
+
+Chapter~\ref{chap:design} answers the design half; this chapter describes the tool that realises it. The tool is a contribution of this thesis, but it is not its subject: it is the instrument through which the design is evaluated. The chapter therefore records the architecture and the components that matter for reproducing the tool and for trusting the evaluation, and refers back to Chapter~\ref{chap:design} for the interface behaviour it realises rather than restating it. Alongside the study planner, a small questionnaire application was built to conduct the evaluation sessions; it is described briefly in Section~\ref{sec:impl-userstudy}.
 
 \section{System Overview}
 \label{sec:impl-overview}
@@ -61,7 +67,7 @@ Above the domain layer, the client is divided by feature rather than by technica
 \subsection{What a Student Sees}
 \label{sec:impl-frontend-components}
 
-The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, whose Figure~\ref{fig:three-panels} draws the arrangement, and Figures~\ref{fig:impl-shot-graph} to~\ref{fig:impl-shot-recs} show the built result rather than restating it.
+The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, whose Figure~\ref{fig:three-panels} draws the arrangement, and Figures~\ref{fig:impl-shot-shell} to~\ref{fig:impl-shot-recs} show the built result rather than restating it: the shell as a student meets it, then each surface at a size where it can be read.
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -71,19 +77,15 @@ The layers above describe how the code is arranged. What they present is the thr
               rounded corners=1.5pt},
   a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
   lb/.style={font=\scriptsize, inner sep=1.2pt}]
-  \node[layer, minimum height=17mm] (features) {\ \\[1mm]
-    \small \begin{tabular}{@{}ll@{}}
-      profile & onboarding tour \\
-      catalogue & prebuilt plans \\
-      Dashboard & compliance feedback \\
-      recommendations & planning canvas \\
-    \end{tabular} \\[1.2mm]
+  \node[layer, minimum height=15mm] (features) {\ \\[1mm]
+    \small profile, catalogue, Dashboard, recommendations, onboarding tour,\\
+    \small prebuilt plans, compliance feedback, planning canvas \\[1.2mm]
     \small each owns its state, its effects and the components that render it};
   \node[tab, anchor=south west] at ($(features.north west)+(3mm,-1.2mm)$) {Feature modules};
 
   \node[layer, below=9mm of features, minimum height=13mm] (domain) {\ \\[1mm]
-    \small plan reducer \textperiodcentered\ term and lane rules \textperiodcentered\ lane geometry \\
-    \small graph filters \textperiodcentered\ prebuilt-plan builders \\[0.8mm]
+    \small plan reducer, term and lane rules, lane geometry, graph filters,\\
+    \small prebuilt-plan builders \\[0.8mm]
     \small no framework, no browser, no network};
   \node[tab, anchor=south west] at ($(domain.north west)+(3mm,-1.2mm)$) {Domain};
 
@@ -124,10 +126,10 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
   \node[box, below left=19mm and -1.2cm of model] (reflow)
         {\textbf{Pure layout functions}\\[0.6mm] \small reflow lanes and graph columns};
   \node[box, below right=19mm and -1.2cm of model] (persist)
-        {\textbf{Persist and consult}\\[0.6mm] \small save debounced, compliance and recommendation asked on every change};
-  \node[box, below=8mm of reflow] (render) {\textbf{Active view} re-renders};
-  \node[box, below=8mm of persist] (dash)
-        {\textbf{Dashboard and feedback banners} update};
+        {\textbf{Persist and consult}\\[0.6mm] \small debounced save, immediate checks};
+  \node[box, below=8mm of reflow] (render) {\textbf{Active view}\\[0.6mm] \small re-renders};
+  \node[box] (dash) at (render -| persist)
+        {\textbf{Dashboard and banners}\\[0.6mm] \small update};
 
   \draw[a] (act) -- (model);
   \draw[line width=1.2pt] (model) -- (fork);
@@ -139,6 +141,13 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
 \caption{Edits follow one direction. A transition produces the next plan, from which an immediate re-render follows and, off the render path, a debounced save and an immediate consultation.}
 \label{fig:impl-edit-flow}
 \end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{pictures/Full_graph_view_Screenshot.png}
+\caption{The whole tool in the Graph View: the catalogue and its filters on the left, the curriculum in the centre, and the Dashboard on the right. The figures that follow show each surface at a readable size.}
+\label{fig:impl-shot-shell}
+\end{figure}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{pictures/Graph_view_crop.png}
