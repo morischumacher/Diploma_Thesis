@@ -50,10 +50,9 @@ In deployment, the client and the questionnaire application are served on Vercel
 \section{Frontend}
 \label{sec:impl-frontend}
 
-%% REV (you say that figure 7.2 is decriped by the subsections which follow bottom up. But the subsection headers do not match the box headers from the figure at all, nether structure wise nor header wise)
-The client realises the interface designed in Chapter~\ref{chap:design} and is the larger of the two applications. It is organised in three layers, each depending only on the one below it (Figure~\ref{fig:impl-frontend-layers}), and this section describes them from the bottom up: first the model the plan is held in, then the feature modules built on it, then what those modules present to the student, and finally how an edit travels through them.
+The client realises the interface designed in Chapter~\ref{chap:design} and is the larger of the two applications. It is organised in three layers, each depending only on the one below it (Figure~\ref{fig:impl-frontend-layers}): a domain layer holding the plan and the rules that change it, the feature modules built on top of it, and an API client through which those modules reach the service. The next three subsections take one layer each, beginning with the domain layer, which the other two are arranged around. Two further subsections cut across all three: what the layers add up to on the screen, and the path a single edit takes through them.
 
-\subsection{The Plan Model}
+\subsection{The Domain Layer}
 \label{sec:impl-plan-model}
 
 A plan is what a student builds and what everything else in the tool reads: the courses filed under each semester, the codes marked done and the codes parked, the notes, hour estimates and grades recorded against individual courses, the note on each semester, the chosen focus area, the workload limits, and what the graph remembers between visits, which is its filters, its collapsed nodes and the positions the student has dragged nodes to. One such plan is held for each degree programme a student has opened, and the account holds the set of them. The Graph View and the Table View are two projections of that plan. Switching view changes how the plan is drawn, never which plan is described, and persistence, the Dashboard, compliance feedback and recommendations are all derived from the same model.
@@ -62,20 +61,27 @@ That model is a reducer: a pure function from the current plan and a described c
 
 Placing, moving and parking a course in the Table View are handled differently. The board's node array is built from the plan when a programme is opened, and on every commit the array is written back whole rather than as a single described move. The reason is that one interaction rarely moves one card: collision spacing, module group clearance and the relocation of courses stranded by a change of start term shift others at the same time, and writing the array back captures all of them at once. The consequence is that the canvas is an input to the plan and not only a rendering of it, a trade-off examined in Section~\ref{sec:impl-edit-flow}.
 
-The Graph View does not take part in this. Its node positions encode curriculum depth and subject band, so dragging there changes a remembered offset and nothing else. Adding a course from the graph does reach the plan through the same array, but its lane is named by the %% REV (glossary? Picker)
-picker rather than read from where a card was dropped.
+The Graph View does not take part in this. Its node positions encode curriculum depth and subject band, so dragging there changes a remembered offset and nothing else. Adding a course from the graph does reach the plan through the same array, but its lane is named by the \gterm{semester-picker}{Semester Picker} (Section~\ref{sec:semester-picker}) rather than read from where a card was dropped.
+
+The layer holds more than the plan and its reducer. The rules for terms and lanes, which decide the season a lane carries and whether a course may be offered in it; the lane geometry that turns a drop position into a semester; the graph's filter matching, which keeps a matched course's whole ancestry on screen; and the builders behind the prebuilt plans all live there on the same terms, each callable on its own without a browser around it.
 
 \subsection{Feature Modules}
 \label{sec:impl-frontend-features}
 
 Above the domain layer, the client is divided by feature rather than by technical kind. Each of the profile, the catalogue, the Dashboard, the Recommendation Panel, the onboarding tour, the prebuilt plans, the compliance feedback and the planning canvas is a module holding its own state, its own effects and the components that render it; the screen is assembled from them. A module may depend on the domain layer and on no other module, so a change to one feature cannot reach another except through the plan.
 
+\subsection{The API Client}
+\label{sec:impl-api-client}
+
+Everything the client asks of the service passes through a single module. It exports one function per request the application makes, fourteen in all, covering authentication and the current user, the catalogue and the prerequisite list, loading and saving the plan, the profile settings, the compliance check and the recommendation request. No other file in the client opens a network connection, which is what makes the layering above enforceable rather than merely intended: the client's whole dependence on the service is visible in one file, and the domain layer, which calls none of these functions, needs no service to run.
+
+The module is also where the client and the service are reconciled. The service address is read from a build-time variable with a local fallback, so one build runs against a developer machine and against the deployed service without a code change. Every request carries the bearer token held in browser storage alongside the session cookie. The service's field names are converted to the client's, so the naming convention of the wire stops at this boundary. So does failure handling: a refused response becomes an exception carrying its status and the returned text, while two answers that could be read as failures are passed on as results instead, namely that nobody is signed in and that a programme publishes no prerequisites.
+
 \subsection{What a Student Sees}
 \label{sec:impl-frontend-components}
 
-The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, whose Figure~\ref{fig:three-panels} draws the arrangement, and the figures that follow show the built result rather than restating it: the shell as a student meets it (Figure~\ref{fig:impl-shot-shell}), then the Graph View (Figure~\ref{fig:impl-shot-graph}), the Table View (Figure~\ref{fig:impl-shot-table}) and the two side panels (Figure~\ref{fig:impl-shot-recs}) at a size where each can be read. %% REV (for completness, i want to have the profile and the sidebar as screenshots too (they are already in the pictires)
+The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, whose Figure~\ref{fig:three-panels} draws the arrangement, and the figures that follow show the built result rather than restating it: the shell as a student meets it (Figure~\ref{fig:impl-shot-shell}), then the Graph View (Figure~\ref{fig:impl-shot-graph}), the Table View (Figure~\ref{fig:impl-shot-table}), the two side panels (Figure~\ref{fig:impl-shot-recs}) and the catalogue sidebar beside the profile dialogue (Figure~\ref{fig:impl-shot-catalogue-profile}), each at a size where it can be read.
 
-%% REV (this figure implies that the domain layer has no communiation to the backend trough the api client, is this correct?)
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -112,8 +118,7 @@ The layers above describe how the code is arranged. What they present is the thr
 \subsection{How an Edit Travels}
 \label{sec:impl-edit-flow}
 
-%% REV (question, is the table edit included in this explanation and figure too?)
-Edits follow one direction (Figure~\ref{fig:impl-edit-flow}). A drag or a button dispatches a transition that rewrites the plan; from there, two independent consequences follow. Immediately, a set of pure layout functions reflow the affected lanes or graph columns and the active view re-renders. Separately, and off that render path, the plan is persisted and the compliance and recommendation endpoints are consulted, with their results feeding the derived Dashboard and the transient feedback banners. The save is debounced by half a second, so rapid, exploratory replanning does not write once per drag. The two consultations are not: each is issued on the change itself and carries that change's identifier, so an answer arriving after a newer edit is discarded rather than applied to a plan it was not computed for. The four-state course lifecycle designed in Section~\ref{sec:lifecycle} needs no separate state-machine object: each course carries its state on the plan, the transitions are the reducer's own, and the context-sensitive buttons are derived at render time so only valid transitions are offered. Filtering the graph is handled by a self-contained module that matches courses against the active filters and then keeps every ancestor of a match, so a course is never hidden merely because an intermediate module was filtered out (Section~\ref{sec:graph-spatial}).
+Edits follow one direction (Figure~\ref{fig:impl-edit-flow}), and every kind of edit follows it: a card dragged across the table, a semester chosen from the Semester Picker, a note or an hour estimate typed onto a course. Each dispatches a transition that rewrites the plan; from there, two independent consequences follow. Immediately, a set of pure layout functions reflow the affected lanes or graph columns and the active view re-renders. Separately, and off that render path, the plan is persisted and the compliance and recommendation endpoints are consulted, with their results feeding the derived Dashboard and the transient feedback banners. The save is debounced by half a second, so rapid, exploratory replanning does not write once per drag. The two consultations are not: each is issued on the change itself and carries that change's identifier, so an answer arriving after a newer edit is discarded rather than applied to a plan it was not computed for. The four-state course lifecycle designed in Section~\ref{sec:lifecycle} needs no separate state-machine object: each course carries its state on the plan, the transitions are the reducer's own, and the context-sensitive buttons are derived at render time so only valid transitions are offered. Filtering the graph is handled by a self-contained module that matches courses against the active filters and then keeps every ancestor of a match, so a course is never hidden merely because an intermediate module was filtered out (Section~\ref{sec:graph-spatial}).
 
 One qualification applies to this account, and it bounds the single authoritative model of Section~\ref{sec:impl-plan-model} rather than contradicting it: the table's canvas holds each node's coordinates, and a course's horizontal coordinate encodes the semester it occupies, so that one derived value is reconciled in both directions rather than one.
 Making the canvas a pure projection of the model, so that reconciliation runs one way only, is the clearest structural improvement the client still admits, and it is taken up in the future work of Chapter~\ref{chap:discussion} (Section~\ref{sec:disc-future}).
@@ -177,6 +182,14 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
 \includegraphics[height=8.6cm]{pictures/Dashboard_crop.png}
 \caption{The two side panels: the Recommendation Panel, whose cards name the family that produced them, and the Dashboard, where the Compliance Engine's answer becomes visible. Both continue below the crop.}
 \label{fig:impl-shot-recs}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=8.4cm]{pictures/Sidebar_Screenshot.png}\hspace{6mm}%
+\includegraphics[height=8.4cm]{pictures/Profile__Screenshot.png}
+\caption{The catalogue sidebar, grouped by exam subject with collapsible modules, and the profile dialogue holding the focus area, the recommendation preferences and the workload limits.}
+\label{fig:impl-shot-catalogue-profile}
 \end{figure}
 \section{Backend}
 \label{sec:impl-backend}
