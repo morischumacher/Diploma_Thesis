@@ -130,7 +130,7 @@ Furthermore, the system must handle alternative course formats without breaking 
   modul/.style={box},
   cours/.style={box},
   eg/.style={-{Stealth[length=4pt]}, gray!60, thin},
-  dots/.style={font=\scriptsize, text=gray!50}
+  dots/.style={font=\scriptsize, text=black}
 ]
   % 1st Level
   \node[prog]  (prog) at (0,-0.1)   {Programme};
@@ -169,10 +169,10 @@ Furthermore, the system must handle alternative course formats without breaking 
   \draw[eg] (m2.east)   -- (c4.west);
   
   % Column Labels
-  \node[font=\tiny, text=black!70] at (0,-2.95)    {Programme};
-  \node[font=\tiny, text=black!70] at (3.5,-2.95)  {Exam Subject};
-  \node[font=\tiny, text=black!70] at (7.0,-2.95)  {Module};
-  \node[font=\tiny, text=black!70] at (10.5,-2.95) {Course};
+  \node[font=\tiny] at (0,-2.95)    {Programme};
+  \node[font=\tiny] at (3.5,-2.95)  {Exam Subject};
+  \node[font=\tiny] at (7.0,-2.95)  {Module};
+  \node[font=\tiny] at (10.5,-2.95) {Course};
 
   % The two single-course modules: the module node is not drawn, so the edge
   % from the exam subject crosses the module column to reach the course.
@@ -206,21 +206,21 @@ A \emph{multiple concentric border rings} treatment (e.g.\ one ring for elective
   \fill[white, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
   \draw[\rc, line width=1.0pt, rounded corners=3pt] (0,0) rectangle (\cw,\ch);
   \node[font=\scriptsize\bfseries,text width=2.8cm,align=center] at (1.2,-0.4) {Fully Elective};
-  \node[font=\tiny,text=gray!55] at (1.2,-0.95) {thin border};
+  \node[font=\tiny] at (1.2,-0.95) {thin border};
 
   % Core/Narrow Elective — medium ring
   \def\ox{3.6}
   \fill[white, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
   \draw[\rc, line width=2.0pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
   \node[font=\scriptsize\bfseries,text width=2.8cm,align=center] at (\ox+1.2,-0.4) {Constrained Elective};
-  \node[font=\tiny,text=gray!55] at (\ox+1.2,-0.95) {medium border};
+  \node[font=\tiny] at (\ox+1.2,-0.95) {medium border};
 
   % Mandatory — thick ring
   \def\ox{7.2}
   \fill[white, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
   \draw[\rc, line width=3.0pt, rounded corners=3pt] (\ox,0) rectangle (\ox+\cw,\ch);
   \node[font=\scriptsize\bfseries,text width=2.8cm,align=center] at (\ox+1.2,-0.4) {Mandatory};
-  \node[font=\tiny,text=gray!55] at (\ox+1.2,-0.95) {thick border};
+  \node[font=\tiny] at (\ox+1.2,-0.95) {thick border};
 
 \end{tikzpicture}
 \caption{Obligation type encoding using three levels of border thickness. Border weight distinguishes obligation categories without using hue, thereby avoiding interference with the subject colour channel.}
@@ -256,7 +256,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   \node[text=black,font=\tiny,text width=1.8cm,align=center] at (1.0,1.8) {Course Name};
   \node[text=black,font=\tiny] at (1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries] at (1.0,-0.4) {Not Planned};
-  \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (1.0,-1.0) 
+  \node[font=\tiny,text width=2.1cm,align=center] at (1.0,-1.0) 
   {white fill, coloured border};
     % Card 2: Parked
     \def\ox{2.5}
@@ -267,7 +267,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
     \node[text=black,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.55) {Course Name};
     \node[text=black,font=\tiny] at (\ox+1.0,1.0) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Parked};
-    \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
+    \node[font=\tiny,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {white fill, label badge};
     % Card 3: Planned
     \def\ox{5.0}
@@ -276,7 +276,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
     \node[text=black,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
     \node[text=black,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
     \node[font=\scriptsize\bfseries] at (\ox+1.0,-0.4) {Planned};
-    \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
+    \node[font=\tiny,text width=2.1cm,align=center] at (\ox+1.0,-1.0)
     {grey fill, coloured border};
   % Card 4: Done -- explicitly light colours rather than a subtle opacity scope, so the fade is actually visible on the page
   \def\ox{7.5}
@@ -287,7 +287,7 @@ The states are also illustrated in Figure~\ref{fig:status-encoding}. To prevent 
   \node[text=gray!70,font=\tiny,text width=1.8cm,align=center] at (\ox+1.0,1.8) {Course Name};
   \node[text=gray!70,font=\tiny] at (\ox+1.0,1.2) {4.5~ECTS};
   \node[font=\scriptsize\bfseries,text=gray!70] at (\ox+1.0,-0.4) {Done};
-  \node[font=\tiny,text=black!70,text width=2.1cm,align=center] at (\ox+1.0,-1.0) {light grey fill, light grey border and text};
+  \node[font=\tiny,text width=2.1cm,align=center] at (\ox+1.0,-1.0) {light grey fill, light grey border and text};
 \end{tikzpicture}
 \caption{Four-state planning status encoding. Status is communicated through fill lightness and border saturation.}
 \label{fig:status-encoding}
@@ -344,7 +344,7 @@ Alternative encodings were considered but rejected. \emph{Full-saturation} subje
   % Intensity arrow on the left
   \draw[-{Stealth[length=5pt]}, gray!50, line width=0.8pt]
     (-0.8,0.8) -- (-0.8,5.4);
-  \node[rotate=90, font=\scriptsize, text=gray!60] at (-1.2,3.1)
+  \node[rotate=90, font=\scriptsize] at (-1.2,3.1)
     {Increasing intensity $\longrightarrow$};
 \end{tikzpicture}
 \caption{Subject colour intensity hierarchy. One exam-subject hue applied at three levels: full saturation in the header, a 20\,\% tint on the module, and a full-saturation course-card border.}
@@ -436,7 +436,7 @@ The workflow does not force staging for every decision. A student who already kn
   \node[font=\footnotesize\bfseries] at (\bw/2, 2.6) {1 \quad Browse};
   \node[text width=2.9cm, align=center, font=\scriptsize]
     at (\bw/2, 1.6) {Explore the full curriculum in Graph View or Sidebar};
-  \node[font=\tiny, text=black!65, text width=2.9cm, align=center]
+  \node[font=\tiny, text width=2.9cm, align=center]
     at (\bw/2, 0.35) {\textit{Graph View}};
 
   % Arrow 1 → 2
@@ -451,7 +451,7 @@ The workflow does not force staging for every decision. A student who already kn
   \node[font=\footnotesize\bfseries] at (\ox+\bw/2, 2.6) {2 \quad Shortlist};
   \node[text width=2.9cm, align=center, font=\scriptsize]
     at (\ox+\bw/2, 1.6) {Park interesting courses without committing to a semester};
-  \node[font=\tiny, text=black!65, text width=2.9cm, align=center]
+  \node[font=\tiny, text width=2.9cm, align=center]
     at (\ox+\bw/2, 0.35) {\textit{Parking Stage}};
 
   % Arrow 2 → 3
@@ -466,12 +466,12 @@ The workflow does not force staging for every decision. A student who already kn
   \node[font=\footnotesize\bfseries] at (\ox+\bw/2, 2.6) {3 \quad Assign};
   \node[text width=2.9cm, align=center, font=\scriptsize]
     at (\ox+\bw/2, 1.6) {Drag (parked) courses into semester lanes or use the Semester Picker};
-  \node[font=\tiny, text=black!65, text width=2.9cm, align=center]
+  \node[font=\tiny, text width=2.9cm, align=center]
     at (\ox+\bw/2, 0.35) {\textit{Table View}};
 
   % Arrow 1 → 3 (Direct Assign Bypass)
   \draw[-{Stealth[length=5pt]}, gray!70, dashed, line width=1pt]
-    (\bw/2, -0.1) to[out=-20, in=-160] node[below, font=\scriptsize] {Direct Assign} (8.0+\bw/2, -0.1);
+    (\bw/2, -0.1) to[out=-20, in=-160] node[below, font=\scriptsize, text=black] {Direct Assign} (8.0+\bw/2, -0.1);
 
 \end{tikzpicture}
 \caption{Three-stage planning workflow: Browse (Graph View), Shortlist (Parking Stage) and Assign (Table View, committing to a semester). The Shortlist stage can be bypassed and a course assigned directly.}
@@ -490,7 +490,7 @@ To support clear user comprehension, the interface requires a strict distinction
   state/.style={draw=gray!60, rounded corners=5pt, minimum width=2.3cm,
                 minimum height=0.75cm, align=center, font=\small, fill=gray!8},
   tr/.style={-{Stealth[length=4.5pt]}, gray!70, font=\scriptsize},
-  lbl/.style={font=\scriptsize, text=gray!70, fill=white, inner sep=1pt}
+  lbl/.style={font=\scriptsize, text=black, fill=white, inner sep=1pt}
 ]
   % States
   \node[state] (NP)     at (0,0)    {Not Planned};
@@ -559,10 +559,10 @@ To prevent action affordances from being misread as status or compliance signals
 \begin{tikzpicture}[
   font=\sffamily,
   statebox/.style={draw=gray!60, fill=gray!5, rounded corners=4pt, line width=0.8pt, minimum width=4.8cm, minimum height=1.6cm},
-  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=2.5pt, font=\scriptsize, text=gray!80},
+  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=2.5pt, font=\scriptsize},
   header/.style={font=\small\bfseries, text=black},
   tr/.style={-{Stealth[length=5pt]}, gray!80, line width=0.8pt},
-  lbl/.style={font=\scriptsize, text=gray!70, fill=white, inner sep=2pt}
+  lbl/.style={font=\scriptsize, text=black, fill=white, inner sep=2pt}
 ]
 
   \def\xoff{8.2}
@@ -706,17 +706,17 @@ Based on this, the curriculum tree renders left-to-right across four depth level
   \draw[gray!25, dashed, line width=0.5pt] (11.0,0) -- (11.0,7.2);
 
   % Column headers
-  \node[font=\tiny, text=gray!60] at (3.3,7.5)  {Exam Subject};
-  \node[font=\tiny, text=gray!60] at (6.0,7.5)  {Module};
-  \node[font=\tiny, text=gray!60] at (9.2,7.5)  {Course};
+  \node[font=\tiny] at (3.3,7.5)  {Exam Subject};
+  \node[font=\tiny] at (6.0,7.5)  {Module};
+  \node[font=\tiny] at (9.2,7.5)  {Course};
 
   % Axis labels
   \draw[-{Stealth[length=4pt]}, gray!50] (2.2,-0.5) -- (11.2,-0.5);
-  \node[font=\tiny, text=gray!60] at (6.7,-0.85)
+  \node[font=\tiny] at (6.7,-0.85)
     {$\longrightarrow$ Curriculum depth (left to right)};
 
   \draw[-{Stealth[length=4pt]}, gray!50] (-0.5,0) -- (-0.5,7.5);
-  \node[rotate=90, font=\tiny, text=gray!60] at (-0.85,3.6)
+  \node[rotate=90, font=\tiny] at (-0.85,3.6)
     {$\longrightarrow$ Exam Subject band (vertical)};
 
   % Programme node
@@ -913,7 +913,7 @@ Four alternatives were rejected. A \emph{single-level ECTS bar} hides category d
   \node[font=\scriptsize\bfseries, anchor=west] at (0.15,8.3) {Programme};
   \fill[gray!15, rounded corners=2pt] (0.15,7.85) rectangle (\pw-0.15,8.1);
   \fill[subjectblue, rounded corners=2pt] (0.15,7.85) rectangle (0.15+2.4,8.1);
-  \node[font=\tiny, text=gray!60, anchor=west] at (0.15,7.72) {67\,\% complete};
+  \node[font=\tiny, anchor=west] at (0.15,7.72) {67\,\% complete};
 
   % Category level
   \fill[panelgray, rounded corners=4pt] (0,6.1) rectangle (\pw,7.4);
@@ -946,12 +946,9 @@ Four alternatives were rejected. A \emph{single-level ECTS bar} hides category d
 
   % collapse chevrons (indicating each level is individually collapsible)
   \foreach \y in {8.3, 7.1, 5.6, 3.9} {
-    \node[font=\tiny, text=gray!45] at (\pw-0.28,\y) {$\vee$};
+    \node[font=\tiny] at (\pw-0.28,\y) {$\vee$};
   }
 
-  % annotation
-  \draw[-{Stealth[length=4pt]}, gray!50] (\pw+0.3,7.6) -- (\pw+0.9,7.6);
-  \node[right, font=\tiny, text width=2.6cm] at (\pw+0.95,7.6) {Each level individually collapsible, order user-configurable};
 \end{tikzpicture}
 \caption{The Dashboard's four aggregation levels: Programme, Category, Semester, and Module. Each section collapses independently and the overall order is student-configurable.}
 \label{fig:dashboard-levels}
@@ -1016,9 +1013,7 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
 \begin{tikzpicture}[font=\scriptsize,
   chip/.style={draw=gray!55, fill=gray!8, rounded corners=5pt, inner sep=1.6pt, font=\tiny},
   badge/.style={draw=gray!55, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny},
-  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny},
-  ann/.style={font=\tiny, anchor=west, text width=3.9cm, align=left},
-  tick/.style={gray!55, thin}]
+  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny}]
 
   % panel
   \draw[gray!55, line width=0.9pt, rounded corners=4pt, fill=white] (0,0) rectangle (6.0,-7.3);
@@ -1049,15 +1044,6 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
   \node[font=\scriptsize\bfseries, anchor=west] at (0.45,-6.15) {Semistrukturierte Daten};
   \node[font=\tiny, anchor=west] at (0.45,-6.55) {\emph{62\,\% of similar students chose this}};
 
-  % annotations
-  \draw[tick] (t3.east) -- (6.4,-1.05);
-  \node[ann] at (6.45,-1.05) {family toggles, persisted};
-  \draw[tick] (5.7,-2.2) -- (6.4,-2.2);
-  \node[ann] at (6.45,-2.2) {the family that claimed the course};
-  \draw[tick] (5.7,-3.75) -- (6.4,-3.75);
-  \node[ann] at (6.45,-3.75) {the reason, truncated so a long one cannot displace the course details};
-  \draw[tick] (b1.east) -- (6.4,-4.72);
-  \node[ann] at (6.45,-4.72) {the same actions a course card carries};
 \end{tikzpicture}
 \caption{The Recommendation Panel. Each card names the family that produced it and the reason in the student's own terms, and is draggable into a semester lane; nothing is added to the canvas itself.}
 \label{fig:rec-panel}
