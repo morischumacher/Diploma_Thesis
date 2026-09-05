@@ -1,5 +1,11 @@
 \label{chap:implementation}
-This chapter describes the tool that realises the design of Chapter~\ref{chap:design}, thereby completing, together with that chapter, the answer to Research Question~2. The tool is a contribution of this thesis, but it is not its subject: it is the instrument through which the design is evaluated. The chapter therefore records the architecture and the components that matter for reproducing the tool and for trusting the evaluation, and refers back to Chapter~\ref{chap:design} for the interface behaviour it realises rather than restating it. Alongside the study planner, a small questionnaire application was built to conduct the evaluation sessions; it is described briefly in Section~\ref{sec:impl-userstudy}.
+This chapter, together with Chapter~\ref{chap:design}, answers Research Question~2:
+
+\begin{quote}
+\textit{How can we design and implement a hybrid interface that combines graph-based visualisation with table-based planning to help students plan their studies and understand curriculum structure and course dependencies, based on those requirements?}
+\end{quote}
+
+Chapter~\ref{chap:design} answers the design half; this chapter describes the tool that realises it. The tool is a contribution of this thesis, but it is not its subject: it is the instrument through which the design is evaluated. The chapter therefore records the architecture and the components that matter for reproducing the tool and for trusting the evaluation, and refers back to Chapter~\ref{chap:design} for the interface behaviour it realises rather than restating it. Alongside the study planner, a small questionnaire application was built to conduct the evaluation sessions; it is described briefly in Section~\ref{sec:impl-userstudy}.
 
 \section{System Overview}
 \label{sec:impl-overview}
@@ -10,7 +16,7 @@ In deployment, the client and the questionnaire application are served on Vercel
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
-  tier/.style={draw, line width=1pt, rounded corners=3pt, minimum width=3.6cm, minimum height=32mm, fill=white},
+  tier/.style={draw, line width=1pt, rounded corners=3pt, minimum width=3.6cm, minimum height=30mm, fill=white},
   tab/.style={draw, line width=1pt, fill=white, font=\bfseries\small, inner sep=3pt, rounded corners=1.5pt},
   row/.style={font=\small, align=left},
   dep/.style={font=\scriptsize\itshape, text=black},
@@ -33,7 +39,7 @@ In deployment, the client and the questionnaire application are served on Vercel
   \node[dep] at (depc) {\includegraphics[height=3.4mm]{pictures/icons/vercel.pdf}\ \ on Vercel};
   \node[dep] at (depa) {\includegraphics[height=3.4mm]{pictures/icons/render.pdf}\ \ on Render};
   \node[dep] at (depd) {\includegraphics[height=3.4mm]{pictures/icons/neon.pdf}\ \ on Neon};
-  \draw[flow] ($(client.east)+(0,4mm)$) -- node[above, font=\scriptsize]{plan CRUD} ($(api.west)+(0,4mm)$);
+  \draw[flow] ($(client.east)+(0,4mm)$) -- node[above, font=\scriptsize]{persist} ($(api.west)+(0,4mm)$);
   \draw[flowalt] ($(client.east)+(0,-4mm)$) -- node[below, font=\scriptsize]{consult} ($(api.west)+(0,-4mm)$);
   \draw[flow] (api) -- node[above, font=\small]{SQL} (db);
 \end{tikzpicture}
@@ -49,9 +55,13 @@ The client realises the interface designed in Chapter~\ref{chap:design} and is t
 \subsection{The Plan Model}
 \label{sec:impl-plan-model}
 
-The plan has a single authoritative representation, and the Graph View and the Table View are two projections of it. Switching view changes how the plan is drawn, never which plan is described, and persistence, the Dashboard, compliance feedback and recommendations are all derived from the same model.
+A plan is what a student builds and what everything else in the tool reads: the courses filed under each semester, the codes marked done and the codes parked, the notes, hour estimates and grades recorded against individual courses, the note on each semester, the chosen focus area, the workload limits, and what the graph remembers between visits, which is its filters, its collapsed nodes and the positions the student has dragged nodes to. One such plan is held for each degree programme a student has opened, and the account holds the set of them.
 
-That model is a reducer: a function from the current plan and a described change to the next plan, holding no framework, no clock and no input or output of its own. Marking a course complete, applying a prebuilt plan, switching programme, choosing a focus area and clearing the plan are transitions of this function, each exercisable by calling it rather than by rendering the interface around it. Placing, moving and parking a course reach it as one further transition, which carries the canvas's node array rather than the course and its destination, because a course's position on the canvas is what records the semester it sits in; Section~\ref{sec:impl-edit-flow} returns to what that costs. The reducer sits in a domain layer together with the term and lane rules, the lane geometry, the graph filters and the prebuilt-plan builders. That layer depends on no framework and on no other layer, which is what allows the planning rules to be tested without a browser.
+The Graph View and the Table View are two projections of that plan. Switching view changes how the plan is drawn, never which plan is described, and persistence, the Dashboard, compliance feedback and recommendations are all derived from the same model.
+
+That model is a reducer: a function from the current plan and a described change to the next plan, holding no framework, no clock and no input or output of its own. Marking a course complete, applying a prebuilt plan, switching programme, choosing a focus area and clearing the plan are transitions of this function, each exercisable by calling it rather than by rendering the interface around it. Placing, moving and parking a course are the exception: the canvas owns each card's position and a card's horizontal position is what records its semester, so those three reach the reducer as a redrawn node array rather than as a course and a destination, which is the one place the model is not free of the interface (Section~\ref{sec:impl-edit-flow}).
+
+The reducer sits in a domain layer together with the term and lane rules, the lane geometry, the graph filters and the prebuilt-plan builders. That layer depends on no framework and on no other layer, which is what allows the planning rules to be tested without a browser.
 
 \subsection{Feature Modules}
 \label{sec:impl-frontend-features}
@@ -61,7 +71,7 @@ Above the domain layer, the client is divided by feature rather than by technica
 \subsection{What a Student Sees}
 \label{sec:impl-frontend-components}
 
-The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, and the figures below show the built result rather than restating it.
+The layers above describe how the code is arranged. What they present is the three-panel shell of Section~\ref{sec:three-panels}: the catalogue, its filters and the Recommendation Panel on the left, the Graph View or the Table View in the centre, and the Dashboard on the right, reached through a gate that handles sign-in and, on first entry, collects the programme and start term (Section~\ref{sec:onboarding}). That gate also carries the study-condition control used during the evaluation. Each panel realises the corresponding section of Chapter~\ref{chap:design}, whose Figure~\ref{fig:three-panels} draws the arrangement, and the figures that follow show the built result rather than restating it: the shell as a student meets it (Figure~\ref{fig:impl-shot-shell}), then the Graph View (Figure~\ref{fig:impl-shot-graph}), the Table View (Figure~\ref{fig:impl-shot-table}) and the two side panels (Figure~\ref{fig:impl-shot-recs}) at a size where each can be read.
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -71,19 +81,15 @@ The layers above describe how the code is arranged. What they present is the thr
               rounded corners=1.5pt},
   a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
   lb/.style={font=\scriptsize, inner sep=1.2pt}]
-  \node[layer, minimum height=17mm] (features) {\ \\[1mm]
-    \small \begin{tabular}{@{}ll@{}}
-      profile & onboarding tour \\
-      catalogue & prebuilt plans \\
-      Dashboard & compliance feedback \\
-      recommendations & planning canvas \\
-    \end{tabular} \\[1.2mm]
+  \node[layer, minimum height=15mm] (features) {\ \\[1mm]
+    \small profile, catalogue, Dashboard, recommendations, onboarding tour,\\
+    \small prebuilt plans, compliance feedback, planning canvas \\[1.2mm]
     \small each owns its state, its effects and the components that render it};
   \node[tab, anchor=south west] at ($(features.north west)+(3mm,-1.2mm)$) {Feature modules};
 
   \node[layer, below=9mm of features, minimum height=13mm] (domain) {\ \\[1mm]
-    \small plan reducer \textperiodcentered\ term and lane rules \textperiodcentered\ lane geometry \\
-    \small graph filters \textperiodcentered\ prebuilt-plan builders \\[0.8mm]
+    \small plan reducer, term and lane rules, lane geometry, graph filters,\\
+    \small prebuilt-plan builders \\[0.8mm]
     \small no framework, no browser, no network};
   \node[tab, anchor=south west] at ($(domain.north west)+(3mm,-1.2mm)$) {Domain};
 
@@ -92,7 +98,8 @@ The layers above describe how the code is arranged. What they present is the thr
   \node[tab, anchor=south west] at ($(client.north west)+(3mm,-1.2mm)$) {API client};
 
   \draw[a] (features) -- node[lb, right] {depends on} (domain);
-  \draw[a] (features.west) -- ++(-0.8,0) |- (client.west);
+  \draw[a, rounded corners=2pt] (features.west) -- ++(-1.15,0)
+    |- node[lb, pos=0.45, anchor=east, xshift=-1.2mm] {depends on} (client.west);
 \end{tikzpicture}
 \caption{The client's three layers. Each depends only on the one below it: a feature module may use the domain layer and the API client, the domain layer uses neither and needs no browser to run.}
 \label{fig:impl-frontend-layers}
@@ -123,26 +130,33 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
   \node[box, below left=19mm and -1.2cm of model] (reflow)
         {\textbf{Pure layout functions}\\[0.6mm] \small reflow lanes and graph columns};
   \node[box, below right=19mm and -1.2cm of model] (persist)
-        {\textbf{Persist and consult}\\[0.6mm] \small plan saved, compliance and recommendation requested};
-  \node[box, below=8mm of reflow] (render) {\textbf{Active view} re-renders};
-  \node[box, below=8mm of persist] (dash)
-        {\textbf{Dashboard and feedback banners} update};
+        {\textbf{Persist and consult}\\[0.6mm] \small debounced save, immediate checks};
+  \node[box, below=8mm of reflow] (render) {\textbf{Active view}\\[0.6mm] \small re-renders};
+  \node[box] (dash) at (render -| persist)
+        {\textbf{Dashboard and banners}\\[0.6mm] \small update};
 
   \draw[a] (act) -- (model);
   \draw[line width=1.2pt] (model) -- (fork);
   \draw[a] (fork) -| node[tab, pos=0.28, above=1.4mm] {immediate} (reflow.north);
-  \draw[ad] (fork) -| node[tab, pos=0.28, above=1.4mm] {debounced, off the render path} (persist.north);
+  \draw[ad] (fork) -| node[tab, pos=0.28, above=1.4mm] {off the render path} (persist.north);
   \draw[a] (reflow) -- (render);
   \draw[ad] (persist) -- (dash);
 \end{tikzpicture}
-\caption{Edits follow one direction. A transition produces the next plan, from which two consequences follow: an immediate re-render, and an off-path step (dashed) that debounces the save and consults on every change, off the render path.}
+\caption{Edits follow one direction. A transition produces the next plan, from which an immediate re-render follows and, off the render path, a debounced save and an immediate consultation.}
 \label{fig:impl-edit-flow}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{pictures/Full_graph_view_Screenshot.png}
-\caption{The three-panel shell in the Graph View: the catalogue and its filters on the left, the curriculum as a left-to-right node-link diagram in the centre, and the Dashboard on the right.}
+\caption{The whole tool in the Graph View: the catalogue and its filters on the left, the curriculum in the centre, and the Dashboard on the right.}
 \label{fig:impl-shot-shell}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{pictures/Graph_view_crop.png}
+\caption{The Graph View, with all four levels in one frame: the programme root, an exam subject, its courses, and a module holding two courses drawn as its own node.}
+\label{fig:impl-shot-graph}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -154,11 +168,11 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[height=8.4cm]{pictures/Recommendation_panel_crop.png}
-\caption{The Recommendation Panel. Each card names the family that produced it and the reason in the student's own terms, and can be dragged into a semester lane directly.}
+\includegraphics[height=8.6cm]{pictures/Recommendation_panel_crop.png}\hspace{6mm}%
+\includegraphics[height=8.6cm]{pictures/Dashboard_crop.png}
+\caption{The two side panels: the Recommendation Panel, whose cards name the family that produced them, and the Dashboard, where the Compliance Engine's answer becomes visible. Both continue below the crop.}
 \label{fig:impl-shot-recs}
 \end{figure}
-%% REV (fix the screenshot, there where 6 kinds)
 \section{Backend}
 \label{sec:impl-backend}
 
@@ -166,20 +180,20 @@ Everything above happens in the browser and is lost when it closes. What follows
 The service is a FastAPI application arranged in three layers (Figure~\ref{fig:impl-backend-components}). As in the client, a layer may use the one below it and not the one above, but the layers themselves are different: where the client separates features from a shared domain, the service separates handling a request from deciding what it means and from reaching storage. A request handler validates its input, calls exactly one use case, and shapes the reply; it holds no rules and no SQL. A use case orchestrates the domain and owns the transaction boundary. A repository holds SQL and nothing else, and every SQL statement in the service is in one. The handlers cover authentication and sessions, catalogue retrieval, plan loading and saving, profile settings, compliance checking, recommendation, and capture of study results, that is the per-session submissions of the questionnaire application (Section~\ref{sec:impl-userstudy}), which are stored as one document per participant. 
 The layer boundary that needs stating in words rather than in the figure is the one between a use case and storage. A use case reaches storage through a unit of work: an object that hands it every repository already bound to one connection. A use case therefore never acquires a connection and never names a concrete repository. Two consequences motivate the arrangement. A use case can be exercised against a substitute unit of work, without a database; and the point at which a sequence of statements either all apply or none do is stated in the use case rather than left to whichever repository happens to run first.
 
-When a use case cannot do what was asked, it raises a failure of its own rather than an HTTP error. These failures are named for what went wrong rather than for how they will be reported, for example a programme locked after setup, a start term already fixed, or a profile saved before the setup it depends on. One table maps those names to HTTP status codes, and it is the only place in the service that knows what a status code is.
+When a use case cannot do what was asked, it raises a failure of its own rather than an HTTP error. These failures are named for what went wrong rather than for how they are reported, for example a programme locked after setup, a start term already fixed, or a profile saved before the setup it depends on. One table maps those names to HTTP status codes, and it is the only place in the service that knows what a status code is.
 
-Two further properties are worth recording. Authentication resolves a user from a session token supplied either as a cookie or as a bearer token, so the deployed client and a local instance authenticate against the same service unchanged. Persistence uses a shared PostgreSQL connection pool with parameterised SQL rather than an object-relational mapper, which keeps the queries the catalogue depends on legible and directly measurable. The two logic-heavy concerns, compliance and recommendation, sit beside the use cases as domain packages of their own; the next two sections describe them.
+Authentication resolves a user from a session token supplied either as a cookie or as a bearer token, so the deployed client and a local instance authenticate against the same service unchanged. Persistence uses a shared PostgreSQL connection pool with parameterised SQL rather than an object-relational mapper, which keeps the queries the catalogue depends on legible and directly measurable. The two logic-heavy concerns, compliance and recommendation, sit beside the use cases as domain packages of their own; the next two sections describe them.
 
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
   card/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=left, inner sep=2.5mm},
-  wide/.style={card, text width=9.4cm},
+  wide/.style={card, text width=9.7cm},
   half/.style={card, text width=3.4cm, minimum height=13mm},
   a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
   lb/.style={font=\scriptsize, inner sep=1.4pt, fill=white}]
   \node[wide] (api) {\textbf{Request handlers} \\[0.8mm] \small validate, call one use case, shape the reply};
-  \node[wide, below=7mm of api] (svc) {\textbf{Use cases} \\[0.8mm] \small auth, catalogue, plan state, profile, compliance, recommendation};
+  \node[wide, below=7mm of api] (svc) {\textbf{Use cases} \\[0.8mm] \small auth, catalogue, plan state, profile,\\ \small compliance, recommendation};
   \node[half, anchor=north west] (dom) at ($(svc.south west)+(0,-11mm)$) {\textbf{Compliance} \\[0.8mm] \small one rule set per programme, over the curriculum as data};
   \node[half, anchor=north east] (rec) at ($(svc.south east)+(0,-11mm)$) {\textbf{Recommendation} \\[0.8mm] \small six channels behind one protocol};
   \node[wide, anchor=north] (repo) at ($(dom.south)!0.5!(rec.south)+(0,-11mm)$) {\textbf{Repositories} \\[0.8mm] \small every SQL statement, bound to one connection by a unit of work};
@@ -188,7 +202,8 @@ Two further properties are worth recording. Authentication resolves a user from 
   \draw[line width=1.1pt] (svc) -- (fork);
   \draw[a] (fork) -| (dom.north);
   \draw[a] (fork) -| (rec.north);
-  \draw[a] (svc.west) -- ++(-7mm,0) |- (repo.west);
+  \draw[a, rounded corners=2pt] (svc.west) -- ++(-11mm,0)
+    |- node[lb, pos=0.45, anchor=east, xshift=-1.2mm] {reaches storage through} (repo.west);
   \draw[a] (rec.west) -- node[lb] {re-checks} (dom.east);
 \end{tikzpicture}
 \caption{Backend layers, under the same one-way dependency rule as the client: handlers hold no rules and no SQL, use cases own the transaction boundary, and the recommender re-checks every suggestion.}
@@ -209,42 +224,47 @@ Upon receiving a study plan, the engine evaluates it through a multi-pass pipeli
 \subsection{Recommendation Support}
 \label{sec:impl-recommender}
 The recommendation component exists to exercise the recommendation \emph{workflow} of the design (Feature~\ref{feat:007}, Feature~\ref{feat:012}), not to advance recommender research. It deliberately combines existing educational-recommender techniques rather than any new method: content-based matching against a student's stated interests and curated course similarities, typical-sequence relationships of the kind sequence-based course recommenders propose~\cite{wong_sequence_2018}, and a \enquote{what other students did} lens modelled on collaborative filtering for elective recommendation~\cite{bhumichitr_recommender_2017}. Each suggestion is accompanied by a short, human-readable reason, and any suggestion that would introduce a new hard violation is filtered out by re-checking it against the Compliance Engine, so recommendations never push a plan out of compliance.
-The two content-based channels are implemented as follows. Interest matching compares a student's stated interests against each course's topic list and its description, weighting an explicit topic match above an occurrence in the description and a partial word overlap below both, and normalising the result by the number of interests named, so that naming ten interests and matching one does not score as naming one and matching it. Course similarity infers nothing: it reads curated course-to-course links recorded in the catalogue, each carrying the short justification that is shown to the student as the reason (Figure~\ref{fig:impl-shot-recs}). The two behavioural channels are computed the same way from a cohort of prior-student plans: the peer channel scores a candidate by the share of the cohort whose plan most resembles this one that also holds it, and the follow-on channel by the share of the cohort who took it after a course this student has completed. Both report that share as the reason, and both distinguish a genuine cohort comparison from a fallback to overall popularity when the cohort is too small to support one.
+The two content-based channels are implemented as follows. Interest matching compares a student's stated interests against each course's topic list and its description, weighting an explicit topic match above an occurrence in the description and a partial word overlap below both, and normalising the result by the number of interests named, so that naming ten interests and matching one does not score as naming one and matching it. Course similarity infers nothing: it reads curated course-to-course links recorded in the catalogue, each carrying the short justification that is shown to the student as the reason (Figure~\ref{fig:impl-shot-recs}). The two behavioural channels are computed the same way from a cohort of prior-student plans: the peer channel scores a candidate by the share of the cohort whose plan most resembles this one that also holds it, and the follow-on channel by the share of the cohort who took it after a course this student has completed. Both report that share as the reason, and both distinguish a genuine cohort comparison from a fallback to overall popularity when the cohort is too small to support one. The panel lists what the channels return in order of score, so a family whose scoring is fixed and high, as curated similarity's is, tends to occupy the top of the list rather than being interleaved with the rest.
 
 The quality or accuracy of the underlying algorithms is explicitly out of scope for this thesis: the collaborative-filtering lens in particular operates on synthetically generated prior-student histories rather than real interaction data, so it stands in for the workflow a data-driven recommender would support rather than reproducing its performance.
 
-One property of the component bears on how the evaluation should be read. All six families were live during the sessions reported in Chapter~\ref{chap:evaluation}, but four of them answer from data the student supplies or from the synthetic cohort, so a family with nothing to work from produces nothing: a student who named no interests saw no interest matches, and the deliberately simple matching described above finds nothing when a stated interest appears in no course's topics or description. What a participant met was therefore not a fixed set of working and broken families but a set whose visible output varied with what they had entered, which is part of why the empty recommendation tab of E-P42 was met at all. The sequence family is bounded differently, by the curricula rather than by the student: it reads the orderings the curricula fix between two named courses, of which the Bachelor programme has two, so it could speak about almost nothing. That is the same scarcity the graph's overlay drew, and it is why four participants asked for ordering information and did not obtain it (E-P44). What the evaluation examines is how students work with recommendations presented and integrated in this way, not how well the matching itself performs, which OOS5 places out of scope. What a production version with real, consented interaction data would require is noted in the discussion of limitations.
+All six families were live during the sessions reported in Chapter~\ref{chap:evaluation}, but four of them answer from data the student supplies or from the synthetic cohort, so a family with nothing to work from produces nothing: a student who named no interests saw no interest matches, and the deliberately simple matching described above finds nothing when a stated interest appears in no course's topics or description. What a participant met was therefore not a fixed set of working and broken families but a set whose visible output varied with what they had entered, which is part of why the empty recommendation tab of E-P42 was met at all. The sequence family is bounded differently, by the curricula rather than by the student: it reads the orderings the curricula fix between two named courses, of which the Bachelor programme has two, so it could speak about almost nothing. That is the same scarcity the graph's overlay drew, and it is why four of the eleven participants asked for ordering information and did not obtain it (E-P44, 4/11). What the evaluation examines is how students work with recommendations presented and integrated in this way, not how well the matching itself performs, which OOS5 places out of scope. What a production version with real, consented interaction data would require is noted in the discussion of limitations.
 
 \section{Data Model}
 \label{sec:impl-data}
 
 The database models a study programme as a strict hierarchy (Figure~\ref{fig:impl-data-model}): a programme groups exam subjects, each exam subject groups modules, and each module groups courses. In both catalogues every course belongs to exactly one module, which is a property the seeded data holds rather than one the schema enforces. To avoid expensive relational queries at read time, we pre-assemble the catalogue into a single nested JSON document per programme using a materialised view. The client fetches this entire structure in a single request. A student's own term-availability overrides are merged onto it locally, ensuring the shared data is never mutated. Course-level metadata that evolves independently of the relational schema, such as content descriptors and curated course similarities, is held in a JSONB attributes column on the course entity. Per-user data, including the account, the saved plan, and the recommendation and term profiles, is keyed to the user and kept strictly separate from the shared catalogue. An account holds exactly one plan, since the plan table is keyed on the user and written as an upsert, while the profiles are keyed on the user and the programme, so a student who switches programme keeps a profile for each. One plan per account was sufficient for the study and for the design's own scope, but it prevents a student from holding alternative drafts side by side, which is a limitation the Discussion returns to (Chapter~\ref{chap:discussion}, Section~\ref{sec:disc-future}).
 
-We manage the database schema through automated migration files applied in sequence on start-up, which guarantees a reproducible environment. To support concurrent development without identifier collisions, migrations use timestamp-based naming rather than sequential integers. We also track each migration via a checksum to prevent silent modifications to previously applied scripts. Finally, we strictly enforce forward-only migrations, because down-migrations are rarely exercised in testing and therefore risk introducing unpredictable database states.
+We manage the database schema through automated migration files applied in sequence on start-up, which guarantees a reproducible environment. To support concurrent development without identifier collisions, migrations use timestamp-based naming rather than sequential integers. We also track each migration via a checksum to prevent silent modifications to previously applied scripts. Finally, we strictly enforce forward-only migrations, because down-migrations are rarely exercised in testing and therefore risk introducing unpredictable database states. No foreign key joins the per-user tables to the catalogue: they name a programme and a course by code rather than by identifier, so a plan survives the catalogue being reseeded, which regenerates every identifier it holds.
 
-\TDrev{Is a recommendation an entity in the schema?}{The cardinalities Moritz flagged are corrected: \texttt{app\_user} is 1:1 to the saved plan, matching the prose, and the term profile hangs off \texttt{app\_user} rather than off the plan, since it belongs to the user and the programme. What remains is his second question, which the figure cannot settle on its own: recommendations are computed rather than stored, so whether they belong in the entity box at all is a question about the schema and is answered with the rest of the code check.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
   ent/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=center, inner sep=2.2mm, text width=2.9cm},
   rel/.style={draw=black, line width=1.2pt, -{Latex[length=2.5mm]}},
+  proj/.style={draw=black!60, line width=1pt, dashed},
   lbl/.style={font=\scriptsize, fill=white, inner sep=0.8pt}]
   \node[ent] (sp) {\textbf{study\_program}};
   \node[ent, below=9mm of sp] (es) {\textbf{exam\_subject}};
   \node[ent, below=9mm of es] (mo) {\textbf{module}};
   \node[ent, below=9mm of mo] (co) {\textbf{course}\\ \footnotesize +\,JSONB attributes};
-  \node[ent, dashed, left=13mm of mo] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
+  \coordinate (spine) at ($(sp.west)+(-8mm,0)$);
+  \coordinate (spineb) at ($(co.west)+(-8mm,0)$);
+  \coordinate (spinemid) at ($(spine)!0.5!(spineb)$);
+  \node[ent, dashed, left=8mm of spinemid] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
   \draw[rel] (sp) -- node[lbl]{1\,:\,N} (es);
   \draw[rel] (es) -- node[lbl]{1\,:\,N} (mo);
   \draw[rel] (mo) -- node[lbl]{1\,:\,N} (co);
-  \draw[rel, dashed] (mo) -- (mv);
-  \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
+  \draw[proj] (spine) -- (spineb);
+  \foreach \n in {sp,es,mo,co} {\draw[proj] (\n.west) -- (\n.west -| spine);}
+  \draw[proj, -{Latex[length=2.5mm]}] (spinemid) -- (mv.east);
+  \node[ent, right=17mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
-  \node[ent, below=7mm of ps] (pp) {recommendation \&\ term profile};
+  \node[ent, below=7mm of ps] (pp) {programme profile};
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
-  \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
+  \draw[rel, rounded corners=2pt] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
-\caption{Data model. The shared curriculum catalogue (left) is a strict hierarchy projected into a materialised JSON view; per-user data (right) is kept separate and keyed to the account.}
+\caption{Data model. The catalogue (left) is projected per programme into a materialised JSON view; per-user data (right) is one plan document per account and one profile row per programme.}
 \label{fig:impl-data-model}
 \end{figure}
 
@@ -267,7 +287,7 @@ This heavy reliance on recorded verification is effective here because the Compl
 \section{Revisions After the Evaluation Study}
 \label{sec:impl-post-study}
 
-Everything described up to this point is the system used in the evaluation study of Chapter~\ref{chap:evaluation}. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. The changes fall into two kinds. The first is a set of corrections to defects the study surfaced (Section~\ref{sec:impl-post-study-fixes}). The second is an addition rather than a correction, the soft-dependency edge layer (Section~\ref{sec:impl-prereq-edges}), which supplies a capability four participants asked for and did not receive.
+Everything described up to this point is the system used in the evaluation study of Chapter~\ref{chap:evaluation}. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. The changes fall into two kinds. The first is a set of corrections to defects the study surfaced (Section~\ref{sec:impl-post-study-fixes}). The second is an addition rather than a correction, the soft-dependency edge layer (Section~\ref{sec:impl-prereq-edges}), which supplies a capability four of the eleven participants asked for and did not receive (E-P44, 4/11).
 
 \TDrev{The post-study corrections section is far too long}{Your comment, deferred with the note above, 2026-09-05: how far this can be cut depends on which corrections survive, and that is settled after Chapters~\ref{chap:evaluation} and~\ref{chap:discussion}. The intended shape is a short statement that the defects closed after the study were closed with a regression test each, with the ticked column of Table~\ref{tab:problems} doing the enumerating, plus one sentence on why those and not others. The soft-dependency edge layer stays as its own subsection, since it is an addition rather than a correction.}
 \subsection{Corrections to Reported Defects}
@@ -290,11 +310,11 @@ The fifth correction is the edge layer, and it is large enough to take separatel
 \subsection{The Soft-Dependency Edge Layer}
 \label{sec:impl-prereq-edges}
 
-The evaluated graph already drew the formal prerequisite pairs the two curricula fix, as a togglable overlay on the containment layout (Chapter~\ref{chap:design}, Section~\ref{sec:graph-ltr}). What it did not draw was the other half of the relation the Compliance Engine holds: the soft, recommended orderings the engine reports as non-blocking Dashboard advisories (Section~\ref{sec:impl-compliance}; Feature~\ref{feat:003}, Req.~3). That asymmetry was a design decision rather than a limit of the data. The overlay was scoped from the outset to the relations the Compliance Engine blocks on, so that an edge in the graph would carry one meaning, this ordering is required, and a student would not have to ask of any given edge whether it was binding. The evaluation showed the cost of that choice: four participants asked for ordering information at the point of placement and did not receive it (E-P44), and no other view offered it either. The layer added afterwards therefore widens the overlay rather than acquiring anything new, drawing the recommended orderings the curricula themselves state, as notes on the prior knowledge a course expects, alongside the pairs they fix.
+The evaluated graph already drew the formal prerequisite pairs the two curricula fix, as a togglable overlay on the containment layout (Chapter~\ref{chap:design}, Section~\ref{sec:graph-ltr}). What it did not draw was the other half of the relation the Compliance Engine holds: the soft, recommended orderings the engine reports as non-blocking Dashboard advisories (Section~\ref{sec:impl-compliance}; Feature~\ref{feat:003}, Req.~3). That asymmetry was a design decision rather than a limit of the data. The overlay was scoped from the outset to the relations the Compliance Engine blocks on, so that an edge in the graph would carry one meaning, this ordering is required, and a student would not have to ask of any given edge whether it was binding. The evaluation showed the cost of that choice: four of the eleven participants asked for ordering information at the point of placement and did not receive it (E-P44, 4/11), and no other view offered it either. The layer added afterwards therefore widens the overlay rather than acquiring anything new, drawing the recommended orderings the curricula themselves state, as notes on the prior knowledge a course expects, alongside the pairs they fix.
 
 The layer reuses the mechanism the formal edges already use. The soft pairs, which live as an attribute of each programme's checker class (Section~\ref{sec:impl-compliance}), are now served alongside the catalogue instead of remaining inside the engine, and the graph renders them as a second edge style: dashed where the formal edges are solid, and labelled \emph{recommended before} where the formal edges read \emph{required before}, so the two are told apart on the canvas rather than through a legend. Both kinds answer to one switch in the filter sidebar, which draws them together or not at all, so the overlay can be cleared in a single action, which is what the decluttering requirement asks for (DEP-04). Because both edge types cross the exam-subject bands rather than running along them, they are drawn above the containment layout and are hidden by default; node positions are unchanged, so the spatial memory the design protects (Feature~\ref{feat:013}, Req.~2) survives turning the overlay on and off.
 
-Two limits on this layer should be stated plainly. It was built after the study, so no participant used it and Chapter~\ref{chap:evaluation} carries no evidence about how it is read. And what the switch draws is thin by construction: the relations the curricula fix between two named courses are two advisory pairs in the Bachelor programme and two enforced ones in the Master, a handful of edges over a graph of 84 courses. The expected-knowledge orderings are more numerous, 99 edges in the Bachelor programme and 24 in the Master, but they are never drawn together: they appear around a single node, on request, which is what keeps them from returning the graph to the density the collapse controls exist to manage. Chapter~\ref{chap:discussion} (Section~\ref{sec:disc-future}) takes up what would have to be established before a view of this kind, drawing dependencies and soft dependencies together, could be said to earn its place.
+The layer was built after the study, so no participant used it and Chapter~\ref{chap:evaluation} carries no evidence about how it is read. And what the switch draws is thin by construction: the relations the curricula fix between two named courses are two advisory pairs in the Bachelor programme and two enforced ones in the Master, a handful of edges over a graph of 84 courses. The expected-knowledge orderings are 99 edges in the Bachelor programme and 24 in the Master, but they are never drawn together: they appear around a single node, on request, which is what keeps them from returning the graph to the density the collapse controls exist to manage. Chapter~\ref{chap:discussion} (Section~\ref{sec:disc-future}) takes up what would have to be established before a view of this kind, drawing dependencies and soft dependencies together, could be said to earn its place.
 
 % =============================================================================
 \section{Key Decisions}
