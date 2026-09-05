@@ -12,6 +12,11 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[Module] The third level of the curriculum hierarchy; a named unit containing one or more courses, carrying a single obligation category (Section~\ref{sec:curriculum-abstraction}).
   \phantomsection\label{gls:course}
   \item[Course (course item)] The fourth, most granular level of the curriculum hierarchy; refers to any course-item entry regardless of teaching format (VO, UE, VU, PR, etc.).
+  \phantomsection\label{gls:recommendation-family}
+  \item[Recommendation family] One of the kinds of recommendation the interface distinguishes: what a card's badge names and what the panel's toggle bar shows or hides (Chapter~\ref{chap:design}, Section~\ref{sec:rec-types-evidence}). The student-facing term; the component that computes a family's suggestions is a \emph{channel}.
+  \phantomsection\label{gls:recommendation-channel}
+  \item[Recommendation channel] The implementation counterpart of a family: one object with a name and a single method, composed with the others by the recommendation engine (Chapter~\ref{chap:implementation}, Section~\ref{sec:impl-recommender}). Families and channels correspond one to one; the two words mark which side of the design and implementation split is being discussed.
+
   \phantomsection\label{gls:collaborative-filtering}
   \item[Collaborative filtering] Recommending an item to a student on the evidence of what similar students did, without reading the item's content. Contrasted with content-based filtering below; a hybrid recommender combines the two. Used in this thesis for one of the recommendation families (Section~\ref{sec:impl-recommender}), where the prior-student histories it draws on are synthetically generated (Chapter~\ref{chap:methodology}, OOS5).
 
