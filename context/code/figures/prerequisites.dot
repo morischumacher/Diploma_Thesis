@@ -1,0 +1,13 @@
+digraph G {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, nodesep=0.3, ranksep=0.5];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, fillcolor="#ffffff", color="#6b7280"];
+  edge [fontname="Helvetica", fontsize=8, color="#6b7280", arrowsize=0.7];
+  cur [label="app/curriculum/*.json\nbachelor: soft_prereqs (2 pairs), recommended_prereqs (36 entries)\nmaster: prerequisites (4 keys, 2 after alias de-duplication),\nrecommended_prereqs (21 entries)", fillcolor="#fee2e2"];
+  eng [label="rules/*.py\nsoft → warning (bachelor)\nhard → violation (master)\nrecommended → nothing, by design", fillcolor="#fee2e2"];
+  srv [label="services/prerequisites.py\nprerequisite_relations(code)\n→ [{source, target, kind}]\nkind ∈ soft | hard | recommended", fillcolor="#fef3c7"];
+  ep  [label="GET /curriculum/prerequisites?program_code", fillcolor="#e0f2fe"];
+  fe  [label="utils/prerequisiteEdges.js\nindexCourseNodes: code, name, label,\nmodule code/label (accent-folded)\nbuildPrerequisiteEdges: only when both\nendpoints are nodes on the canvas", fillcolor="#eff6ff"];
+  g1  [label="'Show prerequisites (n)' checkbox\nin the graph filter sidebar\ndraws soft + hard together\nsoft: dashed amber, label 'recommended before'\nhard: solid red, label 'required before'", fillcolor="#eff6ff"];
+  g2  [label="⇠n button on a node\n(RecommendedPrereqButton, only where n > 0)\nreveals that node's 'expected knowledge'\nrelations: dotted indigo; one node at a time", fillcolor="#eff6ff"];
+  cur -> eng; cur -> srv -> ep -> fe; fe -> g1; fe -> g2;
+}

@@ -1,0 +1,103 @@
+digraph G {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=11, nodesep=0.25, ranksep=0.45, compound=true, splines=spline, newrank=true];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, fillcolor="#ffffff", color="#6b7280", margin="0.08,0.04"];
+  edge  [fontname="Helvetica", fontsize=8, color="#6b7280", arrowsize=0.7];
+
+  subgraph cluster_browser {
+    label="Browser — React 18.3.1 · Vite 5.4.20 · React Flow 11.11.4 · TypeScript 7.0.2 (hosted on Vercel)"; style="rounded,filled"; fillcolor="#f8fafc"; color="#94a3b8"; fontsize=11;
+
+    subgraph cluster_entry {
+      label="entry"; style="rounded,filled"; fillcolor="#ffffff"; color="#cbd5e1";
+      main  [label="main.jsx\nRoot: session bootstrap"];
+      gate  [label="AuthGate.jsx\nsign-in / sign-up\n+ programme, focus,\n'Disable Graph View' box"];
+      prog  [label="ProgramContext.jsx\nprogramme options,\ncurrent programme"];
+      app   [label="App.jsx (1,336 lines)\nassembles ~30 feature hooks\nin a fixed effect order", fillcolor="#fef3c7"];
+    }
+
+    subgraph cluster_features {
+      label="features/ — one hook (or two) per feature, owning state + effects"; style="rounded,filled"; fillcolor="#ffffff"; color="#cbd5e1";
+      f_board [label="planner-board/\nuseBoardHydration · useBoardNodes\nuseBoardDragHandlers · useCoursePlacement\nusePlacementRules · useTermAutoShift\nuseBoardSemesters · useCatalogueActions\nuseCourseCardActions · LayoutSemanticsPill", fillcolor="#eff6ff"];
+      f_rule  [label="rule-check/\nuseRuleCheckSync (POST /rulecheck\non every change, stale-guarded)\nuseRuleCheckRollbacks (silent undo)\nuseRuleCheckFeedback (banners, milestones)", fillcolor="#fee2e2"];
+      f_rec   [label="recommendations/\nuseRecommendationRequests\n(POST /recommendations on every change)\nuseRecommendationList", fillcolor="#f5f3ff"];
+      f_dash  [label="dashboard/\nmetrics.ts (1,060 lines)\nPlannerDashboard · PlannedSections\nDoneSections · RequirementSections\nuseDashboardPanels", fillcolor="#ecfdf5"];
+      f_prof  [label="profile/\nSignupSetupModal · ProfileModal\nuseProfileForm · useProfileSettings", fillcolor="#fff7ed"];
+      f_cat   [label="catalogue/\nuseCatalogue (GET /catalog)\nuseEffectiveCourseTerms"];
+      f_pre   [label="prefill/\nusePrefilledPlans · usePrefillPrompts\nPrefillNotifications"];
+      f_tour  [label="tour/\nuseOnboardingTour (17 steps)"];
+      persist [label="app/persistence/\nusePlannerPersistence\nGET on load · PUT debounced 500 ms", fillcolor="#fef3c7"];
+    }
+
+    subgraph cluster_components {
+      label="components/ — presentational"; style="rounded,filled"; fillcolor="#ffffff"; color="#cbd5e1";
+      c_graph [label="CurriculumGraphView.jsx (2,124)\ntree layout X_BY_LEVEL 40/340/660/980\ncollapse · 6 filter dims · relax-on-expand\nprerequisite overlay + per-node 'expected knowledge'\nfilter sidebar · axis-semantics", fillcolor="#eff6ff"];
+      c_side  [label="Sidebar.jsx (1,102)\ncourse catalogue: search,\nsubject > module > course,\ndrag sources, add module"];
+      c_card  [label="CourseCard.jsx · LaneColumn.jsx\nModuleGroupBackground.jsx\nring encoding · status · ☀️/❄️ · actions\npopover: notes / hours / grade"];
+      c_rec   [label="RecommendationPanel.jsx\n4 toggle chips · card list\nbadge (icon+label) per family · evidence"];
+      c_misc  [label="VisualLegend.jsx · OnboardingTour.jsx\nPlannerNotifications.jsx · graphNodes/*"];
+    }
+
+    subgraph cluster_domain {
+      label="domain/ — framework-free TypeScript (no React, no DOM, no network)"; style="rounded,filled"; fillcolor="#ffffff"; color="#cbd5e1";
+      d_plan [label="plan/\nreducer.ts (state, action) → state\nstate.ts · actions.ts · diff.ts\nsnapshot.ts · nodes-to-plan.ts\nsanitizers.ts · semesters.ts", fillcolor="#fef3c7"];
+      d_rest [label="filters.ts · layout.ts · nodes.ts\nterms.ts · catalogue.ts · course-names.ts\nprogrammes.ts · types.ts\nprefill/ (bachelor-plan, master-plan, course-variants)"];
+    }
+
+    api_js [label="lib/api.js\nfetch wrappers, one per endpoint\ncredentials: include", fillcolor="#e0f2fe"];
+  }
+
+  subgraph cluster_http {
+    label="HTTP, JSON over HTTPS"; style="rounded,filled"; fillcolor="#ffffff"; color="#94a3b8"; fontsize=11;
+    ep [shape=plaintext, fillcolor="#ffffff", label=<
+      <table border="0" cellborder="1" cellspacing="0" cellpadding="3">
+        <tr><td bgcolor="#e5e7eb"><b>auth</b></td><td>POST /auth/signup · /auth/signin · /auth/signout · GET /auth/me</td></tr>
+        <tr><td bgcolor="#e5e7eb"><b>catalogue</b></td><td>GET /catalog?program_code · GET /curriculum/prerequisites?program_code</td></tr>
+        <tr><td bgcolor="#e5e7eb"><b>plan</b></td><td>GET /planner-state · PUT /planner-state</td></tr>
+        <tr><td bgcolor="#e5e7eb"><b>profile</b></td><td>GET /profile-settings · PUT …/start-term · PUT …/course-terms · PUT …/recommendation-profile</td></tr>
+        <tr><td bgcolor="#e5e7eb"><b>consult</b></td><td>POST /rulecheck · POST /recommendations</td></tr>
+        <tr><td bgcolor="#e5e7eb"><b>study</b></td><td>POST /study-results (writes a JSON file) · GET / · GET /health</td></tr>
+      </table>>];
+  }
+
+  subgraph cluster_api {
+    label="FastAPI service — Python 3.12, uvicorn, asyncpg (hosted on Render per docs/deploying.md)"; style="rounded,filled"; fillcolor="#f8fafc"; color="#94a3b8"; fontsize=11;
+
+    b_main [label="app/main.py\nCORS · request log · lifespan:\napply_pending(migrations)"];
+    b_api  [label="app/api/ — routers + Pydantic schemas\nauth · catalog · curriculum · planner_state\nprofile_settings · recommendations · rulecheck · user_study\ndependencies.py (services built once)\nerrors.py (the only status-code table)", fillcolor="#e0f2fe"];
+    b_svc  [label="app/services/ — one use case each\nAuthService · CatalogService · PlannerService\nProfileService (locks) · RuleCheckService\nRecommendationService · StudyResultsService\nprerequisites.py", fillcolor="#fef3c7"];
+    b_repo [label="app/repositories/ — every SQL statement\nUnitOfWork: users · sessions · planner_state\ncatalog · profiles · course_term_overrides\nread() = connection · write() = transaction"];
+    b_rules [label="app/rules/ — compliance checking\nchecker_for(code) → bachelor.py (973) | master.py (753)\nresult.py: ok · message · stats · missing · errors\npayload.py: load limits from profile", fillcolor="#fee2e2"];
+    b_curr [label="app/curriculum/ — regulations as data\nbachelor.json (9 constants, 13 entries)\nmaster.json (5 constants, 11 entries)\nload() cached; sets/tuples restored", fillcolor="#fee2e2"];
+    b_rec  [label="app/recommendations/\nengine.py: CHANNELS in claim order\ninterest → similarity → sequence →\ncompleted → internship → peer\nrules.py: trial placement against the checker\ncontext.py · strategy.py · peer.py (synthetic cohort)", fillcolor="#f5f3ff"];
+    b_dom  [label="app/domain/errors.py\nProgrammeLocked · StartTermLocked\nSetupIncomplete · UnsupportedProgramme …"];
+    b_infra [label="app/infrastructure/\ndatabase.py (pool, JSON codecs)\nmigrations.py (timestamped, checksummed, forward-only)"];
+    b_sql  [label="sql/ — 11 migrations + _ledger.psql"];
+  }
+
+  subgraph cluster_db {
+    label="PostgreSQL 16 (managed on Neon per docs/deploying.md)"; style="rounded,filled"; fillcolor="#f8fafc"; color="#94a3b8"; fontsize=11;
+    db_cat [label="catalogue (normalised, seeded)\nstudy_program · exam_subject · module\ncourse (+ JSONB attributes: content, similar_courses)\nmodule_course · module_grouping\nv_catalog_json_mat (materialised view)", fillcolor="#ecfdf5"];
+    db_usr [label="per user\napp_user · auth_session\nplanner_state (one JSONB document)\nuser_program_profile (start term, interests,\ncareer_direction, recommendation_toggles)\nuser_course_term_override", fillcolor="#fff7ed"];
+    db_led [label="migration_history\n(filename, checksum)"];
+  }
+
+  fs [label="backend/study_results/*.json\n(questionnaire responses on disk)", shape=note, fillcolor="#fff7ed"];
+
+  // browser wiring
+  main -> gate; main -> prog; gate -> app; prog -> app;
+  app -> f_board; app -> f_rule; app -> f_rec; app -> f_dash; app -> f_prof; app -> f_cat; app -> f_pre; app -> f_tour; app -> persist;
+  f_board -> c_card; f_board -> c_side; app -> c_graph; f_rec -> c_rec; f_dash -> c_misc [style=invis];
+  f_board -> d_plan; f_rule -> d_plan; f_rec -> d_plan; f_dash -> d_plan; persist -> d_plan; c_graph -> d_rest; f_board -> d_rest; f_pre -> d_rest;
+  f_rule -> api_js; f_rec -> api_js; f_cat -> api_js; f_prof -> api_js; persist -> api_js; c_graph -> api_js [label="prerequisites"]; gate -> api_js;
+
+  api_js -> ep [lhead=cluster_http, label="fetch, cookie or bearer"];
+  ep -> b_api [ltail=cluster_http];
+
+  b_main -> b_api; b_main -> b_infra;
+  b_api -> b_svc; b_api -> b_dom [style=dashed, label="status table"];
+  b_svc -> b_repo; b_svc -> b_rules; b_svc -> b_rec; b_svc -> b_dom [style=dashed];
+  b_rules -> b_curr; b_rec -> b_curr [label="sequence channel"]; b_rec -> b_rules [label="re-checks every\nsuggestion"];
+  b_svc -> b_curr [label="prerequisites.py"];
+  b_repo -> b_infra; b_infra -> b_sql;
+  b_infra -> db_led; b_repo -> db_cat; b_repo -> db_usr;
+  b_svc -> fs [label="StudyResultsService"];
+}
