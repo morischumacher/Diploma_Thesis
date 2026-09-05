@@ -116,13 +116,19 @@ def main():
                 continue
             bad(f'{f}:{line}: C-identifier {m.group(0)}; themes are T1--T64')
 
-    # --- every theme-tagged quotation is in the codebook (blocking) -------
-    # The codebook appendix reproduces all 437 interview excerpts, so a
-    # quotation attributed to a theme anywhere in the thesis has to appear
-    # there. Two quotations once sat in an exceptions list here because they
-    # matched nothing in either study's data. Both were removed from Chapter 6
-    # on 2026-09-04 -- one was the moderator's own words, the other had no
-    # source at all -- so the list is empty and must stay that way.
+    # --- every theme-tagged quotation is in ITS OWN theme's block (blocking)
+    # The codebook appendix reproduces all 437 interview excerpts under the
+    # theme each belongs to, so a quotation attributed to a theme has to
+    # appear under that theme, not merely somewhere in the table. Checking
+    # only for presence let four defects through on 2026-09-04: two Chapter 6
+    # quotations smoothed into sentences the participant did not say, one
+    # appendix quotation that fused two excerpts of the same theme into one
+    # utterance, and one that carried another theme's wording.
+    #
+    # The theme id may sit before the quotation ("T54 reporting that ...") or
+    # after it ("... (T20)"), and both were missed while only the tail was
+    # read. Where several ids are in range, the quotation passes if it is
+    # under any one of them, since a sentence may cite two themes.
     UNSOURCED = set()
 
     def qnorm(s):
@@ -130,20 +136,49 @@ def main():
         s = re.sub(r"[^a-z0-9%? ]+", ' ', s)
         return re.sub(r'\s+', ' ', s).strip()
 
-    codebook = ''
+    theme_blocks = {}
     if os.path.exists('appendix/theme-codebook-table.tex'):
-        codebook = qnorm(read('appendix/theme-codebook-table.tex'))
-    if codebook:
+        raw = read('appendix/theme-codebook-table.tex')
+        parts = re.split(r'\\textbf\{(T\d{1,2})\}', raw)
+        for i in range(1, len(parts), 2):
+            theme_blocks.setdefault(parts[i], '')
+            theme_blocks[parts[i]] += qnorm(parts[i + 1])
+    if theme_blocks:
+        whole = ' '.join(theme_blocks.values())
         for f, t in bodies.items():
-            for m in re.finditer(r'\\enquote\{([^{}]*)\}([^.;]{0,60})', t):
-                q, tail = m.group(1), m.group(2)
-                if not re.search(r'\bT\d{1,2}\b', tail) or q in UNSOURCED:
+            if 'theme-codebook-table' in f:
+                continue
+            for m in re.finditer(r'\\enquote\{([^{}]*)\}', t):
+                q = m.group(1)
+                if q in UNSOURCED:
                     continue
-                for seg in re.split(r'…|\\ldots', q):
-                    if len(qnorm(seg)) >= 12 and qnorm(seg) not in codebook:
-                        line = t[:m.start()].count('\n') + 1
-                        bad('%s:%d: quotation attributed to a theme is not in '
-                            'the codebook: "%s"' % (f, line, seg.strip()[:60]))
+                head = re.split(r'[.;]', t[max(0, m.start() - 200):m.start()])[-1]
+                tail = re.split(r'[.;]', t[m.end():m.end() + 200])[0]
+                ids = re.findall(r'\bT(\d{1,2})\b', head) + \
+                      re.findall(r'\bT(\d{1,2})\b', tail)
+                if not ids:
+                    continue
+                segs = [seg for seg in re.split(r'…|\\ldots', q)
+                        if len(qnorm(seg)) >= 12]
+                if not segs:
+                    continue
+                line = t[:m.start()].count('\n') + 1
+                if any(all(qnorm(seg) in theme_blocks.get('T' + i, '')
+                           for seg in segs) for i in ids):
+                    continue
+                if all(qnorm(seg) in whole for seg in segs):
+                    owner = [k for k, v in theme_blocks.items()
+                             if all(qnorm(seg) in v for seg in segs)]
+                    bad('%s:%d: quotation is attributed to %s but the excerpt '
+                        'is under %s: "%s"'
+                        % (f, line, '/'.join('T' + i for i in dict.fromkeys(ids)),
+                           '/'.join(owner) or 'no single theme',
+                           q.strip()[:60]))
+                else:
+                    bad('%s:%d: quotation attributed to %s is not in the '
+                        'codebook: "%s"'
+                        % (f, line, '/'.join('T' + i for i in dict.fromkeys(ids)),
+                           q.strip()[:60]))
 
     # --- structural: every \includegraphics resolves (blocking) -----------
     # main.tex stopped producing a PDF because pictures/Full_view_crop.png was
