@@ -183,7 +183,7 @@ Furthermore, the system must handle alternative course formats without breaking 
 
 \section{Visual Design of Curriculum Elements}
 \label{sec:visual}
-A recurring theme of the formative interviews was a preference for icon- and colour-based communication over text, T54 reporting that \enquote{too much text is off-putting}. Feature~\ref{feat:011}, Req.~1 records this as the requirement for a \emph{visual-first, low-text} interface, and the encodings below are how the design meets it: each carries on a visual channel what a card would otherwise have to spell out, with text kept as a redundant confirmation.
+A recurring theme of the formative interviews was a preference for icon- and colour-based communication over text, T54 reporting that \enquote{too much text… off-putting}. Feature~\ref{feat:011}, Req.~1 records this as the requirement for a \emph{visual-first, low-text} interface, and the encodings below are how the design meets it: each carries on a visual channel what a card would otherwise have to spell out, with text kept as a redundant confirmation.
 
 % ------------------------------------------------------------
 
@@ -806,7 +806,7 @@ Based on this, the curriculum tree renders left-to-right across four depth level
 \subsection{Personal Customisability of Node Positions}
 \label{sec:card-ordering}
 
-Bartel et al.'s~\cite{bartel_design_2024} combined principle of user-centred design and study-programme-specific personalisation advocates giving students active control over their planning environment. Motivated by this theoretical foundation and direct user feedback (T28: \enquote{place items how I want}), the system allows students to override the default algorithmic layout. This is formalised in Feature~\ref{feat:010}, Req.~2, which specifies both a structured and a free layout mode, and Feature~\ref{feat:013}, Req.~2, which requires these custom spatial arrangements to persist.
+Bartel et al.'s~\cite{bartel_design_2024} combined principle of user-centred design and study-programme-specific personalisation advocates giving students active control over their planning environment. Motivated by this theoretical foundation and direct user feedback (T28: \enquote{place them how I want}), the system allows students to override the default algorithmic layout. This is formalised in Feature~\ref{feat:010}, Req.~2, which specifies both a structured and a free layout mode, and Feature~\ref{feat:013}, Req.~2, which requires these custom spatial arrangements to persist.
 
 To satisfy these requirements while protecting the vertical subject-band structure established in Section~\ref{sec:graph-ltr}, customisability is deliberately restricted to the horizontal axis. A student may drag any node left or right within its column, and the resulting offset persists across sessions, fulfilling the free layout mode. The vertical axis remains managed by the system to prevent layout corruption, keeping subject bands intact. 
 
