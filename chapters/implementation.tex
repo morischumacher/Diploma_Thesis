@@ -227,6 +227,7 @@ We manage the database schema through automated migration files applied in seque
 \begin{tikzpicture}[font=\small,
   ent/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=center, inner sep=2.2mm, text width=2.9cm},
   rel/.style={draw=black, line width=1.2pt, -{Latex[length=2.5mm]}},
+  proj/.style={draw=black!60, line width=1pt, dashed},
   lbl/.style={font=\scriptsize, fill=white, inner sep=0.8pt}]
   \node[ent] (sp) {\textbf{study\_program}};
   \node[ent, below=9mm of sp] (es) {\textbf{exam\_subject}};
@@ -239,9 +240,9 @@ We manage the database schema through automated migration files applied in seque
   \draw[rel] (sp) -- node[lbl]{1\,:\,N} (es);
   \draw[rel] (es) -- node[lbl]{1\,:\,N} (mo);
   \draw[rel] (mo) -- node[lbl]{1\,:\,N} (co);
-  \draw[dashed, draw=black!55] (spine) -- (spineb);
-  \foreach \n in {sp,es,mo,co} {\draw[dashed, draw=black!55] (\n.west) -- (\n.west -| spine);}
-  \draw[rel, dashed] (spinemid) -- (mv.east);
+  \draw[proj] (spine) -- (spineb);
+  \foreach \n in {sp,es,mo,co} {\draw[proj] (\n.west) -- (\n.west -| spine);}
+  \draw[proj, -{Latex[length=2.5mm]}] (spinemid) -- (mv.east);
   \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
   \node[ent, below=7mm of ps] (pp) {programme profile};
