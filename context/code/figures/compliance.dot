@@ -1,0 +1,49 @@
+digraph G {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=11, nodesep=0.2, ranksep=0.35, compound=true];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, fillcolor="#ffffff", color="#6b7280"];
+  edge [fontname="Helvetica", fontsize=8, color="#6b7280", arrowsize=0.7];
+
+  req [label="POST /rulecheck\nprogramCode · plannedCourses · doneCourses\nchange · selectedFocus\nmaxEctsPerSemester · recommendedEctsPerSemester", fillcolor="#e0f2fe"];
+  svc [label="RuleCheckService.evaluate\nchecker_for(programCode)\nwraps any raise as RuleEvaluationFailed (500)", fillcolor="#fef3c7"];
+  req -> svc;
+
+  subgraph cluster_b {
+    label="Bachelor 033 521 — rules/bachelor.py, RuleChecker.evaluate"; style="rounded,filled"; fillcolor="#fff7ed"; color="#fdba74"; fontsize=10;
+    b0 [label="wrong-programme guard"];
+    b1 [label="resolve load limits\n(payload overrides 42 / 30)"];
+    b2 [label="_collect_plan_totals\nnormalise titles (accent-folded),\nmap category via module,\nparse ECTS (unparseable → warning, skipped)"];
+    b3 [label="_check_semester_load\n> max → error · > recommended → warning\n< recommended → 'missing' note"];
+    b4 [label="_check_variant_mixing\n(VU vs VO+UE of one module) → error"];
+    b5 [label="StEOP snapshots\ndone-only gates · done+planned shows progress\n_steop_missing → missing"];
+    b6 [label="_check_pre_steop_courses\n> 22 ECTS non-StEOP before gate → error\n_check_thesis_gating → error"];
+    b7 [label="_recommended_sequencing_warnings\nsoft_prereqs (2 pairs) → warning"];
+    b8 [label="_apply_transferable_skills_cap (6–9 ECTS)\n_collect_missing_requirements\n(narrow electives ≥ 7 modules, 180 ECTS …)"];
+    b9 [label="focus area (7 focuses, 21 aliases)\n_build_focus_progress → stats\n_focus_missing_requirements → missing\n(strict only if validateFocusAsStrict)"];
+    b10 [label="_build_dashboard → stats\n_rejection_message names (type, courseCode)", fillcolor="#fee2e2"];
+    b0 -> b1 -> b2 -> b3 -> b4 -> b5 -> b6 -> b7 -> b8 -> b9 -> b10;
+  }
+
+  subgraph cluster_m {
+    label="Master 066 937 — rules/master.py, RuleChecker.evaluate"; style="rounded,filled"; fillcolor="#eff6ff"; color="#93c5fd"; fontsize=10;
+    m1 [label="resolve load limits (42 / 30)"];
+    m2 [label="_extract_lanes · _parse_courses\n(parse error → ok=false, no stats)"];
+    m3 [label="_build_dashboard → stats, missing\n(subject modules ≥ 81, transferable ≥ 4.5,\n120 total, per-subject core sets)"];
+    m4 [label="_check_duplicates → violation"];
+    m5 [label="_check_semester_load\nviolation · warnings · missing"];
+    m6 [label="_check_known_module_consistency\n→ violation"];
+    m7 [label="_check_prerequisites\n(4 hard pairs: thesis before\ndefence and seminar) → violation"];
+    m8 [label="_recommended_sequencing_warnings → warnings"];
+    m9 [label="_core_dependency_feedback\ncore-before-elective per subject\n→ warnings + missing (never a violation)"];
+    m10 [label="_make_actionable_message\n'Rejected <action> <code> (semester n): …'", fillcolor="#fee2e2"];
+    m1 -> m2 -> m3 -> m4 -> m5 -> m6 -> m7 -> m8 -> m9 -> m10;
+  }
+
+  svc -> b0 [lhead=cluster_b, label="'033521'"];
+  svc -> m1 [lhead=cluster_m, label="'066937' or missing code"];
+
+  res [label="RuleCheckResult (wire shape, both programmes)\nok: bool — the change is allowed\nmessage: 'accepted' or the first error, named after the edit\nstats: dashboard numbers, warnings[], errors[], last_change\nmissing[]: what the degree still needs\nerrors[]: what is wrong with the plan", fillcolor="#ecfdf5"];
+  b10 -> res [ltail=cluster_b]; m10 -> res [ltail=cluster_m];
+
+  cur [label="app/curriculum/*.json\nconstants + entries, loaded once", fillcolor="#fee2e2"];
+  cur -> b0 [lhead=cluster_b, style=dashed, label="read in __init__"]; cur -> m1 [lhead=cluster_m, style=dashed];
+}

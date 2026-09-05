@@ -1,0 +1,30 @@
+sequenceDiagram
+    autonumber
+    participant S as Student
+    participant B as Board (React Flow nodes)
+    participant R as domain/plan reducer
+    participant E1 as useRuleCheckSync
+    participant E2 as useRecommendationRequests
+    participant E3 as usePlannerPersistence
+    participant API as FastAPI
+    participant D as Dashboard / banners
+
+    S->>B: drop or move a card, press a button
+    B->>R: dispatch action (a placement writes through at once, a drag commits on the next render)
+    R-->>R: next state, lastChange = diff + id (changeCounter+1)
+    par immediately, on lastChange
+        E1->>API: POST /rulecheck (planned, done, change, focus, limits)
+        E2->>API: POST /recommendations (planned, done, parked)
+    and after 500 ms of quiet
+        E3->>API: PUT /planner-state (whole document)
+    end
+    API-->>E1: ok, message, stats, missing, errors
+    Note over E1: acted on only if change.id is still the newest for this programme
+    alt ok = false (a hard rule)
+        E1->>D: sticky red banner for 5 s, message names action, course, semester
+        E1->>B: roll back added, moved or toggled (meta.silent, no new change)
+    else ok = true
+        E1->>D: stats to KPIs and sections, soft warnings, missing list, green confirmation fades
+    end
+    API-->>E2: recommendations (dropped if a newer request exists)
+    E2->>D: Recommendation Panel list

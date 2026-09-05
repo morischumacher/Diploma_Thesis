@@ -1,0 +1,21 @@
+digraph G {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, nodesep=0.3, ranksep=0.6];
+  node [shape=plaintext, fontname="Helvetica", fontsize=9];
+  edge [fontname="Helvetica", fontsize=8, color="#6b7280", arrowsize=0.7];
+  sp [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>study_program</b></td></tr><tr><td align="left">id uuid PK<br/>code text unique ('033 521', '066 937')<br/>title, degree_level, language<br/>ects_total (180 / 120), duration_semesters (6 / 4)<br/>attributes jsonb</td></tr></table>>];
+  es [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>exam_subject</b></td></tr><tr><td align="left">id PK · program_id FK<br/>code, name, attributes</td></tr></table>>];
+  mo [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>module</b></td></tr><tr><td align="left">id PK · program_id FK<br/>name, ects, category enum<br/>(mandatory | core | elective)<br/>description, attributes</td></tr></table>>];
+  co [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>course</b></td></tr><tr><td align="left">id PK · code, title, type (VU/VO/UE…)<br/>ects, language<br/>term_availability enum (winter|summer|both)<br/>attributes jsonb: content[], similar_courses[]</td></tr></table>>];
+  mc [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>module_course</b></td></tr><tr><td align="left">module_id FK · course_id FK<br/>is_core_to_module</td></tr></table>>];
+  mg [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#dcfce7"><b>module_grouping</b></td></tr><tr><td align="left">exam_subject_id FK · module_id FK<br/>is_mandatory</td></tr></table>>];
+  mv [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#d1fae5"><b>v_catalog_json_mat</b> (materialised view)</td></tr><tr><td align="left">program_id, program_code,<br/>catalog jsonb: exam subjects → modules → courses<br/>(what GET /catalog returns)</td></tr></table>>];
+  au [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#ffedd5"><b>app_user</b></td></tr><tr><td align="left">id uuid PK · username citext unique<br/>password_hash (pbkdf2_sha256) · created_at</td></tr></table>>];
+  se [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#ffedd5"><b>auth_session</b></td></tr><tr><td align="left">token PK · user_id FK<br/>created_at, expires_at</td></tr></table>>];
+  ps [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#ffedd5"><b>planner_state</b></td></tr><tr><td align="left">user_id PK/FK (one document per user)<br/>state jsonb: byProgramme{plan…},<br/>dashboard ui, graph view<br/>updated_at</td></tr></table>>];
+  pp [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#ffedd5"><b>user_program_profile</b></td></tr><tr><td align="left">(user_id, program_code) PK<br/>start_term_season, start_term_year<br/>interests text[] · career_direction<br/>recommendation_toggles jsonb · updated_at</td></tr></table>>];
+  ov [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#ffedd5"><b>user_course_term_override</b></td></tr><tr><td align="left">(user_id, program_code, course_code) PK<br/>term_availability · updated_at</td></tr></table>>];
+  mh [label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="3"><tr><td bgcolor="#e5e7eb"><b>migration_history</b></td></tr><tr><td align="left">filename · checksum · applied_at</td></tr></table>>];
+  sp -> es [label="1:N"]; sp -> mo [label="1:N"]; es -> mg [label="1:N"]; mo -> mg [label="1:N"]; mo -> mc [label="1:N"]; co -> mc [label="1:N"];
+  sp -> mv [style=dashed, label="REFRESH"]; mo -> mv [style=dashed]; co -> mv [style=dashed];
+  au -> se [label="1:N"]; au -> ps [label="1:1"]; au -> pp [label="1:N (per programme)"]; au -> ov [label="1:N"];
+}
