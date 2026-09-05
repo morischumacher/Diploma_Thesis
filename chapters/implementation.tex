@@ -155,7 +155,7 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=8.4cm]{pictures/Recommendation_panel_crop.png}
-\caption{The Recommendation Panel. Each card names the channel that produced it and the reason in the student's own terms, and can be dragged into a semester lane directly.}
+\caption{The Recommendation Panel. Each card names the family that produced it and the reason in the student's own terms, and can be dragged into a semester lane directly.}
 \label{fig:impl-shot-recs}
 \end{figure}
 %% REV (fix the screenshot, there where 6 kinds)
@@ -271,13 +271,13 @@ This heavy reliance on recorded verification is effective here because the Compl
 
 Everything described up to this point is the system used in the evaluation study of Chapter~\ref{chap:evaluation}. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. The changes fall into two kinds. The first is a set of corrections to defects the study surfaced (Section~\ref{sec:impl-post-study-fixes}). The second is an addition rather than a correction, the soft-dependency edge layer (Section~\ref{sec:impl-prereq-edges}), which supplies a capability four participants asked for and did not receive.
 
-\TDrev{The post-study corrections section is far too long}{Your comment. Reduce Section~\ref{sec:impl-post-study-fixes} to a short statement that five defects from Table~\ref{tab:problems} were closed after the study, each with a regression test, with the ticked column of that table doing the enumerating, plus one sentence on why these five, that they were the low-cost, high-value ones. The soft-dependency edge layer stays as its own subsection, since it is an addition rather than a correction.}
+\TDrev{The post-study corrections section is far too long}{Your comment, deferred with the note above, 2026-09-05: how far this can be cut depends on which corrections survive, and that is settled after Chapters~\ref{chap:evaluation} and~\ref{chap:discussion}. The intended shape is a short statement that the defects closed after the study were closed with a regression test each, with the ticked column of Table~\ref{tab:problems} doing the enumerating, plus one sentence on why those and not others. The soft-dependency edge layer stays as its own subsection, since it is an addition rather than a correction.}
 \subsection{Corrections to Reported Defects}
 \label{sec:impl-post-study-fixes}
 
 The defects of Table~\ref{tab:problems} are held as a register in the tool's repository, ranked by the severity and frequency reported in Chapter~\ref{chap:evaluation}. Five have been closed, each with a regression test that reproduces the observed failure before the fix and passes after it. The remainder are open and are not discussed here.
 
-\TDmajor{Verify \enquote{five have been closed, each with a regression test}}{An earlier check found none of these fixes on \texttt{studyplanner}'s \texttt{main}: they lived on the unmerged branch \texttt{fix/evaluation-defects}, whose register listed the study's E-P codes as open and marked a different set as fixed. Chapter~\ref{chap:evaluation}'s Summary carries the matching claim and its ticked column in Table~\ref{tab:problems} depends on it. Re-verify against the repository and scope the sentence to exactly what is merged.}
+\TDrev{Deferred: which defects were closed after the study, and what the register says}{Deferred by decision, 2026-09-05, until Chapters~\ref{chap:evaluation} and~\ref{chap:discussion} are settled, because the list can still grow: further defects may be fixed before submission. What is known now, from the code check of 2026-09-05: the study's E-P codes appear in the tool's repository only in its register of problems, none marked closed; no test names any of them; and the panel's empty state is a generic \enquote{No recommendations} rather than the per-tab explanation described below. Two of the five also sit oddly with the author's own account of the sessions, that E-P29's term marker was on every course card before the study and that E-P42's tabs worked during it. When this is taken up, settle the register first, then scope this sentence and the ticked column of Table~\ref{tab:problems} to exactly what is merged.}
 
 Term availability (E-P29) was legible only through a filter dimension, not from a course card. A winter or summer marker was added to the card in both views and to the catalogue row, drawing on the same field the filter already used.
 
