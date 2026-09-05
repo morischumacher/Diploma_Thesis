@@ -159,6 +159,8 @@ This has already caught real misattributions here (`esteban_helping_2020` for pr
 
 **Every factual claim about the tool** is checked against **`main` of `hypridplanner`** (Moritz, 2026-09-04; this replaces the earlier rule naming an evaluated tag, whose name nobody has verified exists). The check is against the code, not against any document about the code.
 
+**What `main` can and cannot say about the sessions (settled 2026-09-05).** The repository has one commit, no tags and no branches, so git cannot date anything. Its own documentation (`docs/adr/*`, `docs/architecture.md`) describes the layered structure as a refactor made after the study. **Moritz's ruling, and the working assumption from here on: the structure on `main` is the structure the tool had during the study; only features were added afterwards.** So a structural claim in Chapter 7 is checked against `main` and needs no second question. A *feature* claim still needs it, and only Moritz can answer it. The code description in `context/code/hypridplanner-analysis.md` is the reference for both kinds.
+
 One thing this rule cannot do on its own: `main` is the tool as it stands now, while Chapters 6 to 8 describe the tool participants used. Where the two differ, the difference belongs in §7.8 (Revisions After the Evaluation Study), which must say the change was not in front of a participant. So a claim that checks out against `main` still has to be asked one further question: was it true during the sessions? The session dates in Chapter 8 bound the code that was running.
 
 **Every number** traces to one artefact (§9).
