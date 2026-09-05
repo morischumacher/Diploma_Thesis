@@ -10,7 +10,7 @@ In deployment, the client and the questionnaire application are served on Vercel
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
-  tier/.style={draw, line width=1pt, rounded corners=3pt, minimum width=3.6cm, minimum height=32mm, fill=white},
+  tier/.style={draw, line width=1pt, rounded corners=3pt, minimum width=3.6cm, minimum height=30mm, fill=white},
   tab/.style={draw, line width=1pt, fill=white, font=\bfseries\small, inner sep=3pt, rounded corners=1.5pt},
   row/.style={font=\small, align=left},
   dep/.style={font=\scriptsize\itshape, text=black},
@@ -123,7 +123,7 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
   \node[box, below left=19mm and -1.2cm of model] (reflow)
         {\textbf{Pure layout functions}\\[0.6mm] \small reflow lanes and graph columns};
   \node[box, below right=19mm and -1.2cm of model] (persist)
-        {\textbf{Persist and consult}\\[0.6mm] \small plan saved, compliance and recommendation requested};
+        {\textbf{Persist and consult}\\[0.6mm] \small save debounced, compliance and recommendation asked on every change};
   \node[box, below=8mm of reflow] (render) {\textbf{Active view} re-renders};
   \node[box, below=8mm of persist] (dash)
         {\textbf{Dashboard and feedback banners} update};
@@ -131,11 +131,11 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
   \draw[a] (act) -- (model);
   \draw[line width=1.2pt] (model) -- (fork);
   \draw[a] (fork) -| node[tab, pos=0.28, above=1.4mm] {immediate} (reflow.north);
-  \draw[ad] (fork) -| node[tab, pos=0.28, above=1.4mm] {debounced, off the render path} (persist.north);
+  \draw[ad] (fork) -| node[tab, pos=0.28, above=1.4mm] {off the render path} (persist.north);
   \draw[a] (reflow) -- (render);
   \draw[ad] (persist) -- (dash);
 \end{tikzpicture}
-\caption{Edits follow one direction. A transition produces the next plan, from which two consequences follow: an immediate re-render, and an off-path step (dashed) that debounces the save and consults on every change, off the render path.}
+\caption{Edits follow one direction. A transition produces the next plan, from which two consequences follow: an immediate re-render, and a step off the render path (dashed) that debounces the save but asks for the compliance and recommendation answers on every change.}
 \label{fig:impl-edit-flow}
 \end{figure}
 \begin{figure}[htbp]
@@ -174,7 +174,7 @@ Two further properties are worth recording. Authentication resolves a user from 
 \centering
 \begin{tikzpicture}[font=\small,
   card/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=left, inner sep=2.5mm},
-  wide/.style={card, text width=9.4cm},
+  wide/.style={card, text width=10.6cm},
   half/.style={card, text width=3.4cm, minimum height=13mm},
   a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
   lb/.style={font=\scriptsize, inner sep=1.4pt, fill=white}]
@@ -222,7 +222,6 @@ The database models a study programme as a strict hierarchy (Figure~\ref{fig:imp
 
 We manage the database schema through automated migration files applied in sequence on start-up, which guarantees a reproducible environment. To support concurrent development without identifier collisions, migrations use timestamp-based naming rather than sequential integers. We also track each migration via a checksum to prevent silent modifications to previously applied scripts. Finally, we strictly enforce forward-only migrations, because down-migrations are rarely exercised in testing and therefore risk introducing unpredictable database states.
 
-\TDrev{Is a recommendation an entity in the schema?}{The cardinalities Moritz flagged are corrected: \texttt{app\_user} is 1:1 to the saved plan, matching the prose, and the term profile hangs off \texttt{app\_user} rather than off the plan, since it belongs to the user and the programme. What remains is his second question, which the figure cannot settle on its own: recommendations are computed rather than stored, so whether they belong in the entity box at all is a question about the schema and is answered with the rest of the code check.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -237,14 +236,14 @@ We manage the database schema through automated migration files applied in seque
   \draw[rel] (sp) -- node[lbl]{1\,:\,N} (es);
   \draw[rel] (es) -- node[lbl]{1\,:\,N} (mo);
   \draw[rel] (mo) -- node[lbl]{1\,:\,N} (co);
-  \draw[rel, dashed] (mo) -- (mv);
+  \draw[rel, dashed] (sp.west) -- ++(-9mm,0) |- (mv.north);
   \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
-  \node[ent, below=7mm of ps] (pp) {recommendation \&\ term profile};
+  \node[ent, below=7mm of ps] (pp) {programme profile};
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
   \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
-\caption{Data model. The shared curriculum catalogue (left) is a strict hierarchy projected into a materialised JSON view; per-user data (right) is kept separate and keyed to the account.}
+\caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account.}
 \label{fig:impl-data-model}
 \end{figure}
 
