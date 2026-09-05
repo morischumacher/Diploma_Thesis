@@ -248,7 +248,7 @@ We manage the database schema through automated migration files applied in seque
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
   \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
-\caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account, with one plan document per account but one profile row per programme.}
+\caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account, with one plan document per account but one profile row per programme. The two halves are joined by no foreign key: per-user rows name a programme by its code as text, so a plan survives the catalogue being reseeded, which regenerates every identifier.}
 \label{fig:impl-data-model}
 \end{figure}
 
