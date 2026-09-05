@@ -232,18 +232,23 @@ We manage the database schema through automated migration files applied in seque
   \node[ent, below=9mm of sp] (es) {\textbf{exam\_subject}};
   \node[ent, below=9mm of es] (mo) {\textbf{module}};
   \node[ent, below=9mm of mo] (co) {\textbf{course}\\ \footnotesize +\,JSONB attributes};
-  \node[ent, dashed, left=13mm of mo] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
+  \coordinate (spine) at ($(sp.west)+(-8mm,0)$);
+  \coordinate (spineb) at ($(co.west)+(-8mm,0)$);
+  \coordinate (spinemid) at ($(spine)!0.5!(spineb)$);
+  \node[ent, dashed, left=11mm of spinemid] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
   \draw[rel] (sp) -- node[lbl]{1\,:\,N} (es);
   \draw[rel] (es) -- node[lbl]{1\,:\,N} (mo);
   \draw[rel] (mo) -- node[lbl]{1\,:\,N} (co);
-  \draw[rel, dashed] (sp.west) -- ++(-9mm,0) |- (mv.north);
+  \draw[dashed, draw=black!55] (spine) -- (spineb);
+  \foreach \n in {sp,es,mo,co} {\draw[dashed, draw=black!55] (\n.west) -- (\n.west -| spine);}
+  \draw[rel, dashed] (spinemid) -- (mv.east);
   \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
   \node[ent, below=7mm of ps] (pp) {programme profile};
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
   \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
-\caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account.}
+\caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account, with one plan document per account but one profile row per programme.}
 \label{fig:impl-data-model}
 \end{figure}
 
