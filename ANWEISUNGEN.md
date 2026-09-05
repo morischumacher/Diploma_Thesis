@@ -58,7 +58,7 @@ Ch. 1's contributions already carry a `\TDrev` for the first three. Ch. 2's is t
 | Evaluation codes | 99 total: 68 E-P, 22 E-G, 9 E-N |
 | Unmet capabilities | 27 distinct |
 | Programmes in scope | 2 — BSc Computer Science UE 033 521, MSc **Software Engineering** UE 066 937. *Not* "Software Engineering & Internet Computing": the programme was renamed, confirmed against the curriculum's own title page (Senate 16 June 2025, in force 1 October 2025) |
-| Bachelor programme total | 180 ECTS, 101 courses |
+| Bachelor programme total | 180 ECTS, **84 courses** in the seeded catalogue (verified 2026-09-05 against `main` of `hypridplanner`). The 101 that stood here until then is the number of lookup keys in `course_to_module`, 68 code-like and 33 title-like aliases for the same courses, and is not a course count. The Master programme is 120 ECTS with 105 courses, 100 modules and 17 exam subjects |
 | Scope boundaries | OOS1–OOS5 (see §5; OOS5 bounds what is claimed, so the exclusion sites legitimately cite OOS1–OOS4) |
 
 **The evaluation study has two counts, and which one is correct depends on the verb.** Twelve sessions were conducted; eleven are analysed. P08 was excluded because the session ran without a screen recording, and the analysis method needs both records. Neither number is "the" number:
