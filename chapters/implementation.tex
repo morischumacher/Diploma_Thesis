@@ -175,12 +175,12 @@ Two further properties are worth recording. Authentication resolves a user from 
 \centering
 \begin{tikzpicture}[font=\small,
   card/.style={draw, line width=1pt, rounded corners=3pt, fill=white, align=left, inner sep=2.5mm},
-  wide/.style={card, text width=10.6cm},
+  wide/.style={card, text width=9.7cm},
   half/.style={card, text width=3.4cm, minimum height=13mm},
   a/.style={-{Latex[length=2.6mm]}, line width=1.1pt, draw=black},
   lb/.style={font=\scriptsize, inner sep=1.4pt, fill=white}]
   \node[wide] (api) {\textbf{Request handlers} \\[0.8mm] \small validate, call one use case, shape the reply};
-  \node[wide, below=7mm of api] (svc) {\textbf{Use cases} \\[0.8mm] \small auth, catalogue, plan state, profile, compliance, recommendation};
+  \node[wide, below=7mm of api] (svc) {\textbf{Use cases} \\[0.8mm] \small auth, catalogue, plan state, profile,\\ \small compliance, recommendation};
   \node[half, anchor=north west] (dom) at ($(svc.south west)+(0,-11mm)$) {\textbf{Compliance} \\[0.8mm] \small one rule set per programme, over the curriculum as data};
   \node[half, anchor=north east] (rec) at ($(svc.south east)+(0,-11mm)$) {\textbf{Recommendation} \\[0.8mm] \small six channels behind one protocol};
   \node[wide, anchor=north] (repo) at ($(dom.south)!0.5!(rec.south)+(0,-11mm)$) {\textbf{Repositories} \\[0.8mm] \small every SQL statement, bound to one connection by a unit of work};
@@ -238,14 +238,14 @@ We manage the database schema through automated migration files applied in seque
   \coordinate (spine) at ($(sp.west)+(-8mm,0)$);
   \coordinate (spineb) at ($(co.west)+(-8mm,0)$);
   \coordinate (spinemid) at ($(spine)!0.5!(spineb)$);
-  \node[ent, dashed, left=11mm of spinemid] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
+  \node[ent, dashed, left=8mm of spinemid] (mv) {\footnotesize materialised\\ \footnotesize catalogue view};
   \draw[rel] (sp) -- node[lbl]{1\,:\,N} (es);
   \draw[rel] (es) -- node[lbl]{1\,:\,N} (mo);
   \draw[rel] (mo) -- node[lbl]{1\,:\,N} (co);
   \draw[proj] (spine) -- (spineb);
   \foreach \n in {sp,es,mo,co} {\draw[proj] (\n.west) -- (\n.west -| spine);}
   \draw[proj, -{Latex[length=2.5mm]}] (spinemid) -- (mv.east);
-  \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
+  \node[ent, right=17mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
   \node[ent, below=7mm of ps] (pp) {programme profile};
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
