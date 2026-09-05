@@ -92,7 +92,8 @@ The layers above describe how the code is arranged. What they present is the thr
   \node[tab, anchor=south west] at ($(client.north west)+(3mm,-1.2mm)$) {API client};
 
   \draw[a] (features) -- node[lb, right] {depends on} (domain);
-  \draw[a] (features.west) -- ++(-0.8,0) |- (client.west);
+  \draw[a, rounded corners=2pt] (features.west) -- ++(-1.15,0)
+    |- node[lb, pos=0.45, anchor=east, xshift=-1.2mm] {depends on} (client.west);
 \end{tikzpicture}
 \caption{The client's three layers. Each depends only on the one below it: a feature module may use the domain layer and the API client, the domain layer uses neither and needs no browser to run.}
 \label{fig:impl-frontend-layers}
@@ -188,7 +189,8 @@ Two further properties are worth recording. Authentication resolves a user from 
   \draw[line width=1.1pt] (svc) -- (fork);
   \draw[a] (fork) -| (dom.north);
   \draw[a] (fork) -| (rec.north);
-  \draw[a] (svc.west) -- ++(-7mm,0) |- (repo.west);
+  \draw[a, rounded corners=2pt] (svc.west) -- ++(-11mm,0)
+    |- node[lb, pos=0.45, anchor=east, xshift=-1.2mm] {reaches storage through} (repo.west);
   \draw[a] (rec.west) -- node[lb] {re-checks} (dom.east);
 \end{tikzpicture}
 \caption{Backend layers, under the same one-way dependency rule as the client: handlers hold no rules and no SQL, use cases own the transaction boundary, and the recommender re-checks every suggestion.}
@@ -247,7 +249,7 @@ We manage the database schema through automated migration files applied in seque
   \node[ent, below=7mm of au] (ps) {saved plan};
   \node[ent, below=7mm of ps] (pp) {programme profile};
   \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
-  \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
+  \draw[rel, rounded corners=2pt] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
 \caption{Data model. The shared curriculum catalogue (left) is projected per programme into a materialised JSON view, and in both catalogues every course belongs to one module; per-user data (right) is kept separate and keyed to the account, with one plan document per account but one profile row per programme. The two halves are joined by no foreign key: per-user rows name a programme by its code as text, so a plan survives the catalogue being reseeded, which regenerates every identifier.}
 \label{fig:impl-data-model}
