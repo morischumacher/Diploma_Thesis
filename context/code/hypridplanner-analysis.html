@@ -56,7 +56,7 @@ a{color:var(--accent)}
 <hr />
 <h2 id="0-provenance-and-what-this-repository-cannot-tell-us">0. Provenance, and what this repository cannot tell us</h2>
 <p><strong>The repository has one commit and no history.</strong> <code>git log</code> shows a single commit, <code>c00ef4f Initial commit</code>, dated 2026-09-01. There are no tags and no branches other than <code>main</code>. Three documents inside the repository refer to a tag <code>v1.0-evaluated</code> (README, <code>docs/thesis-map.md</code>, <code>docs/adr/0006</code>) and one to a branch <code>refactor/architecture</code> (<code>docs/deploying.md</code>). Neither exists here. So the question the thesis's rule asks second — <em>was this also true during the evaluation sessions?</em> — cannot be answered from git for any claim. It can only be answered from the repository's own documentation, which is testimony, and from Moritz.</p>
-<p><strong>The documentation says the structure is post-evaluation.</strong> Six architecture decision records in <code>docs/adr/</code>, all dated 2026-08-28, describe a refactor that "happened after the system had been evaluated with eleven students" (<code>docs/architecture.md</code>, last section). They describe the state before the refactor in numbers: a FastAPI application of roughly 3,700 lines with twenty-four SQL statements inline in five route modules (ADR 0001); two rule checkers of 2,220 lines together, the bachelor one with a 390-line constructor and a 550-line <code>evaluate</code> (ADR 0002); a 13,000-line JavaScript frontend with 6,664 lines in one component and 207 hooks in <code>App.jsx</code> (ADR 0003, 0004); sequentially numbered migrations (ADR 0005); and no tests at all (ADR 0006). The code on <code>main</code> has none of these properties. Every structural statement below therefore describes the refactored system, and a chapter that says "everything described up to this point is the system used in the evaluation study" is, for the <em>structure</em>, describing something else. The documentation's position is that behaviour was preserved exactly (golden masters, ADR 0006) except where a known defect was fixed deliberately; that is a claim this document can check only for consistency, not for truth.</p>
+<p><strong>The repository's documentation and its author disagree about when this structure arrived.</strong> Six architecture decision records in <code>docs/adr/</code>, all dated 2026-08-28, describe a refactor and give before-numbers for the code it replaced; <code>docs/architecture.md</code> says the refactor "happened after the system had been evaluated". Moritz states that the layered structure described here is the structure the tool had during the study, and that only features were added afterwards. Git cannot arbitrate, since there is one commit. This document takes the author's account as the working assumption: the structure below is the evaluated structure, and the per-feature questions of section 4 are the ones that remain. A reader of the repository will meet the ADRs' account first, which is worth knowing when the thesis is examined.</p>
 <p><strong>Size.</strong> 106,796 lines in the repository, of which about 62,000 are recorded test fixtures (<code>backend/tests/golden/*.json</code>) and 4,200 are <code>package-lock.json</code>. The application itself is roughly: backend <code>app/</code> ≈ 5,300 lines of Python over 45 files; frontend <code>src/</code> ≈ 17,500 lines over 90 files, of which the largest are <code>CurriculumGraphView.jsx</code> (2,124), <code>App.jsx</code> (1,336), <code>Sidebar.jsx</code> (1,102) and <code>dashboard/metrics.ts</code> (1,060); SQL migrations ≈ 3,400 lines, most of it seeded catalogue and course metadata.</p>
 <p><strong>Dependencies, pinned from the lock files.</strong> React 18.3.1, React Flow 11.11.4, Vite 5.4.20, TypeScript 7.0.2, Vitest 2.1.9, Playwright 1.62.1; Python 3.12 (Dockerfile), FastAPI, uvicorn, asyncpg, pydantic-settings (unpinned in <code>requirements.txt</code>); PostgreSQL 16 (<code>docker-compose.yml</code>, CI).</p>
 <p><strong>Hosting.</strong> The only hosting configuration in the repository is <code>frontend/vercel.json</code> (an SPA rewrite). Render and Neon appear in <code>docs/deploying.md</code> as the API and database hosts, with an operational procedure written around them; there is no <code>render.yaml</code> or Neon configuration. The API expects <code>DATABASE_URL</code> and <code>CORS_ORIGIN</code> from the environment.</p>
@@ -1922,131 +1922,131 @@ a{color:var(--accent)}
 <p><code>CurriculumGraphView.jsx</code> builds a tree from the catalogue (programme → exam subject → module → course; a module with exactly one course is drawn as <code>courseDirect</code> at the module's depth) and lays it out itself: a fixed x per level (<code>X_BY_LEVEL</code>: root 40, subject 340, module/direct course 660, course 980) and a running leaf index for y, with collision resolution. There is no external layout library.</p>
 <p>Every subject and module node is collapsible; collapsed ids persist in the plan's <code>graphView</code>. Two presets, <strong>Expand</strong> and <strong>Collapse</strong> (<code>hierarchyMode</code> <code>force_expanded</code> / <code>force_collapsed</code>), sit above a <code>normal</code> mode; interacting with a filter or a node returns to <code>normal</code> and to the ids collapsed before the preset. Filters live in a sidebar panel of six dimensions (3.2); expanding a node whose children the filters would hide relaxes those filters for that subtree (<code>relaxFiltersForExpandedSubtree</code>, up to three passes), and changing a filter never resets collapse. Filters and <code>filtersConfigured</code> persist. A node can be dragged <strong>horizontally only</strong>; the offset persists per node (<code>nodeXById</code>), and a moved parent carries its children's offset.</p>
 <p><strong>Course relations</strong> (Figure 3): a checkbox <em>Show prerequisites (n)</em> draws the soft and hard relations together — dashed amber "recommended before", solid red "required before" — only between nodes currently on the canvas; it is disabled with the text "(none in this curriculum)" when n = 0. Separately, a node that is an endpoint of <em>expected knowledge</em> relations carries a <code>⇠n</code> button that reveals that node's relations alone, dotted indigo, one node at a time; the sidebar names which node is revealed and offers <em>Hide</em>.</p>
-<p>The graph's nodes are <code>GraphSubjectNode</code>, <code>GraphModuleNode</code>, <code>GraphCourseNode</code> (with the same ring encoding and status visuals as a card, plus the reveal button). <code>VisualLegend.jsx</code> is a toggleable panel explaining rings, states, structure and the icons.</p>
+<p>The graph's nodes are <code>GraphSubjectNode</code>, <code>GraphModuleNode</code>, <code>GraphCourseNode</code> (with the same border-weight encoding and status visuals as a card, plus the reveal button). <code>VisualLegend.jsx</code> is a toggleable panel explaining border weights, states, structure and the icons.</p>
 <h3 id="37-the-course-card-and-its-encodings">3.7 The course card and its encodings</h3>
 <p><div class="fig-scroll" role="img" aria-label="Lifecycle">
 
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: G Pages: 1 -->
-<svg width="1065pt" height="194pt"
- viewBox="0.00 0.00 1065.00 194.17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 190.17)">
+<svg width="1078pt" height="194pt"
+ viewBox="0.00 0.00 1078.00 194.03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 190.03)">
 <title>G</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-190.17 1061,-190.17 1061,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-190.03 1074,-190.03 1074,4 -4,4"/>
 <!-- todo -->
 <g id="node1" class="node">
 <title>todo</title>
-<path fill="#f8fafc" stroke="#6b7280" d="M64,-92.67C64,-92.67 12,-92.67 12,-92.67 6,-92.67 0,-86.67 0,-80.67 0,-80.67 0,-63.67 0,-63.67 0,-57.67 6,-51.67 12,-51.67 12,-51.67 64,-51.67 64,-51.67 70,-51.67 76,-57.67 76,-63.67 76,-63.67 76,-80.67 76,-80.67 76,-86.67 70,-92.67 64,-92.67"/>
-<text text-anchor="middle" x="38" y="-80.67" font-family="Helvetica,sans-Serif" font-size="10.00">todo</text>
-<text text-anchor="middle" x="38" y="-69.67" font-family="Helvetica,sans-Serif" font-size="10.00">(not in plan)</text>
-<text text-anchor="middle" x="38" y="-58.67" font-family="Helvetica,sans-Serif" font-size="10.00">white fill</text>
+<path fill="#f8fafc" stroke="#6b7280" d="M64,-92.53C64,-92.53 12,-92.53 12,-92.53 6,-92.53 0,-86.53 0,-80.53 0,-80.53 0,-63.53 0,-63.53 0,-57.53 6,-51.53 12,-51.53 12,-51.53 64,-51.53 64,-51.53 70,-51.53 76,-57.53 76,-63.53 76,-63.53 76,-80.53 76,-80.53 76,-86.53 70,-92.53 64,-92.53"/>
+<text text-anchor="middle" x="38" y="-80.53" font-family="Helvetica,sans-Serif" font-size="10.00">todo</text>
+<text text-anchor="middle" x="38" y="-69.53" font-family="Helvetica,sans-Serif" font-size="10.00">(not in plan)</text>
+<text text-anchor="middle" x="38" y="-58.53" font-family="Helvetica,sans-Serif" font-size="10.00">white fill</text>
 </g>
 <!-- parked -->
 <g id="node2" class="node">
 <title>parked</title>
-<path fill="#f8fafc" stroke="#6b7280" d="M385,-185.67C385,-185.67 273,-185.67 273,-185.67 267,-185.67 261,-179.67 261,-173.67 261,-173.67 261,-156.67 261,-156.67 261,-150.67 267,-144.67 273,-144.67 273,-144.67 385,-144.67 385,-144.67 391,-144.67 397,-150.67 397,-156.67 397,-156.67 397,-173.67 397,-173.67 397,-179.67 391,-185.67 385,-185.67"/>
-<text text-anchor="middle" x="329" y="-173.67" font-family="Helvetica,sans-Serif" font-size="10.00">parked</text>
-<text text-anchor="middle" x="329" y="-162.67" font-family="Helvetica,sans-Serif" font-size="10.00">Parking Stage, lane 0</text>
-<text text-anchor="middle" x="329" y="-151.67" font-family="Helvetica,sans-Serif" font-size="10.00">white fill, footer &#39;parked&#39;</text>
+<path fill="#f8fafc" stroke="#6b7280" d="M385,-185.53C385,-185.53 273,-185.53 273,-185.53 267,-185.53 261,-179.53 261,-173.53 261,-173.53 261,-156.53 261,-156.53 261,-150.53 267,-144.53 273,-144.53 273,-144.53 385,-144.53 385,-144.53 391,-144.53 397,-150.53 397,-156.53 397,-156.53 397,-173.53 397,-173.53 397,-179.53 391,-185.53 385,-185.53"/>
+<text text-anchor="middle" x="329" y="-173.53" font-family="Helvetica,sans-Serif" font-size="10.00">parked</text>
+<text text-anchor="middle" x="329" y="-162.53" font-family="Helvetica,sans-Serif" font-size="10.00">Parking Stage, lane 0</text>
+<text text-anchor="middle" x="329" y="-151.53" font-family="Helvetica,sans-Serif" font-size="10.00">white fill, footer &#39;parked&#39;</text>
 </g>
 <!-- todo&#45;&gt;parked -->
 <g id="edge2" class="edge">
 <title>todo&#45;&gt;parked</title>
-<path fill="none" stroke="#374151" d="M53.35,-92.86C65.96,-109.24 85.89,-131.15 109,-142.17 153.78,-163.53 209.44,-169.14 253.44,-169.49"/>
-<polygon fill="#374151" stroke="#374151" points="253.67,-171.94 260.67,-169.5 253.68,-167.04 253.67,-171.94"/>
-<text text-anchor="middle" x="168.5" y="-179.77" font-family="Helvetica,sans-Serif" font-size="8.00">Add to plan → &#39;Parking Stage&#39;</text>
-<text text-anchor="middle" x="168.5" y="-170.77" font-family="Helvetica,sans-Serif" font-size="8.00">(or drop on lane 0)</text>
+<path fill="none" stroke="#374151" d="M53.35,-92.72C65.96,-109.1 85.89,-131.01 109,-142.03 153.78,-163.39 209.44,-169 253.44,-169.35"/>
+<polygon fill="#374151" stroke="#374151" points="253.67,-171.8 260.67,-169.36 253.68,-166.9 253.67,-171.8"/>
+<text text-anchor="middle" x="168.5" y="-179.63" font-family="Helvetica,sans-Serif" font-size="8.00">Add to plan → &#39;Parking Stage&#39;</text>
+<text text-anchor="middle" x="168.5" y="-170.63" font-family="Helvetica,sans-Serif" font-size="8.00">(or drop on lane 0)</text>
 </g>
 <!-- plan -->
 <g id="node3" class="node">
 <title>plan</title>
-<path fill="#f8fafc" stroke="#6b7280" d="M682,-92.67C682,-92.67 569,-92.67 569,-92.67 563,-92.67 557,-86.67 557,-80.67 557,-80.67 557,-63.67 557,-63.67 557,-57.67 563,-51.67 569,-51.67 569,-51.67 682,-51.67 682,-51.67 688,-51.67 694,-57.67 694,-63.67 694,-63.67 694,-80.67 694,-80.67 694,-86.67 688,-92.67 682,-92.67"/>
-<text text-anchor="middle" x="625.5" y="-80.67" font-family="Helvetica,sans-Serif" font-size="10.00">in_plan</text>
-<text text-anchor="middle" x="625.5" y="-69.67" font-family="Helvetica,sans-Serif" font-size="10.00">semester lane</text>
-<text text-anchor="middle" x="625.5" y="-58.67" font-family="Helvetica,sans-Serif" font-size="10.00">grey fill, footer &#39;planned&#39;</text>
+<path fill="#f8fafc" stroke="#6b7280" d="M682,-92.53C682,-92.53 569,-92.53 569,-92.53 563,-92.53 557,-86.53 557,-80.53 557,-80.53 557,-63.53 557,-63.53 557,-57.53 563,-51.53 569,-51.53 569,-51.53 682,-51.53 682,-51.53 688,-51.53 694,-57.53 694,-63.53 694,-63.53 694,-80.53 694,-80.53 694,-86.53 688,-92.53 682,-92.53"/>
+<text text-anchor="middle" x="625.5" y="-80.53" font-family="Helvetica,sans-Serif" font-size="10.00">in_plan</text>
+<text text-anchor="middle" x="625.5" y="-69.53" font-family="Helvetica,sans-Serif" font-size="10.00">semester lane</text>
+<text text-anchor="middle" x="625.5" y="-58.53" font-family="Helvetica,sans-Serif" font-size="10.00">grey fill, footer &#39;planned&#39;</text>
 </g>
 <!-- todo&#45;&gt;plan -->
 <g id="edge1" class="edge">
 <title>todo&#45;&gt;plan</title>
-<path fill="none" stroke="#374151" d="M76.07,-72.17C170.81,-72.17 423.23,-72.17 549.86,-72.17"/>
-<polygon fill="#374151" stroke="#374151" points="549.91,-74.62 556.91,-72.17 549.91,-69.72 549.91,-74.62"/>
-<text text-anchor="middle" x="329" y="-83.77" font-family="Helvetica,sans-Serif" font-size="8.00">Add to plan → Semester Picker</text>
-<text text-anchor="middle" x="329" y="-74.77" font-family="Helvetica,sans-Serif" font-size="8.00">(or drop on a lane)</text>
+<path fill="none" stroke="#374151" d="M76.07,-72.03C170.81,-72.03 423.23,-72.03 549.86,-72.03"/>
+<polygon fill="#374151" stroke="#374151" points="549.91,-74.48 556.91,-72.03 549.91,-69.58 549.91,-74.48"/>
+<text text-anchor="middle" x="329" y="-83.63" font-family="Helvetica,sans-Serif" font-size="8.00">Add to plan → Semester Picker</text>
+<text text-anchor="middle" x="329" y="-74.63" font-family="Helvetica,sans-Serif" font-size="8.00">(or drop on a lane)</text>
 </g>
 <!-- parked&#45;&gt;todo -->
 <g id="edge8" class="edge">
 <title>parked&#45;&gt;todo</title>
-<path fill="none" stroke="#374151" d="M264.24,-144.66C209.29,-126.97 131.4,-101.91 83.1,-86.36"/>
-<polygon fill="#374151" stroke="#374151" points="83.6,-83.95 76.19,-84.14 82.1,-88.62 83.6,-83.95"/>
-<text text-anchor="middle" x="168.5" y="-134.77" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
+<path fill="none" stroke="#374151" d="M264.24,-144.51C209.29,-126.83 131.4,-101.76 83.1,-86.22"/>
+<polygon fill="#374151" stroke="#374151" points="83.6,-83.81 76.19,-84 82.1,-88.47 83.6,-83.81"/>
+<text text-anchor="middle" x="168.5" y="-134.63" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
 </g>
 <!-- parked&#45;&gt;plan -->
 <g id="edge3" class="edge">
 <title>parked&#45;&gt;plan</title>
-<path fill="none" stroke="#374151" d="M397.01,-165.22C435.3,-163.3 483.58,-157.54 524,-142.17 550.84,-131.97 577.33,-113.06 596.36,-97.46"/>
-<polygon fill="#374151" stroke="#374151" points="598.22,-99.1 602.03,-92.74 595.08,-95.34 598.22,-99.1"/>
-<text text-anchor="middle" x="477" y="-164.77" font-family="Helvetica,sans-Serif" font-size="8.00">Move / drop on a lane</text>
+<path fill="none" stroke="#374151" d="M397.01,-165.07C435.3,-163.16 483.58,-157.39 524,-142.03 550.84,-131.83 577.33,-112.91 596.36,-97.32"/>
+<polygon fill="#374151" stroke="#374151" points="598.22,-98.96 602.03,-92.59 595.08,-95.2 598.22,-98.96"/>
+<text text-anchor="middle" x="477" y="-164.63" font-family="Helvetica,sans-Serif" font-size="8.00">Move / drop on a lane</text>
 </g>
 <!-- plan&#45;&gt;todo -->
 <g id="edge7" class="edge">
 <title>plan&#45;&gt;todo</title>
-<path fill="none" stroke="#374151" d="M556.94,-65.95C545.93,-64.99 534.65,-64.03 524,-63.17 340.15,-48.43 292.64,-45.95 109,-63.17 100.61,-63.96 91.68,-64.97 83.1,-66.03"/>
-<polygon fill="#374151" stroke="#374151" points="82.64,-63.62 76,-66.93 83.25,-68.48 82.64,-63.62"/>
-<text text-anchor="middle" x="329" y="-56.77" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
+<path fill="none" stroke="#374151" d="M556.94,-65.81C545.93,-64.84 534.65,-63.88 524,-63.03 340.15,-48.28 292.64,-45.81 109,-63.03 100.61,-63.82 91.68,-64.83 83.1,-65.89"/>
+<polygon fill="#374151" stroke="#374151" points="82.64,-63.48 76,-66.79 83.25,-68.34 82.64,-63.48"/>
+<text text-anchor="middle" x="329" y="-56.63" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
 </g>
 <!-- plan&#45;&gt;parked -->
 <g id="edge4" class="edge">
 <title>plan&#45;&gt;parked</title>
-<path fill="none" stroke="#374151" d="M558.75,-92.69C521.05,-104.48 472.85,-119.6 430,-133.17 420.54,-136.17 410.58,-139.34 400.76,-142.47"/>
-<polygon fill="#374151" stroke="#374151" points="399.92,-140.17 394,-144.63 401.41,-144.84 399.92,-140.17"/>
-<text text-anchor="middle" x="477" y="-135.77" font-family="Helvetica,sans-Serif" font-size="8.00">Move → &#39;Parking Stage&#39;</text>
+<path fill="none" stroke="#374151" d="M558.75,-92.55C521.05,-104.34 472.85,-119.46 430,-133.03 420.54,-136.03 410.58,-139.2 400.76,-142.33"/>
+<polygon fill="#374151" stroke="#374151" points="399.92,-140.03 394,-144.49 401.41,-144.69 399.92,-140.03"/>
+<text text-anchor="middle" x="477" y="-135.63" font-family="Helvetica,sans-Serif" font-size="8.00">Move → &#39;Parking Stage&#39;</text>
 </g>
 <!-- plan&#45;&gt;plan -->
 <g id="edge10" class="edge">
 <title>plan&#45;&gt;plan</title>
-<path fill="none" stroke="#374151" d="M602.16,-92.74C591.85,-110.26 599.63,-128.67 625.5,-128.67 648.14,-128.67 656.92,-114.57 651.86,-99.31"/>
-<polygon fill="#374151" stroke="#374151" points="653.99,-98.08 648.84,-92.74 649.54,-100.13 653.99,-98.08"/>
-<text text-anchor="middle" x="625.5" y="-149.27" font-family="Helvetica,sans-Serif" font-size="8.00">drag to another lane</text>
-<text text-anchor="middle" x="625.5" y="-140.27" font-family="Helvetica,sans-Serif" font-size="8.00">(term parity checked;</text>
-<text text-anchor="middle" x="625.5" y="-131.27" font-family="Helvetica,sans-Serif" font-size="8.00">engine may roll back)</text>
+<path fill="none" stroke="#374151" d="M602.16,-92.6C591.85,-110.11 599.63,-128.53 625.5,-128.53 648.14,-128.53 656.92,-114.43 651.86,-99.17"/>
+<polygon fill="#374151" stroke="#374151" points="653.99,-97.94 648.84,-92.6 649.54,-99.98 653.99,-97.94"/>
+<text text-anchor="middle" x="625.5" y="-149.13" font-family="Helvetica,sans-Serif" font-size="8.00">drag to another lane</text>
+<text text-anchor="middle" x="625.5" y="-140.13" font-family="Helvetica,sans-Serif" font-size="8.00">(term parity checked;</text>
+<text text-anchor="middle" x="625.5" y="-131.13" font-family="Helvetica,sans-Serif" font-size="8.00">engine may roll back)</text>
 </g>
 <!-- done -->
 <g id="node4" class="node">
 <title>done</title>
-<path fill="#f8fafc" stroke="#6b7280" d="M1045,-42.67C1045,-42.67 912,-42.67 912,-42.67 906,-42.67 900,-36.67 900,-30.67 900,-30.67 900,-13.67 900,-13.67 900,-7.67 906,-1.67 912,-1.67 912,-1.67 1045,-1.67 1045,-1.67 1051,-1.67 1057,-7.67 1057,-13.67 1057,-13.67 1057,-30.67 1057,-30.67 1057,-36.67 1051,-42.67 1045,-42.67"/>
-<text text-anchor="middle" x="978.5" y="-30.67" font-family="Helvetica,sans-Serif" font-size="10.00">done</text>
-<text text-anchor="middle" x="978.5" y="-19.67" font-family="Helvetica,sans-Serif" font-size="10.00">grey fill, grey ring, opacity .8</text>
-<text text-anchor="middle" x="978.5" y="-8.67" font-family="Helvetica,sans-Serif" font-size="10.00">footer &#39;done&#39;</text>
+<path fill="#f8fafc" stroke="#6b7280" d="M1058,-42.53C1058,-42.53 912,-42.53 912,-42.53 906,-42.53 900,-36.53 900,-30.53 900,-30.53 900,-13.53 900,-13.53 900,-7.53 906,-1.53 912,-1.53 912,-1.53 1058,-1.53 1058,-1.53 1064,-1.53 1070,-7.53 1070,-13.53 1070,-13.53 1070,-30.53 1070,-30.53 1070,-36.53 1064,-42.53 1058,-42.53"/>
+<text text-anchor="middle" x="985" y="-30.53" font-family="Helvetica,sans-Serif" font-size="10.00">done</text>
+<text text-anchor="middle" x="985" y="-19.53" font-family="Helvetica,sans-Serif" font-size="10.00">grey fill, grey border, opacity .8</text>
+<text text-anchor="middle" x="985" y="-8.53" font-family="Helvetica,sans-Serif" font-size="10.00">footer &#39;done&#39;</text>
 </g>
 <!-- plan&#45;&gt;done -->
 <g id="edge5" class="edge">
 <title>plan&#45;&gt;done</title>
-<path fill="none" stroke="#374151" d="M694.18,-62.53C750.86,-54.46 832.04,-42.89 892.99,-34.21"/>
-<polygon fill="#374151" stroke="#374151" points="893.36,-36.63 899.94,-33.22 892.67,-31.78 893.36,-36.63"/>
-<text text-anchor="middle" x="797" y="-60.77" font-family="Helvetica,sans-Serif" font-size="8.00">Mark done (course/doneChanged)</text>
+<path fill="none" stroke="#374151" d="M694.16,-62.57C750.4,-54.7 830.93,-43.44 892.84,-34.78"/>
+<polygon fill="#374151" stroke="#374151" points="893.32,-37.19 899.92,-33.79 892.64,-32.33 893.32,-37.19"/>
+<text text-anchor="middle" x="797" y="-60.63" font-family="Helvetica,sans-Serif" font-size="8.00">Mark done (course/doneChanged)</text>
 </g>
 <!-- done&#45;&gt;todo -->
 <g id="edge9" class="edge">
 <title>done&#45;&gt;todo</title>
-<path fill="none" stroke="#374151" d="M899.84,-7.11C888.85,-5.48 877.67,-4.08 867,-3.17 805,2.12 789.19,-1.06 727,-3.17 451.86,-12.51 377.78,14.37 109,-45.17 100.37,-47.08 91.4,-49.88 82.87,-52.96"/>
-<polygon fill="#374151" stroke="#374151" points="81.84,-50.73 76.14,-55.47 83.55,-55.32 81.84,-50.73"/>
-<text text-anchor="middle" x="477" y="-7.77" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
+<path fill="none" stroke="#374151" d="M899.84,-6.7C888.83,-5.18 877.67,-3.89 867,-3.03 804.98,1.97 789.19,-0.92 727,-3.03 451.86,-12.37 377.78,14.51 109,-45.03 100.37,-46.94 91.4,-49.74 82.87,-52.81"/>
+<polygon fill="#374151" stroke="#374151" points="81.84,-50.58 76.14,-55.33 83.55,-55.17 81.84,-50.58"/>
+<text text-anchor="middle" x="477" y="-7.63" font-family="Helvetica,sans-Serif" font-size="8.00">Remove</text>
 </g>
 <!-- done&#45;&gt;plan -->
 <g id="edge6" class="edge">
 <title>done&#45;&gt;plan</title>
-<path fill="none" stroke="#374151" d="M899.72,-13.63C849.73,-10.3 783.76,-9.95 727,-23.17 705.62,-28.15 683.51,-38.3 665.49,-48.07"/>
-<polygon fill="#374151" stroke="#374151" points="663.98,-46.11 659.05,-51.65 666.36,-50.39 663.98,-46.11"/>
-<text text-anchor="middle" x="797" y="-25.77" font-family="Helvetica,sans-Serif" font-size="8.00">Unmark</text>
+<path fill="none" stroke="#374151" d="M899.86,-12.98C849.14,-9.82 783.6,-9.85 727,-23.03 705.62,-28.01 683.51,-38.15 665.49,-47.93"/>
+<polygon fill="#374151" stroke="#374151" points="663.98,-45.96 659.05,-51.5 666.36,-50.25 663.98,-45.96"/>
+<text text-anchor="middle" x="797" y="-25.63" font-family="Helvetica,sans-Serif" font-size="8.00">Unmark</text>
 </g>
 </g>
 </svg>
 </div></p>
 <p class="caption"><span class="fignum">Figure 7.</span> The four statuses a course can have on <code>main</code>, the controls that move it between them, and what the card looks like in each.</p>
 <p><code>utils/courseVisuals.js</code> defines the visual language and every surface uses it — card, graph node, catalogue row, recommendation card.</p>
-<p><strong>Obligation</strong> is drawn as <strong>concentric rings</strong> in the exam subject's colour, implemented as layered inset box-shadows: three rings for <em>mandatory</em>, two for <em>core</em> (labelled "Enge Wahl (+)" in the bachelor, "Core (+)" in the master), one for <em>elective</em> ("Breite Wahl (<em>)" / "Elective (</em>)"), one for anything unclassified ("Other"). The ring count is what the legend explains ("borderLayers").</p>
-<p><strong>Status</strong> (<code>stateVisualByStatus</code>): <em>todo</em> white; <em>parked</em> white with a shadow; <em>in_plan</em> light grey fill; <em>done</em> light grey fill, grey ring, grey text, opacity 0.8. The card's footer prints, left to right, the ECTS, the obligation label, and the status word in lower case: <code>done</code>, <code>planned</code>, <code>parked</code>, <code>not planned</code>.</p>
+<p><strong>Obligation</strong> is drawn as a <strong>border of three weights</strong> in the exam subject's colour: thick for <em>mandatory</em>, medium for <em>core</em> (labelled "Enge Wahl (+)" in the bachelor, "Core (+)" in the master), thin for <em>elective</em> ("Breite Wahl (<em>)" / "Elective (</em>)") and for anything unclassified ("Other"). It is implemented as one, two or three stacked 1-px inset box-shadows (<code>layeredTypeShadow</code>, 5 px, 3 px and 1 px deep), which at screen size render as a single border of the corresponding thickness — the variable is named <code>layers</code> and the legend calls it <code>borderLayers</code>, but what the student sees is weight.</p>
+<p><strong>Status</strong> (<code>stateVisualByStatus</code>): <em>todo</em> white; <em>parked</em> white with a shadow; <em>in_plan</em> light grey fill; <em>done</em> light grey fill, grey border, grey text, opacity 0.8. The card's footer prints, left to right, the ECTS, the obligation label, and the status word in lower case: <code>done</code>, <code>planned</code>, <code>parked</code>, <code>not planned</code>.</p>
 <p><strong>Term</strong> is an emoji in the header: ☀️ summer, ❄️ winter, ☀️❄️ both, with a title "Available in …". The header also carries the short code and the teaching format.</p>
 <p><strong>The popover</strong> (info icon) edits notes, estimated hours per week, and the grade, the grade being editable only for a done course.</p>
 <h3 id="38-the-catalogue-sidebar">3.8 The catalogue sidebar</h3>
@@ -2166,7 +2166,7 @@ a{color:var(--accent)}
 <tr>
 <td>The curriculum is data in the two checkers' constructors, 391 lines, "the split is partial"</td>
 <td><span class="verdict diff">differs</span></td>
-<td>On <code>main</code> the regulations are JSON documents in <code>app/curriculum/</code> and the constructors read them; the four remaining literals were moved (<code>known-defects.md</code>). The partial-split description matches the ADR's <em>before</em> state.</td>
+<td>On <code>main</code> the regulations are JSON documents in <code>app/curriculum/</code> (2.4) and the constructors read them; the four remaining literals were moved (<code>known-defects.md</code>). The split is complete, not partial.</td>
 </tr>
 <tr>
 <td>Two rule sets, deliberately separate, sharing only the wire format, result shape, entry point, rule-set shape and credit limits</td>
@@ -2236,9 +2236,9 @@ a{color:var(--accent)}
 </thead>
 <tbody>
 <tr>
-<td>Obligation is encoded in <strong>border weight</strong>, three steps; concentric rings were <em>rejected</em> (§6.2.1)</td>
-<td><span class="verdict diff">differs</span></td>
-<td>Obligation is encoded as <strong>one, two or three concentric rings</strong> (<code>layeredTypeShadow</code>), the labels "Mandatory", "Enge Wahl (+) / Core (+)", "Breite Wahl (<em>) / Elective (</em>)". The rejected alternative is the implemented one.</td>
+<td>Obligation is encoded in <strong>border weight</strong>, three steps (§6.2.1)</td>
+<td><span class="verdict hold">holds</span></td>
+<td>Thick, medium, thin, in the subject colour; labels "Mandatory", "Enge Wahl (+) / Core (+)", "Breite Wahl (<em>) / Elective (</em>)". Implemented as stacked inset shadows that render as one border of the given weight.</td>
 </tr>
 <tr>
 <td>Four lifecycle states, transitions as drawn in Figure 6.8</td>
@@ -2340,4 +2340,4 @@ a{color:var(--accent)}
 <hr />
 <h2 id="5-what-chapter-7-would-keep-if-this-document-were-reduced-to-it">5. What Chapter 7 would keep, if this document were reduced to it</h2>
 <p>Section 1 is the chapter's opening figure and its System Overview, less the hosting caveat. Section 2.2 is the endpoint table, which the chapter does not have and would benefit from. Sections 2.3 to 2.5 are the Backend section, with Figure 2 replacing the prose walk through the pipeline. Section 2.6 is the material the chapter's edge-layer subsection needs, with the correction that there are three kinds of relation and two ways of drawing them. Section 2.7 is the Recommendation Support subsection, corrected for the knowledge graph's absence and the toggle counts. Section 2.9 is the Data Model with its figure. Section 2.10 and 3.14 are Verification. Sections 3.2 to 3.4 are the Frontend section with Figure 6 replacing the edit-flow figure. Sections 3.5 to 3.12 are what the chapter calls What a Student Sees, and are where the thesis's chapters 6 and 7 disagree with the code most; they are the sections to read first when correcting the design chapter.</p>
-<p>What would be cut: the provenance discussion (section 0) belongs in the methodology or the discussion, not in the implementation chapter, but its finding — that the described structure is post-evaluation — has to appear somewhere. The claim tables (section 4) are working material and do not go into the thesis.</p></main></div>
+<p>What would be cut: the provenance discussion (section 0) is working material, as are the claim tables (section 4); neither goes into the thesis.</p></main></div>

@@ -2,7 +2,7 @@ digraph G {
   graph [rankdir=LR, fontname="Helvetica", fontsize=11, nodesep=0.5, ranksep=0.9];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, fillcolor="#f8fafc", color="#6b7280"];
   edge [fontname="Helvetica", fontsize=8, color="#374151", arrowsize=0.7];
-  todo [label="todo\n(not in plan)\nwhite fill"]; parked [label="parked\nParking Stage, lane 0\nwhite fill, footer 'parked'"]; plan [label="in_plan\nsemester lane\ngrey fill, footer 'planned'"]; done [label="done\ngrey fill, grey ring, opacity .8\nfooter 'done'"];
+  todo [label="todo\n(not in plan)\nwhite fill"]; parked [label="parked\nParking Stage, lane 0\nwhite fill, footer 'parked'"]; plan [label="in_plan\nsemester lane\ngrey fill, footer 'planned'"]; done [label="done\ngrey fill, grey border, opacity .8\nfooter 'done'"];
   todo -> plan [label="Add to plan → Semester Picker\n(or drop on a lane)"];
   todo -> parked [label="Add to plan → 'Parking Stage'\n(or drop on lane 0)"];
   parked -> plan [label="Move / drop on a lane"];
