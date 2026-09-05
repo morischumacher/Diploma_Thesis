@@ -2109,6 +2109,7 @@ a{color:var(--accent)}
 <hr />
 <h2 id="4-the-code-check-chapter-by-chapter">4. The code check, chapter by chapter</h2>
 <p>Verdicts: <strong>holds</strong> (the code does what the sentence says), <strong>differs</strong> (the code does something else; what it does is stated), <strong>not on main</strong> (the claimed change is absent), <strong>cannot be settled here</strong> (needs history or the live system). Chapters 7 to 9 are checked separately; this section covers 1 to 6.</p>
+<p>Every verdict below is the state after the corrections of 2026-09-05 were settled with the author. Where a first reading of mine was wrong, the row says so rather than being quietly replaced, since the point of this document is to be checkable.</p>
 <h3 id="41-chapter-1-introduction">4.1 Chapter 1 — Introduction</h3>
 <p>Five claims about the tool. <strong>All five hold.</strong></p>
 <div class="table-scroll"><table>
@@ -2222,7 +2223,7 @@ a{color:var(--accent)}
 <h3 id="44-chapter-4-formative-study">4.4 Chapter 4 — Formative Study</h3>
 <p><strong>Nothing to check.</strong> The chapter is about the study and the non-functional Figma prototype. It makes no claim about the built tool.</p>
 <h3 id="45-chapter-5-from-themes-to-requirements">4.5 Chapter 5 — From Themes to Requirements</h3>
-<p>The chapter's own prose holds; the requirement set behind it does not, in five places.</p>
+<p>The chapter's own prose holds, including the general sentence about the Delineations, which I first read as false and which survived checking (below).</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -2254,22 +2255,22 @@ a{color:var(--accent)}
 </tr>
 <tr>
 <td><span class="verdict mix">"Every other exclusion recorded in a Delineation follows from a scope boundary … or from a design decision stated there, not from what was built."</span></td>
-<td><span class="verdict diff">differs</span></td>
-<td>Four further requirements are unmet or partly met, and no Delineation records any of them.</td>
+<td><span class="verdict hold">holds</span></td>
+<td>I first read this as false in four places. Three of the four are answered by the author and one by the appendix itself; the settlement is below.</td>
 </tr>
 </tbody>
 </table></div>
-<p>The four:</p>
+<p><strong>The four I flagged, and why the sentence stands (settled 2026-09-05).</strong></p>
 <ul>
-<li><strong>FEATURE-002 Req. 3</strong>, "progress can be presented module-based (e.g. per-module bar representation) in addition to aggregate progress". There is no per-module progress anywhere in the Dashboard. <code>metrics.ts</code> computes <code>moduleProgressForDashboard</code> and returns it; <strong>nothing consumes it</strong>. What a student can see instead is the Bachelor focus area's "Required modules" checklist (a count, not a bar, and only for a chosen focus), and a module node in the graph carrying its course count and one status word.</li>
-<li><strong>FEATURE-002 Req. 5</strong>, "the system displays a projected completion semester/range based on the current plan". Nothing projects a completion semester. The Dashboard reports credits and percentages of the target; no code anywhere forecasts a finishing term.</li>
-<li><strong>FEATURE-005 Req. 2</strong>, a semester feasibility summary including "total ECTS, distribution of assessment types, and flags when user-defined thresholds are exceeded". Two of three: the totals and the flags exist; nothing shows a distribution of assessment types, and no assessment-type concept exists in the application at all.</li>
-<li><strong>FEATURE-008 Req. 3</strong>, when a course becomes unavailable the system "indicates impacted requirements/categories, and provides alternative course options". The manual flag exists (the per-course term override) and <code>useTermAutoShift</code> relocates what it strands, but nothing names the impacted requirements at that moment and nothing offers alternatives.</li>
+<li><strong>FEATURE-002 Req. 3</strong>, module-based progress. There is no module section in the Dashboard, and <code>metrics.ts</code> computes <code>moduleProgressForDashboard</code> without anything consuming it. Moritz's answer: most Bachelor modules hold a single course, so the category and exam-subject breakdowns already report at that granularity. The curriculum data agrees, 41 of the 52 Bachelor modules carry one lookup key. A design judgement rather than a silent shortfall; Chapter 7 records that the section does not exist.</li>
+<li><strong>FEATURE-002 Req. 5</strong>, a projected completion semester. Nothing forecasts one. Moritz's answer: a projection is planning on the student's behalf, which OOS1 excludes. That makes it an exclusion following from a scope boundary, which is what the sentence claims. The thinnest of the four, since OOS1's text is about not planning rather than not forecasting.</li>
+<li><strong>FEATURE-005 Req. 2</strong>, distribution of assessment types. <strong>My finding was wrong.</strong> FEATURE-005's own Delineation already excludes exam-load and exam-period collision detection under OOS3 and OOS2, and the distribution of assessment types is that same exam-clustering concern; the requirement's other two parts, total ECTS and threshold flags, are both implemented. Recorded in a Delineation, following from a scope boundary, exactly as the sentence says.</li>
+<li><strong>FEATURE-008 Req. 3</strong>, alternatives when a course becomes unavailable. The Delineation excludes automated detection under OOS3, and the manual flag exists. Moritz's answer: the rest follows from how the tool works, since the rule check re-runs on the shift and the panel is where alternatives are found.</li>
 </ul>
 <p>Two further requirements are met differently from how they are written, which is a documentation question rather than a shortfall:</p>
 <ul>
-<li><strong>FEATURE-007 Req. 4</strong>, "users can enable/disable recommendation families individually" naming five. Five toggles exist in the profile (<code>interest</code>, <code>similarity</code>, <code>sequence</code>, <code>completed</code>, <code>internship</code>) and four chips in the panel (<code>interest</code>, <code>similarity</code>, <code>internship</code>, <code>peer</code>). So <code>peer</code> can be switched off only from the panel and <code>sequence</code> and <code>completed</code> only from the profile. Every family can be reached, but not from one place.</li>
-<li><strong>FEATURE-012 Req. 1</strong>, "recommendations are displayed as annotations (e.g. overlays/badges/highlights such as borders)". The tool does the opposite on purpose: recommendations are confined to the panel and nothing is drawn on the canvas or in the catalogue. The concern behind the requirement, not breaking the layout, is met more strongly than asked. Section 6.12.2 argues for it; FEATURE-012's Delineation says "None beyond the overall scope boundaries", so the departure is nowhere recorded in the specification.</li>
+<li><strong>FEATURE-007 Req. 4</strong>, "users can enable/disable recommendation families individually", naming five. Four chips exist, in the panel (<code>interest</code>, <code>similarity</code>, <code>internship</code>, <code>peer</code>). <code>sequence</code> and <code>completed</code> have no control anywhere. The five-key <code>SETTINGS_TOGGLES</code> in <code>services/profile.py</code> is a backend default with no interface behind it; the profile screen holds interests and career direction and no switches at all. Chapter 6 now names the four the panel presents and asserts no total. Moritz's reading is that the sequence family is the graph's hard-dependency edges rather than a fifth chip, which is why the panel is not missing anything; how many families the thesis should claim in total is still open.</li>
+<li><strong>FEATURE-012 Req. 1</strong>, "recommendations are displayed as annotations". The tool does the opposite on purpose: recommendations stay in the panel and nothing is drawn on the canvas or in the catalogue. Section 6.12.2 argues for it, and FEATURE-012's Delineation says "None beyond the overall scope boundaries", so the departure is stated in the thesis but not in the specification.</li>
 </ul>
 <h3 id="46-chapter-6-design">4.6 Chapter 6 — Design</h3>
 <div class="table-scroll"><table>
@@ -2304,12 +2305,12 @@ a{color:var(--accent)}
 <tr>
 <td>Six recommendation families; five toggle chips in Figure 6.12; four family symbols</td>
 <td><span class="verdict diff">differs</span></td>
-<td>Six families, six badges each with its own icon and label, <strong>four</strong> chips in the panel, five toggles in the profile. The "Sequence" chip in Figure 6.12 does not exist.</td>
+<td>Six families, each rendering a badge that names it <strong>in words</strong>: <code>REC_TYPE_META</code> defines an icon per family and <code>renderRecommendationPatch</code> prints only the label, so no symbol is ever drawn. <strong>Four</strong> chips, in the panel only. <code>sequence</code> and <code>completed</code> have no control anywhere; the five-key <code>SETTINGS_TOGGLES</code> is a backend default with no interface behind it. The "Sequence" chip in Figure 6.12 does not exist. Corrected in Chapter 6.</td>
 </tr>
 <tr>
 <td>Toggle preferences persist as part of the profile</td>
 <td><span class="verdict hold">holds</span></td>
-<td><code>recommendation_toggles</code>.</td>
+<td><code>recommendation_toggles</code>, written by the panel's chips.</td>
 </tr>
 <tr>
 <td>Recommendations confined to the panel; nothing on the canvas or in the catalogue</td>
@@ -2373,8 +2374,8 @@ a{color:var(--accent)}
 </tr>
 <tr>
 <td>Transferable skills listed as an obligation category (§6.10)</td>
-<td><span class="verdict diff">differs</span></td>
-<td>It is a credit cap (Bachelor 6–9, Master ≥ 4.5), not one of the three obligation tiers.</td>
+<td><span class="verdict diff">differs, but not as I first put it</span></td>
+<td>It <em>is</em> a category in the rule engine's own vocabulary and does appear in the Dashboard's breakdown, so the sentence is not wrong about the Dashboard. What is wrong is the enumeration: the Bachelor checker's categories are eight (mandatory, narrow elective, broad elective, free, transferable skills, thesis, and the two introductory-phase kinds), not four, and naming four contradicted the three-tier encoding of §6.1.5. It also carries a credit cap, Bachelor 6–9 and Master at least 4.5. Chapter 6 now names no buckets.</td>
 </tr>
 <tr>
 <td>Compliance engine invoked after every action, returning status, per-category statistics, hard violations and soft warnings; messages name course, semester and action</td>
@@ -2388,8 +2389,8 @@ a{color:var(--accent)}
 </tr>
 </tbody>
 </table></div>
-<p><strong>One number carried forward, because it is not a Chapter 6 claim.</strong> Chapter 7 (Section 7.8.2) and Chapter 9 both write "a graph of 101 courses" for the Bachelor programme. That figure <strong>differs</strong>: 101 is the number of lookup keys in <code>course_to_module</code>, which counts course codes, titles and title variants, so the same course is counted more than once. The seeded Bachelor catalogue has 84 course rows. Both sentences are corrected in the Chapter 7 to 9 pass, not here.</p>
-<p><strong>The weekly-hours limits are never enforced.</strong> The client sends <code>maxWeekHoursPerSemester</code> and <code>recommendedWeekHoursPerSemester</code> on every rule check; <code>RuleCheckPayload</code> declares neither, so Pydantic drops them before the checker is called, and "week" and "hours" appear nowhere in <code>backend/</code>. The two values reach only the Dashboard's planned-hours section, which sums the estimates the student typed per course and colours one line against the <em>recommended</em> value; the <em>maximum</em> is used only to scale a bar. A student can set a hard weekly-hours ceiling that nothing checks. This is what makes §6.11 wrong in the second direction, and it is a third constraint the completion signal does not model, alongside the exchange semester and the band's lower bound.</p>
+<p><strong>One number carried forward, because it is not a Chapter 6 claim.</strong> Chapter 7 (Section 7.8.2) and Chapter 9 both wrote "a graph of 101 courses" for the Bachelor programme. 101 is the number of lookup keys in <code>course_to_module</code>, which counts course codes, titles and title variants, so the same course is counted more than once; the seeded Bachelor catalogue has 84 course rows, and 68 of the 101 keys are code-like. <strong>Corrected in both chapters, in the Section 0 register, and in the tool's own <code>prerequisites.py</code>, which repeated it.</strong> What is left for the Chapter 7 to 9 pass is the rest of that Chapter 9 sentence: the two edges it counts are the Master programme's enforced pairs, since the Bachelor's two are advisory and the evaluated overlay drew only enforced ones.</p>
+<p><strong>The weekly-hours limits are never enforced.</strong> The client sends <code>maxWeekHoursPerSemester</code> and <code>recommendedWeekHoursPerSemester</code> on every rule check; <code>RuleCheckPayload</code> declares neither, so Pydantic drops them before the checker is called, and "week" and "hours" appear nowhere in <code>backend/</code>. The two values reach only the Dashboard's planned-hours section, which sums the estimates the student typed per course and colours one line against the <em>recommended</em> value; the <em>maximum</em> is used only to scale a bar. A student can set a hard weekly-hours ceiling that nothing checks. This is what makes §6.11 wrong in the second direction, and it is a third constraint the completion signal does not model, alongside the exchange semester and the band's lower bound. Settled 2026-09-05. The missing module level and the irreversible sort stand as design in Chapter 6 and are recorded nowhere else, since the section drafted for Chapter 7 was deleted; neither contradicts another chapter and no participant met either. This one was corrected, because §6.11 contradicted Chapter 8's own finding that the upper bound blocks and the lower bound is silent (E-P35). §6.11 now states the decision: the target advises, the maximum limits, and only credits are held to the limit, because the weekly hours are the student's own per-course estimate.</p>
 <h2 id="5-what-chapter-7-would-keep-if-this-document-were-reduced-to-it">5. What Chapter 7 would keep, if this document were reduced to it</h2>
 <p>Section 1 is the chapter's opening figure and its System Overview, less the hosting caveat. Section 2.2 is the endpoint table, which the chapter does not have and would benefit from. Sections 2.3 to 2.5 are the Backend section, with Figure 2 replacing the prose walk through the pipeline. Section 2.6 is the material the chapter's edge-layer subsection needs, with the correction that there are three kinds of relation and two ways of drawing them. Section 2.7 is the Recommendation Support subsection, corrected for the knowledge graph's absence and the toggle counts. Section 2.9 is the Data Model with its figure. Section 2.10 and 3.14 are Verification. Sections 3.2 to 3.4 are the Frontend section with Figure 6 replacing the edit-flow figure. Sections 3.5 to 3.12 are what the chapter calls What a Student Sees, and are where the thesis's chapters 6 and 7 disagree with the code most; they are the sections to read first when correcting the design chapter.</p>
 <p>What would be cut: the provenance discussion (section 0) is working material, as are the claim tables (section 4); neither goes into the thesis.</p>
