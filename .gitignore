@@ -22,6 +22,8 @@
 *.fdb_latexmk
 *.fls
 main.pdf
+# chapter extracts pulled out of main.pdf for reading
+Chapter*_*.pdf
 *.ilg
 main.tdo
 *.tdo
