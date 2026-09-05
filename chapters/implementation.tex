@@ -8,7 +8,7 @@ The study planner is a single-page web client backed by a stateless HTTP service
 
 \TDminor{The deployment claim is unverified end to end}{Only Vercel is confirmed from the repository (\texttt{frontend/vercel.json}); Render and Neon were stated deliberately in an earlier session but could not be re-verified, and the live URL returns 403. Confirm all three, or scope the sentence to what the repository shows.}
 
-In deployment, the client and the questionnaire application are served on Vercel\footnote{\url{https://vercel.com}.}, the FastAPI service runs on Render\footnote{\url{https://render.com}.}, and the database is a managed PostgreSQL instance on Neon\footnote{\url{https://neon.tech}.}; the \texttt{docker-compose} configuration in the repository provides an equivalent stack for local development.
+In deployment, the client and the questionnaire application are served on Vercel\footnote{\url{https://vercel.com}.}, the FastAPI service runs on Render\footnote{\url{https://render.com}.}, and the database is a managed PostgreSQL instance on Neon\footnote{\url{https://neon.tech}.}; the \texttt{docker-compose} configuration in the repository provides an equivalent stack for local development. Client and service exchange JSON over two paths, plan persistence and read-only consultation, and the service's own structure is the subject of Figure~\ref{fig:impl-backend-components}.
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -39,7 +39,7 @@ In deployment, the client and the questionnaire application are served on Vercel
   \draw[flowalt] ($(client.east)+(0,-4mm)$) -- node[below, font=\scriptsize]{consult} ($(api.west)+(0,-4mm)$);
   \draw[flow] (api) -- node[above, font=\small]{SQL} (db);
 \end{tikzpicture}
-\caption{The three tiers of the study planner, the main technology in each, and where each is hosted. Client and service exchange JSON over HTTPS on two paths, plan CRUD and read-only consultation; only the service touches the database. The service's internal structure is the subject of Figure~\ref{fig:impl-backend-components}.}
+\caption{The three tiers of the study planner, the main technology in each, and where each is hosted. Client and service exchange JSON over HTTPS; only the service touches the database.}
 \label{fig:impl-architecture}
 \end{figure}
 
@@ -147,7 +147,7 @@ Making the canvas a pure projection of the model, so that reconciliation runs on
   \draw[a] (reflow) -- (render);
   \draw[ad] (persist) -- (dash);
 \end{tikzpicture}
-\caption{Edits follow one direction. A transition produces the next plan, from which two consequences follow independently: an immediate reflow and re-render, and a debounced save-and-consult step (dashed) that runs off the render path.}
+\caption{Edits follow one direction. A transition produces the next plan, from which two consequences follow: an immediate re-render, and a debounced save-and-consult step (dashed) off the render path.}
 \label{fig:impl-edit-flow}
 \end{figure}
 \begin{figure}[htbp]
@@ -203,7 +203,7 @@ Two further properties are worth recording. Authentication resolves a user from 
   \draw[a] (svc.west) -- ++(-7mm,0) |- (repo.west);
   \draw[a] (rec.west) -- node[lb] {re-checks} (dom.east);
 \end{tikzpicture}
-\caption{Backend layers. Each depends only on the one below it: handlers hold no rules and no SQL, use cases own the transaction boundary, and the recommender re-checks every suggestion against the Compliance Engine.}
+\caption{Backend layers. Each depends only on the one below it: handlers hold no rules and no SQL, use cases own the transaction boundary, and the recommender re-checks every suggestion.}
 \label{fig:impl-backend-components}
 \end{figure}
 
@@ -234,8 +234,6 @@ The quality or accuracy of the underlying algorithms is explicitly out of scope 
 
 One consequence of that placeholder data bears on how the evaluation should be read, and it was established after the study by inspecting the evaluated version rather than during it. Of the six families the design defines (Section~\ref{sec:rec-types-evidence}), four could produce a card in the sessions reported in Chapter~\ref{chap:evaluation}: interest match, curated similarity, the internship lens, and the peer lens. The sequence-or-dependency family and the follow-on-from-a-completed-course family could not, because the relations they read were held in fixture tables keyed on course numbers that appear in neither programme's catalogue, so no lookup in them ever matched a real course. Participants therefore saw four live families and two that were present in the interface and permanently empty. This matters twice over for Chapter~\ref{chap:evaluation}: it is part of why the empty recommendation tab of E-P42 was met at all, and it means that neither the graph nor the recommender offered a route to sequence information during the study, which sharpens rather than softens the finding that four participants asked for ordering information and found none (E-P44). What the evaluation examines is how students work with recommendations presented and integrated in this way, not how well the ranking itself performs. What a production version with real, consented interaction data would require is noted in the discussion of limitations.
 
-\TDminor{Figure caption lengths}{Against the house range of 100 to 200 characters for figures: \texttt{fig:impl-architecture} is 314, \texttt{fig:impl-edit-flow} 227 and \texttt{fig:impl-backend-components} 207. The first is the one that genuinely needs cutting; move its last sentence into the prose.}
-
 \section{Data Model}
 \label{sec:impl-data}
 
@@ -243,7 +241,7 @@ The database models a study programme as a strict hierarchy (Figure~\ref{fig:imp
 
 We manage the database schema through automated migration files applied in sequence on start-up, which guarantees a reproducible environment. To support concurrent development without identifier collisions, migrations use timestamp-based naming rather than sequential integers. We also track each migration via a checksum to prevent silent modifications to previously applied scripts. Finally, we strictly enforce forward-only migrations, because down-migrations are rarely exercised in testing and therefore risk introducing unpredictable database states.
 
-\TDrev{The cardinalities in Figure~\ref{fig:impl-data-model} are wrong}{Your comment. An \texttt{app\_user} has 1:1 to the saved plan, not 1:N, which the prose already says (\enquote{An account holds exactly one plan}), so figure and text currently contradict each other. The plan-to-profile edge is the real problem: a term profile belongs to the user and the programme, not to the plan, so it should hang off \texttt{app\_user}. Simplest correct figure: \texttt{app\_user} 1:1 saved plan, and \texttt{app\_user} 1:N profile, keyed on user and programme. Decide whether recommendations appear as an entity at all; they are computed, not stored.}
+\TDrev{Is a recommendation an entity in the schema?}{The cardinalities Moritz flagged are corrected: \texttt{app\_user} is 1:1 to the saved plan, matching the prose, and the term profile hangs off \texttt{app\_user} rather than off the plan, since it belongs to the user and the programme. What remains is his second question, which the figure cannot settle on its own: recommendations are computed rather than stored, so whether they belong in the entity box at all is a question about the schema and is answered with the rest of the code check.}
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\small,
@@ -262,8 +260,8 @@ We manage the database schema through automated migration files applied in seque
   \node[ent, right=26mm of sp] (au) {\textbf{app\_user}};
   \node[ent, below=7mm of au] (ps) {saved plan};
   \node[ent, below=7mm of ps] (pp) {recommendation \&\ term profile};
-    \draw[rel] (au) -- node[lbl]{1\,:\,N} (ps);
-  \draw[rel] (ps) -- node[lbl]{1\,:\,N} (pp);
+  \draw[rel] (au) -- node[lbl]{1\,:\,1} (ps);
+  \draw[rel] (au.east) -- ++(9mm,0) |- node[lbl, pos=0.75]{1\,:\,N} (pp.east);
 \end{tikzpicture}
 \caption{Data model. The shared curriculum catalogue (left) is a strict hierarchy projected into a materialised JSON view; per-user data (right) is kept separate and keyed to the account.}
 \label{fig:impl-data-model}
