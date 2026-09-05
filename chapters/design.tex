@@ -362,23 +362,19 @@ An exam-subject card is read for orientation, so it carries the subject name and
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[font=\scriptsize,
-  ann/.style={font=\tiny, text=black, anchor=west, text width=4.6cm, align=left},
+  ann/.style={font=\tiny\itshape, text=black, anchor=west},
   tick/.style={gray!55, thin}]
 
   % --- Exam subject card ---
   \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0,0) rectangle (4.4,1.0);
   \node[font=\scriptsize\bfseries] at (2.2,0.68) {Exam Subject A};
   \node[font=\tiny] at (2.2,0.3) {6 modules \textperiodcentered\ 14 courses};
-  \draw[tick] (4.4,0.5) -- (5.0,0.5);
-  \node[ann] at (5.05,0.5) {read for orientation: the name and how much it contains};
 
   % --- Module header ---
   \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0,-1.5) rectangle (4.4,-0.5);
   \node[font=\scriptsize\bfseries, anchor=west] at (0.18,-0.82) {Module A1};
   \node[font=\tiny, anchor=east] at (4.22,-0.82) {12~ECTS};
   \node[font=\tiny, anchor=west] at (0.18,-1.2) {Mandatory \textperiodcentered\ 2 of 4 done};
-  \draw[tick] (4.4,-1.0) -- (5.0,-1.0);
-  \node[ann] at (5.05,-1.0) {read for one question, whether the quota is met: aggregated progress};
 
   % --- Course card, three fixed zones ---
   \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0,-4.5) rectangle (4.4,-2.0);
@@ -389,11 +385,11 @@ An exam-subject card is read for orientation, so it carries the subject name and
   \node[font=\tiny] at (2.2,-4.28) {6~ECTS \textperiodcentered\ Mandatory \textperiodcentered\ planned};
 
   \draw[tick] (4.4,-2.28) -- (5.0,-2.28);
-  \node[ann] at (5.05,-2.28) {header: official abbreviation, course type, term};
+  \node[ann] at (5.05,-2.28) {header};
   \draw[tick] (4.4,-3.3) -- (5.0,-3.3);
-  \node[ann] at (5.05,-3.3) {title: the primary identifier, clamped to two lines so card heights stay uniform};
+  \node[ann] at (5.05,-3.3) {title};
   \draw[tick] (4.4,-4.28) -- (5.0,-4.28);
-  \node[ann] at (5.05,-4.28) {footer: the three attributes needed most often};
+  \node[ann] at (5.05,-4.28) {footer};
 \end{tikzpicture}
 \caption{Text carried at each hierarchy level. The exam-subject card states only extent, the module header aggregates progress, and the course card divides its text into three zones of fixed height.}
 \label{fig:card-text}
