@@ -571,6 +571,10 @@ Order is chosen so that the chapters whose content is still moving come after th
 - **Nielsen 1993**, *Usability Engineering*: the 0–4 severity scale (cosmetic / minor / major / catastrophe, plus "not a problem"), combining frequency, impact and persistence; confirmed via a secondary source citing the book (`glossar.hs-augsburg.de/Severity_Ranking`). §8.1.5 now calls it "Nielsen's five-point scale".
 - **Laugwitz et al. 2008** and **ISO 9241-11**: not re-opened; cited only for the 26-item, six-scale UEQ (verified against the deployed instrument) and the three usability dimensions.
 
+### Chapter 9 (Discussion), source opened 2026-09-06
+
+- **Vessey 1991**, *Decision Sciences* 22(2), 219–240 (publisher page 403; abstract and TLDR via Semantic Scholar, proposition via `is.theorizeit.org/wiki/Cognitive_fit_theory` quoting the paper). The claim §9.2 makes, that a representation aids performance when it matches the task, is the paper's central proposition ("matching representation to tasks leads to the use of similar problem-solving processes, and hence the formulation of a consistent mental representation"). Conventional attribution; no page cited.
+
 ### Chapter 7 (Implementation), code check 2026-09-05/06
 
 Every claim below was read from `main` of `hypridplanner` (commit c00ef4f, then 3136fe1), not from its documentation. The full write-up is `context/code/hypridplanner-analysis.md`; this is the list of what the chapter now asserts on that basis, so the next pass need not re-open the files.
