@@ -571,6 +571,10 @@ Order is chosen so that the chapters whose content is still moving come after th
 - **Nielsen 1993**, *Usability Engineering*: the 0–4 severity scale (cosmetic / minor / major / catastrophe, plus "not a problem"), combining frequency, impact and persistence; confirmed via a secondary source citing the book (`glossar.hs-augsburg.de/Severity_Ranking`). §8.1.5 now calls it "Nielsen's five-point scale".
 - **Laugwitz et al. 2008** and **ISO 9241-11**: not re-opened; cited only for the 26-item, six-scale UEQ (verified against the deployed instrument) and the three usability dimensions.
 
+### Chapter 8, a false fact removed 2026-09-06
+
+Section 8.1.4 said "Three of the eleven also took part in the formative study; the remaining eight are new to the research." **False** (Moritz, 2026-09-06): the two cohorts are disjoint. The sentence entered with the 2 September consistency pass (#2) and was never checked against the participant records, which are not in the repository. I built a Chapter 9 limitation and an argument about the ratings on it. Both removed. Rule reinforced: a sentence about the participants is a claim about data outside the repository and must be confirmed with Moritz before anything is built on it.
+
 ### Chapter 9 (Discussion), source opened 2026-09-06
 
 - **Vessey 1991**, *Decision Sciences* 22(2), 219–240 (publisher page 403; abstract and TLDR via Semantic Scholar, proposition via `is.theorizeit.org/wiki/Cognitive_fit_theory` quoting the paper). The claim §9.2 makes, that a representation aids performance when it matches the task, is the paper's central proposition ("matching representation to tasks leads to the use of similar problem-solving processes, and hence the formulation of a consistent mental representation"). Conventional attribution; no page cited.
