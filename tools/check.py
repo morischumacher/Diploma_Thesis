@@ -285,9 +285,10 @@ def main():
     # --- abbreviations: introduced at their first use in reading order ------
     ORDER = ['chapters/introduction.tex', 'chapters/methodology.tex',
              'chapters/relatedwork.tex', 'chapters/needfindingwithprototype.tex',
-             'chapters/fromthemestorequirements.tex', 'chapters/design.tex',
+             'chapters/design.tex',
              'chapters/implementation.tex', 'chapters/evaluation.tex',
-             'chapters/discussion.tex', 'appendix/formative-interview-plan.tex',
+             'chapters/discussion.tex', 'chapters/conclusion.tex',
+             'appendix/formative-interview-plan.tex',
              'appendix/codebook-and-traceability.tex',
              'appendix/evaluation-appendix.tex', 'appendix/glossary.tex']
     # abbreviation -> pattern its expansion must match, at or before first bare use

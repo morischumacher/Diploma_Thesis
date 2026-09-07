@@ -18,12 +18,12 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 | 1 Introduction | 4 | |
 | 2 Methodology | 8 | |
 | 3 Related Work | 6 | |
-| 4 Formative Study | 12 | reports no findings — see §1.4 |
-| 5 From Themes to Requirements | 4 | already a summary table only; full specs are in App. A.3 |
+| 4 Formative Study (incl. From Themes to Requirements, §4.7 since 2026-09-07) | 16 | |
 | 6 Design | 28 | the one genuinely long chapter |
 | 7 Implementation | 16 | |
 | 8 Evaluation | 20 | |
-| 9 Discussion | 12 | |
+| 8 Discussion | 14 | split 2026-09-07 |
+| 9 Conclusion | 5 | new 2026-09-07: RQ answers, contributions, future work |
 | **Main matter total** | **110** | |
 | AI-tools disclosure | 4 | **both files empty** — renders as empty headed pages |
 | Lists of figures/tables | 6 | |
@@ -76,6 +76,9 @@ Never write "eleven sessions were conducted" or "twelve analysed". Never a `/12`
 ---
 
 ## 0a. Open when work resumes (6 September)
+
+**Chapter structure changed 2026-09-07 (supervisor feedback), three MRs.** Chapter 8 (Evaluation) now follows Chapter 4's method structure (goal and guiding questions, artefact, participants and recruitment, procedure, analysis method with the frame-sampling assessment, then Findings). Chapter 5 (From Themes to Requirements) is merged into Chapter 4 as its last section, §4.7, label `chap:from-themes-to-requirements` kept on the section and every "Chapter~\ref" of it swept to "Section~\ref". The Discussion is split into Discussion and Conclusion; the answers to the research questions, a contributions restatement and Future Work are in the Conclusion, labels `sec:disc-rq-answers` and `sec:disc-future` kept. **Numbering now: 1 Introduction, 2 Methodology, 3 Related Work, 4 Formative Study (incl. requirements), 5 Design, 6 Implementation, 7 Evaluation, 8 Discussion, 9 Conclusion.** Chapter numbers elsewhere in this file below are the old ones (old 6→5, 7→6, 8→7, 9→8) unless a line says otherwise; labels in the `.tex` files are unchanged, so nothing in the thesis itself is stale.
+
 
 **State.** Chapters 1–7 are closed except for deferred `\TDrev` notes that wait on Chapters 8 and 9: Ch. 1 (contributions re-check), Ch. 2 (§2.5 "What a curriculum encodes"), Ch. 7 (the defect register in §7.7.1; the length of §7.7.1). Zero `%% REV`, zero `\todo`, zero `\TDmajor` in Chapters 1–7. Every PR up to #119 is merged; no branch is ahead of `main`.
 
