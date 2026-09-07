@@ -1,0 +1,299 @@
+# Task instruction — blind stage-log coding of a frame chunk
+
+You are coding one **chunk** of a screen-recording frame sequence into a raw stage log.
+This is observational coding, not analysis: you are producing the data that a later,
+separate synthesis pass will read — not writing the synthesis yourself.
+
+## 0. Hard constraints, before anything else
+
+- **Do not read** any prior analysis, audit, session summary, codebook, or
+  usability-findings document, and do not read any other participant's or scenario's
+  stage log, if any of these are reachable to you. Code only from the frames you are
+  given. If you are unsure whether a file in reach is "prior analysis," treat it as
+  off-limits and say so in a note rather than opening it.
+- **Do not read or use transcript/audio.** You are coding the screen only. Anything that
+  would require audio (in particular, who is *speaking*) is a proxy at best — see FAC below.
+- **One row per frame. Never skip a frame, never merge frames, never interpolate a value
+  from a neighbouring frame.** If a value is not legible in *this* frame, the cell is `?`
+  (present but unreadable) or `-` (not in viewport at all) — not a guess, not a carry-forward.
+- **Open and inspect every frame individually at native resolution.** Where a value you need
+  (a lane-header ECTS number, a dashboard figure, banner text) is small, crop and upscale
+  that region before transcribing it. A thumbnail or contact-sheet pass is not sufficient —
+  digits like 2/3, 3/5, 0/6/9 are genuinely ambiguous at reduced size and must be resolved
+  at full resolution or marked `?`.
+- **Corroborate every plan-state number before accepting it.** Cross-check each lane's ECTS
+  reading against the dashboard's Planned-ECTS total and, where visible, the
+  "Gesamtumfang: N ECTS fehlen bis 180" line. If a reading doesn't reconcile, say so
+  in the row's `notes` and/or in `## ANOMALIES` rather than silently picking one value.
+- Work through the chunk in timestamp order, frame by frame. Do not sample every Nth
+  frame or skip ahead because a run "looks stable" — stability itself is a finding
+  (record it explicitly, e.g. "identical to t-10") but only after you've looked.
+
+## 1. Input
+
+You will receive a directory (or archive) of frames for a single chunk: one image per
+sampled timestamp, 10 seconds apart, filename encoding the timestamp
+(e.g. `a_0470.jpg` = 470 seconds into this run's phase). A chunk covers a contiguous
+range of one participant/scenario recording (e.g. `a_0000`–`a_0560`); the run may
+continue in a sibling chunk file — you are not responsible for frames outside your
+own range, but note in `## ANOMALIES` if your first or last frame looks mid-action
+(e.g. a modal open with no visible start), so the boundary is flagged rather than silently
+lost.
+
+## 2. Output file
+
+One Markdown file per chunk, named `<participant>-<scenario>_<first-ts>-<last-ts>.md`
+(e.g. `P1-A_a_0000-a_0560.md`), containing, in order:
+
+1. A title line and one italic provenance line: what produced this coding (pass
+   type, sampling interval, taxonomy version), e.g.
+   `*Blind pass, 10s sampling, taxonomy v1.0.*`
+2. The frame table (format below).
+3. `## ANOMALIES` — always present.
+4. `## BRIEF` — always present if any `guide`-surface frame occurs in the chunk;
+   omit only if the chunk contains no guide frames at all.
+5. `## GRAPH USE` — present only if any frame in the chunk has `surface = graph`.
+6. `## FINAL STATE` — present only if the chunk is the *last* chunk of its run
+   (i.e. it ends the recording, or ends in `guide`/`quest` after the planner is
+   closed for good). Omit for chunks that hand off mid-plan to a sibling chunk.
+
+Use a plain `t | col | col | ...` pipe table (with or without a leading/trailing
+`|` and separator row — either is acceptable) or fence it in a code block if the
+row content contains characters that would break Markdown table rendering (long
+quoted banner text with embedded `|`, for instance — escape those as `\|` instead
+if you keep the table unfenced). Be consistent within one file.
+
+## 3. Columns, exactly as follows
+
+`t | surface | sidebar | panels | activity | lanes | ects | miss | warn | focus | banner | flags | notes`
+
+### t
+Seconds into the chunk's phase, taken directly from the filename. Integer.
+
+### surface — exactly one, primary state of the screen
+- `guide` — the study-guide/instructions app (brief, persona, "Studienplaner öffnen").
+  Not the planning tool itself.
+- `quest` — questionnaire steps inside the guide app (post-scenario ratings etc.).
+- `auth` — sign-in / sign-up, or the planner's own Setup modal (programme, start term,
+  graph toggle) shown before the Table/Graph canvas is usable.
+- `load` — blank page / "Loading…" / unpainted.
+- `table` — planner open, Table view (semester lanes).
+- `graph` — planner open, Graph view (node-link canvas).
+- `other` — browser chrome only, an unrelated tab/window, desktop — nothing of the
+  study visible.
+
+### sidebar — one of `cat` (Course Catalog) | `filt` (Filters) | `off` (hidden) | `n/a`
+`n/a` when surface isn't `table`/`graph`. Note: Table view's sidebar defaults to the
+Course Catalog; Graph view's defaults to Filters — record whichever is actually shown,
+don't assume from the surface alone.
+
+### panels — comma-separated, any that apply; `-` if none
+- `recs` — Recommendations panel visible.
+- `dash` — right-hand Planner Dashboard open. When open, append which collapsibles are
+  currently **expanded** (not collapsed) in braces, using: `req` (Required courses),
+  `focus` (Focus Area), `mods` (Required modules), `exam` (Per Exam Subject),
+  `sem` (Per Semester), `hours` (Week-Hours), `cat$` (Per Category),
+  `miss` (Missing Requirements), `warn` (Warnings). Example: `dash{mods,miss}`.
+  Empty braces `dash{}` means the dashboard is open but every collapsible is
+  collapsed (only the top summary tiles are showing).
+- `legend` — Visual Legend overlay.
+- `modal` — any other modal/popup: the onboarding tour, a course's semester-placement
+  menu, the axis-config editor, a confirm dialog, etc. Say which, in `notes`.
+- A one-off browser-chrome popup (autofill/password-manager prompts, etc.) is **not**
+  an app `modal` — note it in `notes` instead and leave `panels` reflecting the
+  app's own state.
+
+### activity — best inference of what the participant is doing this frame
+One of `read · drag · click · search · scroll · zoom/pan · idle · unclear`.
+Base it on cursor position/shape, drag-ghost artefacts, a transient banner just having
+fired, or a visible change from the previous frame. At 10 s sampling this is
+inferable maybe 60–70% of the time — when your basis is weak (no cursor, no ghost, no
+delta from the last frame), append `~` to flag low confidence (e.g. `read~`). Never
+present a guessed activity as certain.
+
+### lanes — per-semester ECTS straight off the lane headers, left to right as rendered
+Format: `park<value>|<S1>/<S2>/.../<Sn>` — e.g. `park0.0|20.0/19.0/20.0/24.0`.
+- Use `-` for a lane that is entirely out of the viewport this frame (not "probably
+  the same as last frame" — literally not visible).
+- Use `?` for a lane header that is present but unreadable (occluded by a banner/
+  toolbar/panel edge, clipped at the viewport boundary, or too small even after
+  crop+upscale). If a digit is partly visible, you may write e.g. `9.0?` and say why
+  in `notes`.
+- This field is `-` outright when `surface` is `graph` (the graph canvas renders no
+  lane headers) — record plan state via `ects`/`miss`/`warn`/`focus` instead and say
+  so once in `## GRAPH USE`.
+- Lane order and count can change (Parking Stage always first if present; semester
+  count follows the brief, typically 7 or 8). Keep the order stable within one chunk.
+
+### ects — dashboard Planned ECTS / Target ECTS, e.g. `114.0/180.0`
+Add `doneN.N` if the Done-mode total is also visible and non-zero, e.g.
+`114.0/180.0 done0.0`. `-` if the Dashboard is closed or this tile isn't visible.
+If Planned is legible but Target is scrolled out of view, write `114.0/?` and say in
+`notes` which other on-screen total (Per Exam Subject / Per Category) you cross-checked
+it against.
+
+### miss — Missing Requirements count (integer), or `-` if the Dashboard is closed or
+this row is unreadable. Include the requirement text in `notes` (or in the relevant
+`## ANOMALIES`/`## FINAL STATE` entry) whenever the collapsible is expanded.
+
+### warn — Warnings count (integer), or `-`. Same rule: text goes in `notes` if
+expanded, and note explicitly if the count is visible but the panel is never expanded
+in this chunk (so the text is never observed).
+
+### focus — Focus Area status + checklist, e.g. `not completed 2/6` or
+`Cybersecurity completed 6/6`. Include the focus-area name once it's established;
+`-` if not visible.
+
+### banner — transient toast/banner text this frame, verbatim (shortened if long,
+but keep exact wording of the key clause), e.g. `accepted`, `rejected: semester 2
+exceeds max load (31.0 ECTS > 27.0)`, or a milestone banner quoted in full in
+`notes` if it's long. `-` if none fired this frame. Remember events under ~10s can
+fall entirely between samples — you're recording what's on screen at the sample
+instant, not reconstructing everything that happened.
+
+### flags — comma-separated, any that apply; `-` if none
+- `SWIM` — the **Per Semester (ECTS)** dashboard sub-panel is visibly *expanded*
+  (not just the collapsed one-line summary), and you can read its actual verdict
+  text. If only the collapsed summary line is ever shown for a whole chunk, say so
+  once in `## ANOMALIES` rather than flagging SWIM on every frame.
+- `FAC` — proxy for facilitator intervention: the webcam/video tile switches to the
+  facilitator's name or to active-speaker on the facilitator. This is a visual proxy
+  only, **not** transcript-corroborated — say so explicitly wherever you use it, and
+  say so again as a caveat in `## ANOMALIES`.
+- `XSTATE` — canvas and dashboard visibly disagree about plan state in this exact
+  frame (e.g. a lane total that can't reconcile with the Planned-ECTS tile, or a
+  rejection banner next to a dashboard message that contradicts it). Explain the
+  disagreement in `notes` or in `## ANOMALIES`.
+- `AXIS` — the bottom axis-config bar (`Horizontal: … | Vertical: …`) is visible
+  this frame, **and/or** it just changed from the previous frame. Note the exact
+  before/after strings in `## ANOMALIES` if it changed; if it's merely visible and
+  unchanged, flagging it every frame is fine but say once, near the top of
+  `## ANOMALIES`, that no edit was observed if that's the case.
+- `GTIME` — the guide app's own session/task clock is visible this frame; record its
+  reading in `notes`. Treat it as an independent, possibly-unreliable clock — see the
+  freeze-detection guidance below.
+
+### notes — free text, as dense as needed
+This is where the actual observation lives: verbatim UI text (quote it), exact
+course/module names, exact numbers, approximate cursor position in pixels when it's
+informative, which video tile is showing, what changed since the previous frame,
+and your reasoning for any `?`/`~` you used. Favour precision and direct quotation
+(in backticks or bold) over paraphrase or summary. When two consecutive frames are
+pixel-identical or near-identical, say so plainly ("identical to t-10") instead of
+re-describing the whole screen.
+
+## 4. Trailing sections
+
+### `## ANOMALIES`
+Numbered or lettered list. Each entry should be a specific, evidenced claim, not a
+vague impression — cite the frame(s), quote the exact text, give the exact numbers.
+Systematically check for and report on, at minimum:
+- Any banner/message whose own numbers don't add up (e.g. a "25% complete" banner
+  next to a total that isn't 25%).
+- Any default/pre-filled value in a Setup or Profile modal that contradicts the
+  brief's stated persona, and whether/when it was corrected.
+- Any value set outside the brief's stated allowed band, and whether it looks
+  mid-edit vs. committed (was the modal open on the *next* sampled frame too?).
+- The full trajectory of every plan-state number that changed across the chunk
+  (no decreases silently smoothed over — list them as `before → after` with the
+  timestamps).
+- Any warning/requirement count that is visible but whose contents are never
+  actually shown because the collapsible was never expanded.
+- Whether every semester lane the brief asks for was ever actually observed in
+  viewport during this chunk — say plainly if a lane's presence/absence "cannot be
+  established from this chunk" rather than assuming it exists off-screen.
+- Every frame where the FAC proxy fired, listed together, with the caveat that it's
+  unverified against transcript.
+- Any participant-ID / naming mismatch between task framing, video tile, and app
+  account — record it, don't resolve it.
+- A consolidated list of every `?`/`-` you used and why, if there are more than a
+  couple — so a reader can see at a glance what this chunk could and couldn't
+  establish.
+- Whether the Graph View toggle exists/is enabled at all in this chunk (relevant to
+  confirming which experimental condition the run is actually in, independent of
+  what the brief claims).
+- Whether the axis configuration ever changed, and the exact strings either side.
+- **Frozen-screen detection.** If a run of consecutive frames looks static, don't
+  just call it "idle" — difference-check the frames (mentally or by direct
+  pixel/region comparison if you have that tool available) and check whether the
+  guide app's own clock (GTIME) is advancing at a real 1 Hz rate across that span.
+  A clock that holds constant or jumps by more than the elapsed sample time means
+  the screen share itself may be stalled — say so explicitly, and say that the
+  block should not be read as measured idle time.
+- Any layout/scale/geometry change in the captured surface itself (window resize,
+  DPI change, cropped viewport) that isn't a UI event in the app.
+- Any persistent visual artefact (stuck drag-ghost, leftover overlay) that could be
+  mistaken for a real lane/card — describe its position and say explicitly that it
+  carries no legible ECTS / isn't counted.
+
+### `## BRIEF`
+Quote the guide app's brief **verbatim**, from whichever frame(s) show it fully
+(note if identical across all guide frames, or note the diff if it changes — e.g.
+between the initial brief and a later confirmation screen). Preserve structure
+(headings, bullets, bold/warning markers) using Markdown blockquote or similar.
+Follow with two short summaries:
+- **Extracted task parameters**, explicitly: number of semesters, target ECTS/
+  semester, allowed band, any special-semester requirement (name it exactly as
+  worded — "internship" and "exchange" are not interchangeable — and its ECTS cap),
+  condition (graph enabled/disabled), and anything else numeric or constraint-like
+  in the brief.
+- **Setup / Profile values observed**, from whichever `auth`-surface or Profile-modal
+  frames in this chunk show them: account name, programme (note if it changed and
+  when), focus area, start term, graph-toggle state, Max ECTS/semester, Max
+  Week-Hours/semester, Recommended ECTS, Recommended Week-Hours, Interests, Career
+  Direction — mark any field never observed in this chunk as such rather than
+  omitting it silently.
+
+### `## GRAPH USE` (only if any frame has `surface = graph`)
+State plainly whether Graph View was available and used, cross-checked against the
+graph-toggle setting recorded under Setup/Profile. Then, per **episode** (a
+contiguous span from entering to exiting Graph View):
+- Entry/exit timestamps (bounded by the nearest sampled frames either side; state
+  the sampled span you actually observed vs. the true entry/exit which may fall
+  between samples).
+- How the transition happened (clicked toggle; sidebar/axis-bar changes that come
+  with it).
+- What was done while in graph view (panning, node expansion order, which
+  courses were toggled planned/not-planned) — be specific and chronological.
+- Whether plan state (ects/miss/warn/focus) actually changed during the episode,
+  with a `before → after` trajectory keyed to timestamps, or state plainly that it
+  did not change and what was cross-checked to confirm that (since some dashboard
+  tiles may be scrolled out of view).
+- Explicitly note that lane-level (per-semester) totals are never visible in graph
+  view, so any semester-level effect of a graph-view edit is only observable once
+  Table view is re-entered — say when/whether that re-entry happens inside this
+  chunk.
+- Whether the session ends the chunk still inside graph view (i.e. never returns to
+  Table view to review the finished plan).
+
+### `## FINAL STATE` (only for the chunk that ends a run)
+- Name the final planner frame (last `table`/`graph` frame, not final `guide`
+  frame) and justify it.
+- A full lane table: every semester + Parking Stage, its ECTS value (or `?`/`not in
+  viewport` with the reason), and its card contents where legible — draw values from
+  whichever nearby frames actually show each lane if the very last frame doesn't
+  show all of them at once, and say which frame each figure came from.
+- Show the sum of visible lanes against the dashboard's Planned-ECTS total, and say
+  plainly if they don't fully reconcile (i.e. some ECTS sit in lanes never observed
+  in viewport during the chunk) rather than assuming the difference away.
+- A full dashboard readout at the final state: Program/Focus header, Target/
+  Planned/Done ECTS, StEOP, Focus Area + checklist, Per Exam Subject, Per Semester
+  (with its collapsed/expanded state), Estimated Week-Hours, Per Category, Missing
+  Requirements (with text if expanded), Warnings (with text if expanded), axis bar.
+- A **measured, not judged** compliance check against the brief's own stated
+  numbers (semester count, target band per semester, special-semester cap, overall
+  target) — report the numbers and which specific semesters/values are in or out
+  of band; do not characterise this as good/bad performance, just state the facts
+  the brief itself put on the table.
+
+## 5. What this is not
+
+- Not a synthesis or usability judgement. Don't diagnose *why* something happened,
+  don't rate the interface, don't editorialise about the participant. Describe what
+  the frame shows, with numbers and quotes.
+- Not a transcript coding. If you don't have the audio, don't claim to know what was
+  said — FAC is a video-tile proxy and must be labelled as such every time it's used.
+- Not a smoothed or resampled series. A `?` or `-` is a correct, useful answer; a
+  guessed number is not. If you truly cannot resolve a value even after
+  crop/zoom, leave it unresolved and say so — do not average, interpolate, or infer
+  it from a neighbouring frame.
