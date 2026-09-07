@@ -409,8 +409,6 @@ Table~\ref{tab:app-matrix} records, for each code, the participants in whom it w
 % -----------------------------------------------------------------------------
 \section{Screen-record labelling scheme}
 \label{app:eval-stagelog}
-\TDrev{Report the agreement between the hand labels and the model labels}{Moritz, 2026-09-06: 300 frames were labelled by hand and the full set by a vision-language model run locally; the two sets overlap on those 300. To be added here, from the two label files: per field (surface, panels, sidebar, lane ECTS), percentage agreement and Cohen's $\kappa$, the number of frames compared, and how disagreements were resolved. The model's name and version go here and into the AI-tools disclosure; Section~\ref{sec:eval-analysis} cites this paragraph for the number.}
-
 Each screen recording was sampled at ten-second intervals at native resolution, and every sampled frame was labelled against the scheme below, producing 2{,}179 labelled frames across the twenty-two scenario runs. The labelling was performed without reference to the transcripts or to any earlier analysis, so that the two records could be compared rather than merged.
 
 \begin{itemize}
@@ -420,6 +418,43 @@ Each screen recording was sampled at ten-second intervals at native resolution, 
     \item \textbf{Transient text.} Any banner, toast, or rejection message, transcribed verbatim.
     \item \textbf{Flags.} Whether the per-semester panel was open, whether the moderator was the active speaker, whether the canvas and the Dashboard disagreed, and whether the layout-axis configuration changed.
 \end{itemize}
+
+\subsection{How the frames were coded, and the agreement between the two coders}
+\label{app:eval-agreement}
+
+The frames were coded by a vision-language model running locally, and the coding was checked against the author's own labelling of three complete runs. Both are described here, because the counts in Chapter~\ref{chap:evaluation} rest on them.
+
+\paragraph{The model and how it was run.}
+\emph{Qwen3-VL-30B-A3B-Instruct} (Alibaba, released 21 October 2025, Apache~2.0) is a mixture-of-experts vision-language model of 30.5~billion parameters, of which roughly 3.3~billion are active per token. It was chosen for one property: it accepts images at their native resolution rather than downscaling them to a fixed size, which is what a semester lane's two-digit ECTS header requires. It was converted to a 4-bit quantisation (group size~64) and run with MLX-VLM on the author's own computer, so that no frame of any recording was transmitted to a third party. The quantisation is recorded because it compresses precisely the fine-grained visual capacity the model was chosen for; the agreement reported below is the evidence that it remained sufficient for this task.
+
+\paragraph{The coding protocol.}
+The model was instructed to code blind: from the frames alone, without the transcripts, without any prior analysis, and without access to another run's log. One row per frame, in timestamp order, never skipping a frame and never merging or interpolating one: a value not legible in the present frame is recorded as unreadable, never carried forward from a neighbour. Every frame is opened at native resolution and small regions are enlarged before a digit is transcribed, because at reduced size a 3 and a 5, or a 0, 6 and 9, are not distinguishable. Every plan-state number is reconciled against the Dashboard's planned total and, where visible, the remaining-ECTS line, with any reading that fails to reconcile written into the row's note rather than silently resolved. Stability is recorded rather than assumed: a frame identical to its predecessor is coded as such, after being looked at.
+
+\paragraph{The check.}
+The author coded three complete runs by hand against the same scheme --- P1-A, P2-A and P3-A, 421~frames --- without reference to the model's output. These are the first three Scenario~A runs rather than a random sample, so what follows describes those runs and is not an estimate for the corpus as a whole. On the 183~frames for which both codings are available (P1-A~57, P2-A~66, P3-A~60), agreement is as given in Table~\ref{tab:agreement}.
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{lrrl}
+        \toprule
+        Field & Agreement & $\kappa$ & Where they part \\
+        \midrule
+        Surface (six-way)      & 95.6\,\% & 0.89 & one definitional boundary \\
+        \quad after that rule  & 100\,\%  & 1.00 & --- \\
+        Catalogue sidebar open & 100\,\%  & 1.00 & --- \\
+        Dashboard open         & 91.8\,\% & 0.76 & block coding \\
+        Modal present          & 78.7\,\% & 0.44 & block coding \\
+        Recommendation Panel   & 73.8\,\% & 0.45 & block coding \\
+        \bottomrule
+    \end{tabular}
+    \caption{Agreement between the model's coding and the author's, over the 183 frames both cover. Percentages are observed agreement, $\kappa$ is Cohen's kappa. The two sources of disagreement are described below; neither is a case of the model reporting something that was not on screen.}
+    \label{tab:agreement}
+\end{table}
+
+Both sources of disagreement are systematic, and neither is a misreading. The first is definitional: all eight surface disagreements are the same frame type, the setup modal standing over an empty Table View, which the author coded as the Table View with a modal present and the model coded as the setup surface, exactly as its protocol defines that surface. Reconciling the two definitions by rule brings surface agreement to complete. The second is granularity: every one of the 48 disagreements on the Recommendation Panel, and 35 of the 39 on modals, run in the same direction, and they fall inside stretches the author coded as a block --- the guided onboarding sequence, for instance, was coded once with a note that the panel opens progressively across it, where the model coded each frame for what that frame showed. The model is the more literal coder there, which is what its protocol required.
+
+The two codings differ in one further way, which bears on the plan-state figures rather than on the process states. Over the same 183~frames the author recorded a legible, corroborated lane-ECTS value in 20 and the model in 128. The conservative reading is the author's: where the digits were small in a screen-share capture the author recorded them as unread rather than risk them, whereas the model enlarged the region and transcribed. This is the capability the model was chosen for, and every value it reported was subject to the reconciliation rule above; but it means the per-semester figures rest more heavily on the model's readings than the process states do, and the completion audit of Section~\ref{app:eval-completion} should be read with that in mind.
 
 The frame total is the number of labelled rows the stage logs contain, counted by a single script held with the logs themselves so that it can be reproduced rather than tallied by hand. Two rules matter for that count and are recorded here because earlier tallies differed on them: a row is a frame only if its surface column names one of the surfaces above, which excludes the analysis tables the same files carry, and a timestamp is read as an integer rather than as a fixed-width field, because the two earliest runs write their first ten timestamps without leading zeros.
 
