@@ -15,13 +15,29 @@ The study investigates how a curriculum graph alters the planning process of stu
 \subsection{Guiding Questions}
 \label{sec:eval-guiding}
 
-Chapter~\ref{chap:introduction} names the three lenses through which Research Question~3 is read. For the study they become three guiding questions, each answered from the record suited to it:
-%% REV (is this done the same way on chapter 4, with G1-G3? I mean its okay, but for me also unneceary)
+To operationalise this goal, the study was guided by four questions, carried over from the proposal for this thesis, which planned a task-based evaluation of the hybrid interface and of the recommendations embedded in it:
+
 \begin{itemize}
-    \item \textbf{G1} \emph{What process do students follow when they plan with the tool, and does it hold across students?} Answered from the screen recordings, as the path through the interface (Section~\ref{sec:eval-process}).
-    \item \textbf{G2} \emph{Where and how does the graph enter that process?} Answered from the same record, by comparing the two conditions within each participant (Section~\ref{sec:eval-ab}).
-    \item \textbf{G3} \emph{How do the plans students produce compare with what they, and the tool, report as complete, and how satisfied are they with the tool?} Answered from an audit of the finished plans against the questionnaires and the tool's own completion signal (Sections~\ref{sec:eval-questionnaire} and~\ref{sec:eval-effectiveness}).
+    \item \textbf{Planning practice:} How do students go about planning with the tool, and what do they do rather than report? Answered from the screen recordings and the think-aloud together (Section~\ref{sec:eval-process}).
+    \item \textbf{The graph's contribution:} What does the graph-based view add to that work? Answered by comparing the two conditions within each participant (Section~\ref{sec:eval-ab}).
+    \item \textbf{Recommendations in the workflow:} Where and how do the embedded recommendations help? Answered from how the panel was used across the sessions (Section~\ref{sec:eval-around}).
+    \item \textbf{Outcomes and satisfaction:} Do the plans students produce meet the task they were set, and how satisfied are students with the tool? Answered from an audit of the finished plans and from the questionnaires (Sections~\ref{sec:eval-questionnaire} and~\ref{sec:eval-effectiveness}).
 \end{itemize}
+
+\subsection{Deviations from the Proposed Design}
+\label{sec:eval-deviations}
+
+The proposal planned this evaluation as a conventional summative usability study: effectiveness and efficiency from task success, completion time and error counts; satisfaction from the UEQ and the TAM subscales; a counterbalanced within-subjects design over two matched persona scenarios, comparing the hybrid interface against a spreadsheet-and-paper baseline. The study that was run keeps the questionnaires and departs from the rest in four places, each of which is recorded here rather than left for the reader to notice.
+
+\emph{Counterbalancing was dropped.} The object of study became how a graph enters a workflow a student has already formed, which requires every participant to meet it at the same point on the same learning curve; and at eleven participants the counterbalanced halves could not have been compared in any case. The reasoning and its cost are in Section~\ref{sec:eval-order}.
+
+\emph{The baseline changed}, from spreadsheet and paper to the same tool with the graph withheld. A comparison against paper answers whether a dedicated tool helps at all, which is not what was in doubt; withholding one surface isolates the graph, which is the assumption the formative study left untested (Section~\ref{sec:overall-assumptions}). It also avoids the tool-agnostic measure of plan quality that a cross-medium comparison would have required and that this study could not have validated.
+
+\emph{The two scenarios are not matched.} They differ in focus area, in the number of semesters, and in where the reduced-load semester falls. This was not corrected, and its consequence is stated where it bites: the second run differs from the first in task as well as in graph availability, so nothing that varies between the runs is attributed to the graph except the displacement of the catalogue (Section~\ref{sec:eval-accuracy}).
+
+\emph{Task performance gave way to a process account.} Under a fixed order a completion time cannot be attributed to the tool rather than to practice, so time was not used as a measure. What the recordings did support was something the proposal had not foreseen: a frame-by-frame reconstruction of the path each participant took through the interface, which is the material behind Sections~\ref{sec:eval-process} and~\ref{sec:eval-ab} and the principal contribution of this chapter.
+
+One further thing should be said plainly. The sharpest result of the study, the gap between the plans participants produced and what they and the tool reported as complete (Section~\ref{sec:eval-effectiveness}), was not anticipated by any of the questions above. It emerged from an audit conducted to calibrate the self-report instruments, and it is reported as what it is: a finding the design made visible rather than one it set out to obtain.
 
 \subsection{Scope and Non-Goals}
 \label{sec:eval-nongoals}
@@ -101,7 +117,8 @@ After each scenario, participants completed an identical nine-item questionnaire
 %% REV (not section and subsection wihout text between)
 \subsection{Two Records per Participant}
 \label{sec:eval-tworecords}
-Two independent records were produced per participant and then triangulated (Figure~\ref{fig:eval-pipeline}). The first is the think-aloud and interview transcript. The second is the screen recording, treated as an artefact in its own right: each recording was sampled at ten-second intervals and every sampled frame was labelled against a fixed scheme recording the active surface, the panels open, the sidebar contents, the per-semester ECTS read off the lane headers, the Dashboard state, and any transient banner text. This produced 2{,}179 labelled frames across the twenty-two scenario runs. The labels describe what is on screen rather than what it means, which is what makes them delegable: the author labelled 300 of the frames by hand, and the full set was labelled by a vision-language model run locally against the same scheme, so that no recording left the author's machine. The agreement between the two label sets on the 300 frames both labelled is reported with the scheme in Section~\ref{app:eval-stagelog}, and it is the check on which every count in this chapter rests. Interpretation was not delegated: the codes, the severities and the completion audit are the author's.
+
+Two independent records were produced per participant and then triangulated (Figure~\ref{fig:eval-pipeline}). The first is the think-aloud and interview transcript. The second is the screen recording, treated as an artefact in its own right: each recording was sampled at ten-second intervals and every sampled frame was labelled against a fixed scheme recording the active surface, the panels open, the sidebar contents, the per-semester ECTS read off the lane headers, the Dashboard state, and any transient banner text. This produced 2{,}179 labelled frames across the twenty-two scenario runs. The labels describe what is on screen rather than what it means, and that is what makes them delegable. The frames were coded by a vision-language model, \emph{Qwen3-VL-30B-A3B-Instruct}, run on the author's own machine under a written coding protocol reproduced in Section~\ref{app:eval-stagelog}; no recording left that machine. The protocol is deliberately strict: one row per frame, never skipped, merged or interpolated; a value not legible in the present frame recorded as unreadable rather than carried forward from a neighbour; every frame opened at native resolution with small regions enlarged before a digit is transcribed; and every plan-state number reconciled against the Dashboard's own total before it is accepted. To check the result, the author coded three complete runs by hand against the same scheme, without reference to the model's output; the agreement between the two, and where they part, is reported in Section~\ref{app:eval-agreement}. Interpretation was not delegated: the codes, the severities and the completion audit are the author's.
 
 The two records exist because each of the three lenses of Research Question~3 needs its own. The planning process is read from the path through the interface, which surfaces were occupied, for how long and in what order, rather than from elapsed time, because one duration can cover a direct route to a complete plan or a long sequence of rejected placements; durations are reported only where they describe the shape of a session. The plans produced are read from whether they satisfy their brief and from the share of placements the tool rejected, not from whether students believed they had finished. Satisfaction, in the sense of ISO~9241-11~\cite{iso9241_11}, is read from the questionnaires and interviews, where self-report is the appropriate instrument. The records are needed together: Section~\ref{sec:eval-effectiveness} shows that every participant reported success in a condition in which no plan met its brief, so self-report alone would have answered the effectiveness half of the question incorrectly.
 
@@ -150,7 +167,7 @@ Frequencies are written as \emph{n}/\emph{m}, where \emph{m} is the number of pa
 \section{Findings}
 \label{sec:eval-results}
 
-The findings are reported in the order of the guiding questions. The planning process comes first (G1), then what the graph changes in it (G2), then the surfaces around the loop and what worked and where it breaks, then the questionnaires and the plans produced against self-report (G3), and a summary that Chapter~\ref{chap:discussion} takes up. Frequencies are written as in Section~\ref{sec:eval-codebook}.
+The findings are reported in the order of the guiding questions: the planning process first, then what the graph changes in it, then the surfaces around the loop, including the Recommendation Panel, and what worked and where the loop breaks, then the questionnaires and the plans produced against self-report, and a summary that Chapter~\ref{chap:discussion} takes up. Frequencies are written as in Section~\ref{sec:eval-codebook}.
 
 \subsection{The Planning Loop}
 \label{sec:eval-process}

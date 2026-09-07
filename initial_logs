@@ -1,0 +1,370 @@
+# Stage log — P1 scenario A — frames a_0000..a_0560
+
+t | surface | sidebar | panels | activity | lanes | ects | miss | warn | focus | banner | flags | notes
+0 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:38; Bearbeitungszeit 00:00; "SCHRITT 4 VON 11"; "Szenario A: Cybersecurity (Vergleichsgruppe)"; text-selection highlight over "bitte an das laute Denken!"; tile: Philipp
+10 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:48; Bearbeitungszeit 00:00; selection highlight on chip "Bachelorstudienanfänger (1. Semester)" and on "Planen Sie die Semester"
+20 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:58; Bearbeitungszeit 00:00; selection highlight on "interaktiven Studienplaner"; cursor ~(380,357) in BEDINGUNGEN block
+30 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:08; Bearbeitungszeit 00:00; cursor at "ein Praktikumssemester" line
+40 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:18; Bearbeitungszeit 00:00; selection highlight on "Praktikumssemester"; cursor ~(430,488)
+50 | guide | n/a | - | read | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:28; Bearbeitungszeit 00:00; selection highlight over "Geschätzte Dauer / Denken Sie daran" box in URL card
+60 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:38; Bearbeitungszeit 00:05 (task clock has started)
+70 | guide | n/a | - | click~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:48; Bearbeitungszeit 00:15; cursor moved far left ~(230,262); planner about to open
+80 | load | n/a | - | idle~ | - | - | - | - | - | - | FAC | "Loading..." centred on white page; video tile switches to "Moritz Schumacher"
+90 | load | n/a | - | idle~ | - | - | - | - | - | - | - | "Loading..."; tile: Philipp
+100 | load | n/a | - | idle~ | - | - | - | - | - | - | - | "Loading..."; cursor ~(675,184)
+110 | load | n/a | - | idle~ | - | - | - | - | - | - | - | "Loading..."
+120 | load | n/a | - | idle~ | - | - | - | - | - | - | - | "Loading..."
+130 | auth | n/a | - | read~ | - | - | - | - | - | - | FAC | Sign In card: Username (empty), Password (empty), "Sign In", "Need an account? Sign Up"; tile: Moritz Schumacher
+140 | auth | n/a | - | click~ | - | - | - | - | - | - | FAC | Sign In: Username = "p01a", Password field focused/empty; cursor on Sign In button; tile: Moritz Schumacher
+150 | auth | n/a | - | click~ | - | - | - | - | - | - | FAC | Sign Up card: Username "p01a", Password "••••", checkbox **"Disable Graph View (User Study Persona 1)" = CHECKED**; buttons "Sign Up", "Already have an account? Sign In"; tile: Moritz Schumacher
+160 | auth | cat | modal | read~ | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | "No master courses are planned yet. Do you want to fill the table with the prebuilt master plan?" [Fill with prebuilt plan] [Not now]; tooltip "Please choose whether to fill the planner with a prebuilt plan first!" | FAC,AXIS | Modal "Complete Signup Setup": Name: p01a; Study Program = **Master Software Engineering (066 937)**; Start Semester Winter / 2026; "S1: winter"; [Reset][Save]. Toolbar: Hide Sidebar · Show Recs · Help · Open Dashboard · Profile · Sign Out — **NO "Graph View" button**. Catalog = master categories (Algorithms and Complexity 14, Automation Systems and Mobile Robotics 5, Data Management and Intelligent Systems 11, Distributed and Next Generation Computing 7, Extension 1, Freie Wahlfächer und Transferable Skills 1, High Performance Computing 6, Methods in Computer Science 2, Machine Learning 11, Software Engineering and Programming 11, Societal Impact and Critical Reflections 10, Security and Privacy 10, Diplomarbeit 3, Verification and Automated Reasoning 5). Axis bar: "Horizontal: Semesters (Chronological) | Vertical: no meaning | Edit"; S4/S5 headers occluded by banner
+170 | auth | cat | modal | click | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | same green banner + tooltip | AXIS | Setup modal: Study Program changed to **Bachelor Informatics (033 521)**; new "Focus Area" select appeared = "Select focus area"; Winter / 2026; catalog still master list; tile: Philipp
+180 | auth | cat | modal | click | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | same green banner + tooltip | AXIS | Setup modal: Focus Area = **Cybersecurity**; year field "2026" focused (spinner)
+190 | table | cat | - | unclear~ | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | "No bachelor courses are planned yet. Do you want to fill the table with the prebuilt bachelor plan?" [Fill with prebuilt plan] [Not now]; tooltip "Please choose whether to fill the planner with a prebuilt plan first!" | AXIS | Setup saved; catalog switched to German bachelor categories (Algorithmen und Programmierung 5, Computergraphik und Visual Computing 5, Computersysteme 7, Freie Wahlfächer und Transferable Skills 1, Human-Centered Computing 7, Information Engineering 5, Logik 7, Medizinische Informatik 5, Software Engineering 5, Security 5, Strukturwissenschaften 9, Bachelorarbeit 1, Theoretische Informatik 3); grab-hand cursor ~(199,222); no Graph View button
+200 | table | cat | - | idle~ | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | same banner + tooltip | AXIS | no cursor visible; empty lanes
+210 | table | cat | - | unclear~ | park0.0\|0.0/0.0/0.0/?/? | - | - | - | - | same banner + tooltip | AXIS | grab-hand cursor ~(757,178) over Semester 4 lane
+220 | table | cat | - | click~ | park0.0\|20.0/?/20.0/?/? | - | - | - | - | "Prebuilt bachelor plan applied." AND "Milestone reached: 25% completion (102.0/180.0 ECTS)." | AXIS | Prebuilt plan inserted; "Start Tour?" bubble appears top-right; Semester 2 header occluded by milestone banner, S4/S5 by toolbar/tour bubble
+230 | table | cat | - | zoom/pan~ | park0.0\|20.0/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | - | AXIS | zoomed out; 7 lanes visible (Parking + Sem 1-6); **no Semester 7 lane visible**; "Start Tour?" bubble still shown
+240 | table | cat | - | zoom/pan~ | park0.0\|20.0/19.0/20.0/24.0/? | - | - | - | - | - | AXIS | zoomed in; Sem1 cards: Denkweisen der Informatik, Grundzüge digitaler Systeme, Orientierung Informatik und Wirtschaftsinformatik, Einführung in die Programmierung 1, Mathematisches Arbeiten; drag-ghost/duplicate render on "Denkweisen der Informatik" card
+250 | table | cat | - | read~ | park0.0\|20.0/19.0/20.0/24.0/? | - | - | - | - | - | AXIS | cursor over "Statistik und Wahrscheinlichkeitstheorie" (Sem 3)
+260 | table | cat | - | zoom/pan~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | AXIS | grab-hand cursor ~(627,367); board panned right
+270 | table | cat | modal | click | park?\|20.0/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | - | AXIS | **Profile modal**: Name: p01a; "Disable Graph View (User Study Persona 1)" = CHECKED; Study Program "Bachelor Informatics (033 521)" greyed, "Study program is locked after signup setup."; Focus Area "Cybersecurity"; Start Semester Winter/2026 greyed, "Start semester is locked after initial setup."; Recommendation Preferences — Interests (comma separated) [empty, placeholder "e.g. machine learning, react, robotics"]; Career Direction / Internship Target [empty, placeholder "e.g. Data Scientist, Security Analyst"]; **Max ECTS / semester = 37** (field focused, spinner being clicked); **Max Week-Hours / semester = 50**; **Recommended ECTS = 30**; **Recommended Week-Hours = 40**; buttons "Course availability", ✕, "Save"
+280 | table | cat | - | click~ | park?\|20.0/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | "accepted" | AXIS | Profile closed; small green toast "accepted" centre-top; grab-hand ~(595,531)
+290 | table | cat | modal | click | park0.0\|20.0/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | - | AXIS | Tour overlay step **"1. Explore the Curriculum"** — "Welcome to your Study Planner! Let's start by looking at all available courses. Explore subjects, modules, and stand-alone courses inside the Course Catalog sidebar."; [Skip][Next]; sidebar spotlighted
+300 | table | cat | modal | click | park?\|20.0/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | - | AXIS | Tour step **"6. Recommendations (Show Panel)"** — "Click the Recommendations button here to toggle the smart course suggestions panel."; [Skip][Back][Next]; "Show Recs" button spotlighted
+310 | table | cat | dash,modal | click~ | park0.0\|20.0/19.0/20.0/24.0 | 102.0/180.0 | 4 | 0 | not completed 2/6 | - | AXIS,SWIM | Tour step **"9. Dashboard & Rulechecking"** — "The Dashboard is now open! Monitor your credit progress. Use the 'Planned' and 'Done' tabs to check off specific curriculum requirements as you progress."; Dashboard: Program 033 521, Focus Cybersecurity, Target ECTS 180.0, Planned 102.0, Done 0.0; tab "Planned" active; StEOP Status: completed, Complete in semester: 1, "Planned progress: 20.0 / 16.5 ECTS ( mandatory 8.5/8.5, pool 11.5/8.0)"; Per Exam Subject "Planned 102.0 ECTS across 9 exam subjects"; Per Semester (COLLAPSED, summary only) "Target ~ 30.0 ECTS / semester / **You are under your desired workload in every semester.**"; Est. Week-Hours "No estimated week-hours data yet. Target ~ 40.0 h / week / semester"; Per Category "Total categorized: 102.0 ECTS across 3 categories / Largest category: mandatory (77.0 ECTS)"; Missing Requirements "4 missing requirements."; Warnings "No warnings."; toolbar now reads "Close Dashboard"
+320 | table | cat | dash | read~ | park0.0\|20.0/19.0/20.0/24.0 | 102.0/180.0 | 4 | 0 | not completed 2/6 | - | AXIS,SWIM | tour dismissed; identical dashboard figures; cursor on Target ECTS card; all dash sub-panels collapsed
+330 | table | cat | dash | read~ | park0.0\|20.0/19.0/20.0/24.0 | 102.0/180.0 | 4 | 0 | not completed 2/6 | - | AXIS,SWIM | dashboard scrolled slightly; cursor on Focus Area checklist bar; sub-panels all collapsed
+340 | table | cat | recs | click | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | AXIS | Dashboard closed, Recommendations panel opened ("Hide Recs" now shown). Recs header "Smart suggestions based on your plan."; filter chips: Interests · Similarity · Internships · Other students. Cards (Content similarity): Foundations of System and Application Security (FSAS, VU, 6 ECTS, Breite Wahl (*), not planned); Semistrukturierte Daten (SSD, VU, 6 ECTS, not planned); Einführung in Machine Learning (EML, VU, 6 ECTS, not planned); Logik und Grundlagen der Mathematik (LGM, VO, 4.5 ECTS, not planned)
+350 | table | cat | recs | read~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | AXIS | identical recs list; no cursor visible
+360 | table | cat | recs | click~ | park0.0\|26.0/19.0/20.0/24.0/9.0? | - | - | - | - | - | AXIS | **Sem 1 rises 20.0 → 26.0**; card "Foundations of System and Application Security" now in Semester 1 lane; recs list scrolled (now Verteilte Systeme, Effiziente Algorithmen visible); Sem 5 header clipped at viewport edge
+370 | table | cat | recs | scroll | park0.0\|26.0/19.0/20.0/24.0/9.0? | - | - | - | - | - | AXIS | recs scrolled further: Einführung in wissensbasierte Systeme, Computersysteme (CS, VU, 6 ECTS, Enge Wahl (+)), Attacks and Defenses in Computer Security (ADCS, UE, 6 ECTS), Echtzeitsysteme (RTS, VO, 3 ECTS, "Other students — Recommended by peers: 68% of students with a similar exam choice"), Bio-Medical Visualization and Visual Analytics (BMVVA)
+380 | table | cat | recs | click | park0.0\|32.0/19.0/20.0/24.0/9.0? | - | - | - | - | "accepted" | AXIS | **Sem 1 rises 26.0 → 32.0**; "Einführung in Machine Learning" card now in Semester 1 and marked "planned" in recs; toast "accepted"
+390 | table | cat | recs | zoom/pan~ | park0.0\|32.0/19.0/20.0/24.0 | - | - | - | - | - | AXIS | board panned up (headers at y≈128); Sem 1 holds 8 cards incl. Foundations of System and Application Security + Einführung in Machine Learning
+400 | table | cat | recs | scroll | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | AXIS | Course Catalog scrolled; **Security** category expanded: Einführung in Security (EHS, VU, 6 ECTS, Mandatory, planned), Daten- und Informatikrecht (DIR, VO, 6 ECTS, Enge Wahl (+), not planned), Attacks and Defenses in Computer Security (ADCS, UE, 6 ECTS, Breite Wahl (*), not planned), Foundations of System and Application Security (FSAS, VU, 6 ECTS, Breite Wahl (*), planned), Privacy-Enhancing Technologies (PET, VU, 6 ECTS, Breite Wahl (*), not planned)
+410 | table | cat | recs | read~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | FAC,AXIS | identical to t=400; cursor on "Attacks and Defenses in Computer Security"; tile: Moritz Schumacher
+420 | table | cat | recs | read~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | AXIS | no cursor visible; tile: Philipp
+430 | table | cat | recs | read~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | AXIS | unchanged
+440 | table | cat | recs | scroll~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | AXIS | Course Catalog scrolled back to top (all 13 categories collapsed)
+450 | table | cat | recs | read~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | FAC,AXIS | unchanged; tile: Moritz Schumacher
+460 | table | cat | recs | unclear~ | park-\|32.0/19.0/20.0/24.0/9? | - | - | - | - | - | FAC,AXIS | cursor ~(464,452) over "Mathematisches Arbeiten" card in Sem 1; tile: Moritz Schumacher
+470 | table | cat | recs,dash | click | park-\|32.0/19.0/20.0 | 114.0/180.0 | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | Dashboard reopened. Planned ECTS **114.0**, Done 0.0, Target 180.0; StEOP unchanged (20.0/16.5); Focus Area checklist **3/6**; Per Exam Subject "Planned 114.0 ECTS across 9 exam subjects"; Per Semester (COLLAPSED) "Target ~ 30.0 ECTS / semester / **At least one semester is above your desired workload.**"; Per Category "Total categorized: 114.0 ECTS across 4 categories / Largest category: mandatory (77.0 ECTS)"; Missing "4 missing requirements."; **Warnings "1 warning."**; all sub-panels collapsed
+480 | table | cat | recs,dash | read~ | park-\|32.0/19.0/20.0 | 114.0/180.0 | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | dashboard scrolled slightly; cursor on Focus Area "Status: not completed"; sub-panels still collapsed
+490 | table | cat | recs,dash{mods} | click | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | "Required modules" EXPANDED (button now "Collapse"): **"Choose 2 from 4 modules (2 done)"** ✓Betriebssysteme, ✓Einführung in Artificial Intelligence, ○Logic and Reasoning in Computer Science, ○Verteilte Systeme; **"Choose 4 from 5 modules (1 done)"** ○Attacks and Defenses in Computer Security, ✓Foundations of System and Application Security, ○Introduction to Cryptography, ○Privacy-Enhancing Technologies, ○Programm- und Systemverifikation. Target-ECTS card scrolled out of view; 114.0 read from Per Exam Subject / Per Category lines
+500 | table | cat | recs,dash{mods} | read~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | catalog scrolled to Security block again; cursor over "Attacks and Defenses in Computer Security" line in dashboard checklist
+510 | table | cat | recs,dash{mods} | scroll~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | catalog scrolled to top (Course Catalog header visible, Security expanded lower down); cursor on "Foundations of System and Application Security" checklist line
+520 | table | cat | recs,dash{mods} | read~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | catalog back at Security block; no cursor visible
+530 | table | cat | recs,dash{mods} | read~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | grab-hand cursor ~(708,381) on canvas/dashboard border
+540 | table | cat | recs,dash{mods} | read~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | AXIS,SWIM | cursor on "Choose 4 from 5 modules (1 done)" heading
+550 | table | cat | recs,dash{mods} | scroll | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | FAC,AXIS,SWIM | catalog scrolled to **Software Engineering** expanded: Software Engineering (SE, VU, 6 ECTS, Enge Wahl (+), not planned), Software Engineering Projekt (SEP, PR, 6 ECTS, Enge Wahl (+), not planned), Verteilte Systeme (VS, VU, 6 ECTS, Enge Wahl (+), not planned), Programm- und Systemverifikation (PSV, VU, 6 ECTS, Enge Wahl (+), not planned), Software-Qualitätssicherung (SQS, VU, 6 ECTS, Enge Wahl (+), not planned); Security below; tile: Moritz Schumacher
+560 | table | cat | recs,dash{mods} | idle~ | park-\|32.0/19.0/20.0 | 114.0/? | 4 | 1 | not completed 3/6 | - | FAC,AXIS,SWIM | identical to t=550, no cursor visible; tile: Moritz Schumacher
+
+## ANOMALIES
+
+1. **t=220 — milestone banner contradicts its own numbers.** Verbatim: `Milestone reached: 25% completion (102.0/180.0 ECTS).` 102.0/180.0 = 56.7 %, not 25 %. Displayed simultaneously with `Prebuilt bachelor plan applied.`
+
+2. **t=160 — Setup modal default contradicts the scenario persona.** The brief's persona is `Bachelorstudienanfänger (1. Semester)`, but `Complete Signup Setup` opened pre-filled with `Master Software Engineering (066 937)`, the catalog was loaded with the master category tree, and the planner banner offered `No master courses are planned yet. Do you want to fill the table with the prebuilt master plan?`. Corrected by the participant at t=170 to `Bachelor Informatics (033 521)`.
+
+3. **t=160–210 — blocking tooltip vs. non-modal banner.** Purple tooltip `Please choose whether to fill the planner with a prebuilt plan first!` is shown while the Setup modal is still open and the choice (`Fill with prebuilt plan` / `Not now`) sits behind that modal, partially occluded by the toolbar.
+
+4. **t=270 — Profile `Max ECTS / semester` set to 37, outside the brief's band.** Brief allows `27 bis 33 ECTS`; `Recommended ECTS` in the same modal is `30`. Value 37 was captured mid-edit (field focused, spinner under cursor), so it may not be the committed value — only this one frame shows the Profile modal (t=260 and t=280 do not), so the open/close and the final saved value are unobserved.
+
+5. **Plan-state / dashboard-state changes across the range** (no decreases observed): Planned ECTS 102.0 (t=310–330) → 114.0 (t=470–560); Per Category 3 → 4 categories; Focus checklist 2/6 → 3/6; Warnings `No warnings.` → `1 warning.`; Missing Requirements constant at `4 missing requirements.` The Per Semester verdict flips from `You are under your desired workload in every semester.` (t=310–330) to `At least one semester is above your desired workload.` (t=470–560) — consistent with Sem 1 reaching 32.0 vs. Recommended ECTS 30.
+
+6. **Warning count is never explained in this range.** `1 warning.` appears from t=470 but the Warnings collapsible is never expanded, so the warning text is not observable.
+
+7. **Semester 7 lane never observed.** The brief asks for `Semester 1 bis 7`; the widest view (t=230) shows only Parking Stage + Semester 1–6. Whether a Semester 7 lane exists further right is not determinable from these frames.
+
+8. **Facilitator presence (FAC proxy).** Active-speaker tile switches to `Moritz Schumacher` at t=80, 130, 140, 150, 160, 410, 450, 460, 550, 560 — i.e. the entire sign-up/setup sequence (t=130–160) was accompanied by facilitator speech. Not corroborated against a transcript.
+
+9. **Participant-ID mismatch (recording metadata, not UI).** Task framing says Participant P01; the video tile name is `Philipp`; app account is `p01a`. Recorded, not resolved.
+
+10. **Frames I could not label confidently / illegible fields:**
+ - t=220: Semester 2 lane ECTS occluded by the green milestone banner → `?` (a value consistent with 19.0 is visible but not readable to certainty).
+ - t=160–210: Semester 4 / Semester 5 lane headers occluded by the green banner and toolbar → `?`.
+ - t=240, 250: Semester 5 header clipped at the viewport edge → `?`.
+ - t=360, 370: Semester 5 header clipped mid-value; reads `9.0` but the decimal is partly cut → `9.0?`.
+ - t=400–460: Semester 5 header clipped after the leading digit → `9?`.
+ - t=270, 280, 300: Parking Stage header clipped at left edge → `park?`.
+ - t=490–560: the Target/Planned/Done ECTS cards are scrolled out of the dashboard viewport; `114.0` was taken from the "Per Exam Subject" and "Per Category" summary lines, Target not visible → `114.0/?`.
+ - Activity labels at t=190, 200, 210, 420, 430, 460, 560 are weakly supported (no cursor, no drag ghost, no transient) — marked `~`.
+
+11. **SWIM flag caveat.** In every frame where the dashboard is open, the **Per Semester (ECTS)** collapsible is *collapsed* (button reads `Expand`); only its two-line summary is rendered. SWIM is flagged on those frames because the workload verdict text is legible, but the panel itself is never opened in this range.
+
+12. **Graph View availability.** No `Graph View` button (or any graph/canvas toggle) exists in the toolbar in any frame; toolbar is constantly `Hide Sidebar · Show/Hide Recs · Help · Open/Close Dashboard · Profile · Sign Out`. `Disable Graph View (User Study Persona 1)` is CHECKED at Sign Up (t=150) and still CHECKED in Profile (t=270). Graph View is unavailable throughout — consistent with the brief's `Vergleichsgruppe (Ohne Graph)` condition.
+
+13. **Axis configuration never changed.** Bottom bar reads `Horizontal: Semesters (Chronological) | Vertical: no meaning | Edit` on every table frame from t=160 to t=560; no AXIS edit observed.
+
+## BRIEF
+
+Transcribed verbatim from the guide tab (frames t=0–70; text identical across all seven frames):
+
+> **SCHRITT 4 VON 11** · Bearbeitungszeit: 00:00
+> **Szenario A: Cybersecurity (Vergleichsgruppe)**
+> Lesen Sie die Persona-Details und bearbeiten Sie die Planungsaufgabe. Denken Sie bitte an das laute Denken!
+>
+> ⚠ **Bedingung: Vergleichsgruppe (Ohne Graph)**
+> In diesem Szenario planen Sie ohne den visuellen Graphen.
+>
+> 👤 **PERSONA-HINTERGRUND**
+> Bachelorstudienanfänger (1. Semester)
+> Ziel: Spezialisierung in Cybersecurity
+>
+> 🎯 **PLANUNGSAUFGABE**
+> Planen Sie die Semester **1 bis 7** im interaktiven Studienplaner.
+>
+> ⚠ **BEDINGUNGEN & RESTRIKTIONEN**
+> Ziel sind **ca. 30 ECTS** pro Semester (erlaubter Bereich: **27 bis 33 ECTS**).
+> Planen Sie genau **ein Praktikumssemester** ein. Dieses darf maximal **9 ECTS** umfassen.
+>
+> ⚡ **STRATEGIEHINWEIS**
+> Folgen Sie Ihren Interessen und wählen Sie Module aus den Bereichen Sicherheit & Netzwerke.
+> Bleiben Sie in verwandten Themenbereichen, um eine tiefgehende Spezialisierung aufzubauen.
+>
+> 🖥 **Studienplaner-URL**
+> Klicken Sie unten, um den Studienplaner zu öffnen. Lassen Sie diesen Leitfaden im Hintergrund offen. Wenn Sie fertig sind, kehren Sie hierher zurück.
+> URL: `https://studyplanner-moritz-schumach…` (truncated in the input field; full URL not visible)
+> [Studienplaner öffnen ↗]
+> ⏳ **Geschätzte Dauer:** ~15 Minuten
+> 💡 **Denken Sie daran:** Bitte während der gesamten Aufgabe laut denken!
+>
+> Navigation buttons: [← Zurück] [Zum Fragebogen →]
+> Left rail: Study Planner / NUTZERSTUDIE · EN | **DE** · GESAMTZEIT 00:06:38 → 00:07:48 · steps 1 Demografie, 2 Einverständnis, 3 Video-Einführung, **4 Szenario A**, 5 Szenario A F, 6 Szenario B, 7 Szenario B F, 8 Freie Erkundung, 9 Gesamtbewertung, 10 Interview, 11 Speichern · footer "Diplomarbeit-Studie · Moritz Schumacher"
+
+**Key parameters, explicitly:** 7 semesters (Semester 1 bis 7) · target ca. 30 ECTS per semester · ALLOWED BAND 27 bis 33 ECTS · exactly one Praktikumssemester (internship semester), max 9 ECTS · condition: comparison group, no graph. No exchange-semester requirement is stated in this brief.
+
+**Setup / Profile values observed (planner app):** Setup modal (t=160–180) — Name p01a; Study Program: default `Master Software Engineering (066 937)` → changed to `Bachelor Informatics (033 521)`; Focus Area `Cybersecurity`; Start Semester `Winter` `2026` (`S1: winter`). Profile modal (t=270) — `Disable Graph View (User Study Persona 1)` CHECKED; `Max ECTS / semester` **37** (mid-edit); `Max Week-Hours / semester` **50**; `Recommended ECTS` **30**; `Recommended Week-Hours` **40**; Interests and Career Direction / Internship Target both empty.
+
+
+
+# Stage log — P2 scenario A — frames a_0000..a_0650
+
+t | surface | sidebar | panels | activity | lanes | ects | miss | warn | focus | banner | flags | notes
+0000 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | SCHRITT 4 VON 11; "Szenario A: Cybersecurity (Vergleichsgruppe)"; GESAMTZEIT 00:05:51; Bearbeitungszeit: 00:00; guide lang toggle EN|DE with DE active; tile "Moritz Schumacher"
+0010 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:01; Bearbeitungszeit 00:00; cursor under "Studienplaner öffnen ↗"
+0020 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME,FAC | GESAMTZEIT 00:06:11; Bearbeitungszeit 00:00; tile switches to "Christoph Wittauer"
+0030 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME,FAC | GESAMTZEIT 00:06:21; Bearbeitungszeit 00:00; tile Christoph Wittauer
+0040 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME,FAC | GESAMTZEIT 00:06:31; Bearbeitungszeit 00:00; tile Christoph Wittauer
+0050 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:41; Bearbeitungszeit 00:03 (counter starts); tile Moritz Schumacher; cursor on timer pill
+0060 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:06:51; Bearbeitungszeit 00:13
+0070 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME,FAC | GESAMTZEIT 00:07:01; Bearbeitungszeit 00:23; tile Christoph Wittauer; cursor on Persona chips
+0080 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:11; Bearbeitungszeit 00:33
+0090 | guide | n/a | - | click~ | - | - | - | - | - | - | GTIME | GESAMTZEIT 00:07:21; Bearbeitungszeit 00:43; cursor at timer
+0100 | auth | n/a | - | click~ | - | - | - | - | - | - | - | "Sign In"; Username `p02a` (focused, autofill glyph); Password empty; buttons "Sign In", "Need an account? Sign Up"
+0110 | auth | n/a | - | click~ | - | - | - | - | - | - | - | "Sign Up"; Username `p02a`; Password `••••`; checkbox "Disable Graph View (User Study Persona 1)" = UNCHECKED; buttons "Sign Up", "Already have an account? Sign In"
+0120 | auth | n/a | - | click~ | - | - | - | - | - | - | - | "Sign In"; Username `p02a`; Password `••••`
+0130 | auth | cat | modal | click~ | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | - | Modal "Complete Signup Setup": Name p02a; Study Program "Bachelor Informatics (033 521)" (focused); Focus Area "Select focus area"; Start Semester Winter / "202?" (mid-typing), "S1: winter"; Reset / Save. 2nd banner: "No master courses are planned yet. / Do you want to fill the table with the prebuilt master plan?" [Fill with prebuilt plan] [Not now]. Sidebar = English master categories (Algorithms and Complexity 14 Module, Automation Systems and Mobile Robotics 5, Data Management and Intelligent Systems 11, Distributed and Next Generation Computing 7, Extension 1, Freie Wahlfächer und Transferable Skills 1, High Performance Computing 6, Methods in Computer Science 2, Machine Learning 11, Software Engineering and Programming 11, Societal Impact and Critical Reflections 10, Security and Privacy 10, Diplomarbeit 3, Verification and Automated Reasoning 8). Toolbar: Hide Sidebar / Show Recs / Help / Open Dashboard / Profile / Sign Out — NO Graph View button. Bottom bar "↔ Horizontal: Semesters (Chronological) | ↕ Vertical: no meaning  Edit"
+0140 | auth | cat | modal | click~ | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | AXIS | Same modal; Focus Area now "Cybersecurity"; Start Semester Winter / 2026; axis unchanged (Horizontal: Semesters (Chronological); Vertical: no meaning)
+0150 | table | cat | - | idle~ | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | - | Modal gone. Banner now "No bachelor courses are planned yet. / Do you want to fill the table with the prebuilt bachelor plan?" [Fill with prebuilt plan] [Not now]. Sidebar switched to German bachelor categories (Algorithmen und Programmierung 6, Computergraphik und Visual Computing 9, Computersysteme 7, Freie Wahlfächer und Transferable Skills 1, Human-Centered Computing 7, Information Engineering 5, Logik 7, Medizinische Informatik 5, Software Engineering 5, Security 5, Strukturwissenschaften 9, Bachelorarbeit 1, Theoretische Informatik 3). No Graph View button
+0160 | table | cat | - | zoom/pan~ | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | - | grab cursor on canvas
+0170 | table | cat | - | unclear | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | - | cursor in sidebar text
+0180 | table | cat | - | unclear | park0.0\|0.0/? | - | - | - | - | Please choose whether to fill the planner with a prebuilt plan first! | - | cursor over canvas
+0190 | table | cat | - | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Prebuilt plan applied. "Start Tour! ⚡" button now under toolbar. S1: Denkweisen der Informatik, Grundzüge digitaler Systeme, Orientierung Informatik und Wirtschaftsinformatik, Einführung in die Programmierung 1, Mathematisches Arbeiten
+0200 | table | cat | - | search | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Search box contains "1."; category list empty (0 results)
+0210 | table | cat | - | scroll | park-\|-/19.0/20.0/24.0/9.0/10.0 | - | - | - | - | - | - | Sidebar scrolled; "Bachelorarbeit 1 Module" expanded (Bachelorarbeit 2 Kurse 11 ECTS planned; Bachelorarbeit für Informatik und Wirtschaftsinformatik 10 ECTS planned; Wissenschaftliches Arbeiten). Semester 6 = 10.0 ECTS
+0220 | table | cat | - | zoom/pan~ | park0.0\|20.0/19.0/20.0/24.0 | - | - | - | - | - | - | canvas zoomed out slightly
+0230 | table | cat | - | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | "Computergraphik und Visual Computing" expanded (Einführung in Visual Computing, Audio and Video Production, Computermusik, Creative Media Production, Grundlagen der Computer Vision, Grundlagen der Computergraphik, Grundlagen der Visualisierung, Multimedia … all "not planned")
+0240 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | sidebar scrolled within same expanded category
+0250 | table | cat | - | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | all categories collapsed again
+0260 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | expanded lists visible: Einführung in die Programmierung 1 (5.5 ECTS Mandatory planned), Einführung in die Programmierung 2 (4 ECTS planned), Programmierparadigmen (6 ECTS planned); Computersysteme 1 Module → Grundzüge digitaler Systeme; Human-Centered Computing 1 Module → Denkweisen der Informatik (2 Kurse, 6.5 ECTS)
+0270 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Security 1 Module → Einführung in Security (6 ECTS planned); Strukturwissenschaften 4 Module → Algebra und Diskrete Mathematik (3 Kurse), Analysis
+0280 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Analysis / Mathematisches Arbeiten / Statistik und Wahrscheinlichkeitstheorie sub-courses; Theoretische Informatik 1 Module
+0290 | table | cat | modal | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Small add-to-lane popup open on a "Statistik und Wahrscheinlichkeitstheorie" card: "Parking Stage / Semester 1 / Semester 3 / Semester 5 / + Add next semester / Back"
+0300 | table | cat | - | unclear | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | popup closed
+0310 | table | cat | modal | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | same popup reopened: "Parking Stage / Semester 1 / Semester 3 / Semester 5 / + Add next semester / Back"
+0320 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | scrolled up to Security / Strukturwissenschaften
+0330 | table | cat | - | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | all collapsed; search box focused and empty
+0340 | table | cat | - | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | "Human-Centered Computing 7 Module" expanded (Interface und Interaction Design, Access Computing, Design und Fertigung … not planned)
+0350 | table | cat | - | scroll | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | HCC list continues (Menschzentrierte Künstliche Intelligenz, Sozio-technische Systeme, Usability Engineering and Mobile Interaction)
+0360 | table | cat | modal | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Guided tour step "2. Shortlist Courses — Found a course you like? Drag it into the Parking Stage to shortlist it. This lets you collect interesting courses before deciding which semester to take them." Skip / Back / Next
+0370 | table | cat | modal | click~ | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | AXIS | Tour step "5. Layout Semantics & Sorting — Click 'Edit' on this bottom pill to define the vertical ordering meaning (e.g. sort courses inside semester lanes Alphabetically or by ECTS weight dynamically)." Bottom pill "Edit" highlighted; axis still Horizontal: Semesters (Chronological) / Vertical: no meaning
+0380 | table | cat | recs,modal | click~ | park-\|-/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Recommendations panel opened (toolbar now "Hide Recs"); filter chips Interests / Similarity / Internships / Other students; tour step "7. Evidenced Recommendations — The Recommendations Panel is now open! Based on your plan and career interests, it suggests rule-compliant courses, complete with explanations of why each suggestion is recommended."
+0390 | table | cat | dash,modal | read~ | park0.0\|20.0/19.0/? | 102.0/180.0 (Done 0.0) | 4 | 0 (No warnings) | not completed 2/6 | - | SWIM | Planner Dashboard open (toolbar "Close Dashboard"). Program: 033 521  Focus: Cybersecurity. Target ECTS 180.0 / Planned ECTS 102.0 / Done ECTS 0.0. Tabs Planned|Done. StEOP: "Status: completed", "Complete in semester: 1", "Planned progress: 20.0 / 16.5 ECTS ( mandatory 8.5/8.5, pool 11.5/8.0)". Focus Area: "Selected: Cybersecurity", "Status: not completed", "Checklist progress: 2 / 6". Per Exam Subject (ECTS): "Planned 102.0 ECTS across 9 exam subjects". Per Semester (ECTS): "Target = 30.0 ECTS / semester", "You are under your desired workload in every semester." Estimated Week-Hours per Semester: "No estimated week-hours data yet.", "Target = 40.0 h / week / semester". Per Category (ECTS): "Total categorized: 102.0 ECTS across 3 categories", "Largest category: mandatory (77.0 ECTS)". Missing Requirements: "4 missing requirements." Warnings: "No warnings." (Expand greyed). "Last update: 15:10:59". All sub-panels COLLAPSED. Tour step "9. Dashboard & Rulechecking"
+0400 | table | cat | modal | read~ | park-\|-/-/-/24.0/9.0 | - | - | - | - | - | - | PROFILE modal open: Name p02a; checkbox "Disable Graph View (User Study Persona 1)" = CHECKED; Study Program "Bachelor Informatics (033 521)" (greyed, "Study program is locked after signup setup"); Focus Area "Cybersecurity"; Start Semester "Winter" / "2026", "S1: winter" ("Start semester is locked after initial setup"); Recommendation Preferences — Interests (comma separated) placeholder "e.g. machine learning, react, robotics" (EMPTY); Career Direction / Internship Target placeholder "e.g. Data Scientist, Security Analyst" (EMPTY); **Max ECTS / semester = 42**; Max Work-Hours / semester = 50; **Recommended ECTS = 30**; Recommended Week-Hours = 40; buttons "Course availability", "Save". Tour step "11. Profile Settings"
+0410 | table | cat | modal | click~ | park0.0\|-/-/20.0/24.0/9.0 | - | - | - | - | - | - | Profile modal, tour overlay gone. "Max ECTS / semester" field focused with caret, value still **42**; Recommended ECTS 30; Max Work-Hours 50; Recommended Week-Hours 40; Disable Graph View CHECKED
+0420 | table | cat | - | unclear | park0.0\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | accepted | - | Green toast "accepted" top-centre; Profile modal closed; HCC category expanded in sidebar
+0430 | table | cat | recs | scroll | park-\|-/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | Recs panel scrolled: Logik und Grundlagen der Mathematik 4.5 ECTS, Verteilte Systeme 6 ECTS (Enge Wahl (+)), Effiziente Algorithmen, Parallel Computing, Argumentieren und Beweisen — all "not planned", each tagged "Content similarity"
+0440 | table | cat | recs | unclear | park-\|-/19.0/20.0/24.0/9.0 | - | - | - | - | This course is not offered in that semester. | - | Red rejection toast (verbatim above); recs list scrolled back to top (Foundations of System and Application Security, Semistrukturierte Daten, Einführung in Machine Learning, Logik und Grundlagen der Mathematik, Verteilte Systeme)
+0450 | table | cat | recs | read~ | park-\|-/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | toast gone; cursor on "Einführung in Machine Learning" rec card
+0460 | table | cat | recs | drag~ | park0.0\|20.0/25.0/20.0 | - | - | - | - | - | - | "Einführung in Machine Learning" now in Semester 2 (S2 25.0)
+0470 | table | cat | recs | drag~ | park12.0\|20.0/19.0/20.0 | - | - | - | - | - | - | Parking Stage now holds "Einführung in Machine Learning" and "Verteilte Systeme" (12.0); S2 back to 19.0 (DECREASE 25.0→19.0)
+0480 | table | cat | recs | zoom/pan~ | park-\|20.0/19.0/20.0/24.0/9.0 | - | - | - | - | - | - | canvas panned; parking off-viewport
+0490 | table | cat | recs | click~ | park12.0\|20.0/19.0/20.0 | - | - | - | - | - | - | recs scrolled (Numerical Computation, Einführung in wissensbasierte Systeme, Computersysteme, Attacks and Defenses in Computer Security)
+0500 | table | cat | recs,dash{mods} | read~ | park12.0\|? | 102.0/180.0 (Done 0.0) | 4 | - | not completed 2/6 | - | SWIM | Dashboard reopened; "Required modules" EXPANDED: "Choose 2 from 4 modules (2 done)" ✓Betriebssysteme ✓Einführung in Artificial Intelligence ○Logic and Reasoning in Computer Science ○Verteilte Systeme; "Choose 4 from 5 modules (0 done)" ○Attacks and Defenses in Computer Security ○Foundations of System and Application Security ○Introduction to Cryptography ○Privacy-Enhancing Technologies ○Programm- und Systemverifikation. Per Semester: "Target = 30.0 ECTS / semester", "You are under your desired workload in every semester." Per Category: 102.0 across 3 categories; Per Exam Subject 102.0 across 9
+0510 | table | cat | recs,dash{mods} | search | park18.0\|? | 102.0/180.0 (Done 0.0) | 4 | - | not completed 2/6 | - | SWIM | Search "logic" → Logik 1 Module → "Logic and Reasoning in Computer Science 6 ECTS Enge Wahl (+) **parked**"; parking lane now 3 cards (18.0); Required modules still shows ○Logic and Reasoning
+0520 | table | cat | recs,dash{mods} | search | park24.0\|20.0 | 102.0/180.0 (Done 0.0) | 4 | - | not completed 2/6 | accepted | SWIM | Search "attack" → Security 1 Module → "Attacks and Defenses in Computer Security 6 ECTS Breite Wahl (*) **parked**"; parking 4 cards = 24.0; green "accepted" toast
+0530 | table | cat | recs | drag~ | park24.0\|20.0/19.0/20.0/? | - | - | - | - | - | XSTATE | Dashboard closed. "Verteilte Systeme" card now rendered inside Semester 1 lane, but Semester 1 header still reads 20.0 ECTS and Parking Stage still reads 24.0 ECTS with only 3 cards drawn — totals lag the card placement
+0540 | table | cat | recs | drag~ | park18.0\|20.0/25.0/20.0/24.0 | - | - | - | - | - | - | Drag ghost "Einführung in Machine Learning" hovering top of Semester 1; Verteilte Systeme settled in Semester 2 (25.0); parking 18.0
+0550 | table | cat | recs | click~ | park12.0\|26.0/25.0/20.0 | - | - | - | - | - | - | ML now in Semester 1 → S1 26.0; parking 12.0 (Logic and Reasoning + Attacks and Defenses)
+0560 | table | cat | - | drag~ | park12.0\|26.0/25.0/20.0/24.0 | - | - | - | - | - | - | Recs closed (toolbar "Show Recs"); search still "attack"
+0570 | table | cat | dash{mods} | read~ | park12.0\|26.0/25.0 | 114.0/180.0 (Done 0.0) | 4 | - | not completed 2/6 | - | SWIM | Dashboard: Planned 114.0; Required modules "Choose 2 from 4 modules (3 done)" ✓Betriebssysteme ✓Einführung in Artificial Intelligence ○Logic and Reasoning in Computer Science ✓Verteilte Systeme; "Choose 4 from 5 modules (0 done)" unchanged; Per Exam Subject "Planned 114.0 ECTS across 10 exam subjects"; Per Semester "Target = 30.0 ECTS / semester", "You are under your desired workload in every semester."; Per Category "114.0 ECTS across 4 categories, Largest category: mandatory (77.0 ECTS)"; Missing Requirements "4 missing requirements."
+0580 | table | cat | - | drag~ | park?\|26.0/25.0/20.0 | - | - | - | - | - | - | Dashboard closed; Parking header digits ambiguous (reads as 12.0 or 17.0 — recorded `?`); 2 cards in parking (Logic and Reasoning 6 ECTS, Attacks and Defenses 6 ECTS); cursor on the Attacks card
+0590 | table | cat | modal | click~ | park-\|-/25.0/20.0 | - | - | - | - | rejected: semester 2 exceeds max load (31.0 ECTS > 30.0). | - | Red toast verbatim above. PROFILE modal open: Disable Graph View CHECKED; Study Program Bachelor Informatics (033 521) locked; Focus Area Cybersecurity; Winter/2026 locked; Interests EMPTY; Career Direction EMPTY; **Max ECTS / semester = 30** (field focused, caret after "30" — CHANGED from 42 at t=0410); Max Work-Hours / semester = 50; Recommended ECTS = 30; Recommended Week-Hours = 40
+0600 | table | cat | dash{mods} | drag~ | park6.0\|26.0/? | 114.0/180.0 (Done 0.0) | 4 | - | not completed 2/6 | - | SWIM | Dashboard reopened; values identical to t=0570; parking now 6.0 (only "Logic and Reasoning in Computer Science")
+0610 | table | cat | - | drag~ | park6.0\|26.0/31.0/20.0 | - | - | - | - | accepted | - | Green "accepted" toast; "Attacks and Defenses in Computer Security" now in Semester 2 → S2 = 31.0 ECTS; sidebar card status flips "parked"→"planned"
+0620 | table | cat | - | unclear | park6.0\|26.0/31.0/20.0/24.0 | - | - | - | - | - | - | canvas zoomed out; S4 24.0
+0630 | table | cat | - | search | park0.0\|26.0/31.0/26.0/24.0 | - | - | - | - | - | - | "Logic and Reasoning in Computer Science" moved to Semester 3 → S3 26.0, parking 0.0; search box "attack" with caret
+0640 | table | cat | dash{mods} | search | park0.0\|26.0/31.0 | 126.0/180.0 (Done 0.0) | 4 | - | not completed 3/6 | - | SWIM | Search "Pr"; Algorithmen und Programmierung expanded (4 Module). Dashboard: Planned 126.0; Required modules "Choose 2 from 4 modules (4 done)" ✓Betriebssysteme ✓Einführung in AI ✓Logic and Reasoning in Computer Science ✓Verteilte Systeme; "Choose 4 from 5 modules (1 done)" ✓Attacks and Defenses in Computer Security ○Foundations of System and Application Security ○Introduction to Cryptography ○Privacy-Enhancing Technologies ○Programm- und Systemverifikation; Per Exam Subject "126.0 ECTS across 10 exam subjects"; Per Semester "Target = 30.0 ECTS / semester", **"At least one semester is above your desired workload."**; Per Category "126.0 ECTS across 4 categories, Largest category: mandatory (77.0 ECTS)"; Missing Requirements "4 missing requirements."
+0650 | table | cat | dash{mods} | search | park6.0\|26.0/31.0 | 126.0/180.0 (Done 0.0) | 4 | - | not completed 3/6 | - | SWIM | Search "Prog"; "Privacy-Enhancing Technologies" card now in Parking Stage (6.0), status "parked"; dashboard values unchanged from t=0640 incl. "At least one semester is above your desired workload."
+
+## ANOMALIES
+
+1. **Graph-toggle state changes unobserved.** t=0110 (Sign Up) shows "Disable Graph View (User Study Persona 1)" **UNCHECKED**. The first later view of the same setting, t=0400 (Profile), shows it **CHECKED**. No sampled frame captures the change.
+2. **No "Graph View" control exists anywhere.** Across every planner frame (t=0130–0650) the toolbar is exactly: `Hide Sidebar | Show/Hide Recs … Help | Open/Close Dashboard | Profile | Sign Out`. No Graph View / node-link entry point is present, and no `graph` surface occurs in this range. Consistent with the brief's "Vergleichsgruppe (Ohne Graph)".
+3. **Program/level self-contradiction at t=0130–0140.** The open Setup modal reads "Bachelor Informatics (033 521)" while the surface behind it simultaneously shows English **master** categories and the banner "No **master** courses are planned yet. / Do you want to fill the table with the prebuilt **master** plan?". At t=0150 (modal closed) the same banner reads "No **bachelor** courses are planned yet … prebuilt **bachelor** plan?" and the sidebar has swapped to German bachelor categories.
+4. **Add-to-lane popup omits even semesters** (t=0290, t=0310): offers only "Parking Stage / Semester 1 / Semester 3 / Semester 5 / + Add next semester / Back" while Semester 2, 4, 6 lanes exist and are populated on the canvas.
+5. **Verbatim rejection message, t=0440:** `This course is not offered in that semester.`
+6. **Verbatim rejection message, t=0590:** `rejected: semester 2 exceeds max load (31.0 ECTS > 30.0).`
+7. **Rejection immediately contradicted by acceptance (t=0590 → t=0610).** At t=0590 a 31.0-ECTS Semester 2 is rejected against a 30.0 max, and the Profile modal simultaneously shows `Max ECTS / semester = 30`. Twenty seconds later (t=0610) the same placement is confirmed with a green `accepted` toast and Semester 2 renders as **31.0 ECTS** — above the cap that produced the rejection. No frame shows the cap being raised again.
+8. **Max ECTS / semester silently changed 42 → 30** between t=0410 (field focused, value 42) and t=0590 (value 30). `Recommended ECTS` stayed 30, `Max Work-Hours / semester` 50, `Recommended Week-Hours` 40 throughout.
+9. **Stale lane totals (XSTATE), t=0530.** "Verteilte Systeme" is drawn inside the Semester 1 lane while the Semester 1 header still reads 20.0 ECTS and the Parking Stage header still reads 24.0 ECTS against only 3 rendered cards (18.0 ECTS of content).
+10. **Plan-state decreases observed:** Semester 2 25.0 → 19.0 (t=0460→0470); Parking Stage 24.0 → 18.0 → 12.0 (t=0530→0540→0550), 12.0 → 6.0 (t=0580→0600), 6.0 → 0.0 (t=0620→0630).
+11. **Planned ECTS insensitive to the Parking Stage.** Planned ECTS stays 102.0 across t=0390–0520 while the Parking Stage grows 0.0 → 24.0 ECTS; the dashboard gives no indication that parked credits are excluded.
+12. **Dashboard swimlane verdict flips without a warning count change:** "You are under your desired workload in every semester." (t=0390–0600) → "At least one semester is above your desired workload." (t=0640–0650), while `Missing Requirements` stays at "4 missing requirements." throughout and the Warnings row (last seen at t=0500: "No warnings.") is below the fold from t=0570 on.
+13. **Guide timer inconsistency, t=0000–0040:** `Bearbeitungszeit: 00:00` is frozen while `GESAMTZEIT` advances 00:05:51 → 00:06:31; the task timer only starts at t=0050 (00:03).
+14. **Frames I could not label confidently:**
+ - t=0580 — Parking Stage header digits render ambiguously (12.0 vs 17.0); lane content (2 × 6 ECTS cards) does not disambiguate. Recorded `?`.
+ - t=0390, 0500, 0510, 0600 — Semester lane headers to the right of the dashboard are clipped; recorded `?`.
+ - t=0400 — Parking/S1/S2 headers fully occluded by the Profile modal; recorded `-`.
+ - t=0170, 0180, 0300, 0420, 0440, 0620 — no cursor artefact, drag ghost or transient to support an activity call; recorded `unclear` / `~`.
+ - t=0530 — cannot determine whether the frame is mid-drag or a settled state with stale totals; activity marked `drag~` and flagged XSTATE.
+15. **Facilitator-tile proxy (FAC)** fires at t=0020, 0030, 0040, 0070 (tile shows "Christoph Wittauer" rather than "Moritz Schumacher"). The tile alternates between the two names for the rest of the range as well; only the guide-phase frames are flagged, since after t=0100 the alternation is continuous and the proxy loses discriminating value. Corroborate against transcript.
+
+## BRIEF
+
+Transcribed verbatim from the guide tab, t=0000–0090 (language toggle `EN | DE` with **DE** active):
+
+> SCHRITT 4 VON 11 — Bearbeitungszeit: 00:00
+> **Szenario A: Cybersecurity (Vergleichsgruppe)**
+> Lesen Sie die Persona-Details und bearbeiten Sie die Planungsaufgabe. Denken Sie bitte an das laute Denken!
+>
+> ⚠ **Bedingung: Vergleichsgruppe (Ohne Graph)**
+> In diesem Szenario planen Sie ohne die visuellen Graphen.
+>
+> 👤 PERSONA-HINTERGRUND
+> Bachelorstudienanfänger (1. Semester)
+> Ziel: Spezialisierung in Cybersecurity
+>
+> 🎯 PLANUNGSAUFGABE
+> Planen Sie die Semester **1 bis 7** im interaktiven Studienplaner.
+>
+> ⚠ BEDINGUNGEN & RESTRIKTIONEN
+> Ziel sind **ca. 30 ECTS** pro Semester (erlaubter Bereich: **27 bis 33 ECTS**).
+> Planen Sie genau **ein Praktikumssemester** ein. Dieses darf maximal **9 ECTS** umfassen.
+>
+> 💡 STRATEGIEHINWEIS
+> Folgen Sie Ihren Interessen und wählen Sie Module aus den Bereichen Sicherheit & Netzwerke.
+> Bleiben Sie in verwandten Themenbereichen, um eine tiefgehende Spezialisierung aufzubauen.
+>
+> 🖥 **Studienplaner-URL**
+> Klicken Sie unten, um den Studienplaner zu öffnen. Lassen Sie diesen Leitfaden im Hintergrund offen. Wenn Sie fertig sind, kehren Sie hierher zurück.
+> URL: `https://studyplanner-moritz-schumache…` (truncated in field)
+> [ Studienplaner öffnen ↗ ]
+> ⏱ Geschätzte Dauer: ~15 Minuten
+> 🗣 Denken Sie daran: Bitte während der gesamten Aufgabe laut denken!
+>
+> [ ← Zurück ]   [ Zum Fragebogen → ]
+
+Sidebar step list (guide): 1 Demografie · 2 Einverständnis · 3 Video-Einführung · **4 Szenario A** (active) · 5 Szenario A F · 6 Szenario B · 7 Szenario B F · 8 Freie Erkundung · 9 Gesamtbewertung · 10 Interview · 11 Speichern. Footer: "Diplomarbeit-Studie · Moritz Schumacher".
+
+**Summary of the load parameters as stated:** 7 semesters; target ca. 30 ECTS/semester; ALLOWED BAND **27–33 ECTS**; exactly **one** internship semester ("Praktikumssemester"), capped at **max. 9 ECTS**. No exchange-semester ("Auslandssemester") requirement appears anywhere in this range.
+
+**In-app parameters that differ from the brief** (recorded, not reconciled): Profile `Max ECTS / semester` = 42 at t=0400/0410 and 30 at t=0590; `Recommended ECTS` = 30 throughout; dashboard "Per Semester (ECTS): Target = 30.0 ECTS / semester"; dashboard `Target ECTS` = 180.0. The 27–33 allowed band from the brief is not represented by any visible app field.
+
+
+# Stage log — P3 scenario A — frames a_0000..a_0590
+
+t | surface | sidebar | panels | activity | lanes | ects | miss | warn | focus | banner | flags | notes
+0000 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME 00:08:37, FAC | Szenario A brief; "⚠️ Bedingung: Vergleichsgruppe (Ohne Graph)" / "In diesem Szenario planen Sie ohne den visuellen Graphen."; "Ziel sind ca. 30 ECTS pro Semester (erlaubter Bereich: 27 bis 33 ECTS)"; "Planen Sie genau ein Praktikumssemester ein. Dieses darf maximal 9 ECTS umfassen."; tile = Moritz Schumacher
+0010 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME 00:08:47, FAC | same page, cursor mid-text; tile Moritz Schumacher
+0020 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME 00:08:58 | tile switches to MateuszHW (avatar); cursor at "ECTS)"
+0030 | guide | n/a | - | read~ | - | - | - | - | - | - | GTIME 00:09:08 | MateuszHW
+0040 | guide | n/a | - | drag~ | - | - | - | - | - | - | GTIME 00:09:18 | "STRATEGIEHINWEIS" block text-selected (highlighted): "Folgen Sie Ihren Interessen und wählen Sie Module aus den Bereichen Sicherheit & Netzwerke. / Bleiben Sie in verwandten Themenbereichen, um eine tiefgehende Spezialisierung aufzubauen."
+0050 | guide | n/a | - | click~ | - | - | - | - | - | - | GTIME 00:09:28 | cursor on "Studienplaner öffnen ↗" (hover)
+0060 | auth | n/a | - | click~ | - | - | - | - | - | - | - | Sign In page, empty Username/Password; URL bar shows "Übersetzung verfügbar"; tab "Study Planner — Rea..."
+0070 | auth | n/a | - | click~ | - | - | - | - | - | - | FAC | Username "P03A"; password field focused; Safari autofill menu "Passwörter …" / "Neues Passwort vorschlagen"; tile Moritz Schumacher
+0080 | auth | n/a | - | click~ | - | - | - | - | - | - | FAC | password auto-filled (yellow); cursor on "Need an account? Sign Up"
+0090 | auth | cat | modal | read~ | - | - | - | - | - | accepted / "Please choose whether to fill the planner with a prebuilt plan first!" | AXIS, FAC | "Complete Signup Setup": Name P03A, Study Program "Master Software Engineering (066 937)", Start Semester Winter 2026, "S1: winter". Behind: "No master courses are planned yet. Do you want to fill the table with the prebuilt master plan?" [Fill with prebuilt plan] [Not now]. Sidebar = master catalog. Axis bar: "Horizontal: Semesters (Chronological) | Vertical: no meaning  Edit"
+0100 | auth | cat | modal | click~ | - | - | - | - | - | "Please choose whether to fill the planner with a prebuilt plan first!" | AXIS | modal now Study Program "Bachelor Informatics (033 521)", Focus Area "Cybersecurity"; sidebar still master catalog; tile MateuszHW
+0110 | auth | cat | modal | click~ | - | - | - | - | - | "Please choose whether to fill the planner with a prebuilt plan first!" | AXIS, FAC | cursor on Save; tile Moritz Schumacher
+0120 | table | cat | - | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | "Please choose whether to fill the planner with a prebuilt plan first!" | AXIS | modal dismissed; sidebar switched to bachelor catalog (Algorithmen und Programmierung … Security); "No bachelor courses are planned yet. Do you want to fill the table with the prebuilt bachelor plan?" cursor on [Fill with prebuilt plan]; canvas empty; tile MateuszHW
+0130 | table | cat | - | read~ | park?|20.0/19.0/?/24.0/-/-/- | - | - | - | - | - | AXIS | plan populated; purple "Start Tour! ⚡" badge appears; Sem3 header occluded by tour badge; parking header cut off at left edge
+0140 | table | cat | - | read~ | park-|20.0/19.0/20.0/?/-/-/- | - | - | - | - | - | AXIS | Sem4 header occluded by toolbar; cursor over "Grundzüge digitaler Systeme"
+0150 | table | cat | - | scroll~ | park-|20.0/19.0/20.0/?/-/-/- | - | - | - | - | - | AXIS | sidebar list scrolled (now shows Strukturwissenschaften / Bachelorarbeit / Theoretische Informatik)
+0160 | table | cat | - | zoom/pan~ | park-|20.0/19.0/20.0/24.0/-/-/- | - | - | - | - | - | AXIS | lanes re-laid-out/panned; parking collapsed to "Hide" tab
+0170 | table | cat | - | zoom/pan~ | park0.0|20.0/19.0/20.0/24.0/9.0/-/- | - | - | - | - | accepted | AXIS | zoomed out, Semester 5 · 9.0 ECTS now visible
+0180 | table | cat | - | zoom/pan~ | park-|20.0/19.0/20.0/24.0/9.0/-/- | - | - | - | - | accepted | AXIS, FAC | tile Moritz Schumacher; Sem4 header partly under tour badge
+0190 | table | cat | - | zoom/pan~ | park-|20.0/19.0/20.0/24.0/9.0/-/- | - | - | - | - | - | AXIS | grab cursor on canvas; tile MateuszHW
+0200 | table | cat | - | zoom/pan~ | park-|-/-/20.0/24.0/9.0/10.0/- | - | - | - | - | - | AXIS | panned right; Semester 6 · 10.0 ECTS visible (contains "Bachelorarbeit für Informatik und Wirtschaftsinformatik", 15 ECTS)
+0210 | table | cat | modal | click~ | park-|20.0/19.0/20.0/24.0/9.0/-/- | - | - | - | - | - | AXIS | guided tour started — "1. Explore the Curriculum" ("Welcome to your Study Planner! Let's start by looking at all available courses…"), Skip/Next
+0220 | table | cat | modal | click~ | park-|?/19.0/20.0/24.0/9.0/-/- | - | - | - | - | - | AXIS | tour "6. Recommendations (Show Panel)" — "Click the Recommendations button here to toggle the smart course suggestions panel."; Sem1 header occluded by modal
+0230 | table | cat | dash{-}, modal | click~ | park-|20.0/19.0/20.0/-/-/-/- | 102.0 | - | - | notcompl 2/6 | - | AXIS, SWIM(collapsed) | tour "9. Dashboard & Rulechecking"; Dashboard opens: Program 033 521, Focus Cybersecurity, Target ECTS 180.0, Planned 102.0, Done 0.0; StEOP Status completed, Complete in semester 1, Planned progress 20.0 / 16.5 ECTS (mandatory 8.5/8.5, pool 11.5/8.0); Per Exam Subject "Planned 102.0 ECTS across 9 exam subjects"; Per Semester "Target ~ 30.0 ECTS / semester" + "You are under your desired workload in every semester." (panel itself collapsed)
+0240 | table | cat | modal | click~ | park-|20.0/-/-/24.0/9.0/-/- | - | - | - | - | - | AXIS | tour "11. Profile Settings" + Profile modal: checkbox CHECKED "Disable Graph View (User Study Persona 1)"; Bachelor Informatics (033 521); Focus Cybersecurity; Winter 2026; Max ECTS/semester 42; Max Week-Hours/semester 50; Recommended ECTS 30; Recommended Week-Hours 40; dashboard closed
+0250 | table | cat | dash{-} | click~ | park-|20.0/19.0/20.0/-/-/-/- | 102.0 | - | - | notcompl 2/6 | - | AXIS, SWIM(collapsed) | tour finished; cursor on "Close Dashboard"; axis bar now renders wrapped on two lines (same text)
+0260 | table | cat | dash{-} | zoom/pan~ | park-|-/-/-/-/-/-/- | 102.0 | - | - | notcompl 2/6 | - | AXIS, SWIM(collapsed) | canvas scrolled up so no lane headers visible; loading spinner on canvas
+0270 | table | cat | dash{-} | search | park-|-/-/-/-/-/-/- | 102.0 | - | - | notcompl 2/6 | - | SWIM(collapsed) | catalog search "security" → group "Security 3 Module": Einführung in Security (planned), Attacks and Defenses in Computer Security (not planned), Foundations of System and Application Security (not planned)
+0280 | table | cat | dash{-} | click~ | park-|-/19.0/20.0/24.0/9.0/-/- | 102.0 | - | - | notcompl 2/6 | accepted | AXIS, SWIM(collapsed) | ADCS and FSAS now show "parked" in sidebar; Planned ECTS unchanged at 102.0
+0290 | table | cat | dash{-} | scroll~ | park12.0|20.0/19.0/?/-/-/-/- | 102.0 | 4 | ? | notcompl 2/6 | - | AXIS, SWIM(collapsed) | Parking Stage · 12.0 ECTS (FSAS + ADCS); dashboard scrolled: Estimated Week-Hours "No estimated week-hours data yet." / "Target ~ 40.0 h / week / semester"; Per Category "Total categorized: 102.0 ECTS across 3 categories, Largest category: mandatory (77.0 ECTS)"; "4 missing requirements."; Warnings header visible, Expand greyed, count not shown
+0300 | table | cat | dash{-} | zoom/pan~ | park12.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | notcompl 2/6 | - | AXIS, SWIM(collapsed), FAC | "Warnings — No warnings."; tile Moritz Schumacher
+0310 | table | cat | dash{mods} | click~ | park12.0|20.0/19.0/-/-/-/-/- | 102.0 | - | - | notcompl 2/6 | - | AXIS | Required modules EXPANDED: "Choose 2 from 4 modules (2 done)" ✓Betriebssysteme ✓Einführung in Artificial Intelligence ○Logic and Reasoning in Computer Science ○Verteilte Systeme; "Choose 4 from 5 modules (0 done)" ○Attacks and Defenses in Computer Security ○Foundations of System and Application Security ○Introduction to Cryptography ○Privacy-Enhancing Technologies ○Programm- und Systemverifikation
+0320 | table | cat | dash{mods} | read~ | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | - | - | notcompl 2/6 | accepted | AXIS | search "verte" → "Software Engineering 1 Module": Verteilte Systeme, 6 ECTS, Enge Wahl (+), "parked"; Parking Stage 12.0 → 18.0 ECTS; Planned ECTS still 102.0
+0330 | table | cat | dash{mods,exam} | click~ | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | - | - | - | - | AXIS | Per Exam Subject EXPANDED: Algorithmen und Programmierung 23.5 planned (23.0%), Bachelorarbeit 13.0 (12.7%), Computersysteme 12.0 (11.8%), Human-Centered Computing 6.5 (6.4%), Information Engineering 6.0 (5.9%), Logik 6.0 (5.9%)
+0340 | table | cat | dash{mods} | scroll~ | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed) | Per Exam collapsed again; "No warnings."
+0350 | table | cat | dash{miss} | search | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed) | Missing Requirements EXPANDED: "Wahlmodule der engen Wahl (+): mindestens 7 Module nötig, aktuell 2." / "Transferable Skills: mindestens 6.0 ECTS nötig (aktuell 0.0)." / "Gesamtumfang: 78.0 ECTS fehlen bis 180." / "Vertiefung (Cybersecurity): es fehlen 4 Module aus: Attacks and Defenses in Computer Security, Foundations of System and Application Security, Introduction to Cryptography, Privacy-Enhancing Technologies, Programm- und Systemverifikation"; catalog search box = "d"
+0360 | table | cat | dash{miss} | scroll~ | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed) | search box cleared; sidebar module list scrolled
+0370 | table | cat | dash{miss} | search | park18.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed), FAC | search "trans" → "Freie Wahlfächer und Transferable Skills", 9 ECTS, Breite Wahl (*), "not planned"; tile Moritz Schumacher
+0380 | table | cat | dash{miss} | click~ | park27.0|20.0/19.0/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed) | FWTS parked → Parking Stage 18.0 → 27.0 ECTS; ECTS stepper dropdown open on the parked FWTS card showing options 6 / 7 / 8 / 9; sidebar entry now "parked"; Missing Requirements still lists "Transferable Skills: mindestens 6.0 ECTS nötig (aktuell 0.0)."
+0390 | table | cat | dash{miss} | zoom/pan~ | park27.0|-/-/-/-/-/-/- | 102.0 | 4 | 0 | - | - | AXIS, SWIM(collapsed) | canvas panned; Parking Stage · 27.0 ECTS with 4 cards (FSAS, ADCS, VS, FWTS)
+0400 | table | cat | - | drag~ | park27.0|20.0/?/20.0/24.0/-/-/- | - | - | - | - | This course is not offered in that semester. | AXIS | RED rejection banner; dashboard now CLOSED (button reads "Open Dashboard"); Sem2 header hidden behind banner
+0410 | table | cat | - | zoom/pan~ | park27.0|20.0/19.0/20.0/24.0/-/-/- | - | - | - | - | This course is not offered in that semester. | AXIS | banner persists; grab cursor on canvas
+0420 | table | cat | - | idle~ | park27.0|20.0/19.0/20.0/24.0/-/-/- | - | - | - | - | - | AXIS | banner cleared; view unchanged from 0410
+0430 | table | cat | - | zoom/pan~ | park27.0|20.0/19.0/20.0/24.0/?/-/- | - | - | - | - | - | AXIS | panned; 5th lane partly visible ("Semest…"), header cut
+0440 | table | cat | - | read~ | park27.0|20.0/19.0/20.0/24.0/?/-/- | - | - | - | - | - | AXIS | cursor over "Algorithmen und Datenstrukturen" card in Sem3
+0450 | table | cat | - | idle~ | park27.0|20.0/19.0/20.0/24.0/?/-/- | - | - | - | - | - | AXIS, FAC | loading spinner at top of canvas; tile Moritz Schumacher
+0460 | table | cat | - | drag~ | park27.0|20.0/19.0/20.0/24.0/?/-/- | - | - | - | - | - | AXIS | module group container in Sem1 highlighted green ("Denkweisen der Informatik / 3 courses · 6.5 ECTS · Mandatory · planned") — drag/hover ghost
+0470 | table | cat | - | zoom/pan~ | park-|-/-/-/-/-/-/- | - | - | - | - | - | AXIS | strongly zoomed in; parking cards FSAS / ADCS / VS / FWTS (ECTS field = 9) legible; no lane headers in view
+0480 | table | cat | modal | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | accepted | AXIS | card context menu on "Verteilte Systeme": "Parking Stage" (greyed) / Semester 2 / Semester 4 / Semester 6 / "+ Add next semester" / "Back"
+0490 | table | cat | modal | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | - | AXIS | same menu still open
+0500 | table | cat | - | idle~ | park-|-/-/-/-/-/-/- | - | - | - | - | accepted | AXIS, FAC | menu closed; cursor on VS card info button; tile Moritz Schumacher
+0510 | table | cat | modal | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | accepted | AXIS | same context menu re-opened, cursor on "Semester 4"
+0520 | table | cat | - | zoom/pan~ | park-|-/-/-/-/-/-/- | - | - | - | - | - | AXIS | Verteilte Systeme now sits at the bottom of the Semester-4 column (below Einführung in Security); no headers in view
+0530 | table | cat | - | zoom/pan~ | park21.0|20.0/19.0/20.0/30.0/-/-/- | - | - | - | - | - | AXIS | zoomed out: Parking 27.0 → 21.0, Sem4 24.0 → 30.0 ECTS
+0540 | table | cat | - | drag~ | park21.0|20.0/19.0/20.0/30.0/-/-/- | - | - | - | - | accepted | AXIS | grab cursor on "Foundations of System and Application Security" card in parking
+0550 | table | cat | - | drag~ | park15.0|20.0/19.0/26.0/30.0/-/-/- | - | - | - | - | - | AXIS | FSAS moved parking → Semester 3; Parking 21.0 → 15.0, Sem3 20.0 → 26.0
+0560 | table | cat | - | zoom/pan~ | park15.0|20.0/19.0/26.0/?/-/-/- | - | - | - | - | accepted | AXIS | panned; Sem4 header occluded by toolbar
+0570 | table | cat | modal | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | - | AXIS | zoomed far in; context menu on "Attacks and Defenses in Computer Security" (ADCS | UE): Parking Stage (greyed) / Semester 2 / Semester 4 / Semester 6 / "+ Add next semester" / "Back", cursor on "Semester 2"
+0580 | table | cat | - | zoom/pan~ | park9.0|20.0/25.0/26.0/30.0/9.0/-/- | - | - | - | - | accepted | AXIS | ADCS moved to Semester 2; Parking 15.0 → 9.0, Sem2 19.0 → 25.0; Sem5 · 9.0 ECTS visible again
+0590 | table | cat | - | click~ | park-|-/-/-/-/-/-/- | - | - | - | - | - | AXIS | scrolled up, no lane headers; FWTS card now sits in the Semester-1 column (last card) with its ECTS stepper under the cursor; parking column empty in view
+
+## ANOMALIES
+
+**Error / rejection messages**
+- t=0400 and t=0410: red banner **"This course is not offered in that semester."** — a drop was rejected. The banner gives no indication of *which* course or *which* semester(s) would be valid, and the parking-stage total (27.0) is unchanged across 0390→0400→0410→0420, so the rejected item silently returned to its origin.
+
+**Plan state visibly decreasing**
+- Parking Stage ECTS decreases repeatedly as cards are moved out: 27.0 (0390–0520) → 21.0 (0530) → 15.0 (0550) → 9.0 (0580). Each decrease is matched by a rise in a semester lane (Sem4 24.0→30.0 at 0530; Sem3 20.0→26.0 at 0550; Sem2 19.0→25.0 at 0580), so these are moves, not losses.
+- t=0560: Semester 3 reads 26.0 ECTS while at 0530 it read 20.0 — no decrease, but note Sem 4 header is unreadable at 0560, so no cross-check of the total is possible from that frame.
+- No frame shows the dashboard "Planned ECTS" decreasing; it is pinned at **102.0** in every frame where it is legible (0230–0390), including across three parking additions (12.0→18.0→27.0). This is consistent with parked ≠ planned, but it means the participant's visible progress indicator did not move at all for ~160 s of activity.
+
+**UI contradicting itself / stale status**
+- t=0380: the card "Freie Wahlfächer und Transferable Skills" (9 ECTS) is parked and its total is counted into Parking Stage (27.0 ECTS), yet Missing Requirements simultaneously still reads **"Transferable Skills: mindestens 6.0 ECTS nötig (aktuell 0.0)."** The two panels describe the same object with different states in the same frame. Same contradiction persists at 0390.
+- t=0090–0110: the setup modal is still open and unsaved, but the canvas behind it already shows the "accepted" toast (0090) and a prebuilt-plan prompt for the **master** programme ("No master courses are planned yet… prebuilt master plan?") together with a **master** course catalog, while the modal's programme field is being changed to *Bachelor Informatics (033 521)*. At 0120 the same prompt has silently switched to the bachelor wording. Programme state is therefore shown in two places at once, disagreeing at 0100–0110.
+- Per Semester (ECTS) is **collapsed in every dashboard frame (0230–0390)** — its "Expand" button is never clicked — yet its summary line *"You are under your desired workload in every semester."* renders anyway. Flagged as `SWIM(collapsed)` rather than `SWIM`, because the taxonomy's SWIM definition requires the panel to be open. Note this makes the taxonomy's SWIM criterion ambiguous for P03-A.
+- Warnings panel at t=0290 shows the header with a **greyed-out "Expand"** and no count; at 0300 the same panel renders "No warnings." No warning count is ever displayed as a number.
+
+**AXIS**
+- The axis bar reads **"↔ Horizontal: Semesters (Chronological)  |  ↕ Vertical: no meaning  Edit"** in *every* legible table frame from t=0090 to t=0590. **No axis change occurred in this 0–590 s window.** (Between 0230 and 0350 it re-flows onto two lines because the dashboard narrows the canvas — a layout change, not a value change.) This contradicts the taxonomy's note that P03 changed Vertical to "Alphabetical (A-Z)" between t=300 and t=900; if that change happened, it is not in frames 0000–0590.
+
+**Frames I could not confidently label**
+- t=0130: parking-lane header truncated at the viewport edge (reads only "…0.0 ECTS") → `park?`; Semester 3 header occluded by the "Start Tour! ⚡" badge → `?`.
+- t=0140, 0150: Semester 4 header occluded by the toolbar ("Profile"/"Sign Out") → `?`.
+- t=0220: Semester 1 header occluded by the tour modal → `?`.
+- t=0400: Semester 2 header hidden behind the red error banner → `?`.
+- t=0430, 0440, 0450: fifth lane present but header cut off at the right edge → `?`.
+- t=0560: Semester 4 header occluded by the toolbar → `?`.
+- t=0290: Warnings count not rendered → `?`.
+- Activity for t=0300 and t=0320 is genuinely ambiguous: the canvas/dashboard changed between samples but the cursor at the sampled instant is a neutral grab/hover, so the causal action falls between frames. Both marked `~`.
+- t=0060 is labelled `auth`, but the URL bar shows "Übersetzung verfügbar" rather than a URL and the page is mid-load; the surface call is confident, the activity is not.
+
+**FAC (facilitator proxy)**
+- Video tile alternates between **"Moritz Schumacher"** (live camera) and **"MateuszHW"** (static avatar). Taking Moritz Schumacher as the facilitator, active-speaker switches occur at t=0000–0010, 0070–0090, 0110, 0180, 0300, 0370, 0450, 0500 (8 episodes in 590 s). This is a proxy only and must be corroborated against the transcript — note the guide app's own footer reads "Diplomarbeit-Studie - Moritz Schumacher", which is what identifies him as the study author rather than the participant.
