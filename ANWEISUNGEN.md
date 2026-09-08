@@ -582,6 +582,18 @@ Section 8.1.4 said "Three of the eleven also took part in the formative study; t
 
 - **Vessey 1991**, *Decision Sciences* 22(2), 219–240 (publisher page 403; abstract and TLDR via Semantic Scholar, proposition via `is.theorizeit.org/wiki/Cognitive_fit_theory` quoting the paper). The claim §9.2 makes, that a representation aids performance when it matches the task, is the paper's central proposition ("matching representation to tasks leads to the use of similar problem-solving processes, and hence the formulation of a consistent mental representation"). Conventional attribution; no page cited.
 
+### Appendix A.3 (Feature specifications), consistency check 2026-09-08
+
+Moritz asked for the full list to be checked against the codebook, the requirements and the uses in the thesis. Every check below was run mechanically over the sources, not read by eye; all passed, so the specifications are left as they stand.
+
+- **Themes.** The 13 features cite 51 distinct themes. The codebook holds 64, of which exactly 51 are marked *carried forward* and 13 *excluded* or *methodological artefact*. The cited set and the carried-forward set are identical, in both directions: no feature cites an excluded theme, and no carried-forward theme is left unused.
+- **Verbatim quotes.** 67 quoted fragments of four words or more appear in the feature descriptions. Every one occurs verbatim in the generated codebook table.
+- **Quote attribution.** 56 quote-to-theme attributions were checked against the theme each excerpt actually sits under in the codebook. All correct (one apparent mismatch in FEATURE-003 was a parsing artefact of the `(\enquote{...}, T31)` form, not an error in the text).
+- **Requirement counts.** The requirement lists sum to 55, matching Chapter~4 and Chapter~9. The Traceability Matrix's Reqs column matches every feature's own list.
+- **Requirement citations.** 53 citations of the form `Feature~\ref{feat:NNN}, Req.~N` across the chapters; every number exists in the feature it names.
+- **One error found, outside A.3:** the Traceability Matrix listed FEATURE-011 as cited in the Design chapter's introduction. It is cited in *Visual Design of Curriculum Elements*; every other row's Design sections match a scan of `chapters/design.tex`. Fixed with A.4.
+- **One claim corrected in A.3's own text:** the introduction said requirements are cited from the Design, Implementation, Evaluation and Discussion chapters. Evaluation and Discussion cite none (Discussion's only citation went with the cut of Section 8.4), so it now names Design and Implementation.
+
 ### Chapter 8 (Discussion), sources opened 2026-09-08
 
 - **Parasuraman and Riley 1997**, *Human Factors* 39(2), 230–253, DOI `10.1518/001872097778543886` (publisher abstract opened). New entry `parasuraman1997humans`. The chapter attributes to it exactly the abstract's own sentences: "Misuse refers to over reliance on automation, which can result in failures of monitoring or decision biases" and that "the saliency of automation state indicators" is among the factors affecting the monitoring of automation. No page cited; abstract only.
