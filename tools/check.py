@@ -203,6 +203,20 @@ def main():
     LANGUAGE = [
         ('hedge or intensifier', r'\b(actually|really|quite|obviously|simply|truly|indeed|very|extremely|highly)\b'),
         ('vague quantifier (give the number)', r'\b(a number of|numerous|a lot of|a variety of)\b'),
+        # Added 2026-09-08 on Moritz's note: the discussion chapter had drifted
+        # into absolutist and judgmental wording ("drove the entire planning
+        # process", "functioned strictly as a query surface", "fatally omits").
+        # None of it is a claim the evidence carries, and all of it reads as
+        # advocacy rather than report. Two rules, kept separate so the message
+        # says which problem it is. "exactly", "precisely", "identical" and
+        # "consistently" are deliberately not listed: each has a precise
+        # technical use in this thesis (exactly one rule set, identical
+        # questionnaire, consistently across participants) that the rule
+        # could not tell apart from the rhetorical use.
+        ('absolutist qualifier (state the scope)',
+         r'\b(entire(?:ly)?|strictly|solely|purely|wholly|utterly|invariably|inherently|fundamentally|universally|systematically|perfectly)\b'),
+        ('judgmental or promotional wording',
+         r'\b(fatal(?:ly)?|severe(?:ly)?|crucial(?:ly)?|critical(?:ly)?|dramatic(?:ally)?|striking(?:ly)?|remarkable|impressive|excellent|superior|seamless(?:ly)?|effortless(?:ly)?|elegant(?:ly)?|powerful|robust(?:ly)?|valuable|compelling|sabotage[sd]?|flawed|erroneous(?:ly)?|atypical|holistic)\b'),
         ('conversational verb', r'\b(figure out|come up with|deal with|end up|turn out|get around|leave it to|bring up)\b'),
         ('overclaiming verb', r'\b(prove[sd]?|demonstrates? that|shows conclusively|confirms that)\b'),
         ('filler hedge', r'(leaves a clear gap|in spirit|a large and varied|it is worth noting|it should be noted|needless to say)'),
