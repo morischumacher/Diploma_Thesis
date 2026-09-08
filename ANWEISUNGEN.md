@@ -582,6 +582,13 @@ Section 8.1.4 said "Three of the eleven also took part in the formative study; t
 
 - **Vessey 1991**, *Decision Sciences* 22(2), 219–240 (publisher page 403; abstract and TLDR via Semantic Scholar, proposition via `is.theorizeit.org/wiki/Cognitive_fit_theory` quoting the paper). The claim §9.2 makes, that a representation aids performance when it matches the task, is the paper's central proposition ("matching representation to tasks leads to the use of similar problem-solving processes, and hence the formulation of a consistent mental representation"). Conventional attribution; no page cited.
 
+### Chapter 8 (Discussion), sources opened 2026-09-08
+
+- **Parasuraman and Riley 1997**, *Human Factors* 39(2), 230–253, DOI `10.1518/001872097778543886` (publisher abstract opened). New entry `parasuraman1997humans`. The chapter attributes to it exactly the abstract's own sentences: "Misuse refers to over reliance on automation, which can result in failures of monitoring or decision biases" and that "the saliency of automation state indicators" is among the factors affecting the monitoring of automation. No page cited; abstract only.
+- **Bodily and Verbert 2017** (project PDF, §8.2.5 and §3.1): 93 articles after inclusion; "Only 17 percent of articles (N = 16)" had both a recommendations component and a feedback or visualization component; "Future systems should address both what to tell the students to do in recommendations and why students should act on the information in text feedback or visualizations." The chapter quotes these figures and paraphrases the call.
+- **Caulfield 2013**: not re-opened; the discussion uses only the characterisation already verified for Chapter 3 (the retention result read as an outcome the analysis had not established).
+- **Vessey 1991**: the spatial-versus-symbolic distinction (graphs serve tasks of perceiving relationships, tables serve tasks of extracting discrete values, a mismatch costs a transformation) was checked against the account in Padilla et al. 2018, *Cognitive Research: Principles and Implications* (PMC6091269), not against the paywalled original. The chapter states the theory at that level and cites Vessey only.
+
 ### Chapter 7 (Implementation), code check 2026-09-05/06
 
 Every claim below was read from `main` of `hypridplanner` (commit c00ef4f, then 3136fe1), not from its documentation. The full write-up is `context/code/hypridplanner-analysis.md`; this is the list of what the chapter now asserts on that basis, so the next pass need not re-open the files.
