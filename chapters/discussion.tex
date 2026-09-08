@@ -79,8 +79,8 @@ Each implication below is a general rule for a planning interface of this kind, 
 \section{Capabilities the Evaluation Asked For}
 \label{sec:disc-unmet}
 
-The specification of Section~\ref{chap:from-themes-to-requirements} was derived before the tool existed; the evaluation is the first time students asked for things while using it. Because the analysis was made from two records per participant, it yields not only problems but a specific inventory of what students asked for and did not have. Table~\ref{tab:unmet} lists the requests that recurred across participants; the full catalogue, with the verbatim request and the surface each belongs to, is in Section~\ref{app:eval-unmet}. These are not requirements left unmet from Section~\ref{chap:from-themes-to-requirements}: with the exception of the reduced-load semester, none was in the specification, and they are the specification's extension by observation. They are also a development agenda, and Chapter~\ref{chap:implementation} (Section~\ref{sec:impl-post-study}) records which have been implemented since the study.
-\TDrev{Align this list with what is implemented before submission}{Moritz, 2026-09-06: the capabilities the evaluation asked for are to be implemented before submission. When they are, this table should mark the implemented ones, and the ticked column of Table~\ref{tab:problems} in Chapter~\ref{chap:evaluation} and Section~\ref{sec:impl-post-study} in Chapter~\ref{chap:implementation} must say the same thing, since most rows here are the requested side of a problem listed there (for example the term indicator, E-P29; the enforced band, E-P26 and E-P35; the parking readout, E-P38; per-lane load inside the graph, E-P47, which Moritz has put on the list to implement). Settle the implementation list first, then tick all three places from it.}
+The specification of Section~\ref{chap:from-themes-to-requirements} was derived before the tool existed; the evaluation is the first time students asked for things while using it. Because the analysis was made from two records per participant, it yields not only problems but a specific inventory of what students asked for and did not have. Table~\ref{tab:unmet} lists the requests that recurred across participants; the full catalogue, with the verbatim request and the surface each belongs to, is in Section~\ref{app:eval-unmet}. These are not requirements left unmet from Section~\ref{chap:from-themes-to-requirements}: with the exception of the reduced-load semester, none was in the specification, and they are the specification's extension by observation. Nor are they a second list of the problems in Table~\ref{tab:problems}; they are the same record read from the other side. Twenty-four of the twenty-seven capabilities are the requested form of one or more problems in the register, and the last column of Table~\ref{tab:unmet} gives the correspondence; three are requests with no problem behind them, and four problems in Table~\ref{tab:problems} have no capability counterpart because they are defects to remove rather than functions to add (E-P11, E-P14, E-P27, E-P53). The counts differ where the two records count different things: a problem's frequency is the participants for whom it was evidenced, a capability's the participants who asked for it or visibly lacked it. The list is also a development agenda, and Chapter~\ref{chap:implementation} (Section~\ref{sec:impl-post-study}) records which have been implemented since the study.
+\TDrev{Tick this table from the implementation list once it is settled}{Moritz, 2026-09-06, re-scoped 2026-09-08: the correspondence to Table~\ref{tab:problems} is now in the table itself, so once the implementation list is settled (see the note in Chapter~\ref{chap:evaluation}, Section~\ref{sec:eval-summary}) the implemented rows here, the ticked column there and Section~\ref{sec:impl-post-study} can be marked from one list.}
 
 Two entries warrant comment. The first is the reduced-load semester. Both scenarios mandated one, every participant had to produce one, and no participant could designate one: the tool has no semester-level type or cap, so the constraint was satisfied, or not, entirely in the student's head and was never confirmed. This is the requirement whose absence propagated furthest, since it also explains the completion failure discussed above.
 
@@ -89,29 +89,30 @@ The second is prerequisite visibility, and it is not a capability the system lac
 \begin{table}[htpb]
     \centering
     \small
-    \begin{tabular}{p{7.6cm}cp{3.2cm}}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{@{}>{\raggedright\arraybackslash}p{6.0cm}c>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{3.0cm}@{}}
         \toprule
-        Requested capability & Participants & Surface \\
+        Requested capability & Participants & Surface & Problems it resolves \\
         \midrule
-        Category, obligation, and ECTS filters in the table and catalogue & 11/11 & catalogue sidebar \\
-        An explicit internship or exchange semester, with confirmation & 11/11 & semester lane, Dashboard \\
-        A workload band with both ends enforced & 11/11 & profile, rule engine \\
-        A winter or summer indicator on each semester lane & 11/11 & lane header \\
-        Semester lanes and per-lane load visible in Graph View & 10/10 & graph canvas \\
-        Feedback that parked credits are not counted & 10/11 & Parking Stage \\
-        A discoverable control for adding a semester & 10/11 & board-level control \\
-        The Parking Stage visible from inside the graph & 9/11 & graph canvas \\
-        Requirement entries linked to the courses that satisfy them & 8/11 & Dashboard checklist \\
-        Valid target semesters marked before the drop, not after & 8/11 & drag interaction \\
-        A glanceable statement of what is still outstanding & 7/11 & Dashboard \\
-        Warnings readable without an expand, with a reason & 6/11 & Dashboard \\
-        Rejection banners that state the reason and the alternatives & 6/11 & drop-rejection toast \\
-        An ECTS to week-hours equivalence & 4/11 & Dashboard \\
-        An in-tool glossary for curriculum terminology & 4/11 & catalogue, Dashboard \\
-        Visible recommended-ordering information & 4/11 & table and graph \\
+        Category, obligation, and ECTS filters in the table and catalogue & 11/11 & catalogue sidebar & E-P04, E-P56 \\
+        An explicit internship or exchange semester, with confirmation & 11/11 & semester lane, Dashboard & E-P25, E-P34 \\
+        A workload band with both ends enforced & 11/11 & profile, rule engine & E-P26, E-P32, E-P35, E-P57 \\
+        A winter or summer indicator on each semester lane & 11/11 & lane header & E-P29, E-P55 \\
+        Semester lanes and per-lane load visible in Graph View & 10/10 & graph canvas & E-P47 \\
+        Feedback that parked credits are not counted & 10/11 & Parking Stage & E-P38 \\
+        A discoverable control for adding a semester & 10/11 & board-level control & E-P17, E-P51, E-P67 \\
+        The Parking Stage visible from inside the graph & 9/11 & graph canvas & E-P37 \\
+        Requirement entries linked to the courses that satisfy them & 8/11 & Dashboard checklist & E-P58 \\
+        Valid target semesters marked before the drop, not after & 8/11 & drag interaction & E-P05 \\
+        A glanceable statement of what is still outstanding & 7/11 & Dashboard & E-P02, E-P03, E-P10 \\
+        Warnings readable without an expand, with a reason & 6/11 & Dashboard & E-P10 \\
+        Rejection banners that state the reason and the alternatives & 6/11 & drop-rejection toast & E-P05, E-P50, E-P54 \\
+        An ECTS to week-hours equivalence & 4/11 & Dashboard & E-P33, E-P61 \\
+        An in-tool glossary for curriculum terminology & 4/11 & catalogue, Dashboard & E-P01, E-P28 \\
+        Visible recommended-ordering information & 4/11 & table and graph & E-P44 \\
         \bottomrule
     \end{tabular}
-    \caption{The most frequently evidenced of the twenty-seven capabilities participants requested or visibly lacked, by number of participants. A denominator below eleven marks a capability that could not be decided for every participant. The full catalogue is in Section~\ref{app:eval-unmet}.}
+    \caption{The most frequently evidenced of the twenty-seven capabilities participants requested or visibly lacked, by number of participants, with the problem codes of Table~\ref{tab:problems} and the full register each would resolve. A denominator below eleven marks a capability that could not be decided for every participant. The full catalogue is in Section~\ref{app:eval-unmet}.}
     \label{tab:unmet}
 \end{table}
 
