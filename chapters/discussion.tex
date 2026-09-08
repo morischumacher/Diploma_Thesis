@@ -1,6 +1,6 @@
 \label{chap:discussion}
 
-Chapter~\ref{chap:evaluation} reported participant behaviour and feedback regarding the evaluated artefact. This chapter abstracts from these individual sessions to evaluate the underlying design principles and connect the findings to existing literature. Specifically, it examines the validity of the initial design assumptions, articulates the implications for hybrid planning interfaces, and situates the results within the prior work reviewed in Chapter~\ref{chap:related-work}. It subsequently catalogues the requested system capabilities and delineates the methodological limitations bounding the findings. The formal answers to the research questions and directions for future work are reserved for Chapter~\ref{chap:conclusion}. 
+Chapter~\ref{chap:evaluation} reported participant behaviour and feedback regarding the evaluated artefact. This chapter abstracts from these individual sessions to evaluate the underlying design principles and connect the findings to existing literature. Specifically, it examines the validity of the initial design assumptions, articulates the implications for hybrid planning interfaces, and situates the results within the prior work reviewed in Chapter~\ref{chap:related-work}. It then delineates the methodological limitations bounding the findings. The formal answers to the research questions and directions for future work are reserved for Chapter~\ref{chap:conclusion}. 
 
 Throughout, this chapter explicitly distinguishes between what the study \emph{establishes} (descriptive results empirically grounded in the recordings) and what it \emph{suggests} (exploratory hypotheses generated for future validation). To the author's knowledge, no prior literature reports how students plan with a hybrid graph-and-table interface at the process level; the systems closest to this artefact were evaluated solely for user reception rather than operational use~\cite{trippel_developing_2025}. Because this study maps new behavioural territory, the chapter is structured as an exploratory foundation.
 
@@ -74,47 +74,9 @@ Each implication below is a general rule for a planning interface of this kind, 
     \item \textbf{Count what is staged.} A holding area is necessary for a two-view plan, but a total that silently excludes it is a wrong total. Parked credits should be visible in every readout that a student reads as completion, either counted separately or flagged as uncounted (E-P38, 10/11).
     \item \textbf{Make status glanceable.} Requirement status behind collapsible panels produced repeated expand-and-collapse round trips, and in four sessions the warnings panel was never opened at all while its counter climbed to five. A warning nobody opens is not a warning.
     \item \textbf{Give a rule-checker safe defaults, not just configurable ones.} Where thresholds are user-supplied, the tool should either derive them from the programme or state plainly which value it is checking against, so that an unconfigured checker does not silently validate against the wrong band, and it should treat a stated range as a range rather than as a single ceiling.
+    \item \textbf{Show ordering where the choice is made, not as a verdict afterwards.} The engine can enforce ordering wherever the curriculum states it and had almost nothing to enforce; what four participants asked for was ordering information on the lane or node where a course is about to be placed (E-P44). A constraint the engine checks is a matter of correctness and can come after the fact; knowledge a student needs while choosing is a matter of timing and has to be in the view where the choice is made.
     \item \textbf{Serve both the recommendation route and the checklist-plus-filter route.} Reasoned recommendations help the student without a curriculum model; the confident student reaches for the explicit checklist and a filterable catalogue. Both should be first-class.
 \end{itemize}
-
-\section{Capabilities the Evaluation Asked For}
-\label{sec:disc-unmet}
-
-The specification of Section~\ref{chap:from-themes-to-requirements} was derived before the tool existed; the evaluation is the first time students asked for things while using it. Because the analysis was made from two records per participant, it yields not only problems but a specific inventory of what students asked for and did not have. Table~\ref{tab:unmet} lists the requests that recurred across participants; the full catalogue, with the verbatim request and the surface each belongs to, is in Section~\ref{app:eval-unmet}. These are not requirements left unmet from Section~\ref{chap:from-themes-to-requirements}: with the exception of the reduced-load semester, none was in the specification, and they are the specification's extension by observation. They are also a development agenda, and Chapter~\ref{chap:implementation} (Section~\ref{sec:impl-post-study}) records which have been implemented since the study.
-\TDrev{Align this list with what is implemented before submission}{Moritz, 2026-09-06: the capabilities the evaluation asked for are to be implemented before submission. When they are, this table should mark the implemented ones, and the ticked column of Table~\ref{tab:problems} in Chapter~\ref{chap:evaluation} and Section~\ref{sec:impl-post-study} in Chapter~\ref{chap:implementation} must say the same thing, since most rows here are the requested side of a problem listed there (for example the term indicator, E-P29; the enforced band, E-P26 and E-P35; the parking readout, E-P38; per-lane load inside the graph, E-P47, which Moritz has put on the list to implement). Settle the implementation list first, then tick all three places from it.}
-
-Two entries warrant comment. The first is the reduced-load semester. Both scenarios mandated one, every participant had to produce one, and no participant could designate one: the tool has no semester-level type or cap, so the constraint was satisfied, or not, entirely in the student's head and was never confirmed. This is the requirement whose absence propagated furthest, since it also explains the completion failure discussed above.
-
-The second is prerequisite visibility, and it is not a capability the system lacked. The Compliance Engine can enforce ordering wherever the curriculum states it: it rejects the Master's two enforced pairs, reports the Bachelor's two as advisories, and the Dashboard carries the message. What the curricula give it to enforce is almost nothing, which is why one such advisory fired across twenty-two runs and why the graph's prerequisite overlay drew two edges. What four participants asked for is of a different kind (E-P44). They did not ask for stricter enforcement, which would have had nothing more to enforce; they asked for ordering information at the moment of decision, on the lane or the node where a course is about to be placed, rather than a verdict after the plan has changed. The distinction is between a constraint the engine can check and knowledge a student needs while choosing. The first is a matter of correctness and can be delivered after the fact; the second is a matter of timing and has to be present before it, in the view where the choice is made. The soft-dependency edge layer built after the study draws the curriculum's expected-knowledge notes beside the fixed pairs (Chapter~\ref{chap:implementation}, Section~\ref{sec:impl-prereq-edges}) and was not part of the evaluated system.
-
-\begin{table}[htpb]
-    \centering
-    \small
-    \begin{tabular}{p{7.6cm}cp{3.2cm}}
-        \toprule
-        Requested capability & Participants & Surface \\
-        \midrule
-        Category, obligation, and ECTS filters in the table and catalogue & 11/11 & catalogue sidebar \\
-        An explicit internship or exchange semester, with confirmation & 11/11 & semester lane, Dashboard \\
-        A workload band with both ends enforced & 11/11 & profile, rule engine \\
-        A winter or summer indicator on each semester lane & 11/11 & lane header \\
-        Semester lanes and per-lane load visible in Graph View & 10/10 & graph canvas \\
-        Feedback that parked credits are not counted & 10/11 & Parking Stage \\
-        A discoverable control for adding a semester & 10/11 & board-level control \\
-        The Parking Stage visible from inside the graph & 9/11 & graph canvas \\
-        Requirement entries linked to the courses that satisfy them & 8/11 & Dashboard checklist \\
-        Valid target semesters marked before the drop, not after & 8/11 & drag interaction \\
-        A glanceable statement of what is still outstanding & 7/11 & Dashboard \\
-        Warnings readable without an expand, with a reason & 6/11 & Dashboard \\
-        Rejection banners that state the reason and the alternatives & 6/11 & drop-rejection toast \\
-        An ECTS to week-hours equivalence & 4/11 & Dashboard \\
-        An in-tool glossary for curriculum terminology & 4/11 & catalogue, Dashboard \\
-        Visible recommended-ordering information & 4/11 & table and graph \\
-        \bottomrule
-    \end{tabular}
-    \caption{The most frequently evidenced of the twenty-seven capabilities participants requested or visibly lacked, by number of participants. A denominator below eleven marks a capability that could not be decided for every participant. The full catalogue is in Section~\ref{app:eval-unmet}.}
-    \label{tab:unmet}
-\end{table}
 
 \section{Relation to Prior Work}
 \label{sec:disc-related}
