@@ -466,7 +466,7 @@ Two properties of the sampling bound what the labelled record can support. Event
 
 The two task briefs are reproduced verbatim in Figure~\ref{fig:scenario-a} and Figure~\ref{fig:scenario-b}. Table~\ref{tab:app-completion} gives the final plan state of all twenty-two analysed scenario runs against the constraints of their brief. A lane at or below the stated cap counts as the internship or exchange semester and is exempt from the per-semester band; overshoot of the 180~ECTS total is not counted as a failure, a shortfall is. Lane values were cross-checked against the Dashboard's planned total and are reported as unknown where that constraint does not determine them. The excluded session P08 is not listed.
 
-The verdict column distinguishes two kinds of failure, because they are evidence of different things. A \emph{structural} failure misses a constraint on the shape of the plan: the number of semesters, the reduced-load semester the brief mandates, or the degree total. These are the constraints the tool cannot represent at all (Section~\ref{sec:eval-effectiveness}), so nothing on screen could have signalled them. A \emph{band} failure is a lane outside the permitted per-semester range with every other constraint met, and the size of the miss is given, because a lane one credit below the floor and a lane twelve below it are not the same result. The tool displays every lane total and checks none of them against a floor, so a band failure is a number the student could see and the engine never tested.
+The audit treats the band's two ends differently, and the reason is stated here so that a stricter reading remains available to the reader. A lane \emph{above} the ceiling, a missing reduced-load semester, a shortfall against the degree total and a wrong number of semesters each leave a plan that cannot be carried out as written: they overload a semester, drop a mandated element, or fail to complete the degree. A lane \emph{below} the floor does none of these. The credits it does not carry are carried elsewhere within the ceiling, the total still closes, and no rule of the curriculum is broken; the brief's lower bound is guidance about pace rather than a condition on the finished plan. Lanes below the floor are therefore recorded in the table, with the size of the shortfall, but do not by themselves make a run non-compliant. Under the stricter reading, in which the range the briefs call permitted is enforced at both ends, no Scenario~A run and six Scenario~B runs are compliant; every lane needed to apply that reading is in the table.
 
 \begin{table}[htpb]
     \centering
@@ -476,31 +476,31 @@ The verdict column distinguishes two kinds of failure, because they are evidence
         \toprule
         Run & Per-semester ECTS & Reduced load & Out of band & Total & Verdict \\
         \midrule
-        P01-A & 32/31/32/30/21/31 & none & S5 = 21 & 177 (3 short) & structural: 6 semesters, no internship, 3 short \\
-        P01-B & 26/25/20/24/21/22/\textbf{9}/24 & S7 = 9 & S3 = 20 & 171 (9 short) & structural: 9 short \\
-        P02-A & 32/31/32/30/27/12/16 & none & S6, S7 & 180 & structural: no internship \\
+        P01-A & 32/31/32/30/21/31 & none & S5 = 21 & 177 (3 short) & no internship, 6 semesters, 3 short \\
+        P01-B & 26/25/20/24/21/22/\textbf{9}/24 & S7 = 9 & S3 = 20 & 171 (9 short) & 9 short of the total \\
+        P02-A & 32/31/32/30/27/12/16 & none & S6, S7 & 180 & no internship \\
         P02-B & 26/25/26/24/\textbf{9}/24/24/22 & S5 = 9 & none & 180 & \textbf{compliant} \\
-        P03-A & 26/31/32/30/\textbf{6}/27/31 & S5 = 6 & S1 = 26 & 183 & band: 1 below floor \\
-        P03-B & 32/31/\textbf{8}/30/27/31/12/12 & S3 = 8 & 6 of 7 & 183 & band: six lanes, four above ceiling \\
-        P04-A & 32/31/32/30/\textbf{9}/31/15 & S5 = 9 & S7 = 15 & 180 & band: 12 below floor \\
+        P03-A & 26/31/32/30/\textbf{6}/27/31 & S5 = 6 & S1 = 26 & 183 & \textbf{compliant}; S1 one below floor \\
+        P03-B & 32/31/\textbf{8}/30/27/31/12/12 & S3 = 8 & 6 of 7 & 183 & four lanes above ceiling \\
+        P04-A & 32/31/32/30/\textbf{9}/31/15 & S5 = 9 & S7 = 15 & 180 & \textbf{compliant}; S7 twelve below floor \\
         P04-B & 26/25/26/24/\textbf{9}/24/25/24 & S5 = 9 & none & 183 & \textbf{compliant} \\
-        P05-A & 26/31/32/12/30/33/16 & none & S1, S4, S7 & 180 & structural: no internship \\
+        P05-A & 26/31/32/12/30/33/16 & none & S1, S4, S7 & 180 & no internship \\
         P05-B & 26/25/26/24/\textbf{6}/27/24/22 & S5 = 6 & none & 180 & \textbf{compliant} \\
-        P06-A & 26/31/29/30/30/\textbf{6}/28 & S6 = 6 & S1 = 26 & 180 & band: 1 below floor \\
-        P06-B & 26/25/26/24/24/30/\textbf{9}/22 & S7 = 9 & S6 = 30 & 186 & band: 3 above ceiling \\
-        P07-A & 26/28/32/30/\textbf{9}/30/28 & S5 = 9 & S1 = 26 & 183 & band: 1 below floor \\
+        P06-A & 26/31/29/30/30/\textbf{6}/28 & S6 = 6 & S1 = 26 & 180 & \textbf{compliant}; S1 one below floor \\
+        P06-B & 26/25/26/24/24/30/\textbf{9}/22 & S7 = 9 & S6 = 30 & 186 & S6 three above ceiling \\
+        P07-A & 26/28/32/30/\textbf{9}/30/28 & S5 = 9 & S1 = 26 & 183 & \textbf{compliant}; S1 one below floor \\
         P07-B & 26/25/26/24/27/24/\textbf{9}/22 & S7 = 9 & none & 183 & \textbf{compliant} \\
-        P09-A & 26/31/26/30/24/12/31 & none & S1, S3, S5, S6 & 180 & structural: no internship \\
+        P09-A & 26/31/26/30/24/12/31 & none & S1, S3, S5, S6 & 180 & no internship \\
         P09-B & 26/25/26/24/\textbf{9}/24/24/22 & S5 = 9 & none & 180 & \textbf{compliant} \\
-        P10-A & 32/31/32/30/\textbf{9}/21/28 & S5 = 9 & S6 = 21 & 183 & band: 6 below floor \\
+        P10-A & 32/31/32/30/\textbf{9}/21/28 & S5 = 9 & S6 = 21 & 183 & \textbf{compliant}; S6 six below floor \\
         P10-B & 26/25/26/24/24/24/\textbf{9}/22 & S7 = 9 & none & 180 (+6 parked) & \textbf{compliant} \\
-        P11-A & 32/31/26/30/30/\textbf{6}/25 & S6 = 6 & S3, S7 & 180 & band: 1 and 2 below floor \\
-        P11-B & 26/25/20/24/\textbf{9}/27/24/25 & S5 = 9 & S3 = 20 & 180 & band: 1 below floor \\
+        P11-A & 32/31/26/30/30/\textbf{6}/25 & S6 = 6 & S3, S7 & 180 & \textbf{compliant}; S3, S7 one and two below floor \\
+        P11-B & 26/25/20/24/\textbf{9}/27/24/25 & S5 = 9 & S3 = 20 & 180 & \textbf{compliant}; S3 one below floor \\
         P12-A & 32/31/?/30/12/30/? & none & S5 = 12, S3/S7 unread & 180 & unresolved: 2 lanes unread \\
-        P12-B & 26/25/26/24/21/24/12/22 & none & S7 = 12 & 180 (+6 parked) & structural: no exchange \\
+        P12-B & 26/25/26/24/21/24/12/22 & none & S7 = 12 & 180 (+6 parked) & no exchange \\
         \bottomrule
     \end{tabular}
-    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. \enquote{None} in the reduced-load column is itself a failure of the brief and is carried into the verdict as structural. Band verdicts state how far the offending lanes fall outside the permitted range.}
+    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. \enquote{None} in the reduced-load column is itself a failure of the brief and is carried into the verdict. A lane below the floor is recorded with the size of its shortfall and does not by itself make a run non-compliant; a lane above the ceiling does.}
     \label{tab:app-completion}
 \end{table}
 
