@@ -252,48 +252,45 @@ Requirements 1, 3, and 4 were derived from the data but were not carried into th
 
 \section{Traceability Matrix}
 \label{app:traceability-matrix}
-%% REV (only place where we have \emph)
-%% REad text here and check if still true and correct.
-%% REV (decide if this matric is really needed, if yes please rework so its presented in a nicer whay like a matrix, if not cut this section and its references. You can consult me in the chat)
-Each row traces one feature from its supporting themes (Section~\ref{app:codebook-table}) through to the Design chapter subsections that cite it (found by scanning every \texttt{FEATURE-XXX} occurrence in \texttt{chapters/design.tex} and recording its enclosing subsection). Requirement counts refer to the numbered requirements list under each feature in Section~\ref{chap:from-themes-to-requirements}. \textbf{A section listed here means the feature is mentioned there, not necessarily that every one of its requirements is individually designed for}; see the note below the table for two features where this distinction matters.
+Each row names the Design chapter subsections that cite one feature, found by scanning every \texttt{FEATURE-XXX} occurrence in \texttt{chapters/design.tex} and recording its enclosing subsection. The themes each feature rests on and the number of requirements it carries are in the feature's own entry in Section~\ref{app:feature-specs} and are not repeated here. A section listed here means the feature is cited there, not that every one of its requirements is individually designed for: FEATURE-005 and FEATURE-013 each carry requirements that were not implemented, as their delineations record.
 
 \small
-\begin{longtable}{@{}p{1.6cm}p{4.0cm}p{2.6cm}p{1.0cm}p{5.5cm}@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{2.4cm}p{4.7cm}p{7.2cm}@{}}
 \toprule
-\textbf{Feature} & \textbf{Title} & \textbf{Themes} & \textbf{Reqs} & \textbf{Design section(s)} \\
+\textbf{Feature} & \textbf{Title} & \textbf{Design section(s)} \\
 \midrule
 \endfirsthead
 \toprule
-\textbf{Feature} & \textbf{Title} & \textbf{Themes} & \textbf{Reqs} & \textbf{Design section(s)} \\
+\textbf{Feature} & \textbf{Title} & \textbf{Design section(s)} \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-FEATURE-001 & Unified Data \& Tool Integration & T9, T10, T11, T12, T15, T37, T62 & 5 & Curriculum Abstraction; Notes, Hours, and Grade Popover; Onboarding and First-Use Design \\
+FEATURE-001 & Unified Data \& Tool Integration & Curriculum Abstraction; Notes, Hours, and Grade Popover; Onboarding and First-Use Design \\
 \addlinespace
-FEATURE-002 & Multi-Level Roadmap \& Progress Dashboard & T1, T16, T18, T19, T57 & 6 & Course Lifecycle and State Machine; Module Backgrounds; Module Interaction; Planning Status Encoding; Dashboard Design; Text Content Across Hierarchy Levels \\
+FEATURE-002 & Multi-Level Roadmap \& Progress Dashboard & Course Lifecycle and State Machine; Module Backgrounds; Module Interaction; Planning Status Encoding; Dashboard Design; Text Content Across Hierarchy Levels \\
 \addlinespace
-FEATURE-003 & Curriculum Rules \& Compliance Engine & T13, T17, T30, T31, T33, T63 & 5 & Compliance Engine Design; Curriculum Abstraction; Three-Panel Shell \\
+FEATURE-003 & Curriculum Rules \& Compliance Engine & Compliance Engine Design; Curriculum Abstraction; Three-Panel Shell \\
 \addlinespace
-FEATURE-004 & Graph-to-Table Planning Workflow & T20, T21, T44, T47, T61 & 6 & Drag-and-Drop and Button Interaction Paths; Module Backgrounds; Module Interaction; Notes, Hours, and Grade Popover; Planning Workflow; Semester Lanes and Header Information; Semester Picker; Spatial Model of the Table View; Three-Panel Shell; Unified Interactive Canvas for Both Views \\
+FEATURE-004 & Graph-to-Table Planning Workflow & Drag-and-Drop and Button Interaction Paths; Module Backgrounds; Module Interaction; Notes, Hours, and Grade Popover; Planning Workflow; Semester Lanes and Header Information; Semester Picker; Spatial Model of the Table View; Three-Panel Shell; Unified Interactive Canvas for Both Views \\
 \addlinespace
-FEATURE-005 & Feasibility Planning (Capacity, Workload Mix, Readiness) & T6, T35, T48, T49 & 3 & Profile Design; Semester Lanes and Header Information \\
+FEATURE-005 & Feasibility Planning (Capacity, Workload Mix, Readiness) & Profile Design; Semester Lanes and Header Information \\
 \addlinespace
-FEATURE-006 & Onboarding \& Guided Planning Transition & T5, T7, T59 & 2 & Onboarding and First-Use Design; Planning Workflow \\
+FEATURE-006 & Onboarding \& Guided Planning Transition & Onboarding and First-Use Design; Planning Workflow \\
 \addlinespace
-FEATURE-007 & Evidence-Based, Explainable Recommendation Support & T23, T24, T45, T52 & 6 & Accept Flow; Recommendation Families and Evidence; Recommendation Panel \\
+FEATURE-007 & Evidence-Based, Explainable Recommendation Support & Accept Flow; Recommendation Families and Evidence; Recommendation Panel \\
 \addlinespace
-FEATURE-008 & Constraint-Aware Replanning \& Disruption Handling & T4, T46, T56 & 4 & Drag-and-Drop and Button Interaction Paths; Profile Design; Semester Picker \\
+FEATURE-008 & Constraint-Aware Replanning \& Disruption Handling & Drag-and-Drop and Button Interaction Paths; Profile Design; Semester Picker \\
 \addlinespace
-FEATURE-009 & Overwhelm-Safe Browsing (Filters \& Abstraction) & T42, T50, T64 & 3 & Density Control and Multi-Dimensional Filtering \\
+FEATURE-009 & Overwhelm-Safe Browsing (Filters \& Abstraction) & Density Control and Multi-Dimensional Filtering \\
 \addlinespace
-FEATURE-010 & Graph Interpretability (Purpose, Legend, Layout Modes) & T27, T32, T40, T41 & 4 & Left-to-Right Hierarchical Layout; Personal Customisability of Node Positions; Visual Legend Design \\
+FEATURE-010 & Graph Interpretability (Purpose, Legend, Layout Modes) & Left-to-Right Hierarchical Layout; Personal Customisability of Node Positions; Visual Legend Design \\
 \addlinespace
-FEATURE-011 & Motivating Visual UI \& Emotional Load Reduction & T8, T54, T58 & 4 & Chapter introduction; Context-Sensitive Action Buttons; Course Obligation Encoding; Planning Status Encoding; Dashboard Design; Subject Colour Hierarchy; Visual Design of Curriculum Elements \\
+FEATURE-011 & Motivating Visual UI \& Emotional Load Reduction & Context-Sensitive Action Buttons; Course Obligation Encoding; Planning Status Encoding; Dashboard Design; Subject Colour Hierarchy; Visual Design of Curriculum Elements \\
 \addlinespace
-FEATURE-012 & Recommendation Presentation UX (Annotate, Don't Break Layout) & T43, T55 & 3 & Accept Flow; Recommendation Panel; Three-Panel Shell \\
+FEATURE-012 & Recommendation Presentation UX (Annotate, Don't Break Layout) & Accept Flow; Recommendation Panel; Three-Panel Shell \\
 \addlinespace
-FEATURE-013 & Spatial Organisation \& Grouping Controls & T28, T29 & 4 & Left-to-Right Hierarchical Layout; Module Interaction; Personal Customisability of Node Positions; Unified Interactive Canvas for Both Views \\
-\addlinespace
+FEATURE-013 & Spatial Organisation \& Grouping Controls & Left-to-Right Hierarchical Layout; Module Interaction; Personal Customisability of Node Positions; Unified Interactive Canvas for Both Views \\
 \end{longtable}
 \normalsize
