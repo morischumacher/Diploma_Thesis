@@ -1,23 +1,17 @@
 \section{Theme Codebook}
 \label{app:codebook}
 \label{app:codebook-table}
-%% REV (only place where we have \emph)
-%% REV (and go over this intrdocuing text here and keep it as short as possible, this is huge)
-This section presents the complete consolidated codebook produced during Step~2 of the formative study's analysis (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}): the 64 themes, labelled T1--T64, into which the 435 initial codes were grouped, and under each theme every one of the 437 interview excerpts that informed it.
+This section reproduces the consolidated codebook from Step~2 of the formative analysis (Chapter~\ref{chap:formative-study}, Section~\ref{sec:theme-consolidation}): the 64 themes, T1 to T64, into which the 435 initial codes were grouped, and beneath each theme the excerpts that informed it, 437 in all.
 
-Each theme is introduced by a header row carrying four things: its identifier, its need label, the value $n$, and its disposition. \textbf{$n$ is the number of the six interviews in which the theme recurred}, not the number of excerpts listed beneath it, which is usually larger because one participant could speak to a theme several times. The \textbf{disposition} is the verdict of Step~3's scope-based review (Section~\ref{sec:scope-refinement}): \emph{carried forward}, or \emph{excluded} together with the scope boundary that excluded it, or \emph{methodological artefact} for a theme that records something about the interview situation rather than a planning need. \enquote{Carried forward} records that verdict and nothing beyond it: the theme entered the requirements derivation of Section~\ref{chap:from-themes-to-requirements}, which is not the same as the requirements built on it having been implemented. Four derived requirements were not, and each is stated in its feature's Delineation (Section~\ref{app:feature-specs}) and taken up in Chapter~\ref{chap:conclusion}, Section~\ref{sec:disc-rq-answers}. The features the carried-forward themes fed into are not repeated per theme; each feature in Section~\ref{app:feature-specs} names the themes it rests on.
+A theme's header row carries its identifier, its need label, $n$, and its disposition. Here $n$ counts the interviews in which the theme recurred, not the excerpts beneath it, which is usually the larger number because one participant could speak to a theme several times. The disposition is the verdict of the scope review (Section~\ref{sec:scope-refinement}): carried forward into the requirements derivation of Section~\ref{chap:from-themes-to-requirements}, excluded together with the boundary that excluded it, or methodological artefact for a theme about the interview situation rather than a planning need. Carried forward records that verdict only, not that the requirements built on the theme were implemented.
 
-The rows under a header are that theme's excerpts, one excerpt per row, in three columns. \textbf{Int.} names the interview the excerpt came from, I1 to I6. \textbf{Excerpt (translated)} gives the author's English translation, and \textbf{Excerpt (German original)} the words as spoken: the interviews were conducted in German, and both are printed so that every translation can be checked against its source. Ellipses within an excerpt are the analyst's, marking material left out of a longer utterance. A few entries in the source document record an analytic observation in English instead of a spoken line, and those appear as written. An excerpt that informed more than one theme appears under each of them.
-
-Source: the open-coding document of the formative study, \texttt{First\ Open\ Coding.docx}; the table is generated from it by \texttt{tools/build\_codebook.py}.
+Each row beneath a header is one excerpt: the interview it came from (I1 to I6), the author's English translation, and the German original, so that every translation can be checked against what was said. Ellipses are the analyst's; a few entries record an analytic observation rather than a spoken line; an excerpt that informed several themes appears under each. \texttt{tools/build\_codebook.py} generates the table from the open-coding document \texttt{First\ Open\ Coding.docx}.
 
 \input{appendix/theme-codebook-table}
 
 \section{Feature Specifications}
 \label{app:feature-specs}
-%% REV (please read trought the text here and check if still correct)
-%% REV (please read trought the whole list and check for inconsistncies with verbitms, requirements, ... with the codebook and the uses in the thesis. Take your time with this please.)
-This appendix records the 13 features derived in Section~\ref{chap:from-themes-to-requirements} in full. Section~\ref{chap:from-themes-to-requirements} states the derivation procedure and summarises the result in Table~\ref{tab:feature-summary}; the specifications themselves are reproduced here so that every requirement cited from the Design, Implementation, Evaluation, and Discussion chapters can be read in its own evidential context. Features appear in identifier order, which Table~\ref{tab:feature-summary} reorders by importance score, and each is presented in the same structure: title and identifier, importance score, associated themes, description and user evidence, derived requirements, and a delineation where one applies. The themes named under each feature are defined, with the interview excerpts that informed them, in Section~\ref{app:codebook}.
+This appendix records in full the 13 features derived in Section~\ref{chap:from-themes-to-requirements}, which states the derivation procedure and summarises the result in Table~\ref{tab:feature-summary}. They are reproduced here so that every requirement cited from the Design and Implementation chapters can be read in its own evidential context. Features appear in identifier order, which Table~\ref{tab:feature-summary} reorders by importance score, and each is presented in the same structure: title and identifier, importance score, associated themes, description and user evidence, derived requirements, and a delineation where one applies. The themes named under each feature are defined, with the excerpts that informed them, in Section~\ref{app:codebook}; the 13 features carry 55 numbered requirements between them.
 
 \newcounter{featurenum}
 
@@ -119,7 +113,7 @@ Requirement 3 was derived from the data but was not carried into the implemented
 \textbf{Importance score 12.} Associated themes: T5, T7, T59.
 
 \paragraph{Description and user evidence.}
-Planning needs shift systematically over the study trajectory. Early semesters are typically followed by a prescribed curriculum: \enquote{the first semester was simply what was prescribed… the standard package with 29~ECTS} (T5). Autonomy then increases, particularly in the Master's programme (\enquote{In the Master's… only the first semester, and after that free choice}, T5), creating a recognisable transition point at which structured planning becomes necessary: \enquote{from around the third semester you realise: `Okay, now I need to start bringing some structure in'} (T7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (T7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: \enquote{with the whole change from technical secondary school to university… completely new to have to plan everything about it}, described by some as among the most difficult aspects of starting university (T59).
+Planning needs shift over the study trajectory. Early semesters are typically followed by a prescribed curriculum: \enquote{the first semester was simply what was prescribed… the standard package with 29~ECTS} (T5). Autonomy then increases, particularly in the Master's programme (\enquote{In the Master's… only the first semester, and after that free choice}, T5), creating a recognisable transition point at which structured planning becomes necessary: \enquote{from around the third semester you realise: `Okay, now I need to start bringing some structure in'} (T7). Several participants report, in retrospect, that they would have benefited from adopting structured planning earlier (T7). For students new to university, the shift to self-managed planning is described as a high-friction adjustment: \enquote{with the whole change from technical secondary school to university… completely new to have to plan everything about it}, described by some as among the most difficult aspects of starting university (T59).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -153,7 +147,7 @@ Recommendation signals based on scarcity or course-visitor data are excluded, si
 \textbf{Importance score 9.} Associated themes: T4, T46, T56.
 
 \paragraph{Description and user evidence.}
-Participants describe study plans as inherently unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: \enquote{because I always worked alongside, it never worked out… I had to start shifting things} (T4), framed against a sustainability goal of managing studies \enquote{100\% and still be able to live a little} (T4). Externally, last-minute changes in course offerings are cited directly: \enquote{wasn't offered… shortly before the start of the semester}, with replacement courses being hard to find (T56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are \enquote{not the system's problem} (T46).
+Participants describe study plans as unstable, requiring frequent replanning in response to both personal and external disruption. Concurrent employment is a recurring destabilising constraint: \enquote{because I always worked alongside, it never worked out… I had to start shifting things} (T4), framed against a sustainability goal of managing studies \enquote{100\% and still be able to live a little} (T4). Externally, last-minute changes in course offerings are cited directly: \enquote{wasn't offered… shortly before the start of the semester}, with replacement courses being hard to find (T56). Participants also draw a pragmatic boundary around what a planning tool can reasonably be expected to solve, noting that frequent exam date/format changes are \enquote{not the system's problem} (T46).
 
 \paragraph{Requirements.}
 \begin{enumerate}
@@ -252,48 +246,45 @@ Requirements 1, 3, and 4 were derived from the data but were not carried into th
 
 \section{Traceability Matrix}
 \label{app:traceability-matrix}
-%% REV (only place where we have \emph)
-%% REad text here and check if still true and correct.
-%% REV (decide if this matric is really needed, if yes please rework so its presented in a nicer whay like a matrix, if not cut this section and its references. You can consult me in the chat)
-Each row traces one feature from its supporting themes (Section~\ref{app:codebook-table}) through to the Design chapter subsections that cite it (found by scanning every \texttt{FEATURE-XXX} occurrence in \texttt{chapters/design.tex} and recording its enclosing subsection). Requirement counts refer to the numbered requirements list under each feature in Section~\ref{chap:from-themes-to-requirements}. \textbf{A section listed here means the feature is mentioned there, not necessarily that every one of its requirements is individually designed for}; see the note below the table for two features where this distinction matters.
+Each row names the Design chapter subsections that cite one feature, found by scanning every \texttt{FEATURE-XXX} occurrence in \texttt{chapters/design.tex} and recording its enclosing subsection. The themes each feature rests on and the number of requirements it carries are in the feature's own entry in Section~\ref{app:feature-specs} and are not repeated here. A section listed here means the feature is cited there, not that every one of its requirements is individually designed for: FEATURE-005 and FEATURE-013 each carry requirements that were not implemented, as their delineations record.
 
 \small
-\begin{longtable}{@{}p{1.6cm}p{4.0cm}p{2.6cm}p{1.0cm}p{5.5cm}@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{2.4cm}p{4.7cm}p{7.2cm}@{}}
 \toprule
-\textbf{Feature} & \textbf{Title} & \textbf{Themes} & \textbf{Reqs} & \textbf{Design section(s)} \\
+\textbf{Feature} & \textbf{Title} & \textbf{Design section(s)} \\
 \midrule
 \endfirsthead
 \toprule
-\textbf{Feature} & \textbf{Title} & \textbf{Themes} & \textbf{Reqs} & \textbf{Design section(s)} \\
+\textbf{Feature} & \textbf{Title} & \textbf{Design section(s)} \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-FEATURE-001 & Unified Data \& Tool Integration & T9, T10, T11, T12, T15, T37, T62 & 5 & Curriculum Abstraction; Notes, Hours, and Grade Popover; Onboarding and First-Use Design \\
+FEATURE-001 & Unified Data \& Tool Integration & Curriculum Abstraction; Notes, Hours, and Grade Popover; Onboarding and First-Use Design \\
 \addlinespace
-FEATURE-002 & Multi-Level Roadmap \& Progress Dashboard & T1, T16, T18, T19, T57 & 6 & Course Lifecycle and State Machine; Module Backgrounds; Module Interaction; Planning Status Encoding; Dashboard Design; Text Content Across Hierarchy Levels \\
+FEATURE-002 & Multi-Level Roadmap \& Progress Dashboard & Course Lifecycle and State Machine; Module Backgrounds; Module Interaction; Planning Status Encoding; Dashboard Design; Text Content Across Hierarchy Levels \\
 \addlinespace
-FEATURE-003 & Curriculum Rules \& Compliance Engine & T13, T17, T30, T31, T33, T63 & 5 & Compliance Engine Design; Curriculum Abstraction; Three-Panel Shell \\
+FEATURE-003 & Curriculum Rules \& Compliance Engine & Compliance Engine Design; Curriculum Abstraction; Three-Panel Shell \\
 \addlinespace
-FEATURE-004 & Graph-to-Table Planning Workflow & T20, T21, T44, T47, T61 & 6 & Drag-and-Drop and Button Interaction Paths; Module Backgrounds; Module Interaction; Notes, Hours, and Grade Popover; Planning Workflow; Semester Lanes and Header Information; Semester Picker; Spatial Model of the Table View; Three-Panel Shell; Unified Interactive Canvas for Both Views \\
+FEATURE-004 & Graph-to-Table Planning Workflow & Drag-and-Drop and Button Interaction Paths; Module Backgrounds; Module Interaction; Notes, Hours, and Grade Popover; Planning Workflow; Semester Lanes and Header Information; Semester Picker; Spatial Model of the Table View; Three-Panel Shell; Unified Interactive Canvas for Both Views \\
 \addlinespace
-FEATURE-005 & Feasibility Planning (Capacity, Workload Mix, Readiness) & T6, T35, T48, T49 & 3 & Profile Design; Semester Lanes and Header Information \\
+FEATURE-005 & Feasibility Planning (Capacity, Workload Mix, Readiness) & Profile Design; Semester Lanes and Header Information \\
 \addlinespace
-FEATURE-006 & Onboarding \& Guided Planning Transition & T5, T7, T59 & 2 & Onboarding and First-Use Design; Planning Workflow \\
+FEATURE-006 & Onboarding \& Guided Planning Transition & Onboarding and First-Use Design; Planning Workflow \\
 \addlinespace
-FEATURE-007 & Evidence-Based, Explainable Recommendation Support & T23, T24, T45, T52 & 6 & Accept Flow; Recommendation Families and Evidence; Recommendation Panel \\
+FEATURE-007 & Evidence-Based, Explainable Recommendation Support & Accept Flow; Recommendation Families and Evidence; Recommendation Panel \\
 \addlinespace
-FEATURE-008 & Constraint-Aware Replanning \& Disruption Handling & T4, T46, T56 & 4 & Drag-and-Drop and Button Interaction Paths; Profile Design; Semester Picker \\
+FEATURE-008 & Constraint-Aware Replanning \& Disruption Handling & Drag-and-Drop and Button Interaction Paths; Profile Design; Semester Picker \\
 \addlinespace
-FEATURE-009 & Overwhelm-Safe Browsing (Filters \& Abstraction) & T42, T50, T64 & 3 & Density Control and Multi-Dimensional Filtering \\
+FEATURE-009 & Overwhelm-Safe Browsing (Filters \& Abstraction) & Density Control and Multi-Dimensional Filtering \\
 \addlinespace
-FEATURE-010 & Graph Interpretability (Purpose, Legend, Layout Modes) & T27, T32, T40, T41 & 4 & Left-to-Right Hierarchical Layout; Personal Customisability of Node Positions; Visual Legend Design \\
+FEATURE-010 & Graph Interpretability (Purpose, Legend, Layout Modes) & Left-to-Right Hierarchical Layout; Personal Customisability of Node Positions; Visual Legend Design \\
 \addlinespace
-FEATURE-011 & Motivating Visual UI \& Emotional Load Reduction & T8, T54, T58 & 4 & Chapter introduction; Context-Sensitive Action Buttons; Course Obligation Encoding; Planning Status Encoding; Dashboard Design; Subject Colour Hierarchy; Visual Design of Curriculum Elements \\
+FEATURE-011 & Motivating Visual UI \& Emotional Load Reduction & Context-Sensitive Action Buttons; Course Obligation Encoding; Planning Status Encoding; Dashboard Design; Subject Colour Hierarchy; Visual Design of Curriculum Elements \\
 \addlinespace
-FEATURE-012 & Recommendation Presentation UX (Annotate, Don't Break Layout) & T43, T55 & 3 & Accept Flow; Recommendation Panel; Three-Panel Shell \\
+FEATURE-012 & Recommendation Presentation UX (Annotate, Don't Break Layout) & Accept Flow; Recommendation Panel; Three-Panel Shell \\
 \addlinespace
-FEATURE-013 & Spatial Organisation \& Grouping Controls & T28, T29 & 4 & Left-to-Right Hierarchical Layout; Module Interaction; Personal Customisability of Node Positions; Unified Interactive Canvas for Both Views \\
-\addlinespace
+FEATURE-013 & Spatial Organisation \& Grouping Controls & Left-to-Right Hierarchical Layout; Module Interaction; Personal Customisability of Node Positions; Unified Interactive Canvas for Both Views \\
 \end{longtable}
 \normalsize
