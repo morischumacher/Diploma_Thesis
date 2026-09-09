@@ -294,7 +294,7 @@ Second, API contract tests assert that endpoint status codes and response schema
 \section{Revisions After the Evaluation Study}
 \label{sec:impl-post-study}
 
-Everything described up to this point is the system used in the evaluation study of Chapter~\ref{chap:evaluation}. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. What it records is a set of corrections to defects the study surfaced (Section~\ref{sec:impl-post-study-fixes}).
+Everything described up to this point is the system used in the evaluation study of Chapter~\ref{chap:evaluation}. This section records what was changed afterwards, and it is kept separate for exactly that reason: none of it was in front of a participant, and no finding in Chapter~\ref{chap:evaluation} may be read as evidence about it. What it records is a set of corrections to defects the study surfaced, and one small addition stated with them (Section~\ref{sec:impl-post-study-fixes}).
 
 \TDrev{The post-study corrections section is far too long}{Your comment, deferred with the note above, 2026-09-05: how far this can be cut depends on which corrections survive, and that is settled after Chapters~\ref{chap:evaluation} and~\ref{chap:discussion}. The intended shape is a short statement that the defects closed after the study were closed with a regression test each, with the ticked column of Table~\ref{tab:problems} doing the enumerating, plus one sentence on why those and not others.}
 \subsection{Corrections to Reported Defects}
@@ -311,6 +311,8 @@ The feedback banners failed in two independent ways and both were corrected (E-P
 The internships and interdisciplinary recommendation tabs rendered a bare dead end when a channel returned nothing (E-P42). A tab with no candidates now states why it is empty. This does not repair the underlying cause, which is the placeholder interaction data described in Section~\ref{sec:impl-recommender}; it stops the empty state from reading as a fault in the tool.
 
 The profile screen carried wording written for the study rather than for a student (E-P27), which was rewritten.
+
+One change was an addition rather than a correction, and it is small enough to state here. The overlay of the evaluated graph drew only the orderings the Compliance Engine blocks on, which the Master curriculum has two of and the Bachelor none, so the programme the study planned in carried no prerequisite edge at all. The same switch now draws the advisory orderings beside them, dashed and labelled \emph{recommended before} where the enforced ones are solid and read \emph{required before}, so an edge states not only that an ordering exists but what breaking it costs: a refusal in the Master's case, a Dashboard warning in the Bachelor's. The pairs themselves are unchanged, two in each programme, and are the same copy the checkers read (Section~\ref{sec:impl-compliance}); the expected prior knowledge the curricula additionally state per module is not drawn, because it carries no consequence the student could act on. No participant saw the advisory edges, so Chapter~\ref{chap:evaluation} carries no evidence about how they are read.
 
 % =============================================================================
 \section{Key Decisions}
