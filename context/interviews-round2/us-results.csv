@@ -1,0 +1,12 @@
+participant,programme,semester,prior_experience,major_as_reported,a_pu1,a_pu2,a_pu3,a_peu1,a_peu2,a_peu3,a_success,a_satisfaction,a_difficulty,b_pu1,b_pu2,b_pu3,b_peu1,b_peu2,b_peu3,b_success,b_satisfaction,b_difficulty,ueq1,ueq2,ueq3,ueq4,ueq5,ueq6,ueq7,ueq8,ueq9,ueq10,ueq11,ueq12,ueq13,ueq14,ueq15,ueq16,ueq17,ueq18,ueq19,ueq20,ueq21,ueq22,ueq23,ueq24,ueq25,ueq26
+P01,Software Engineering (MSc),6,none,Software Engineering (MSc),6,7,7,7,7,7,Yes,7,7,7,7,7,7,7,7,Yes,7,7,7,7,2,1,1,6,6,7,6,7,4,2,1,7,1,7,1,1,1,6,7,1,1,7,2,1
+P02,Software Engineering (MSc),6,regular,Software Engineering,6,6,7,6,7,5,Yes,6,6,6,6,7,7,7,7,Yes,7,7,6,6,4,2,1,4,5,7,4,6,1,1,1,6,1,7,3,3,2,5,7,1,3,7,2,1
+P03,Computer Science (BSc),6,none,Computer Science,6,5,7,5,6,5,Yes,5,5,6,5,6,5,5,6,Partially,3,3,6,6,2,2,2,6,6,5,2,6,2,1,3,6,3,7,2,2,2,6,6,1,1,7,1,1
+P04,Software Engineering (MSc),5,regular,MSc Program Software Engineering,6,7,7,6,6,6,Yes,6,6,6,7,7,6,7,6,Partially,6,6,6,6,7,2,1,7,7,7,2,6,1,1,1,7,2,7,1,1,1,6,7,1,2,7,1,1
+P05,Software Engineering (MSc),8,none,Software Engineering & Internet Computing,6,7,7,5,7,5,Yes,7,7,7,7,7,6,7,6,Yes,6,7,7,7,1,2,1,6,7,7,2,6,1,1,1,6,2,7,1,1,1,6,7,1,2,7,1,1
+P06,Software Engineering (MSc),2,none,Software Engineering,5,5,6,4,6,5,Yes,5,4,5,6,6,5,5,4,Yes,4,4,6,4,3,3,3,4,5,3,4,6,4,3,2,6,3,7,3,1,1,6,6,1,3,6,4,2
+P07,Software Engineering (MSc),8,regular,Software Engineering,7,6,7,6,7,6,Yes,6,6,7,6,7,5,7,6,Yes,6,5,7,6,1,2,1,6,7,7,3,7,1,1,1,7,2,7,2,1,1,6,7,1,2,7,1,2
+P09,Software Engineering (MSc),5,little,Software Engineering,7,5,7,5,6,6,Yes,6,6,7,6,7,6,7,7,Yes,7,7,6,6,1,2,3,5,6,5,2,6,2,2,2,6,2,6,1,1,3,6,7,1,4,6,5,1
+P10,Computer Science (BSc),2,none,Informatics,6,7,5,6,6,6,Yes,7,7,6,6,7,6,6,6,Yes,7,7,6,6,1,3,1,6,7,7,2,6,2,1,1,7,3,7,2,2,1,7,7,2,3,7,1,1
+P11,Computer Science (BSc),2,none,Informatics,6,6,5,5,6,6,Yes,7,7,6,7,6,7,7,6,Yes,5,6,6,7,2,2,1,6,5,7,1,7,1,2,2,6,1,6,1,1,1,6,6,1,2,6,1,1
+P12,Software Engineering (MSc),6,regular,Software Engineering,6,6,5,5,6,6,Yes,7,7,7,7,6,7,7,6,Yes,7,7,7,7,2,2,1,6,7,7,2,7,1,1,1,6,7,7,1,1,1,6,7,1,3,7,1,1
