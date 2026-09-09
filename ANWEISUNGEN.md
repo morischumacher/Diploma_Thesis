@@ -797,6 +797,63 @@ Automated, and nothing else starts until they are green.
 7. Every glossary term hyperlinked with `\gterm` at its first occurrence in the thesis.
 8. Every figure and table referenced in prose; caption lengths within §7.
 
+### A1 addendum — the language warnings, adjudicated 2026-09-09
+
+Gate A1 requires that every remaining checker warning has been looked at and
+consciously accepted. This is that record. Nothing below is outstanding work.
+
+**Fixed in this pass, because the word was doing work the evidence does not support:**
+
+| Site | Was | Now |
+|---|---|---|
+| Ch. 1 §1.1 | advice at scale, "which is critical given that" | "which matters given that" |
+| Ch. 3 §3.1 | "tying dependencies to a matrix *inherently* aligns them" | "aligns them" |
+| Ch. 3 §3.2 | "recognised as a *critical* limitation" | "repeatedly named as a limitation" |
+| Ch. 3 §3.2 | "identified as *critically* under-represented" | "as under-represented" |
+| Ch. 2 §2.7 | "Methodological rigour is *systematically* addressed across *all* research stages" | "The same quality criteria apply at every stage of both studies" |
+| Ch. 5 §5.1 | "a flat list *fundamentally* cannot represent" | "cannot represent" |
+| Ch. 6 §7.7 | "user trust and the evaluation findings depend *entirely* on its accuracy" | rests on its accuracy, with the user half stated as what participants read their status from |
+
+The last one was the only overclaim of substance: nothing in the thesis
+measures user trust, let alone establishes that it depends entirely on
+anything. After this pass **the only judgmental-wording warning left is
+\emph{valuable} in the UEQ item list**, which is the instrument's own wording
+and is accepted below.
+
+**Accepted, with the reason. Do not re-open these.**
+
+- **Absolutist qualifiers, 34 remaining across seven files.** Each was read in
+  its own sentence and each states its scope there: *red is strictly reserved
+  elsewhere in the interface*, *recommendations are strictly confined to this
+  panel* followed by the list of what that excludes, *a strictly downward
+  dependency direction*, *designed strictly to evaluate the user experience …
+  explicitly excluding algorithmic accuracy*, *perfectly collinear* in its
+  technical sense, *universally accepted (E-G01, 11/11)* with the denominator
+  attached. The checker cannot see scope, so it will keep reporting them.
+- **`entire module` in Ch. 5, three times.** The name of the interaction, not a
+  qualifier.
+- **First-person singular: 3 in Ch. 7, 4 in Appendix B, 1 in Appendix A.** Every
+  one is a questionnaire item wording (*Helped me plan more effectively*,
+  *Improved my productivity*) or a line of the interview script (*Walk me
+  through the last time…*). Verbatim instrument text; changing it would
+  misreport what participants were asked.
+- **Colloquialism `kind of`, twice in Appendix A.** Both are interview
+  questions as put: *What kind of information did you look for*.
+- **American spelling `program`, once in Appendix A.3 and twice in the codebook
+  table.** All inside participant quotations, and all the verb: *if you can't
+  program well*, beside its German *wenn man nicht gut programmieren kann*.
+- **`organized` and `valuable` in Appendix B.2.** UEQ semantic-differential item
+  pairs, *organized / cluttered* and *valuable / inferior*. The instrument's
+  own wording.
+- **`very` in Ch. 7.** Inside a participant quotation.
+- **`highly` in Ch. 6.** *rather than because the study ranked them highly* —
+  a statement about the ranking, not an intensifier on a claim.
+
+**Still genuinely open, and not adjudicated here:** the 25 uncited bibliography
+entries (A5), which need a cut-or-use decision per entry, and the AI-tools
+disclosure. The 34 evaluation count statements were checked individually under
+B9 on 2026-09-09 and are all correct usage.
+
 ### B. Cross-chapter consistency
 
 The part no chapter pass can do. Work from §0's consistency register and check every number, name and count **everywhere it appears**, not where it was last edited.
