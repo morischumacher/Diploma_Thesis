@@ -601,6 +601,14 @@ Moritz asked for the full list to be checked against the codebook, the requireme
 - **Caulfield 2013**: not re-opened; the discussion uses only the characterisation already verified for Chapter 3 (the retention result read as an outcome the analysis had not established).
 - **Vessey 1991**: the spatial-versus-symbolic distinction (graphs serve tasks of perceiving relationships, tables serve tasks of extracting discrete values, a mismatch costs a transformation) was checked against the account in Padilla et al. 2018, *Cognitive Research: Principles and Implications* (PMC6091269), not against the paywalled original. The chapter states the theory at that level and cites Vessey only.
 
+### Outstanding: the Greenwald citation in Chapter 7, 2026-09-09
+
+Deleted the `%% REV` asking for it to be checked, by your decision, without checking: the PDF is not in the project and I could not open it. Two page-level claims in Section~\ref{sec:eval-order} still rest on it and are unverified:
+
+- **p. 320** counterbalancing distributes practice effects but does not remove an interaction between treatment and practice.
+- **pp. 316--318** a fixed sequence is an appropriate alternative when the course of learning is itself the object of study.
+
+Greenwald, A. G. (1976). Within-subjects designs: To use or not to use? *Psychological Bulletin*, 83(2), 314--320. The cited pages sit at the end of a seven-page article, so the p. 320 attribution in particular is worth confirming. This grounds the fixed-order defence, which is the chapter's main design-validity argument.
 ### Chapter 8, Bodily and Verbert checked 2026-09-09
 
 Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
