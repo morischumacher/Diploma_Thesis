@@ -601,6 +601,15 @@ Moritz asked for the full list to be checked against the codebook, the requireme
 - **Caulfield 2013**: not re-opened; the discussion uses only the characterisation already verified for Chapter 3 (the retention result read as an outcome the analysis had not established).
 - **Vessey 1991**: the spatial-versus-symbolic distinction (graphs serve tasks of perceiving relationships, tables serve tasks of extracting discrete values, a mismatch costs a transformation) was checked against the account in Padilla et al. 2018, *Cognitive Research: Principles and Implications* (PMC6091269), not against the paywalled original. The chapter states the theory at that level and cites Vessey only.
 
+### Chapter 8, Bodily and Verbert checked 2026-09-09
+
+Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
+
+- **93 articles, not 93 systems.** Abstract: \enquote{Out of the 945 articles retrieved from databases and journals, 93 articles were included in the analysis.} The review codes articles, and an article may describe more than one system.
+- **The 17\,\% has no counterpart in the paper.** Table 8, types of reporting system by functionality, gives \emph{enhanced visualisation with recommendations} 8 articles (9\,\%) and \emph{visualisation with recommendations and data mining} 6 articles (6\,\%), so 14 of 93, 15\,\%, both report visually and recommend. The nearest 17\,\% figures in the paper are Table 7's \emph{behaviour change} (16 articles) and \emph{actual effect on achievement} (16 articles), neither of which is about combining components. The sentence now states 15\,\% and names the two rows it is built from.
+
+Not checked: whether the \enquote{what to do and why} call is worded that way in the paper's own discussion. The claim is uncontroversial but the phrasing is the thesis's.
+
 ### Chapters 6 and 7, post-study register settled 2026-09-09
 
 The register the thesis reports as closed is now what is merged on `main` of `hypridplanner` (commit `ba129b9`), verified after the merge rather than from the individual branches: backend 245 tests pass, frontend 144 across 13 files, `tsc --noEmit` clean, `vite build` clean. Eight pull requests, #3 to #10.
