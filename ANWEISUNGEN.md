@@ -8,6 +8,50 @@ This file governs the chapter-by-chapter finalisation. It is the single source o
 
 ---
 
+## Current state — 9 September 2026
+
+Submission is 10 September. This block is the short answer to "where are we";
+the sections below are the detail.
+
+**The document builds clean.** `latexmk -pdf` gives **203 pages**, zero
+undefined references, zero undefined citations, 13 overfull boxes. The count
+moves by a page or two as wording changes; treat it as approximate and re-read
+it from the build, not from here.
+`python3 tools/check.py` passes every blocking check. There are **no `%% REV`
+comments and no `\TD` notes of any kind left in the thesis** — the last one,
+the completion-audit caption in Appendix B, closed on 9 September.
+
+**Definition of done, §15:**
+
+| Part | State |
+|---|---|
+| **A. Mechanical gates** (1–8) | **Done.** A1 warnings adjudicated one by one, recorded in the A1 addendum in §15. A5 closed by cutting the 25 uncited entries. A6, A7, A8 closed 9 September |
+| **B. Cross-chapter consistency** (9–13) | **Done** 9 September. B14 cut: Moritz is checking references separately |
+| **C. Exploratory framing** (15–21) | **Cut** 9 September on Moritz's instruction. C16–C20 were covered incidentally by the chapter passes |
+| **D. The read** (22–23) | **Open.** Moritz's, at the very end, on the notes-off PDF |
+| **E24a. Page-anchored citations** | **Open.** Moritz's separate reference check |
+| **E24b. §11a, PDF/A, metadata, declaration** | **Open**, postponed by Moritz. Blocked behind the front matter |
+| **E25. Data protection** | **Open.** The git-history rewrite is agreed and pending; Ch. 2 still states no retention period |
+
+**Per-chapter definition of done, §10:** run on every chapter. Chapters 7, 8, 9
+and the appendices had never had one before 9 September; §12 records what each
+pass found.
+
+**What only Moritz can do.** These are the remaining blocking failures of
+`python3 tools/check.py --submission`, and nothing else can close them:
+
+1. `\reviewnotestrue` → `\reviewnotesfalse` in `main.tex`.
+2. Title, subtitle, date and keywords in `main.tex` — all four still template placeholders (§13).
+3. The six empty `formalities/` files: abstract, Kurzfassung, acknowledgements, Danksagung, and both AI-tools disclosures. The disclosure needs Qwen3-VL (frame labelling), Otter.ai (transcription) and Claude (this assistant).
+
+Then D, E24a and E24b, in that order.
+
+**Also outstanding, and not blocking the build:** the GitHub fine-grained token
+pasted into the working session on 9 September has not been rotated, and it has
+write access to `Diploma_Thesis`, `hypridplanner` and `userstudy`.
+
+---
+
 ## 0. Baseline established this session
 
 The thesis compiles cleanly. `latexmk -pdf` produces **205 pages** (2026-09-09) with **zero undefined references and zero undefined citations** and 13 overfull boxes. The per-part table below is the 184-page baseline of 2026-09-02 and is kept for proportions, not for current page counts.
@@ -452,7 +496,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 1. `main.tex`: `\thesistitle` is "Title of the Thesis", the subtitle is the template placeholder, `\setdate` is 01.01.2001, `\Keywords` is "a list of keywords". The proposal's title is a ready candidate: *Design and Evaluation of a Hybrid Graph–Table Interface with Embedded Recommender System for Study Planning* — though "Embedded Recommender System" now over-promises relative to what was built and evaluated, so it likely wants adjusting.
 2. Abstract, Kurzfassung, Acknowledgements, Danksagung, and both AI-tools disclosure files are empty and are `\input` — they render as empty headed pages.
-3. `\printindex` and `\printglossaries` render empty pages (§5).
+3. ~~`\printindex` and `\printglossaries` render empty pages (§5).~~ **Closed** — both are commented out in `main.tex` (lines 282 and 287), each with the reason beside it.
 4. Consent PDF with a real name and birthdate sits in `context/interviews-round2/` and in git history. Decide on removal and history rewrite before the repo is shown to anyone.
 5. Storage location and retention period for raw recordings and transcripts are not stated in Ch. 2 and the outline template asks for both.
 
@@ -865,21 +909,15 @@ The part no chapter pass can do. Work from §0's consistency register and check 
 13. Tables against their source artefacts, row by row. Chapter 8's tables were built by hand once and did not match the appendix; assume the same of any table not generated from data.
 14. Every citation still supports the claim it is attached to, using §14's instance counts: any key whose count has grown since it was cleared is re-opened for the new instances only.
 
-### C. Is it clear that this research is exploratory?
+### C. Exploratory framing — cut 2026-09-09
 
-**The specific review Moritz asked for, 2026-09-03.** Read the whole thesis once with this single question in mind. The work is a design study: two small samples at one institution, one fixed scenario order, one coder, and descriptive statistics. That is a legitimate and appropriate design, and it is not a weakness to be hidden. The failure mode is not admitting it in the limitations, which the thesis already does. The failure mode is **prose elsewhere that quietly reads as more than exploratory**, so that an examiner meets a confident claim in Chapter 1 or 9 and only finds the qualification in §2.4.
-
-Check, in this order, because the risk rises as you go:
-
-15. **The front matter.** Abstract, Kurzfassung, and the conclusion. These are written last, when everything else is already careful, and they are where the framing is most likely to be lost. They must say what kind of study this is, in their own words, not rely on the reader reaching Chapter 2. Both files are empty today, so this is a writing instruction as much as a check.
-16. **Claim verbs against evidence, everywhere** (§3, §10 item 17). *Establishes*, *demonstrates*, *shows*, *proves*, *confirms* are almost never right here. *Indicates*, *suggests*, *is consistent with*, *describes* usually are. A single sign test on eleven participants supports none of the strong verbs.
-17. **Causal language.** Eleven participants, a fixed scenario order, and no counterbalancing mean the design describes what students did; it cannot attribute a behaviour to a component. Any sentence of the form "the graph caused / led to / improved X" is wrong regardless of how the data looks.
-18. **The word "significant"** used loosely where no test was run, and every reported number checked for whether it is descriptive or inferential. UEQ and TAM results are a descriptive layer and must read as one.
-19. **Frequencies.** Every one carries its denominator, and none is presented as if it generalised. `9/11` is nine of eleven students in this study, not 82 % of students.
-20. **Generalisation claims.** Chapter 9 §9.7 separates what is specific to the hybrid from what might carry further. Nothing elsewhere in the thesis should quietly claim the wider version.
-21. **The contributions (§1.4) and the RQ answers (§9.1)** read together, back to back. These are the two places a reader looks for the headline, they are written at different times, and they are the most likely pair to drift apart in confidence.
-
-A useful test for any suspect sentence: **could this claim be false and the thesis still be fine?** If yes, the sentence is describing a finding and needs its hedge. If no, it is describing what was done and can be stated plainly.
+Cut in full on Moritz's instruction. Items C16 to C20 (claim verbs, causal
+language, loose "significant", denominators, generalisation claims) were in
+fact worked through incidentally, by the chapter definition-of-done passes of
+2026-09-09 and the language pass that followed; what they found is recorded in
+§12 and in the A1 addendum above. C15, the abstract and Kurzfassung stating
+what kind of study this is, survives as a writing instruction rather than a
+check, and belongs to whoever writes them.
 
 ### D. The read
 
