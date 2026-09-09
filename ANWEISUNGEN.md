@@ -609,6 +609,14 @@ Deleted the `%% REV` asking for it to be checked, by your decision, without chec
 - **pp. 316--318** a fixed sequence is an appropriate alternative when the course of learning is itself the object of study.
 
 Greenwald, A. G. (1976). Within-subjects designs: To use or not to use? *Psychological Bulletin*, 83(2), 314--320. The cited pages sit at the end of a seven-page article, so the p. 320 attribution in particular is worth confirming. This grounds the fixed-order defence, which is the chapter's main design-validity argument.
+### Chapter 8, Bodily and Verbert checked 2026-09-09
+
+Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
+
+- **93 articles, not 93 systems.** Abstract: \enquote{Out of the 945 articles retrieved from databases and journals, 93 articles were included in the analysis.} The review codes articles, and an article may describe more than one system.
+- **The 17\,\% has no counterpart in the paper.** Table 8, types of reporting system by functionality, gives \emph{enhanced visualisation with recommendations} 8 articles (9\,\%) and \emph{visualisation with recommendations and data mining} 6 articles (6\,\%), so 14 of 93, 15\,\%, both report visually and recommend. The nearest 17\,\% figures in the paper are Table 7's \emph{behaviour change} (16 articles) and \emph{actual effect on achievement} (16 articles), neither of which is about combining components. The sentence now states 15\,\% and names the two rows it is built from.
+
+Not checked: whether the \enquote{what to do and why} call is worded that way in the paper's own discussion. The claim is uncontroversial but the phrasing is the thesis's.
 
 ### Chapters 6 and 7, post-study register settled 2026-09-09
 
