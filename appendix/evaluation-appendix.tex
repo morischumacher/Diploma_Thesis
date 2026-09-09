@@ -1,10 +1,4 @@
-% =============================================================================
-% Summative evaluation materials: instruments, interview topics, full codebook,
-% and code-by-participant matrix. Referenced from chapters/evaluation.tex via
-% \ref{app:eval-instruments} and \ref{app:eval-codebook}. House style per
-% CONTROL.md: British spelling; first-person plural; no em-dashes in prose;
-% bold only as table headers or item labels.
-% =============================================================================
+%% REV (is the ordering good? Maybe start with the scenario briefs, then the post task questionaire, then the UEQ?
 
 \chapter{Summative Evaluation Materials}
 \label{app:eval-materials}
@@ -17,7 +11,9 @@ This appendix documents the materials and coding scheme behind the summative eva
 
 \subsection{Post-task questionnaire (administered after each scenario)}
 
-After each of the two scenarios, participants completed the same nine-item questionnaire. Items~1 to~6 form a TAM-derived short form adapted to the planning domain~\cite{davis_perceived_1989}: items~1 to~3 measure perceived usefulness and items~4 to~6 perceived ease of use, with item~5 reported separately from the ease-of-use mean for the reason given in Section~\ref{sec:eval-questionnaire}. Each is rated on a seven-point Likert scale anchored \enquote{Strongly disagree} (1) to \enquote{Strongly agree} (7). Items~7 to~9 capture self-assessed task outcome and are analysed as experience measures rather than as ground-truth completion (Section~\ref{sec:eval-effectiveness}).
+After each of the two scenarios, participants completed the same nine-item questionnaire. Items~1 to~6 form a TAM-derived short form adapted to the planning %% REV (is this reference correct here?)
+domain~\cite{davis_perceived_1989}: items~1 to~3 measure perceived usefulness and items~4 to~6 perceived ease of use, with item~5 reported separately from the ease-of-use mean for the reason given %% REV (match this to the referenced section, is it still discriped there?)
+in Section~\ref{sec:eval-questionnaire}. Each is rated on a seven-point Likert scale anchored \enquote{Strongly disagree} (1) to \enquote{Strongly agree} (7). Items~7 to~9 capture self-assessed task outcome and are analysed as experience measures rather than as ground-truth completion (Section~\ref{sec:eval-effectiveness}).
 
 \begin{table}[htpb]
     \centering
@@ -40,16 +36,17 @@ After each of the two scenarios, participants completed the same nine-item quest
     \caption{The nine-item post-task questionnaire administered after each scenario. \textsuperscript{a}~\enquote{Fully successful}, \enquote{Partially successful}, \enquote{Not successful}. \textsuperscript{b}~Anchored \enquote{Very unsatisfied} (1) to \enquote{Very satisfied} (7). \textsuperscript{c}~Anchored \enquote{Very difficult} (1) to \enquote{Very easy} (7).}
     \label{tab:app-perscenario-instrument}
 \end{table}
-
+%% REV (item 7 named constrains? THis is not corret or? I would delte this here)
 Item~7 named the concrete constraints for the scenario in question. For Scenario~A the wording was \enquote{e.g.\ semesters 1--7, 30~ECTS $\pm$3, internship semester max 9~ECTS}; for Scenario~B it named the Artificial-Intelligence targets. The questionnaire was presented bilingually (English and German); Table~\ref{tab:app-perscenario-instrument} reproduces the English wording.
 
 \subsection{Final questionnaire (User Experience Questionnaire)}
-
-After both scenarios and the open-exploration phase, participants completed the User Experience Questionnaire once~\cite{laugwitz_construction_2008}. The instrument comprises twenty-six seven-point semantic-differential items between opposing adjectives (for example \enquote{obstructive / supportive} and \enquote{confusing / clear}), which aggregate into six scales: attractiveness, perspicuity, efficiency, dependability, stimulation, and novelty. Perspicuity, efficiency, and dependability summarise pragmatic (goal-directed) quality; stimulation and novelty summarise hedonic quality. We report the group profile in Table~\ref{tab:ueq}. We use the standard instrument without modification and therefore do not reproduce all twenty-six items here.
+%% REV (where are the items from this questionaire, i just see one table and its the post task? Also the table is not referenced)
+After both scenarios and the open-exploration phase, participants completed the User Experience Questionnaire%% REV (Abrevencion?)
+once~\cite{laugwitz_construction_2008}. The instrument comprises twenty-six seven-point semantic-differential items between opposing adjectives (for example \enquote{obstructive / supportive} and \enquote{confusing / clear}), which aggregate into six scales: attractiveness, perspicuity, efficiency, dependability, stimulation, and novelty. Perspicuity, efficiency, and dependability summarise pragmatic (goal-directed) quality; stimulation and novelty summarise hedonic quality. We report the group profile in Table~\ref{tab:ueq}. We use the standard instrument without modification and therefore do not reproduce all twenty-six items here.
 
 \subsection{Voice-interview topics}
 \label{app:eval-interview}
-
+%% REV (it this important here, would just delete i think?)
 The session closed with a short semi-structured voice interview conducted through the study-guide application. The moderator raised four topics and let participants speak freely; the prompts were framed to elicit friction and re-planning behaviour rather than to lead the response.
 
 \begin{table}[htpb]
@@ -114,8 +111,9 @@ The two task briefs are reproduced below exactly as the study-guide application 
 \section{Evaluation codebook}
 \label{app:eval-codebook}
 
-The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The \enquote{Seeded} column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
-
+The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an %% REV (REF?)
+ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The \enquote{Seeded} column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
+%% REV (i deleted a view items, take care that the numbering is valid again (also in the thesis))
 \footnotesize
 \begin{longtable}{p{1.6cm}p{9.6cm}cc}
     \caption{Usability-problem codes (\mbox{E-P}).}
@@ -139,10 +137,8 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-P03 & Requirement status stated only in prose, not glanceable. & eff & 2 \\
     E-P04 & Table and catalogue lack the mandatory, category, and ECTS filters available with the graph sidebar. & eff & 3 \\
     E-P05 & Why a course cannot be placed in a semester is unclear; constraint feedback not legible. & eff & 2 \\
-    E-P06 & Participant misread a scenario instruction (study artefact, not a tool defect). & eff & 1 \\
     E-P07 & Graph zoom triggers on quick single clicks. & eff & 1 \\
-    E-P08 & Slow cold-start: roughly one minute of blank loading before first paint. & eff & 2 \\
-    E-P09 & Signup defaults to the wrong programme regardless of the intended plan. & eff & 2 \\
+    E-P09 & Signup defaults to the wrong programme regardless of the intended plan. & eff & 1 \\
     E-P10 & Requirement, ECTS-gap, and warning status only inside expandable Dashboard panels; repeated expand and collapse to read. & eff & 2 \\
     E-P11 & Recommendation Panel overlaps and occludes the table lanes. & eff & 1 \\
     E-P12 & Per-semester ECTS legible in the graph only at deep zoom. & eff & 1 \\
@@ -150,7 +146,7 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-P14 & Onboarding tour drives the early session before the actual task. & eff & 1 \\
     E-P15 & Layout-axis configuration popup surfaces mid-task; purpose unclear, no payoff. & eff & 2 \\
     E-P16 & Changing the maximum ECTS per semester destabilises the plan and forces re-placement; overload hard-rejects without auto-levelling. & eff & 3 \\
-    E-P17 & How to add a reduced-load semester is not discoverable. & eff & 2 \\
+    E-P17 & How to add a reduced-load semester is not discoverable. & eff & 1 \\
     E-P18 & Grade-entry effort versus its benefit (weighted GPA) is not obvious. & sat & 2 \\
     E-P19 & Course-type mutual-exclusivity rules (VO/VU/UE) not explained in-tool. & eff & 2 \\
     E-P20 & Per-semester overload warning never clears; StEOP prerequisites gate each other until marked done. & eff & 1 \\
@@ -159,20 +155,18 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-P23 & Per-course action icons on catalogue cards are small and fiddly. & eff & 2 \\
     E-P24 & Pan and zoom strand the graph on empty canvas; no recentre or fit control. & eff & 2 \\
     E-P25 & The mandated internship or exchange semester (at most 9~ECTS) has no explicit affordance and is never confirmed by the tool. & eff & 2 \\
-    E-P26 & The workload band is not enforced: overload only advises and a band-violating plan still earns full completion. & eff & 3 \\
     E-P27 & Internal study wording (\enquote{User Study Persona 1}) leaks into the production profile UI. & sat & 1 \\
     E-P28 & A module expands into several courses of mixed obligation type; the granularity confused novices. & eff & 1 \\
-    E-P29 & No at-a-glance winter or summer indicator per semester lane; participants lose term parity while placing season-locked courses. & eff & 2 \\
-    E-P30 & Toggling a graph sidebar filter spuriously zooms or recentres the canvas (confirmed bug). & eff & 2 \\
+    E-P29 & No at-a-glance winter or summer indicator per semester lane; participants lose term parity while placing season-locked courses. & eff & 3 \\
+    E-P30 & Toggling a graph sidebar filter spuriously zooms or recentres the canvas. & eff & 2 \\
     E-P31 & Removing a placed card deletes even a mandatory module with no confirmation or undo. & eff & 2 \\
     E-P32 & The overload warning fires within the stated acceptable band because it is driven by the stricter profile value. & eff & 2 \\
     E-P33 & Workload shown in ECTS with no week-hours equivalence the participant can interpret. & sat & 1 \\
-    E-P34 & The panel reports \enquote{no missing requirements} while unmodelled hard constraints (internship semester, lower workload bound) are unmet; the tool green-lights an incomplete plan. & eff & 3 \\
-    E-P35 & The upper workload bound is a hard block but the lower bound is only a soft warning, so under-loaded semesters are never forced to correct. & eff & 3 \\
+    E-P35 & The upper workload bound is a hard block but the lower bound is only a soft warning, so under-loaded semesters are never forced to correct. & eff & 2 \\
     E-P36 & The Dashboard checklist can show checked greater than total (for example 9/6), undermining trust in the tracker. & eff & 1 \\
     E-P37 & The Parking Stage cannot be viewed inside the Graph View; participants had to switch modes. & eff & 2 \\
     E-P38 & Moving a placed module into the Parking Stage silently removes it from the ECTS total and from requirement counting. & eff & 2 \\
-    E-P39 & Under interface load a junior participant loses track of his own intent and mis-clicks (a cognitive-load signal). & eff & 2 \\
+    E-P39 & Under interface load a junior participant loses track of his own intent and mis-clicks. & eff & 2 \\
     E-P40 & Collapsible section headers lack an obvious chevron, so their expand or collapse state is not glanceable. & eff & 1 \\
     E-P41 & New-account creation returns a raw \enquote{username already exists} error inline, forcing an unguided retry. & eff & 1 \\
     E-P42 & The internships and interdisciplinary recommendation tabs render a bare \enquote{no recommendations} dead-end. & sat & 1 \\
@@ -184,8 +178,7 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-P48 & A multi-course module carries an inline ECTS selector that silently rewrites the plan total, and the catalogue, the card, and the engine disagree about its value. & eff & 3 \\
     E-P49 & The Dashboard contradicts itself: the focus-area checklist reports complete while Missing Requirements simultaneously lists an unmet module from that same area. & eff & 3 \\
     E-P50 & Toast semantics are unreliable: one visual style carries acceptance, rejection, and progress, and confirmations fire with no state change or alongside a decrease. & eff/sat & 2 \\
-    E-P51 & Adding a semester is reachable only from inside a card's placement menu; there is no board-level control, and the affordance was invisible to participants and moderator alike. & eff & 2 \\
-    E-P52 & Canvas, lane headers, and Dashboard disagree for whole sample intervals after a drop; the lane header lags the Dashboard by at least one interval. & eff & 2 \\
+    E-P51 & Adding a semester is reachable only from inside a card's placement menu; there is no board-level control, and the affordance was invisible to participants. & eff & 2 \\
     E-P53 & Placement menus silently omit semesters a course is not offered in, and can offer semesters that do not yet exist, creating empty lanes. & eff & 2 \\
     E-P54 & The milestone banner's percentage does not match its own ECTS figures. & sat & 2 \\
     E-P55 & Season and status glyphs are too small and not colour-differentiated, and become illegible at zoom-out. & eff & 2 \\
@@ -205,6 +198,7 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
 \end{longtable}
 \normalsize
 
+%% REV (do they show items, the lists for positive and neutral findings in the thesis itself are not showing?. If so reference them, if not they are unnecessary here?)
 \footnotesize
 \begin{longtable}{p{1.6cm}p{10.6cm}c}
     \caption{Positive-finding codes (\mbox{E-G}).}
@@ -272,18 +266,16 @@ The thematic analysis used a controlled codebook, extended only when a genuinely
     E-N07 & Participants browse and inspect in the graph but perform all substantive placement in the table, Parking Stage, and Dashboard. & graph contribution \\
     E-N08 & The study guide's task timer stops while the guide tab is backgrounded, so its elapsed figures understate. Instrument defect, not a product defect. & validity \\
     E-N09 & Graph-only canvas chrome persists in the graph-disabled baseline condition. Study artefact, not a product defect. & validity \\
-    FAC & Facilitator intervention: a conceptual or task rescue by the moderator that qualifies task success. & method flag \\
-    LEN & Self-report leniency: self-reported scores near ceiling despite observed friction. & method flag \\
 \end{longtable}
 \normalsize
-
+%% REV (resolve this and make sure they are all referenced)
 % -----------------------------------------------------------------------------
 \TDminor{Housekeeping for this appendix}{(1)~Six tables here are never referenced from running text: \texttt{tab:app-codebook-problems}, \texttt{tab:app-codebook-positives}, \texttt{tab:app-codebook-neutral}, \texttt{tab:app-unmet}, \texttt{tab:app-interview}, and \texttt{tab:interview-structure} in the interview-plan appendix. Reference each where the prose introduces it, or drop the label. (2)~The process-state-model figure repeats Table~\ref{tab:states} from Chapter~\ref{chap:evaluation}; drop one. (3)~Two captions here run past 250 characters. (4)~24 instances of the \texttt{\enquote{\textbackslash textit\{\dots\}}} quotation form to sweep.}
 
 \section{Code-by-participant matrix}
 \label{app:eval-matrix}
-
-Table~\ref{tab:app-matrix} records, for each code, the participants in whom it was evidenced and the resulting frequency. A dot marks presence, an empty cell absence, and a dash a code that could not be decided for that participant. Two situations produce a dash. The facilitator flag cannot be observed for P09 to P12, whose recordings are screen shares with the webcam tile cropped and whose transcripts carry a single speaker label, so moderator and participant speech are not separable. The twenty-nine codes after E-P46 were introduced after P01 to P07 had been analysed; they were decided directly from both records for P09 to P12 and reconstructed from the earlier session files for P01 to P07, where a file that says nothing about a code leaves it undecided. Denominators therefore state how much evidence exists rather than being uniform.
+%% REV ( i cutted out the two dashes cased here. For the facilitator flag, just cut it out from the matrix (its also not in the table anymore), for the E-P46 just mark no dot for P01-07, also explain why there could be a 3/7 (instead of 3/11))
+Table~\ref{tab:app-matrix} records, for each code, the participants in whom it was evidenced and the resulting frequency. A dot marks presence, an empty cell absence, and a dash a code that could not be decided for that participant. Denominators therefore state how much evidence exists rather than being uniform.
 
 \footnotesize
 \begin{longtable}{lccccccccccc c}
@@ -413,7 +405,7 @@ Each screen recording was sampled at ten-second intervals at native resolution, 
 
 \begin{itemize}
     \item \textbf{Surface.} Exactly one of: the study-guide application, the sign-in or setup dialog, a loading state, the Table View, the Graph View, or another window.
-    \item \textbf{Panels.} Which of the catalogue sidebar, filter sidebar, Recommendation Panel, Dashboard, visual legend, and modal dialogues were open, recorded independently of the surface because the Dashboard coexists with both views. Where the Dashboard was open, the expanded collapsible sections were recorded individually, which is what allows the expand-and-collapse cost behind E-P10 to be counted rather than estimated.
+    \item \textbf{Panels.} Which of the catalogue sidebar, filter sidebar, Recommendation Panel, Dashboard, visual legend, and modal dialogues were open, recorded independently of the surface because the Dashboard coexists with both views. Where the Dashboard was open, the expanded collapsible sections were recorded individually, which is what allows the expand-and-collapse cost behind E-P10 to be counted.
     \item \textbf{Plan state.} The per-semester ECTS read directly off the lane headers, the Dashboard's planned total, the missing-requirement and warning counts, and the focus-area status.
     \item \textbf{Transient text.} Any banner, toast, or rejection message, transcribed verbatim.
     \item \textbf{Flags.} Whether the per-semester panel was open, whether the moderator was the active speaker, whether the canvas and the Dashboard disagreed, and whether the layout-axis configuration changed.
@@ -422,16 +414,17 @@ Each screen recording was sampled at ten-second intervals at native resolution, 
 \subsection{How the frames were coded, and the agreement between the two coders}
 \label{app:eval-agreement}
 
-The frames were coded by a vision-language model running locally, and the coding was checked against the author's own labelling of three complete runs. Both are described here, because the counts in Chapter~\ref{chap:evaluation} rest on them.
+The frames were coded by a vision-language model running locally, and the coding was checked against the author's own labelling of three complete A scenario runs. Both are described here, because the counts in Chapter~\ref{chap:evaluation} rest on them.
 
 \paragraph{The model and how it was run.}
-\emph{Qwen3-VL-30B-A3B-Instruct} (Alibaba, released 21 October 2025, Apache~2.0) is a mixture-of-experts vision-language model of 30.5~billion parameters, of which roughly 3.3~billion are active per token. It was chosen for one property: it accepts images at their native resolution rather than downscaling them to a fixed size, which is what a semester lane's two-digit ECTS header requires. It was converted to a 4-bit quantisation (group size~64) and run with MLX-VLM on the author's own computer, so that no frame of any recording was transmitted to a third party. The quantisation is recorded because it compresses precisely the fine-grained visual capacity the model was chosen for; the agreement reported below is the evidence that it remained sufficient for this task.
-
+%% REV (please check this again, is alibaba correct?)
+\emph{Qwen3-VL-30B-A3B-Instruct} (Alibaba, released 21 October 2025, Apache~2.0) is a mixture-of-experts vision-language model of 30.5~billion parameters, of which roughly 3.3~billion are active per token. It was chosen for one property: it accepts images at their native resolution rather than downscaling them to a fixed size, which is what a semester lane's two-digit ECTS header requires. It was converted to a 4-bit quantisation (group size~64) and run with MLX-VLM on the author's computer, so that no frame of any recording was transmitted to a third party. The quantisation is recorded because it compresses precisely the fine-grained visual capacity the model was chosen for; the agreement reported below is the evidence that it remained sufficient for this task.
+%% REV (would you include the prompt, or would you just leave it like that?)
 \paragraph{The coding protocol.}
-The model was instructed to code blind: from the frames alone, without the transcripts, without any prior analysis, and without access to another run's log. One row per frame, in timestamp order, never skipping a frame and never merging or interpolating one: a value not legible in the present frame is recorded as unreadable, never carried forward from a neighbour. Every frame is opened at native resolution and small regions are enlarged before a digit is transcribed, because at reduced size a 3 and a 5, or a 0, 6 and 9, are not distinguishable. Every plan-state number is reconciled against the Dashboard's planned total and, where visible, the remaining-ECTS line, with any reading that fails to reconcile written into the row's note rather than silently resolved. Stability is recorded rather than assumed: a frame identical to its predecessor is coded as such, after being looked at.
-
+The model was instructed to code blind: from the frames alone, without the transcripts, without any prior analysis, and without access to another run's log. One row per frame, in timestamp order, never skipping a frame and never merging or interpolating one: a value not legible in the present frame is recorded as unreadable, never carried forward from a neighbour. Every frame is opened at native resolution and small regions are enlarged before a digit is transcribed, because at reduced size a 3 and a 5, or a 0, 6 and 9, are not distinguishable. Every plan-state number is reconciled against the Dashboard's planned total and, where visible, the remaining-ECTS line, with any reading that fails to reconcile written into the row's note rather than silently resolved.
+%% REV (i cutted one block here, the ects one. PLease add a explanation for the not explained rows in the table: Modal present, and Dashboard open)
 \paragraph{The check.}
-The author coded three complete runs by hand against the same scheme --- P1-A, P2-A and P3-A, 421~frames --- without reference to the model's output. These are the first three Scenario~A runs rather than a random sample, so what follows describes those runs and is not an estimate for the corpus as a whole. On the 183~frames for which both codings are available (P1-A~57, P2-A~66, P3-A~60), agreement is as given in Table~\ref{tab:agreement}.
+The author coded three complete runs by hand against the same scheme, P1-A, P2-A and P3-A, 421~frames, without reference to the model's output. On the 183~frames for which both codings are available (P1-A~57, P2-A~66, P3-A~60), agreement is as given in Table~\ref{tab:agreement}.
 
 \begin{table}[htpb]
     \centering
@@ -452,13 +445,12 @@ The author coded three complete runs by hand against the same scheme --- P1-A, P
     \label{tab:agreement}
 \end{table}
 
-Both sources of disagreement are systematic, and neither is a misreading. The first is definitional: all eight surface disagreements are the same frame type, the setup modal standing over an empty Table View, which the author coded as the Table View with a modal present and the model coded as the setup surface, exactly as its protocol defines that surface. Reconciling the two definitions by rule brings surface agreement to complete. The second is granularity: every one of the 48 disagreements on the Recommendation Panel, and 35 of the 39 on modals, run in the same direction, and they fall inside stretches the author coded as a block --- the guided onboarding sequence, for instance, was coded once with a note that the panel opens progressively across it, where the model coded each frame for what that frame showed. The model is the more literal coder there, which is what its protocol required.
+Both sources of disagreement are systematic, and neither is a misreading. The first is definitional: all eight surface disagreements concern the same frame type, specifically the setup modal standing over an empty Table View. The author coded this as the Table View with a modal present, whereas the model coded it as the setup surface, strictly adhering to its protocol definition. Reconciling these two definitions by rule brings surface agreement to 100\,\%. The second source of disagreement is granularity: all 48 disagreements regarding the Recommendation Panel, 35 of the 39 concerning modals, and the discrepancies regarding the Dashboard all run in the same direction. These fall inside stretches that the author manually coded as a single block. For instance, the guided onboarding sequence was coded manually just once with a qualitative note that the panel opens progressively across it, whereas the model evaluated each frame strictly for what it displayed. The model is therefore the more literal coder, fulfilling its protocol requirements.
 
-The two codings differ in one further way, which bears on the plan-state figures rather than on the process states. Over the same 183~frames the author recorded a legible, corroborated lane-ECTS value in 20 and the model in 128. The conservative reading is the author's: where the digits were small in a screen-share capture the author recorded them as unread rather than risk them, whereas the model enlarged the region and transcribed. This is the capability the model was chosen for, and every value it reported was subject to the reconciliation rule above; but it means the per-semester figures rest more heavily on the model's readings than the process states do, and the completion audit of Section~\ref{app:eval-completion} should be read with that in mind.
+%% REV (this one i would cut?)
+The frame total represents the number of labelled rows contained in the stage logs. To ensure reproducibility, this was counted via an automated script stored alongside the logs rather than tallied by hand. Two specific rules govern this count and resolve prior tally discrepancies: first, a row constitutes a frame only if its surface column names one of the formally defined surfaces, explicitly excluding the analysis tables contained in the same files; second, timestamps are parsed as integers rather than fixed-width strings, accommodating the two earliest runs which wrote their first ten timestamps without leading zeros.
 
-The frame total is the number of labelled rows the stage logs contain, counted by a single script held with the logs themselves so that it can be reproduced rather than tallied by hand. Two rules matter for that count and are recorded here because earlier tallies differed on them: a row is a frame only if its surface column names one of the surfaces above, which excludes the analysis tables the same files carry, and a timestamp is read as an integer rather than as a fixed-width field, because the two earliest runs write their first ten timestamps without leading zeros.
-
-Two properties of the sampling bound what the labelled record can support. Events shorter than the ten-second interval may fall between frames, so counts of transient banners are lower bounds. Lane-header digits are small at the source resolution, so every reported ECTS value was corroborated against the Dashboard total or the stated remaining gap before being accepted, and values that could not be corroborated were recorded as unknown rather than inferred.
+Two properties of the sampling method bound what the labelled record can support. First, UI events shorter than the ten-second interval may fall between frames, meaning counts of transient banners represent strict lower bounds. Second, because lane-header digits are small at the source resolution, every reported ECTS value was corroborated against the Dashboard total or the stated remaining gap before acceptance; values lacking corroboration were recorded as unknown rather than inferred.
 
 % -----------------------------------------------------------------------------
 \section{Per-run completion audit}
@@ -466,7 +458,7 @@ Two properties of the sampling bound what the labelled record can support. Event
 
 The two task briefs are reproduced verbatim in Figure~\ref{fig:scenario-a} and Figure~\ref{fig:scenario-b}. Table~\ref{tab:app-completion} gives the final plan state of all twenty-two analysed scenario runs against the constraints of their brief. A lane at or below the stated cap counts as the internship or exchange semester and is exempt from the per-semester band; overshoot of the 180~ECTS total is not counted as a failure, a shortfall is. Lane values were cross-checked against the Dashboard's planned total and are reported as unknown where that constraint does not determine them. The excluded session P08 is not listed.
 
-The audit treats the band's two ends differently, and the reason is stated here so that a stricter reading remains available to the reader. A lane \emph{above} the ceiling, a missing reduced-load semester, a shortfall against the degree total and a wrong number of semesters each leave a plan that cannot be carried out as written: they overload a semester, drop a mandated element, or fail to complete the degree. A lane \emph{below} the floor does none of these. The credits it does not carry are carried elsewhere within the ceiling, the total still closes, and no rule of the curriculum is broken; the brief's lower bound is guidance about pace rather than a condition on the finished plan. Lanes below the floor are therefore recorded in the table, with the size of the shortfall, but do not by themselves make a run non-compliant. Under the stricter reading, in which the range the briefs call permitted is enforced at both ends, no Scenario~A run and six Scenario~B runs are compliant; every lane needed to apply that reading is in the table.
+The audit treats the band's two ends differently. A lane \emph{above} the ceiling, a missing reduced-load semester, a shortfall against the degree total and a wrong number of semesters each leave a plan that cannot be carried out as written: they overload a semester, drop a mandated element, or fail to complete the degree. A lane \emph{below} the floor does none of these. The credits it does not carry are carried elsewhere within the ceiling, the total still closes, and no rule of the curriculum is broken; the brief's lower bound is guidance about pace rather than a condition on the finished plan. Lanes below the floor are therefore recorded in the table, with the size of the shortfall, but do not by themselves make a run non-compliant.
 
 \begin{table}[htpb]
     \centering
@@ -504,6 +496,8 @@ The audit treats the band's two ends differently, and the reason is stated here 
     \label{tab:app-completion}
 \end{table}
 
+
+%% REV (this section can be deleted i think, since we ended up checking the things we wanna implement after the eval in the E-P list instead of having a seperate redundant one)
 % -----------------------------------------------------------------------------
 \section{Catalogue of unmet requirements}
 \label{app:eval-unmet}
