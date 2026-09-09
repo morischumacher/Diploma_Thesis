@@ -268,9 +268,7 @@ ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems add
     E-N09 & Graph-only canvas chrome persists in the graph-disabled baseline condition. Study artefact, not a product defect. & validity \\
 \end{longtable}
 \normalsize
-%% REV (resolve this and make sure they are all referenced)
-% -----------------------------------------------------------------------------
-\TDminor{Housekeeping for this appendix}{(1)~Six tables here are never referenced from running text: \texttt{tab:app-codebook-problems}, \texttt{tab:app-codebook-positives}, \texttt{tab:app-codebook-neutral}, \texttt{tab:app-unmet}, \texttt{tab:app-interview}, and \texttt{tab:interview-structure} in the interview-plan appendix. Reference each where the prose introduces it, or drop the label. (2)~The process-state-model figure repeats Table~\ref{tab:states} from Chapter~\ref{chap:evaluation}; drop one. (3)~Two captions here run past 250 characters. (4)~24 instances of the \texttt{\enquote{\textbackslash textit\{\dots\}}} quotation form to sweep.}
+\TDminor{Housekeeping for this appendix}{Two items are open. (1)~The completion-audit caption runs to 431 characters, past the 350 the checker allows for a table; split it, moving the rule about the band's two ends into the paragraph above, which already states it. (2)~Two \texttt{\textbackslash textit\{\ldots\}} quotations remain to be converted to \texttt{\textbackslash enquote}. The unreferenced-table item is resolved: the three codebook tables are now named in the section text, the interview-topics and unmet-requirements tables are gone with their sections, and the interview-structure table is referenced from Appendix~\ref{app:formative-interview-plan}.}
 
 \section{Code-by-participant matrix}
 \label{app:eval-matrix}
@@ -495,59 +493,3 @@ The audit treats the band's two ends differently. A lane \emph{above} the ceilin
     \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. \enquote{None} in the reduced-load column is itself a failure of the brief and is carried into the verdict. A lane below the floor is recorded with the size of its shortfall and does not by itself make a run non-compliant; a lane above the ceiling does.}
     \label{tab:app-completion}
 \end{table}
-
-
-%% REV (this section can be deleted i think, since we ended up checking the things we wanna implement after the eval in the E-P list instead of having a seperate redundant one)
-% -----------------------------------------------------------------------------
-\section{Catalogue of unmet requirements}
-\label{app:eval-unmet}
-
-The requests below were recorded from the interviews and think-aloud of all eleven analysed participants, or observed as a capability a participant visibly needed and lacked. Roughly one hundred raw items across the twenty-two runs reduce to the twenty-seven distinct capabilities listed here. They are the requested side of the problem register in Chapter~\ref{chap:evaluation} (Table~\ref{tab:problems}), each entry naming the problem codes it would resolve, and the basis of the development agenda in Chapter~\ref{chap:conclusion} (Section~\ref{sec:disc-future}). Requests made by a single participant are retained where the underlying gap is specific enough to act on.
-
-Two properties of the counts bound how they should be read. A frequency states the participants for whom the need was evidenced, either asked for verbatim or visibly lacked, so a denominator below eleven marks a capability that could not be decided for every participant rather than one that was refused. And the four most recent sessions were roughly half the length of the earlier seven, so a capability nobody reached the point of needing in a short run is under-counted rather than disconfirmed; where a count sits well below the cohort size it should be read as a floor.
-
-\begin{longtable}{p{5.4cm}cp{6.2cm}}
-    \caption{Capabilities requested or visibly lacking, with what each would resolve.}
-    \label{tab:app-unmet}\\
-    \toprule
-    Capability & Freq. & What it would resolve \\
-    \midrule
-    \endfirsthead
-    \multicolumn{3}{c}{\tablename~\thetable\ (continued)}\\
-    \toprule
-    Capability & Freq. & What it would resolve \\
-    \midrule
-    \endhead
-    \midrule
-    \multicolumn{3}{r}{\emph{continued on next page}}\\
-    \endfoot
-    \bottomrule
-    \endlastfoot
-    Category, obligation, and ECTS filters in the table and catalogue & 11/11 & The study's most universal friction; in the graph-off condition the catalogue cannot be narrowed at all, so students fall back on free-text search (E-P04, E-P56). \\
-    An explicit internship or exchange semester, checked by the rule engine & 11/11 & Both briefs mandate one and the tool models none, so the constraint is tracked entirely by the student and never confirmed (E-P25, E-P34). \\
-    A workload band with both ends enforced & 11/11 & The profile expresses a maximum and a recommendation but not a band, so warnings fire inside the stated range and nothing at all fires below it (E-P26, E-P32, E-P35, E-P57). \\
-    A winter or summer indicator on every semester lane & 11/11 & Removes the place, reject, and re-place rework loop caused by invisible term parity at the moment of commitment (E-P29, E-P55). \\
-    Semester lanes and per-lane load visible inside Graph View & 10/10 & A placement made from a node cannot be judged against the target lane's load; over-fill is discovered only after switching back (E-P47). \\
-    Parked credits reflected in, or visibly subtracted from, the totals & 10/11 & Parked ECTS are excluded from every total and nothing says so, and requirement counting drops them too (E-P38). \\
-    A board-level control for adding a semester, and a declarable plan length & 10/11 & Both briefs need more lanes than the prebuilt plan emits, and the only way to add one is inside a card's placement menu (E-P17, E-P51, E-P67). \\
-    The Parking Stage visible, and droppable, inside the graph & 9/11 & Courses parked from graph nodes cannot be reviewed without switching views, the mode switch participants named most often (E-P37). \\
-    Requirement entries linked to the courses that satisfy them & 8/11 & Each checklist item must currently be re-found by hand in the catalogue, breaking the loop the checklist otherwise drives (E-P58). \\
-    Valid target semesters marked before the drop, not after & 8/11 & The tool already computes the legal set for the placement menu; showing it during a drag turns a rejection after the fact into guidance before it (E-P05, E-G03). \\
-    A glanceable statement of what is still outstanding & 7/11 & Total and remaining ECTS and requirement status sit behind collapsible panels and are stated in prose rather than as figures (E-P02, E-P03, E-P10). \\
-    Warnings readable without an expand, each with a reason & 6/11 & The warnings panel was never opened once across the 437 frames of the four most recent sessions while its counter climbed to five (E-P10). \\
-    A way to reduce a card's load or level a lane, instead of a hard rejection & 6/11 & An over-cap drop is refused outright and must be resolved by hand, and the inline ECTS selector that could resolve it rewrites the plan total instead (E-P16, E-P48). \\
-    Rejection banners that state the reason and the valid alternatives & 6/11 & One visual style carries acceptance, rejection and progress, so a refusal cannot be told from a confirmation (E-P05, E-P50, E-P54). \\
-    Populated or hidden recommendation tabs, and an internship data channel & 5/11 & A tab named for the task's own constraint returns a bare empty state (E-P42, E-P56). \\
-    An in-tool glossary for the curriculum vocabulary & 4/11 & Narrow and broad electives, focus area versus exam subject, and module versus course each required moderator explanation (E-P01, E-P28). \\
-    An ECTS to week-hours equivalence, shown by default & 4/11 & The week-hours panel is advertised on every Dashboard and never populated, so workload can only be judged in ECTS (E-P33, E-P61). \\
-    Visible recommended-ordering indicators & 4/11 & The graph renders the formal prerequisite pairs, but the engine's recommended orderings are reported after the fact and rendered in neither view at the point of placement (E-P44). \\
-    Transparent recommendation provenance, and a way to steer it & 4/9 & A student cannot tell which of their own profile inputs produced a given suggestion (E-P68). \\
-    Non-blocking or explained introductory-phase check-off ordering & 4/11 & StEOP courses gate each other until marked done, and the resulting warning never clears (E-P20). \\
-    A self-consistent completion panel & 8/8 & The focus-area checklist reports complete while Missing Requirements lists an unmet module from the same area (E-P36, E-P49, E-P52). \\
-    The integrated versus split course-format choice made visible in the plan & 3/11 & A module offered as VU or as VO plus UE resolves silently, and the rule surfaces only on removal (E-P19). \\
-    A findable recentre or fit-to-content control in the graph & 3/11 & The control exists but was not found; participants lost the canvas while panning (E-P24, E-P65, E-G20). \\
-    Splitting a module across semesters, or repeating it at partial credit & 2/11 & A multi-course module must be placed whole, which conflicts with balancing a semester to a band. \\
-    A view of the courses belonging to the chosen focus area & 2/11 & The focus area drives the checklist but cannot be used to filter what is shown. \\
-    Persistent or re-readable notifications & 2/11 & Milestone and rule messages disappear before they can be read, with no history to consult (E-P50, E-P54). \\
-    An in-tool statement of per-category caps, not only minima & 2/11 & The Dashboard reports what is still required but never what a category will no longer count. \\
-\end{longtable}
