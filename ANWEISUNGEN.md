@@ -601,6 +601,23 @@ Moritz asked for the full list to be checked against the codebook, the requireme
 - **Caulfield 2013**: not re-opened; the discussion uses only the characterisation already verified for Chapter 3 (the retention result read as an outcome the analysis had not established).
 - **Vessey 1991**: the spatial-versus-symbolic distinction (graphs serve tasks of perceiving relationships, tables serve tasks of extracting discrete values, a mismatch costs a transformation) was checked against the account in Padilla et al. 2018, *Cognitive Research: Principles and Implications* (PMC6091269), not against the paywalled original. The chapter states the theory at that level and cites Vessey only.
 
+### Chapters 6 and 7, post-study register settled 2026-09-09
+
+The register the thesis reports as closed is now what is merged on `main` of `hypridplanner` (commit `ba129b9`), verified after the merge rather than from the individual branches: backend 245 tests pass, frontend 144 across 13 files, `tsc --noEmit` clean, `vite build` clean. Eight pull requests, #3 to #10.
+
+- **E-P29** `LaneColumn.jsx` renders the lane's season from `laneSeason(startTermSeason, index)`, which `useBoardNodes` now puts on each lane node. Test `lane-season.test.ts`.
+- **E-P50** the four banner styles were already present in `metrics.ts` before this pass, so only the denominator was open: `targetEctsKpi` read the literal 180 for the Bachelor and now reads `stats.ects.target_total`, which the Bachelor checker reports for the first time. The golden master caught the addition, 132 lines, every one `.stats.ects: added`, no verdict moved; snapshots recomputed from the committed fixtures. The milestone half is E-P54.
+- **E-P42** `recommendationEmptyState()` separates four cases the panel can tell apart. Test `recommendation-empty-state.test.ts`, including one asserting neither old phrase can return.
+- **E-P27, E-P13** the `Disable Graph View (User Study Persona 1)` checkbox is gone from `AuthGate.jsx` and `ProfileModal.tsx`, with its `localStorage` flag, the tour's reduced variant and the gate on the Graph View button.
+- **E-P54** `highestMilestoneCrossed()` replaces `MILESTONES.find`. Test `progress-milestone.test.ts` carries the observed 102/180 failure.
+- **E-P09** `ProgramContext`'s literal `066 937` default is gone; `main.jsx` reads `locked_program_code` before the provider mounts.
+- **E-P41** `parseJsonOrError` carries `status` and `detail`; `authErrorMessage()` maps them, and a test asserts no message leaks either.
+- **E-P44 is not closed.** The overlay now draws the advisory orderings beside the enforced ones, but the code names the point of placement and the graph is not where placement happens. Table 7.6 does not tick it; Chapter 6 says so explicitly. Confirmed by Moritz, 2026-09-09: the evaluated graph drew enforced orderings only, so the Bachelor graph carried no prerequisite edge in any session, which is what Chapter 8 and E-G08 now say.
+- **The soft-dependency layer is cut** (PR #10). The expected prior knowledge the curricula state per module is no longer served or drawn; `recommended_prereqs` stays in the curriculum documents with no reader. The advisory pairs stay in the curriculum because the Bachelor checker warns on them (`bachelor.py:552`, `_recommended_sequencing_warnings`, warnings only, never errors) and the sequence recommender reads them; a test pins that the drawn set and the engine's set are the same pairs.
+- **The counts, read from the curriculum documents:** Bachelor `prerequisites` is empty and `soft_prereqs` holds two pairs; Master is the mirror, two enforced and none advisory. Three passages had this wrong and are corrected: Chapter 8's “two fixed pairs”, Chapter 9's “a handful in each programme”, and E-G08's “formal prerequisite edges”.
+
+Notes closed by this: the `\TDmajor` at `evaluation.tex` on the regression-test claim, and both `\TDrev` notes in `implementation.tex` on the length of the corrections section and on which defects were closed.
+
 ### Chapter 7 (Implementation), code check 2026-09-05/06
 
 Every claim below was read from `main` of `hypridplanner` (commit c00ef4f, then 3136fe1), not from its documentation. The full write-up is `context/code/hypridplanner-analysis.md`; this is the list of what the chapter now asserts on that basis, so the next pass need not re-open the files.
