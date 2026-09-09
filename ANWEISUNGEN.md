@@ -623,6 +623,14 @@ Dependability (+2.43) and stimulation (+2.23) are not quoted in the chapter and 
 
 The thesis compiles with the two tables added and introduces no overfull box: `latexmk` reports the same six overfull hboxes before and after.
 
+### Outstanding: the Greenwald citation in Chapter 7, 2026-09-09
+
+Deleted the `%% REV` asking for it to be checked, by your decision, without checking: the PDF is not in the project and I could not open it. Two page-level claims in Section~\ref{sec:eval-order} still rest on it and are unverified:
+
+- **p. 320** counterbalancing distributes practice effects but does not remove an interaction between treatment and practice.
+- **pp. 316--318** a fixed sequence is an appropriate alternative when the course of learning is itself the object of study.
+
+Greenwald, A. G. (1976). Within-subjects designs: To use or not to use? *Psychological Bulletin*, 83(2), 314--320. The cited pages sit at the end of a seven-page article, so the p. 320 attribution in particular is worth confirming. This grounds the fixed-order defence, which is the chapter's main design-validity argument.
 ### Chapter 8, Bodily and Verbert checked 2026-09-09
 
 Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
