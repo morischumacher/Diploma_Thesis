@@ -1,70 +1,7 @@
-%% REV (is the ordering good? Maybe start with the scenario briefs, then the post task questionaire, then the UEQ?
-
 \chapter{Summative Evaluation Materials}
 \label{app:eval-materials}
 
-This appendix documents the materials and coding scheme behind the summative evaluation reported in Chapter~\ref{chap:evaluation}. It reproduces the questionnaire instruments and the voice-interview topics, and it lists the full thematic codebook together with the code-by-participant matrix on which the reported frequencies rest.
-
-% -----------------------------------------------------------------------------
-\section{Questionnaire instruments}
-\label{app:eval-instruments}
-
-\subsection{Post-task questionnaire (administered after each scenario)}
-
-After each of the two scenarios, participants completed the same nine-item questionnaire. Items~1 to~6 form a TAM-derived short form adapted to the planning %% REV (is this reference correct here?)
-domain~\cite{davis_perceived_1989}: items~1 to~3 measure perceived usefulness and items~4 to~6 perceived ease of use, with item~5 reported separately from the ease-of-use mean for the reason given %% REV (match this to the referenced section, is it still discriped there?)
-in Section~\ref{sec:eval-questionnaire}. Each is rated on a seven-point Likert scale anchored \enquote{Strongly disagree} (1) to \enquote{Strongly agree} (7). Items~7 to~9 capture self-assessed task outcome and are analysed as experience measures rather than as ground-truth completion (Section~\ref{sec:eval-effectiveness}).
-
-\begin{table}[htpb]
-    \centering
-    \small
-    \begin{tabular}{clp{7.6cm}l}
-        \toprule
-        \# & Construct & Item wording & Scale \\
-        \midrule
-        1 & Usefulness   & The interface helped me create a study plan more effectively. & 1--7 \\
-        2 & Usefulness   & The interface improved my productivity when dealing with course dependencies and constraints. & 1--7 \\
-        3 & Usefulness   & The interface would be useful for planning my own studies. & 1--7 \\
-        4 & Ease of use  & Learning to use the interface was easy for me. & 1--7 \\
-        5 & Ease of use  & The interface made it easy to keep an overview while planning. & 1--7 \\
-        6 & Ease of use  & Interacting with the interface felt clear and understandable. & 1--7 \\
-        7 & Success      & How successful were you in meeting all task constraints? & 3-point\textsuperscript{a} \\
-        8 & Satisfaction & Rate your satisfaction with the semester plan you created. & 1--7\textsuperscript{b} \\
-        9 & Difficulty   & How easy or difficult did you find it to complete the task with this tool? & 1--7\textsuperscript{c} \\
-        \bottomrule
-    \end{tabular}
-    \caption{The nine-item post-task questionnaire administered after each scenario. \textsuperscript{a}~\enquote{Fully successful}, \enquote{Partially successful}, \enquote{Not successful}. \textsuperscript{b}~Anchored \enquote{Very unsatisfied} (1) to \enquote{Very satisfied} (7). \textsuperscript{c}~Anchored \enquote{Very difficult} (1) to \enquote{Very easy} (7).}
-    \label{tab:app-perscenario-instrument}
-\end{table}
-%% REV (item 7 named constrains? THis is not corret or? I would delte this here)
-Item~7 named the concrete constraints for the scenario in question. For Scenario~A the wording was \enquote{e.g.\ semesters 1--7, 30~ECTS $\pm$3, internship semester max 9~ECTS}; for Scenario~B it named the Artificial-Intelligence targets. The questionnaire was presented bilingually (English and German); Table~\ref{tab:app-perscenario-instrument} reproduces the English wording.
-
-\subsection{Final questionnaire (User Experience Questionnaire)}
-%% REV (where are the items from this questionaire, i just see one table and its the post task? Also the table is not referenced)
-After both scenarios and the open-exploration phase, participants completed the User Experience Questionnaire%% REV (Abrevencion?)
-once~\cite{laugwitz_construction_2008}. The instrument comprises twenty-six seven-point semantic-differential items between opposing adjectives (for example \enquote{obstructive / supportive} and \enquote{confusing / clear}), which aggregate into six scales: attractiveness, perspicuity, efficiency, dependability, stimulation, and novelty. Perspicuity, efficiency, and dependability summarise pragmatic (goal-directed) quality; stimulation and novelty summarise hedonic quality. We report the group profile in Table~\ref{tab:ueq}. We use the standard instrument without modification and therefore do not reproduce all twenty-six items here.
-
-\subsection{Voice-interview topics}
-\label{app:eval-interview}
-%% REV (it this important here, would just delete i think?)
-The session closed with a short semi-structured voice interview conducted through the study-guide application. The moderator raised four topics and let participants speak freely; the prompts were framed to elicit friction and re-planning behaviour rather than to lead the response.
-
-\begin{table}[htpb]
-    \centering
-    \small
-    \begin{tabular}{p{3.6cm}p{9.8cm}}
-        \toprule
-        Topic & Prompt \\
-        \midrule
-        System blocks and friction & Were there moments where the planner blocked your progress or made it hard to implement your plan? \\
-        Backtracking and re-planning & Did you have to backtrack or delete parts of your plan to satisfy constraints? How did the interface support or hinder this? \\
-        Hesitation and orientation & Did you feel confused or pause at certain states? How understandable was the visual feedback, for example the recommendation arrows or the warnings? \\
-        General feedback & What were your favourite aspects, and what was missing? \\
-        \bottomrule
-    \end{tabular}
-    \caption{The four topics raised in the closing voice interview.}
-    \label{tab:app-interview}
-\end{table}
+This appendix documents the materials and the coding scheme behind the summative evaluation reported in Chapter~\ref{chap:evaluation}, in the order a session met them: the two scenario briefs, then the questionnaires administered after each scenario and at the close. It then gives the thematic codebook, the code-by-participant matrix on which the reported frequencies rest, the labelling scheme for the screen recordings, and the per-run completion audit.
 
 % -----------------------------------------------------------------------------
 \section{Scenario briefs}
@@ -106,6 +43,88 @@ The two task briefs are reproduced below exactly as the study-guide application 
     \label{fig:scenario-b}
 \end{figure}
 
+
+% -----------------------------------------------------------------------------
+\section{Questionnaire instruments}
+\label{app:eval-instruments}
+
+\subsection{Post-task questionnaire (administered after each scenario)}
+
+After each of the two scenarios, participants completed the same nine-item questionnaire. Items~1 to~6 form a short form derived from the Technology Acceptance Model and adapted to the planning domain~\cite{davis_perceived_1989}: items~1 to~3 measure perceived usefulness and items~4 to~6 perceived ease of use. Item~5 is reported separately from the ease-of-use mean rather than averaged into it, because it asks about an outcome of planning rather than about the cost of operating the interface, and the responses behave accordingly: across the twenty-two responses it correlates more strongly with the usefulness mean ($r = 0.77$) than with the other two ease-of-use items ($r = 0.59$), in each scenario as well as pooled. Chapter~\ref{chap:evaluation} (Section~\ref{sec:eval-questionnaire}) reports it on its own line for that reason. Each is rated on a seven-point Likert scale anchored \enquote{Strongly disagree} (1) to \enquote{Strongly agree} (7). Items~7 to~9 capture self-assessed task outcome and are analysed as experience measures rather than as ground-truth completion (Section~\ref{sec:eval-effectiveness}).
+
+\begin{table}[htpb]
+    \centering
+    \small
+    \begin{tabular}{clp{7.6cm}l}
+        \toprule
+        \# & Construct & Item wording & Scale \\
+        \midrule
+        1 & Usefulness   & The interface helped me create a study plan more effectively. & 1--7 \\
+        2 & Usefulness   & The interface improved my productivity when dealing with course dependencies and constraints. & 1--7 \\
+        3 & Usefulness   & The interface would be useful for planning my own studies. & 1--7 \\
+        4 & Ease of use  & Learning to use the interface was easy for me. & 1--7 \\
+        5 & Ease of use  & The interface made it easy to keep an overview while planning. & 1--7 \\
+        6 & Ease of use  & Interacting with the interface felt clear and understandable. & 1--7 \\
+        7 & Success      & How successful were you in meeting all task constraints? & 3-point\textsuperscript{a} \\
+        8 & Satisfaction & Rate your satisfaction with the semester plan you created. & 1--7\textsuperscript{b} \\
+        9 & Difficulty   & How easy or difficult did you find it to complete the task with this tool? & 1--7\textsuperscript{c} \\
+        \bottomrule
+    \end{tabular}
+    \caption{The nine-item post-task questionnaire administered after each scenario. \textsuperscript{a}~\enquote{Fully successful}, \enquote{Partially successful}, \enquote{Not successful}. \textsuperscript{b}~Anchored \enquote{Very unsatisfied} (1) to \enquote{Very satisfied} (7). \textsuperscript{c}~Anchored \enquote{Very difficult} (1) to \enquote{Very easy} (7).}
+    \label{tab:app-perscenario-instrument}
+\end{table}
+Item~7 named the scenario's own constraints inside the question, so that participants rated success against the brief rather than against an impression. In Scenario~A it read \enquote{How successful were you in meeting all task constraints (e.g.\ semesters 1--7, 30~ECTS $\pm$3, internship semester max 9~ECTS)?} and in Scenario~B \enquote{\ldots{} (e.g.\ semesters 1--8, 24~ECTS $\pm$3, exchange semester max 9~ECTS)?} The questionnaire was presented bilingually (English and German); Table~\ref{tab:app-perscenario-instrument} reproduces the English wording.
+
+\subsection{Final questionnaire (User Experience Questionnaire)}
+\label{app:eval-ueq}
+
+After both scenarios and the open-exploration phase, participants completed the User Experience Questionnaire (UEQ) once~\cite{laugwitz_construction_2008}. It comprises twenty-six seven-point semantic-differential items between opposing adjectives, which aggregate into six scales: attractiveness, perspicuity, efficiency, dependability, stimulation and novelty. Perspicuity, efficiency and dependability summarise pragmatic quality, stimulation and novelty hedonic quality; the group profile is reported in Chapter~\ref{chap:evaluation}, Table~\ref{tab:ueq}.
+
+The items are the standard ones and were not reworded, but they were administered in the order and polarity of Table~\ref{tab:app-ueq-items}, which is not the order of the original publication: several pairs are presented with the positive adjective on the left. Scoring follows the item-to-scale assignment of the instrument, with negatively poled items inverted before a scale mean is taken, so the order shown here is what the reported scales were computed from.
+
+\footnotesize
+\begin{longtable}{@{}c>{\raggedright\arraybackslash}p{6.0cm}>{\raggedright\arraybackslash}p{6.0cm}@{}}
+    \caption{The twenty-six User Experience Questionnaire items in the order and polarity administered, in both languages. Participants saw the two languages side by side and rated each pair on a seven-point scale.}
+    \label{tab:app-ueq-items}\\
+    \toprule
+    \# & English & German \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}{\tablename~\thetable\ (continued)}\\
+    \toprule
+    \# & English & German \\
+    \midrule
+    \endhead
+    \bottomrule
+    \endfoot
+        1 & annoying / enjoyable & unangenehm / erfreulich \\
+        2 & not understandable / understandable & unverständlich / verständlich \\
+        3 & creative / dull & kreativ / phantasielos \\
+        4 & easy to learn / difficult to learn & leicht zu lernen / schwer zu lernen \\
+        5 & valuable / inferior & wertvoll / minderwertig \\
+        6 & boring / exciting & langweilig / spannend \\
+        7 & not interesting / interesting & uninteressant / interessant \\
+        8 & unpredictable / predictable & unberechenbar / voraussagbar \\
+        9 & leading edge / usual & neuartig / herkömmlich \\
+        10 & unpleasant / pleasant & unangenehm / angenehm \\
+        11 & secure / insecure & sicher / unsicher \\
+        12 & motivating / demotivating & motivierend / demotivierend \\
+        13 & meets expectations / does not meet expectations & erwartungskonform / nicht erwartungskonform \\
+        14 & inefficient / efficient & ineffizient / effizient \\
+        15 & clear / confusing & übersichtlich / verwirrend \\
+        16 & impractical / practical & unpraktisch / praktisch \\
+        17 & organized / cluttered & aufgeräumt / überladen \\
+        18 & attractive / unattractive & attraktiv / unattraktiv \\
+        19 & friendly / unfriendly & freundlich / unfreundlich \\
+        20 & conservative / innovative & konservativ / innovativ \\
+        21 & obstructive / supportive & behindernd / unterstützend \\
+        22 & good / bad & gut / schlecht \\
+        23 & easy / complicated & einfach / kompliziert \\
+        24 & unlikable / pleasing & unsympathisch / sympathisch \\
+        25 & state-of-the-art / conventional & modern / altmodisch \\
+        26 & fast / slow & schnell / langsam \\
+\end{longtable}
+\normalsize
 
 % -----------------------------------------------------------------------------
 \section{Evaluation codebook}
