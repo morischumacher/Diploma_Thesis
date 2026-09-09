@@ -18,7 +18,7 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[Recommendation channel] The implementation counterpart of a family: one object with a name and a single method, composed with the others by the recommendation engine (Chapter~\ref{chap:implementation}, Section~\ref{sec:impl-recommender}). Families and channels correspond one to one; the two words mark which side of the design and implementation split is being discussed.
 
   \phantomsection\label{gls:collaborative-filtering}
-  \item[Collaborative filtering] Recommending an item to a student on the evidence of what similar students did, without reading the item's content. Contrasted with content-based filtering below; a hybrid recommender combines the two. Used in this thesis for one of the recommendation families (Section~\ref{sec:impl-recommender}), where the prior-student histories it draws on are synthetically generated (Chapter~\ref{chap:methodology}, OOS5).
+  \item[Collaborative filtering] Recommending an item to a student on the evidence of what similar students did, without reading the item's content. Contrasted with content-based filtering below; a recommender combining the two strategies is called hybrid, a sense unrelated to the hybrid graph-table interface. Used in this thesis for one of the recommendation families (Section~\ref{sec:impl-recommender}), where the prior-student histories it draws on are synthetically generated (Chapter~\ref{chap:methodology}, OOS5).
 
   \phantomsection\label{gls:content-based-filtering}
   \item[Content-based filtering] Recommending an item on the evidence of its own attributes and a profile of what the student has engaged with before, without reference to other students.
@@ -55,6 +55,8 @@ This glossary defines domain-specific and thesis-specific terms used regularly t
   \item[OOS (Out of Scope)] One of the five system-wide scope boundaries (OOS1--OOS5), all defined in the Methodology chapter (Section~\ref{sec:overall-scope}). OOS3 and OOS4 rest on evidence that only the formative study supplies; the themes excluded under them are named in Chapter~\ref{chap:formative-study} (Section~\ref{sec:scope-refinement}).
   \phantomsection\label{gls:nested-model}
   \item[Nested Model] Munzner's nested model for visualisation design and validation~\cite{munzner2009}, used as this thesis's umbrella structuring framework (Chapter~\ref{chap:methodology}, Section~\ref{sec:paradigm}).
+  \phantomsection\label{gls:hybrid-interface}
+  \item[Hybrid graph-table interface] The artefact this thesis designs, builds and evaluates: one plan held by two surfaces, a Graph View for reading the curriculum's structure and a Table View for placing courses across the semesters of a programme, with a Compliance Engine checking the plan after every change. All three are defined below. Shortened to \enquote{the hybrid interface} or \enquote{the hybrid} after first use. The \emph{hybrid concept} names the premise that such a pairing is worth building, which Chapter~\ref{chap:methodology} states as an assumption; a \emph{hybrid recommender} is an unrelated sense, a recommender combining two strategies.
   \phantomsection\label{gls:table-view}
   \item[Table View] The primary planning canvas: semesters as vertical columns containing course cards, organised for commitment-stage planning (Section~\ref{sec:table-spatial}).
   \phantomsection\label{gls:graph-view}
