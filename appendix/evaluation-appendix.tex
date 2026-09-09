@@ -111,9 +111,9 @@ The two task briefs are reproduced below exactly as the study-guide application 
 \section{Evaluation codebook}
 \label{app:eval-codebook}
 
-The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an %% REV (REF?)
-ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The \enquote{Seeded} column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
-%% REV (i deleted a view items, take care that the numbering is valid again (also in the thesis))
+The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension~\cite{iso9241_11} (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The \enquote{Seeded} column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
+Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table~\ref{tab:app-codebook-positives} the positive findings and Table~\ref{tab:app-codebook-neutral} the neutral and method observations. Chapter~\ref{chap:evaluation} reports the problems ranked by severity and frequency in Table~\ref{tab:problems} and the positive findings in Table~\ref{tab:positives}; the neutral codes are recorded here only, since they qualify the evidence rather than state a finding.
+
 \footnotesize
 \begin{longtable}{p{1.6cm}p{9.6cm}cc}
     \caption{Usability-problem codes (\mbox{E-P}).}
@@ -155,6 +155,7 @@ ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems add
     E-P23 & Per-course action icons on catalogue cards are small and fiddly. & eff & 2 \\
     E-P24 & Pan and zoom strand the graph on empty canvas; no recentre or fit control. & eff & 2 \\
     E-P25 & The mandated internship or exchange semester (at most 9~ECTS) has no explicit affordance and is never confirmed by the tool. & eff & 2 \\
+    E-P26 & The workload band is not enforced: overload only advises, and a band-violating plan still earns full completion. & eff & 3 \\
     E-P27 & Internal study wording (\enquote{User Study Persona 1}) leaks into the production profile UI. & sat & 1 \\
     E-P28 & A module expands into several courses of mixed obligation type; the granularity confused novices. & eff & 1 \\
     E-P29 & No at-a-glance winter or summer indicator per semester lane; participants lose term parity while placing season-locked courses. & eff & 3 \\
@@ -162,6 +163,7 @@ ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems add
     E-P31 & Removing a placed card deletes even a mandatory module with no confirmation or undo. & eff & 2 \\
     E-P32 & The overload warning fires within the stated acceptable band because it is driven by the stricter profile value. & eff & 2 \\
     E-P33 & Workload shown in ECTS with no week-hours equivalence the participant can interpret. & sat & 1 \\
+    E-P34 & The panel reports \enquote{no missing requirements} while unmodelled hard constraints of the brief, the reduced-load semester and the lower workload bound, are unmet. & eff & 3 \\
     E-P35 & The upper workload bound is a hard block but the lower bound is only a soft warning, so under-loaded semesters are never forced to correct. & eff & 2 \\
     E-P36 & The Dashboard checklist can show checked greater than total (for example 9/6), undermining trust in the tracker. & eff & 1 \\
     E-P37 & The Parking Stage cannot be viewed inside the Graph View; participants had to switch modes. & eff & 2 \\
@@ -198,7 +200,6 @@ ISO~9241-11 dimension (effectiveness, efficiency, or satisfaction); problems add
 \end{longtable}
 \normalsize
 
-%% REV (do they show items, the lists for positive and neutral findings in the thesis itself are not showing?. If so reference them, if not they are unnecessary here?)
 \footnotesize
 \begin{longtable}{p{1.6cm}p{10.6cm}c}
     \caption{Positive-finding codes (\mbox{E-G}).}
