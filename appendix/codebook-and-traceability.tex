@@ -8,7 +8,6 @@ A theme's header row carries its identifier, its need label, $n$, and its dispos
 Each row beneath a header is one excerpt: the interview it came from (I1 to I6), the author's English translation, and the German original, so that every translation can be checked against what was said.
 
 \input{appendix/theme-codebook-table}
-%% REV (go through the delination arguments. Some requirements where not implemented like the grouping thing. We fraim this as a real shortfall and hint to dicussion. Change in these cases that we just scoped these out because of limited constrains, and dont refer to limiations.)
 \section{Feature Specifications}
 \label{app:feature-specs}
 This appendix records in full the 13 features derived in Section~\ref{chap:from-themes-to-requirements}, which states the derivation procedure and summarises the result in Table~\ref{tab:feature-summary}. They are reproduced here so that every requirement cited from the Design and Implementation chapters can be read in its own evidential context. Features appear in identifier order, which Table~\ref{tab:feature-summary} reorders by importance score, and each is presented in the same structure: title and identifier, importance score, associated themes, description and user evidence, derived requirements, and a delineation where one applies. The themes named under each feature are defined, with the excerpts that informed them, in Section~\ref{app:codebook}; the 13 features carry 55 numbered requirements between them.
@@ -106,7 +105,7 @@ Course selection is often initially interest-driven (T6), but participants consi
 \end{enumerate}
 
 \paragraph{Delineation.}
-Requirement 3 was derived from the data but was not carried into the implemented system, due to resource and time constraints during development. Exam-load or exam-period collision detection is out of scope, since course-level planning and live institutional data are both excluded by the overall scope boundaries (OOS3, OOS2).
+Requirement 3 was derived from the data and then scoped out of the implementation under the time and resource constraints of this thesis; it stands in this specification and is not withdrawn. Exam-load or exam-period collision detection is out of scope, since course-level planning and live institutional data are both excluded by the overall scope boundaries (OOS3, OOS2).
 
 \subsection{FEATURE-006 --- Onboarding \& Guided Planning Transition}
 \refstepcounter{featurenum}\label{feat:006}
@@ -242,7 +241,7 @@ Participants describe free spatial arrangement as a cognitive externalisation st
 \end{enumerate}
 
 \paragraph{Delineation.}
-Requirements 1, 3, and 4 were derived from the data but were not carried into the implemented system, due to resource and time constraints during development. Only free spatial positioning (Requirement 2) was implemented; the explicit, named, cross-view grouping mechanism itself was not built. This is a genuine shortfall against an elicited requirement rather than an intentional non-goal, and is treated as such in the Discussion chapter's limitations.
+Requirements 1, 3, and 4 were derived from the data and then scoped out of the implementation under the time and resource constraints of this thesis. Only free spatial positioning (Requirement 2) was built; the explicit, named, cross-view grouping mechanism was not. The requirements stand in this specification and are not withdrawn: what was bounded is what this thesis implemented, not what the evidence asked for.
 
 \section{Traceability Matrix}
 \label{app:traceability-matrix}
