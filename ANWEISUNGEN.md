@@ -601,6 +601,28 @@ Moritz asked for the full list to be checked against the codebook, the requireme
 - **Caulfield 2013**: not re-opened; the discussion uses only the characterisation already verified for Chapter 3 (the retention result read as an outcome the analysis had not established).
 - **Vessey 1991**: the spatial-versus-symbolic distinction (graphs serve tasks of perceiving relationships, tables serve tasks of extracting discrete values, a mismatch costs a transformation) was checked against the account in Padilla et al. 2018, *Cognitive Research: Principles and Implications* (PMC6091269), not against the paywalled original. The chapter states the theory at that level and cites Vessey only.
 
+### Appendix B, questionnaire responses recomputed 2026-09-09
+
+The per-participant tables were built from `context/interviews-round2/US Results.xlsx` (P01--P08, raw JSON column) plus the four later sessions Moritz supplied on 2026-09-09 (P09--P12); the file in the repository predates them. P08 is excluded, leaving eleven.
+
+Every UEQ figure Chapter~\ref{chap:evaluation} reports reproduces from these responses under the scale assignment and polarity recorded in the appendix:
+
+| | reported | recomputed |
+|---|---|---|
+| Attractiveness | +2.61 | +2.61 |
+| Perspicuity | +1.82 | +1.82 |
+| Efficiency | +2.59 | +2.59 |
+| Novelty | +1.77 | +1.77 |
+| Pragmatic | +2.28 | +2.28 |
+| Hedonic | +2.00 | +2.00 |
+| SD novelty / dependability | 0.78 / 0.75 | 0.78 / 0.75 |
+| SD attractiveness / efficiency | 0.33 / 0.30 | 0.33 / 0.30 |
+| Overall span | P06 +1.35 to P05 +2.69 | P06 +1.35 to P05 +2.69 |
+
+Dependability (+2.43) and stimulation (+2.23) are not quoted in the chapter and are recorded here for completeness. The dispersions match the sample standard deviation, not the population one.
+
+The thesis compiles with the two tables added and introduces no overfull box: `latexmk` reports the same six overfull hboxes before and after.
+
 ### Outstanding: the Greenwald citation in Chapter 7, 2026-09-09
 
 Deleted the `%% REV` asking for it to be checked, by your decision, without checking: the PDF is not in the project and I could not open it. Two page-level claims in Section~\ref{sec:eval-order} still rest on it and are unverified:
