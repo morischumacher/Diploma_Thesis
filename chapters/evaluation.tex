@@ -94,7 +94,6 @@ Because graph availability and second-task exposure are perfectly collinear, thi
 Sessions were screen- and audio-recorded and administered via a custom web application (Section~\ref{sec:impl-userstudy}) following a fixed sequence: (1)~demographics, (2)~consent, (3)~video tutorial, (4)~Scenario~A, (5)~post-task questionnaire, (6)~Scenario~B, (7)~post-task questionnaire, (8)~open exploration, (9)~final questionnaire, and (10)~a semi-structured interview. Participants used the think-aloud method during all working phases, with a moderator present to resolve operational questions.
 
 The post-task questionnaires contained nine items: three assessing task success, plan satisfaction, and difficulty, alongside six domain-adapted items from the Technology Acceptance Model (TAM) measuring perceived usefulness and ease of use. The final questionnaire consisted of the standard 26-item User Experience Questionnaire (UEQ)~\cite{laugwitz_construction_2008}, whose items and scale assignment are given in Section~\ref{app:eval-ueq}. All instruments are reproduced in Section~\ref{app:eval-instruments}.
-\TDrev{How the TAM-derived items are reported}{Moritz, 2026-09-06: to be discussed. The items are a three-per-construct, reworded short form, so Davis's reliabilities cannot be claimed. Options: keep reporting them as TAM-derived means without a reliability claim, as now; compute Cronbach's alpha over the eleven responses per condition and report it with the caveat that eleven cases support only a rough estimate; or drop the construct labels and report the six items descriptively. The choice also touches Chapter~\ref{chap:discussion}'s limitation on the instrument.}
 
 \section{Analysis Method}
 \label{sec:eval-analysis}
@@ -477,24 +476,29 @@ The User Experience Questionnaire (UEQ) results describe a tool participants jud
     \label{tab:ueq}
 \end{table}
 
-While the UEQ captured the system's global usability footprint, the Technology Acceptance Model (TAM) items administered after each task evaluate perceived utility across the two conditions. Overall acceptance ratings remained consistently high in both scenarios (Table~\ref{tab:tam}), and the differences between conditions are small. While both usefulness and ease of use increased in Scenario~B, the fixed-order design precludes attributing this to the graph, as the shift remains collinear with second-task familiarity. Satisfaction with the finished plan is the one item that falls, from 6.27 to 5.91. The mean movement rests on four participants: P03 and P11 drop two points each, P05 and P06 one, while two rise and five do not move. The two largest drops belong to the participants whose Scenario~B plans went furthest wrong, P03-B with six lanes outside the band and P11-B one credit below its floor, which is consistent with the completion audit of Section~\ref{sec:eval-effectiveness} but rests on four cases and is offered as a reading rather than a result.
+While the UEQ captured the system's global usability footprint, six items adapted from the Technology Acceptance Model were administered after each task. They are a reworded, three-per-construct short form, so the reliabilities Davis reports do not carry to them, and the responses bear this out: across the eleven participants the three usefulness items reach $\alpha=0.17$ in Scenario~A and $0.56$ in Scenario~B, while the two ease-of-use items reach $0.76$ and $0.72$. The usefulness items are therefore reported individually rather than averaged into a construct, and no construct-level claim rests on them. Ratings are high throughout and the differences between conditions are small (Table~\ref{tab:tam}); the fixed-order design precludes attributing any of them to the graph, since every shift remains collinear with second-task familiarity. Satisfaction with the finished plan is the one item that falls, from 6.27 to 5.91. The mean movement rests on four participants: P03 and P11 drop two points each, P05 and P06 one, while two rise and five do not move. The two largest drops belong to the participants whose Scenario~B plans went furthest wrong, P03-B with six lanes outside the band and P11-B one credit below its floor, which is consistent with the completion audit of Section~\ref{sec:eval-effectiveness} but rests on four cases and is offered as a reading rather than a result.
 
 \begin{table}[htpb]
     \centering
     \small
-    \begin{tabular}{lrr}
+    \begin{tabular}{clrr}
         \toprule
-        Construct (1--7) & Scenario~A & Scenario~B \\
+        \# & Item (1--7) & Scenario~A & Scenario~B \\
         \midrule
-        Perceived usefulness (3 items)        & 6.18 & 6.45 \\
-        Perceived ease of use (2 items)       & 5.59 & 6.09 \\
+        1 & Helped me plan more effectively & 6.09 & 6.36 \\
+        2 & Improved my productivity on constraints & 6.09 & 6.36 \\
+        3 & Would be useful for planning my own studies & 6.36 & 6.64 \\
         \midrule
-        \enquote{Easy to keep an overview} (separate) & 6.36 & 6.55 \\
-        Satisfaction with the plan             & 6.27 & 5.91 \\
-        Task difficulty (7 = very easy)        & 6.18 & 6.00 \\
+        4 & Learning to use the interface was easy & 5.73 & 6.09 \\
+        6 & Interacting felt clear and understandable & 5.45 & 6.09 \\
+          & \emph{Ease of use, items 4 and 6} & 5.59 & 6.09 \\
+        \midrule
+        5 & Easy to keep an overview while planning & 6.36 & 6.55 \\
+        8 & Satisfaction with the plan & 6.27 & 5.91 \\
+        9 & Task difficulty (7 = very easy) & 6.18 & 6.00 \\
         \bottomrule
     \end{tabular}
-    \caption{TAM-derived acceptance items and post-task ratings, displaying means across the eleven analysed participants. The \enquote{overview} item is reported separately rather than averaged into ease-of-use because it correlated more strongly with usefulness, which would compromise construct validity.}
+    \caption{The post-task items and their means across the eleven analysed participants, numbered as in Table~\ref{tab:app-perscenario-instrument}. The three usefulness items are reported individually because they do not cohere as a scale. Item~5 is kept out of the ease-of-use mean because it correlated more strongly with usefulness than with the other ease-of-use items.}
     \label{tab:tam}
 \end{table}
 
