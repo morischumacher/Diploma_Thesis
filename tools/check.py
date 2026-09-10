@@ -267,7 +267,8 @@ def main():
                 warn('%s: %s x%d %s' % (f, what, len(hits), dict(c.most_common(5))))
         for cap in caption_bodies(t):
             p = plain(cap)
-            lim = 350 if '\\begin{table' in t[:t.find(cap)][-4000:] else 200
+            before = t[:t.find(cap)][-4000:]
+            lim = 350 if ('\\begin{table' in before or '\\begin{longtable' in before) else 200
             if not (100 <= len(p) <= lim):
                 warn(f'{f}: caption {len(p)} chars (limit 100-{lim}): {p[:60]}')
 
