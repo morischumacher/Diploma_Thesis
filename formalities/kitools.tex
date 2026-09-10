@@ -1,1 +1,43 @@
-\TDblock{Erklaerung zu KI-Hilfsmitteln ist leer}{Deutsche Fassung der AI-tools-Erklaerung, inhaltlich deckungsgleich.}
+Ich erkläre, dass ich bei der Erstellung dieser Arbeit generative KI-Werkzeuge
+verwendet habe. Sie kamen in drei voneinander unterscheidbaren Rollen zum
+Einsatz; für jede ist im Folgenden angegeben, wo in der Arbeit sie zum Tragen
+kommt.
+
+\emph{Als Schreibhilfe.} Entwerfen, Umstrukturieren, Paraphrasieren sowie
+Prüfung von Rechtschreibung, Grammatik und der Konsistenz von Terminologie und
+Zahlenangaben über die Kapitel hinweg.
+
+\emph{Als Entwicklungshilfe.} Codegenerierung, Refactoring, Erstellung von Tests
+und Fehlersuche für das in Kapitel~\ref{chap:implementation} beschriebene
+Software-Artefakt sowie für die \LaTeX{}-Quellen dieses Dokuments.
+
+\emph{Als Forschungsinstrument.} Ein Vision-Language-Modell wurde eingesetzt, um
+das bildweise Kodierschema auf die Bildschirmaufzeichnungen der Evaluierungsstudie
+anzuwenden. Dieser Einsatz ist keine Schreibhilfe, sondern Teil der Analyse und
+daher nicht nur hier, sondern in der Arbeit selbst dokumentiert: Das
+Kodierprotokoll findet sich in Abschnitt~\ref{app:eval-stagelog}, die
+Übereinstimmung zwischen der Kodierung des Modells und jener des Autors über die
+von beiden abgedeckten Einzelbilder samt den beiden systematischen Quellen der
+Abweichung in Abschnitt~\ref{app:eval-agreement}. Kein Ergebnis der Arbeit beruht allein auf der Kodierung des Modells.
+
+Alle Ausgaben wurden kritisch geprüft und, wo angebracht, überarbeitet. Es wurde
+keine Textpassage ohne substantielle eigene Änderungen in diese Arbeit
+übernommen, und mein gestalterischer Einfluss überwiegt in der vorliegenden
+Arbeit. Die Entwurfsentscheidungen, die Interpretation der Evidenz und die
+gezogenen Schlussfolgerungen sind meine eigenen.
+
+Verwendete KI-Werkzeuge:
+
+\begin{itemize}
+  \item Claude\footnote{\url{https://claude.ai}}, Anthropic. Modelle: Claude
+        Sonnet~4.5 und Claude Opus~4.1--5, Versionsstand März~2026 --
+        September~2026. Schreib- und Entwicklungshilfe.
+  \item Otter.ai\footnote{\url{https://otter.ai}}. Automatische
+        Spracherkennung, Versionsstand März~2026 -- Juli~2026. Transkription
+        der Audioaufzeichnungen beider Studien
+        (Kapitel~\ref{chap:evaluation}, Abschnitt~\ref{sec:eval-tworecords}).
+  \item Qwen3-VL-30B-A3B-Instruct\footnote{\url{https://github.com/QwenLM/Qwen3-VL}},
+        Alibaba Cloud, lokal ausgeführt. Versionsstand Juli~2026. Bildweise
+        Kodierung der Bildschirmaufzeichnungen der Evaluierungsstudie
+        (Abschnitt~\ref{app:eval-stagelog}).
+\end{itemize}
