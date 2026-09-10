@@ -5,18 +5,18 @@
 % 'final': Remove all debug information in the final build.
 % 'onside': Create document for onsided printing (without empty pages added by LaTeX).
 % 'twoside': Create document for twosided printing, which adds empty pages to start chapters on odd pages.
-\documentclass[draft,twoside]{vutinfth}
+\documentclass[final,twoside]{vutinfth}
 
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Moritz Jakob Schumacher} % The author name without titles.
-\newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
+\newcommand{\thesistitle}{A Hybrid Graph–Table Interface for Study Planning: Design and Evaluation} % The title of the thesis. The English version should be used, if it exists.
 
 % Create the XMP metadata file for the creation of PDF/A compatible documents.
 \begin{filecontents*}[overwrite]{\jobname.xmpdata}
 \Author{\authorname}                                    % The author's name in the document properties.
 \Title{\thesistitle}                                    % The document's title in the document properties.
 \Language{en-GB}                                        % The document's language in the document properties. Select 'en-US', 'en-GB', or 'de-AT'.
-\Keywords{a\sep list\sep of\sep keywords}               % The document's keywords in the document properties (separated by '\sep ').
+\Keywords{study planning\sep curriculum visualisation\sep graph–table interface\sep educational dashboard\sep educational recommender system\sep higher education\sep user study}               % The document's keywords in the document properties (separated by '\sep ').
 \Publisher{TU Wien}                                     % The document's publisher in the document properties.
 \Subject{Thesis}                                        % The document's subject in the document properties.
 \end{filecontents*}
@@ -59,6 +59,8 @@
 \usepackage{nag}        % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{todonotes}  % Provides tooltip-like todo notes.
 \usepackage{morewrites} % Increases the number of external files that can be used.
+\PassOptionsToPackage{hyphens}{url} % Let long URLs break at hyphens; without this the
+                                    % bibliography's blog URL overruns the right margin.
 \usepackage[a-2b,mathxmp]{pdfx}      % Enables PDF/A compliance. Loads the package hyperref and has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists of acronyms. This package has to be included last.
 
@@ -68,7 +70,7 @@
 % disappear and nothing else about the document changes.
 % ---------------------------------------------------------------------------
 \newif\ifreviewnotes
-\reviewnotestrue
+\reviewnotesfalse
 
 \definecolor{tdblocker}{RGB}{252,224,224}
 \definecolor{tdmajor}{RGB}{255,236,208}
@@ -132,9 +134,11 @@
 
 % Required data.
 \setregnumber{12331473}
-\setdate{01}{01}{2001} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Titel der Arbeit} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
-\setsubtitle{Optional Subtitle of the Thesis}{Optionaler Untertitel der Arbeit} % Sets English and German version of the subtitle (both can be English or German).
+\setdate{10}{09}{2026} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{\thesistitle} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
+% No subtitle. The class skips it entirely when \setsubtitle is never called;
+% passing empty arguments instead prints a missing-text warning on the title page.
+%\setsubtitle{}{}
 
 % Select the thesis type: bachelor / master / doctor.
 % Bachelor:
@@ -203,22 +207,6 @@ that has been dealt with is deleted rather than marked done; what was checked an
 what it showed is recorded in \texttt{ANWEISUNGEN.md}, not here.
 \listoftodos
 
-\TDblock{Title-page metadata}{\texttt{\textbackslash thesistitle} is still
-``Title of the Thesis'', the subtitle is the template placeholder,
-\texttt{\textbackslash setdate} is 01.01.2001 and \texttt{\textbackslash Keywords}
-is ``a list of keywords''. These print on both title pages and in the PDF
-document properties. The proposal's title is a candidate, though ``Embedded
-Recommender System'' over-promises relative to what was built and evaluated.}
-
-\TDblock{Empty front and back matter}{\texttt{abstract}, \texttt{kurzfassung},
-\texttt{acknowledgements}, \texttt{danksagung}, \texttt{aitools} and
-\texttt{kitools} are empty files that \texttt{main.tex} inputs, so each renders
-as an empty headed page. The AI-tools disclosure is required by the statement of
-originality; check TU Wien Informatics' current policy before drafting it.}
-
-\TDminor{Build hygiene}{The current build has 30 overfull and 38 underfull
-boxes. Fix the overfull ones above about 10\,pt, which visibly bleed into the
-margin; ignore the rest.}
 \fi
 
 % Switch to arabic numbering and start the enumeration of chapters in the table of content.
