@@ -27,3 +27,9 @@ Chapter*_*.pdf
 *.ilg
 main.tdo
 *.tdo
+
+# Source material for the thesis: papers, interview recordings and transcripts.
+# Kept on the archive/context branch and on Moritz's machine, but not tracked on
+# main: it is 140 MB of the repository and Overleaf's GitHub sync is documented
+# to work only under about 100 MB.
+context/
