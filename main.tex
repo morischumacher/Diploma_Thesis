@@ -59,6 +59,8 @@
 \usepackage{nag}        % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{todonotes}  % Provides tooltip-like todo notes.
 \usepackage{morewrites} % Increases the number of external files that can be used.
+\PassOptionsToPackage{hyphens}{url} % Let long URLs break at hyphens; without this the
+                                    % bibliography's blog URL overruns the right margin.
 \usepackage[a-2b,mathxmp]{pdfx}      % Enables PDF/A compliance. Loads the package hyperref and has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists of acronyms. This package has to be included last.
 
