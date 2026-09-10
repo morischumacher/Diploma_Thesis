@@ -1,44 +1,33 @@
 Studierende planen ihr Studium anhand von Curricula, die Voraussetzungen,
-Wahlmöglichkeiten und institutionelle Regeln festlegen. Die verfügbaren
-Werkzeuge sind dabei geteilt: Graphbasierte Systeme stellen die Struktur eines
-Curriculums dar, lassen jedoch den zeitlichen Ablauf außen vor; tabellenbasierte
-Planungswerkzeuge verteilen Lehrveranstaltungen auf Semester und prüfen das
-Ergebnis gegen die Studienordnung, lassen aber die Struktur implizit. Wo beides
-in einem Werkzeug zusammengeführt wurde, ist die Abhängigkeitsinformation in den
-Zeitplan selbst eingebettet und damit an eine chronologische Anordnung gebunden.
+Wahlmöglichkeiten und institutionelle Regeln festlegen. Die Werkzeuge, die diese
+Planung unterstützen, sind zweigeteilt. Graphbasierte Systeme stellen die
+Struktur eines Curriculums dar, lassen jedoch den zeitlichen Ablauf außen vor;
+tabellenbasierte Planungswerkzeuge verteilen Lehrveranstaltungen auf Semester
+und prüfen das Ergebnis gegen die Studienordnung, lassen aber die Struktur
+implizit. Wo beides in einem Werkzeug zusammengeführt wurde, ist die
+Abhängigkeitsinformation in den Zeitplan selbst eingebettet und damit an eine
+chronologische Anordnung gebunden.
 
-Diese Arbeit entwirft, implementiert und evaluiert eine hybride Graph-Tabellen-Oberfläche,
-in der ein navigierbarer Curriculumsgraph und eine
-semesterorientierte Tabelle auf einen gemeinsamen Plan schreiben. Die Arbeit
-verläuft in drei Schritten. Eine formative Studie mit sechs Studierenden zweier
-Informatik-Studien der TU~Wien, durchgeführt anhand eines interaktiven, aber
-nicht funktionsfähigen Prototyps, ergibt 64 Themen, die in eine gereihte
-Spezifikation von 13 Features mit 55 nummerierten Anforderungen überführt
-werden. Auf dieser Grundlage werden Entwurf und Implementierung entwickelt: eine
-Graphansicht, die das Curriculum als Enthaltenseinshierarchie zeichnet und die
-formalen Voraussetzungen als zuschaltbare Ebene führt, eine Tabellenansicht, die
-denselben Plan als Semesterspalten hält, eine Compliance Engine, die den Plan
-nach jeder Änderung gegen zwei Studienordnungen prüft, und ein
-Empfehlungspanel, dessen Vorschläge eine Begründung mitführen. Das Werkzeug wird
-anschließend mit elf Studierenden evaluiert, die jeweils einmal ohne und einmal
-mit Graphansicht planen und dabei nicht nur über Selbstauskunft, sondern über
-eine bildweise Aufzeichnung der Oberfläche beobachtet werden.
+Diese Arbeit entwirft, implementiert und evaluiert eine hybride
+Graph-Tabellen-Oberfläche, in der ein navigierbarer Curriculumsgraph und eine
+semesterorientierte Tabelle auf einen gemeinsamen Plan schreiben. Die
+Anforderungen stehen am Anfang: Eine formative Studie mit sechs Studierenden,
+durchgeführt anhand eines interaktiven, aber nicht funktionsfähigen Prototyps,
+ergibt eine gereihte Spezifikation von 13 Features mit 55 nummerierten
+Anforderungen. Das Werkzeug wird anschließend mit elf Studierenden evaluiert,
+die jeweils einmal ohne und einmal mit der Graphansicht planen und dabei über
+eine bildweise Aufzeichnung der Oberfläche, ein Think-aloud-Transkript und
+Fragebögen nach den Aufgaben beobachtet werden.
 
-Die Planung nahm die Gestalt einer einzigen, von einer Checkliste getriebenen
-Schleife an, gleichermaßen bei den geübtesten wie bei den jüngsten
-Teilnehmenden. Der Graph erweiterte diese Schleife nicht: Er trat an die Stelle
-des Lehrveranstaltungskatalogs an jenem Schritt, an dem Kandidaten gesucht
-werden, während Lehrveranstaltungen weiterhin in der Tabelle festgelegt wurden;
-die Periode der Schleife blieb unverändert. Werden die Pläne an ihrer
-Aufgabenstellung statt an der Selbsteinschätzung gemessen, zeigt sich eine
-Kalibrierungslücke: Alle Teilnehmenden meldeten Erfolg in Durchläufen, in denen
-kein Plan seine Vorgaben erfüllte und das Werkzeug nichts als fehlend auswies.
-
-Die Evidenz ist beschreibend. Zwei kleine Stichproben an einer Institution, eine
-feste Szenarienreihenfolge, eine einzelne codierende Person und deskriptive
-Statistik tragen eine Darstellung dessen, wie diese Studierenden geplant haben,
-nicht jedoch die Aussage, dass eine Komponente ein Verhalten verursacht hätte.
-Die Arbeit liefert eine auf studentische Evidenz rückführbare
-Anforderungsspezifikation, ein lauffähiges Artefakt, dessen Entwurfsentscheidungen
-samt ihrer Kosten dokumentiert sind, und eine prozessnahe Darstellung des Planens
-mit einem solchen Werkzeug.
+Eine explorative Evaluierung mit elf Studierenden zeigte eine durchgängige, von
+einer Checkliste getriebene Planungsschleife über alle Erfahrungsstufen hinweg.
+Der Graph trat bei der Suche nach Kandidaten an die Stelle des
+Lehrveranstaltungskatalogs, während Lehrveranstaltungen weiterhin in der Tabelle
+festgelegt wurden. Dieser geteilte Arbeitsablauf machte eine Parking Stage als
+Puffer für noch nicht festgelegte Lehrveranstaltungen zwischen den beiden
+Ansichten unverzichtbar. Da das Curriculum zudem nur wenige strikte
+Abhängigkeiten festlegt, verschob sich der wesentliche Nutzen des Graphen vom
+Abbilden von Reihenfolgen hin zur Orientierung und zum gefilterten Erkunden. Die
+berichtete Zufriedenheit war insgesamt hoch, wobei die schwächste Skala
+(Perspicuity) genau mit den Terminologieschwierigkeiten übereinstimmt, die
+während der Aufgaben beobachtet wurden.

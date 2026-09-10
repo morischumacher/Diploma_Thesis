@@ -1,37 +1,27 @@
 Students in higher education plan their studies against curricula that encode
-prerequisites, electives and institutional rules, and the tools available to
-them are split. Graph-based systems draw the structure of a curriculum but
-leave the timeline aside; table-based planners arrange courses across semesters
-and check the result against the regulations, but leave the structure implicit.
-Where both have been brought into one tool, dependency information has been
-embedded in the schedule itself, which ties it to a chronological layout.
+prerequisites, electives and institutional rules. The tools that support this
+planning are split in two. Graph-based systems draw the structure of a
+curriculum but leave the timeline aside; table-based planners arrange courses
+across semesters and check the result against the regulations, but leave the
+structure implicit. Where both have been brought into one tool, dependency
+information has been embedded in the schedule itself, which ties it to a
+chronological layout.
 
 This thesis designs, builds and evaluates a hybrid graph--table interface in
 which a browsable curriculum graph and a schedule-managing table write to one
-shared plan. The work proceeds in three steps. A formative study with six
-students of two TU~Wien Informatics programmes, conducted around an interactive
-but non-functional prototype, yields 64 themes that are translated into a ranked
-specification of 13 features carrying 55 numbered requirements. From that
-specification the tool is designed and implemented: a Graph View that draws the
-curriculum as its containment hierarchy with formal prerequisites as a
-switchable overlay, a Table View holding the same plan as semester lanes, a
-Compliance Engine that checks the plan against two degree regulations after
-every change, and a Recommendation Panel whose suggestions carry an explanation.
-The tool is then evaluated with eleven students, each planning once without the
-Graph View and once with it, observed through a frame-sampled record of the
-interface rather than through self-report alone.
+shared plan. The requirements come first: a formative study with six students,
+conducted around an interactive but non-functional prototype, yields a ranked
+specification of 13 features carrying 55 numbered requirements. The tool is then
+evaluated with eleven students, each planning once without the Graph View and
+once with it, observed through a frame-sampled record of the interface, a
+think-aloud transcript and post-task questionnaires.
 
-Planning took the shape of a single checklist-driven loop, the same for the most
-fluent and the most junior participants. The graph did not extend that loop: it
-took the place of the course catalogue at the step where candidates are found,
-while courses continued to be committed in the table, and the period of the loop
-was unchanged. Measuring the plans against their brief rather than against what
-students reported revealed a calibration gap: every participant reported success
-in runs where no plan met its brief and the tool reported nothing missing.
-
-The evidence is descriptive. Two small samples at one institution, a fixed
-scenario order, a single coder and descriptive statistics support an account of
-how these students planned, not a claim that a component caused a behaviour.
-What the work offers is a requirements specification traceable to student
-evidence, a working artefact whose design decisions are recorded with their
-costs, and a process-level account of planning with such a tool.
+An exploratory evaluation with eleven students revealed a consistent,
+checklist-driven planning loop across all experience levels. The graph replaced
+the course catalogue for finding candidates, while courses continued to be
+committed in the table. This split workflow made a Parking Stage essential as a
+buffer to hold uncommitted courses between the two views. Furthermore, because
+the curriculum encoded few strict dependencies, the graph's primary value
+shifted from showing sequences to supporting orientation and filtered browsing.
+Overall reported satisfaction was high, with the lowest metric (Perspicuity)
+aligning precisely with terminology difficulties observed during the tasks.
