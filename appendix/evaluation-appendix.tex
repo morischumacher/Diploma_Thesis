@@ -205,12 +205,12 @@ Both instruments are reported here per participant, so that every questionnaire 
 \section{Evaluation codebook}
 \label{app:eval-codebook}
 
-The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension~\cite{iso9241_11} (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~cosmetic to 4~catastrophic) re-judged from frequency, impact, and persistence~\cite{nielsen1993}. The \enquote{Seeded} column records the session in which a code was first introduced; frequencies for codes seeded late are lower bounds unless re-audited across all sessions (noted in Table~\ref{tab:app-matrix}).
+The thematic analysis used a controlled codebook, extended only when a genuinely new observation appeared. Codes are grouped by polarity into usability problems (\mbox{E-P}), positive findings (\mbox{E-G}), and neutral or method observations (\mbox{E-N}). Each code carries an ISO~9241-11 dimension~\cite{iso9241_11} (effectiveness, efficiency, or satisfaction); problems additionally carry a working Nielsen severity rating (0~not a problem, 1~cosmetic, to 4~catastrophic) re-judged from frequency and impact~\cite[pp.~102--103]{nielsen1993}. The final codebook was re-applied to every participant, so the frequencies in Table~\ref{tab:app-matrix} are not lower bounds for codes that were introduced late.
 Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table~\ref{tab:app-codebook-positives} the positive findings and Table~\ref{tab:app-codebook-neutral} the neutral and method observations. Chapter~\ref{chap:evaluation} reports the problems ranked by severity and frequency in Table~\ref{tab:problems} and the positive findings in Table~\ref{tab:positives}; the neutral codes are recorded here only, since they qualify the evidence rather than state a finding.
 
 \footnotesize
 \begin{longtable}{p{1.6cm}p{9.6cm}cc}
-    \caption{Usability-problem codes (\mbox{E-P}).}
+    \caption{Usability-problem codes (\mbox{E-P}), with the definition applied when coding, the ISO~9241-11 dimension the problem bears on, and the working Nielsen severity rating from 0~(cosmetic) to 4~(catastrophic). Chapter~\ref{chap:evaluation} reports the highest-impact subset in Table~\ref{tab:problems}.}
     \label{tab:app-codebook-problems}\\
     \toprule
     Code & Definition & Dim. & Sev. \\
@@ -267,6 +267,7 @@ Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table
     E-P41 & New-account creation returns a raw \enquote{username already exists} error inline, forcing an unguided retry. & eff & 1 \\
     E-P42 & The internships and interdisciplinary recommendation tabs render a bare \enquote{no recommendations} dead-end. & sat & 1 \\
     E-P43 & The drag handles are hidden under the card title; participants could not place a course until the moderator located them. & eff & 3 \\
+    E-P44 & No ordering indicator at the point of placement: the curriculum's recommended orderings are reported in the Dashboard only after a course is placed, and are drawn in neither view where the placement is made. & eff & 2 \\
     E-P45 & The graph becomes hard to read once many categories are present, even with zoom. & eff & 2 \\
     E-P46 & An off-target click navigated away and disrupted plan state mid-task. & eff & 1 \\
     E-P47 & The graph carries no semester dimension at all, so a placement made from a node cannot be judged against the target lane's load; over-fill is discovered only after switching views. & eff & 3 \\
@@ -295,7 +296,7 @@ Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table
 
 \footnotesize
 \begin{longtable}{p{1.6cm}p{10.6cm}c}
-    \caption{Positive-finding codes (\mbox{E-G}).}
+    \caption{Positive-finding codes (\mbox{E-G}), with the definition applied when coding and the ISO~9241-11 dimension each bears on. Positive findings carry no severity rating. Chapter~\ref{chap:evaluation} reports them with their frequencies in Table~\ref{tab:positives}.}
     \label{tab:app-codebook-positives}\\
     \toprule
     Code & Definition & Dim. \\
@@ -320,7 +321,7 @@ Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table
     E-G07 & Graph and sidebar filters (narrow elective, ECTS range) praised. & eff/sat \\
     E-G08 & Graph makes course dependencies (the containment hierarchy; the programme in scope fixes no prerequisite edge) and constraints legible. & eff/sat \\
     E-G09 & Blocked-drop, accepted, and milestone banners are unambiguous. & eff/sat \\
-    E-G10 & Expanding curriculum clusters to find specialisation courses is highly discoverable. & eff/sat \\
+    E-G10 & Expanding curriculum clusters to find specialisation courses is discoverable without guidance. & eff/sat \\
     E-G11 & The \enquote{Done} check-off mode with live ECTS and StEOP updates valued. & sat \\
     E-G12 & Reordering plan and Dashboard sections brings structure. & sat \\
     E-G13 & The visual legend aids interpretation of colours, borders, and state. & sat \\
@@ -338,7 +339,7 @@ Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table
 
 \footnotesize
 \begin{longtable}{p{1.6cm}p{10.6cm}c}
-    \caption{Neutral and method-observation codes (\mbox{E-N}), and the two per-session method flags.}
+    \caption{Neutral and method-observation codes (\mbox{E-N}), and the two per-session method flags, with the definition applied when coding and the ISO~9241-11 dimension each bears on. These codes are recorded here only: they qualify the evidence rather than state a finding, and no chapter table reports them.}
     \label{tab:app-codebook-neutral}\\
     \toprule
     Code & Definition & Dim. \\
@@ -356,13 +357,12 @@ Table~\ref{tab:app-codebook-problems} defines the usability-problem codes, Table
     E-N03 & Self-reported task success contradicts the video-observed state; the video is used as the effectiveness measure. & validity \\
     E-N04 & Participant's own curriculum knowledge clashes with the tool's model, colouring interpretation. & validity \\
     E-N05 & Recommendations browsed but rejected in favour of an explicit checklist and search (a trust signal, not a capability gap). & feature signal \\
-    E-N06 & A very junior participant relies on recommendations and the Dashboard because he cannot judge modules himself. & validity \\
+    E-N06 & A participant in an early semester relies on recommendations and the Dashboard rather than judging modules himself. & validity \\
     E-N07 & Participants browse and inspect in the graph but perform all substantive placement in the table, Parking Stage, and Dashboard. & graph contribution \\
     E-N08 & The study guide's task timer stops while the guide tab is backgrounded, so its elapsed figures understate. Instrument defect, not a product defect. & validity \\
     E-N09 & Graph-only canvas chrome persists in the graph-disabled baseline condition. Study artefact, not a product defect. & validity \\
 \end{longtable}
 \normalsize
-\TDminor{Housekeeping for this appendix}{Two items are open. (1)~The completion-audit caption runs to 431 characters, past the 350 the checker allows for a table; split it, moving the rule about the band's two ends into the paragraph above, which already states it. (2)~Two \texttt{\textbackslash textit\{\ldots\}} quotations remain to be converted to \texttt{\textbackslash enquote}. The unreferenced-table item is resolved: the three codebook tables are now named in the section text, the interview-topics and unmet-requirements tables are gone with their sections, and the interview-structure table is referenced from Appendix~\ref{app:formative-interview-plan}.}
 
 \section{Code-by-participant matrix}
 \label{app:eval-matrix}
@@ -370,7 +370,7 @@ Table~\ref{tab:app-matrix} records, for each code, the participants in whom it w
 
 \footnotesize
 \begin{longtable}{lccccccccccc c}
-    \caption{Code-by-participant matrix after re-application of the final codebook to all participants. A dot ($\bullet$) marks presence; \textsuperscript{$(-)$}~marks a undecidable.}
+    \caption{Code-by-participant matrix after re-application of the final codebook to all participants. A dot ($\bullet$) marks presence, an empty cell absence, and a grey dash (\textcolor{gray}{--}) a code that could not be decided for that participant.}
     \label{tab:app-matrix}\\
     \toprule
     Code & P01 & P02 & P03 & P04 & P05 & P06 & P07 & P09 & P10 & P11 & P12 & Freq. \\
@@ -572,6 +572,6 @@ The audit treats the band's two ends differently. A lane \emph{above} the ceilin
         P12-B & 26/25/26/24/21/24/12/22 & none & S7 = 12 & 180 (+6 parked) & no exchange \\
         \bottomrule
     \end{tabular}
-    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. \enquote{None} in the reduced-load column is itself a failure of the brief and is carried into the verdict. A lane below the floor is recorded with the size of its shortfall and does not by itself make a run non-compliant; a lane above the ceiling does.}
+    \caption{Final plan state per run against its brief. Scenario~A allows 27 to 33~ECTS per semester over seven semesters, Scenario~B 21 to 27 over eight; both mandate one semester of at most 9~ECTS. \enquote{None} in the reduced-load column is itself a failure of the brief and is carried into the verdict; the band's two ends are weighted as set out above.}
     \label{tab:app-completion}
 \end{table}
