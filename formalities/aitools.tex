@@ -1,1 +1,41 @@
-\TDblock{AI-tools disclosure is empty}{Required by the statement of originality that \texttt{main.tex} prints. Check TU Wien Informatics' current policy on permitted AI assistance with Rene or Selina first, since it shapes both what may be declared and how the work proceeds. The git history and PR review threads form an accurate running record of what was drafted by a model and what you wrote or edited; draft the text from that rather than from a generic template.}
+I acknowledge the use of generative AI tools in the creation of this work. They
+were used in three distinct roles, and each is stated below together with where
+in the thesis it applies.
+
+\emph{As a writing aid.} Drafting, restructuring, paraphrasing, and checking
+spelling, grammar and consistency of terminology and numbers across chapters.
+
+\emph{As a development aid.} Code generation, refactoring, test writing and
+debugging for the software artefact described in
+Chapter~\ref{chap:implementation}, and for the \LaTeX{} sources of this
+document.
+
+\emph{As a research instrument.} A vision-language model was used to apply the
+frame-level labelling scheme to the screen recordings of the evaluation study.
+This use is not an aid to writing but part of the analysis, and it is therefore
+documented in the thesis itself rather than only here: the labelling protocol is
+given in Section~\ref{app:eval-stagelog}, and the agreement between the model's
+coding and the author's own, over the frames both cover, is reported in
+Section~\ref{app:eval-agreement} together with the two systematic sources of
+disagreement. No finding rests on the model's coding alone.
+
+All outputs were reviewed critically and, where appropriate, revised. No passage
+was carried into this thesis without substantial changes of my own, and my
+creative influence predominates in the final work. The design decisions, the
+interpretation of the evidence, and the conclusions drawn are my own.
+
+AI tools used:
+
+\begin{itemize}
+  \item Claude\footnote{\url{https://claude.ai}}, Anthropic. Models: Claude
+        Sonnet~4.5 and Claude Opus~4.1--5, versions as of March~2026 --
+        September~2026. Writing aid and development aid.
+  \item Otter.ai\footnote{\url{https://otter.ai}}. Automatic speech
+        recognition, version as of March~2026 -- July~2026. Transcription of
+        the audio recordings of both studies
+        (Chapter~\ref{chap:evaluation}, Section~\ref{sec:eval-tworecords}).
+  \item Qwen3-VL-30B-A3B-Instruct\footnote{\url{https://github.com/QwenLM/Qwen3-VL}},
+        Alibaba Cloud, run locally. Version as of July~2026. Frame-level
+        labelling of the evaluation screen recordings
+        (Section~\ref{app:eval-stagelog}).
+\end{itemize}

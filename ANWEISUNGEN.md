@@ -8,9 +8,54 @@ This file governs the chapter-by-chapter finalisation. It is the single source o
 
 ---
 
+## Current state — 10 September 2026
+
+**Submission is today.** This block is the short answer to "where are we";
+the sections below are the detail.
+
+**The document builds clean.** `latexmk -pdf` gives **203 pages**, zero
+undefined references, zero undefined citations, zero BibTeX warnings, and 12
+overfull boxes, **none of them in the bibliography** and the largest 28.7~pt.
+Page and box counts move as wording changes; treat them as approximate and
+re-read them from the build, not from here.
+`python3 tools/check.py` passes every blocking check. There are **no `%% REV`
+comments and no `\TD` notes of any kind left in the thesis** — the last one,
+the completion-audit caption in Appendix B, closed on 9 September.
+
+**Definition of done, §15:**
+
+| Part | State |
+|---|---|
+| **A. Mechanical gates** (1–8) | **Done.** A1 warnings adjudicated one by one, recorded in the A1 addendum in §15. A5 closed by cutting the 25 uncited entries. A6, A7, A8 closed 9 September |
+| **B. Cross-chapter consistency** (9–13) | **Done** 9 September. B14 was cut here and done instead by the reference audit of 10 September, which checked every claim against its source |
+| **C. Exploratory framing** (15–21) | **Cut** 9 September on Moritz's instruction. C16–C20 were covered incidentally by the chapter passes |
+| **D. The read** (22–23) | **Open.** Moritz's, at the very end, on the notes-off PDF |
+| **E24a. Page-anchored citations** | **Done 2026-09-10.** Moritz's reference audit, run twice over all 63 entries; second run at `0d7b874`. Every page anchor checked, no claim left unsupported by its source. See §14 |
+| **E24b. §11a, PDF/A, metadata, declaration** | **Open**, postponed by Moritz. Blocked behind the front matter |
+| **E25. Data protection** | **Open.** The git-history rewrite is agreed and pending; Ch. 2 still states no retention period |
+
+**Per-chapter definition of done, §10:** run on every chapter. Chapters 7, 8, 9
+and the appendices had never had one before 9 September; §12 records what each
+pass found.
+
+**What only Moritz can do.** These are the remaining blocking failures of
+`python3 tools/check.py --submission`, and nothing else can close them:
+
+1. `\reviewnotestrue` → `\reviewnotesfalse` in `main.tex`.
+2. Title, subtitle, date and keywords in `main.tex` — all four still template placeholders (§13).
+3. The six empty `formalities/` files: abstract, Kurzfassung, acknowledgements, Danksagung, and both AI-tools disclosures. The disclosure needs Qwen3-VL (frame labelling), Otter.ai (transcription) and Claude (this assistant).
+
+Then D and E24b, in that order. E24a is closed.
+
+**Also outstanding, and not blocking the build:** the GitHub fine-grained token
+pasted into the working session on 9 September has not been rotated, and it has
+write access to `Diploma_Thesis`, `hypridplanner` and `userstudy`.
+
+---
+
 ## 0. Baseline established this session
 
-The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeindex → pdflatex ×2` produces **184 pages** with **zero undefined references and zero undefined citations**, 30 overfull and 38 underfull boxes.
+The thesis compiles cleanly. `latexmk -pdf` produces **205 pages** (2026-09-09) with **zero undefined references and zero undefined citations** and 13 overfull boxes. The per-part table below is the 184-page baseline of 2026-09-02 and is kept for proportions, not for current page counts.
 
 | Part | Pages | Notes |
 |---|---|---|
@@ -27,7 +72,7 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 | **Main matter total** | **110** | |
 | AI-tools disclosure | 4 | **both files empty** — renders as empty headed pages |
 | Lists of figures/tables | 6 | |
-| Bibliography | 8 | 70 keys cited, 91 entries, 21 uncited |
+| Bibliography | 8 | 70 keys cited, 91 entries, 21 uncited. **2026-09-09: 25 uncited**, decisions still to be recorded (§15 A5) |
 | Appendix A (formative) | 22 | |
 | Appendix B (evaluation) + Glossary | ~34 | |
 
@@ -37,9 +82,7 @@ The thesis compiles cleanly. `pdflatex → bibtex → makeglossaries → makeind
 
 | Where | Rests on |
 |---|---|
-| Ch. 1 §1.4, contribution 3 | the graph displaces the catalogue at the find step and not at the commit step |
-| Ch. 1 §1.4, contribution 4 | every participant reported success where no plan met its brief |
-| Ch. 1 §1.4, closing paragraph | frame-sampled log, participant-level frequencies, ISO 9241-11 dimensions, fixed scenario order, eleven analysed |
+| Ch. 1 §1.4, contribution 3 | the graph displaces the catalogue at the find step and not at the commit step. **Checked 2026-09-09, holds.** Contributions 3 and 4 were merged into one on 2026-09-09 (PR #173) and the closing paragraph was deleted, so the two rows that stood below this one are gone |
 | Ch. 2 §2.5, "What a curriculum encodes" | two formal prerequisite pairs, near-empty overlay, and Ch. 8's own bounding sentence. **A drafted correction is already in the chapter as a `\TDrev`**, deferred 2026-09-03 because Ch. 8 is not final: the current second sentence claims the evaluation tested the premise, which Ch. 8 explicitly disclaims. |
 
 Ch. 1's contributions already carry a `\TDrev` for the first three. Ch. 2's is the note added 2026-09-03.
@@ -50,17 +93,17 @@ Ch. 1's contributions already carry a `\TDrev` for the first three. Ch. 2's is t
 |---|---|
 | Formative study participants | 6 (I1–I6), 3 BSc + 3 MSc |
 | Initial codes | 435 |
-| Consolidated themes | 64 (C1–C64); 51 carried, 11 out of scope, 2 procedural |
+| Consolidated themes | 64 (**T1–T64**, renamed from C1–C64 on 2026-09-04); 51 carried, 11 out of scope, 2 procedural — verified 2026-09-09 against the generated table. Excerpts beneath them: **436** (was 437 until T41.3, a duplicate analyst label with no utterance behind it, was removed on 2026-09-09) |
 | Features / requirements | 13 features, 55 numbered requirements |
 | Evaluation sessions run / analysed | 12 run, **11 analysed** (P08 excluded, no screen recording) |
 | Scenario runs | 22 |
 | Sampled frames | **2,179** (Scenario A 1,197 + Scenario B 982) |
-| Evaluation codes | 99 total: 68 E-P, 22 E-G, 9 E-N |
-| Unmet capabilities | 27 distinct |
+| Evaluation codes | **96 total: 65 E-P, 22 E-G, 9 E-N** (re-counted 2026-09-09 from the codebook and the matrix, which agree). The 99/68 that stood here was stale. No chapter states these totals in prose |
+| Unmet capabilities | 27 distinct. **Obsolete 2026-09-09**: the unmet-requirements section and its table were cut, and no site in the thesis states this number |
 | Programmes in scope | 2 — BSc Computer Science UE 033 521, MSc **Software Engineering** UE 066 937. *Not* "Software Engineering & Internet Computing": the programme was renamed, confirmed against the curriculum's own title page (Senate 16 June 2025, in force 1 October 2025) |
 | Bachelor programme total | 180 ECTS, **84 courses** in the seeded catalogue (verified 2026-09-05 against `main` of `hypridplanner`). The 101 that stood here until then is the number of lookup keys in `course_to_module`, 68 code-like and 33 title-like aliases for the same courses, and is not a course count. The Master programme is 120 ECTS with 105 courses, 100 modules and 17 exam subjects |
 | Master programme total | 120 ECTS (from the curriculum document), **105 course rows, 100 modules, 17 exam subjects** in the seeded catalogue (verified 2026-09-05 against `main`). "Well over 100 nodes" (§6.5.3) holds on any of the three counts |
-| Recommendation channels | **6** (`interest`, `similarity`, `sequence`, `completed` = follow-on, `internship`, `peer`), one badge each, all six live in the sessions (settled 2026-09-05). The Panel draws **4** toggle chips; the profile dialogue has no toggles. Rule filter: top 100 tried, at most 15 returned; a new error *or warning* drops a suggestion. Golden masters: 38 rule scenarios, 85 recommender scenarios |
+| Recommendation channels | **6** (`interest`, `similarity`, `sequence`, `completed` = follow-on, `internship`, `peer`), one badge each. **Four, not six, were live in the sessions** (corrected 2026-09-09, PR #173): `sequence` and `completed` read a hand-written knowledge graph naming courses in neither catalogue, so they could not fire. Ch. 1 §1.4 and Ch. 6 §7.5.3 both say four of six; the "all six live" that stood here was wrong. The Panel draws **4** toggle chips; the profile dialogue has no toggles. Rule filter: top 100 tried, at most 15 returned; a new error *or warning* drops a suggestion. Golden masters: 38 rule scenarios, 85 recommender scenarios |
 | Scope boundaries | OOS1–OOS5 (see §5; OOS5 bounds what is claimed, so the exclusion sites legitimately cite OOS1–OOS4) |
 
 **The evaluation study has two counts, and which one is correct depends on the verb.** Twelve sessions were conducted; eleven are analysed. P08 was excluded because the session ran without a screen recording, and the analysis method needs both records. Neither number is "the" number:
@@ -434,11 +477,12 @@ Order is chosen so that the chapters whose content is still moving come after th
 | 3 | Related Work | **done 2026-09-03**, DoD run | All 46 sources opened and claim-checked (§14); 7 unsupported claims fixed, 7 bib defects found. All 18 of Moritz's REV comments closed. Chaturapruek moved to the ED half: Carta is a dashboard, not a recommender. Zero notes and zero REV comments remain. DoD: items 1 and 3 done by Moritz; 14, 16, 17, 18 and register done 3 Sep, including the Teasley duplication. **Open queue**: 4 majors from the audit, named so the count cannot go stale again (Arnold's four-input risk model; Hirmer filed as table-based though its prototype draws a dependency graph; Trippel's "most participants"; Siirtola's "unnecessary overlap"), the minors, and the 7 bib defects. |
 | 4 | Formative Study | **done 2026-09-04**, DoD run twice | Two rounds of Moritz's REV comments closed (29 in total). Findings rewritten to lead with the five themes present in all six interviews. "Link to Subsequent Chapters" deleted outright; Ch. 5's reference repointed. Themes renamed T1--T64. Codebook appendix now reproduces all 437 excerpts, translated beside the German, and the chapter's claims about it rewritten to match. Second DoD pass 4 Sep found and fixed: Step 3 calling themes "codes", ECTS unexpanded at its thesis-first use, six glossary terms unlinked at their thesis-first occurrence, an unreferenced figure, one flattering "rather than", and the appendix contents described three times. Zero notes, zero REV comments. |
 | 5 | From Themes to Requirements | **done 2026-09-04**, DoD run, comments closed | Opening rebuilt on Chapter 4's pattern with RQ1 quoted. All three sources opened and anchored (§14); the Nuseibeh claim that a theme is a "citable expression of a stakeholder need" was unsupported and now rests on what the paper says. Counts cross-checked against Appendix A.3: 13 features, 55 requirements, per-feature counts and the four unimplemented requirements agree; two defects found there and fixed (FEATURE-006's score, FEATURE-010's theme list). Then 14 review comments closed: §5.2 "Scope Refinement" deleted with its four references repointed at Chapter 4, the derivation paragraph and the sum-versus-mean paragraph shortened, the delineation claim corrected twice (not every feature has one; a delineation is not only an intentional exclusion), 13 and 55 as digits. Zero notes, zero REV comments, no checker warnings of its own. **Open, outside the chapter:** DoD item 3 is deferred to the end, when the tool is checked against `main` of `hypridplanner`; the claim that four requirements were not implemented is unchecked until then. |
-| 6 | Design | **done 2026-09-05**, code check closed | Code check against `main`: Figure 6.12 to four chips, family symbols cut, batch controls corrected, category enumeration removed, §6.4 overlay sentence, §6.11 workload thresholds restated as a design decision, transferable skills out of the obligation list. §6.9 trimmed to the design level 2026-09-06 (PR #119). Zero `%% REV`, zero notes |
+| 6 | Design | **done 2026-09-09**, DoD run (code check closed 2026-09-05) | Code check against `main`: Figure 6.12 to four chips, family symbols cut, batch controls corrected, category enumeration removed, §6.4 overlay sentence, §6.11 workload thresholds restated as a design decision, transferable skills out of the obligation list. §6.9 trimmed to the design level 2026-09-06 (PR #119). Zero `%% REV`, zero notes |
 | 7 | Implementation | **done 2026-09-06**, DoD run, three comment rounds closed | Claim check against `main` (§14 log). §7.2 restructured to match Figure 7.2: three `\paragraph`s for the layers, two `\subsection`s for the cross-cutting parts (Moritz's choice, kept). §7.3–7.4 rewritten short and in a formal register, then reworked by Moritz; his rewrite re-checked against the code and five facts corrected (PR #117). Key Decisions reduced to three. Two screenshots added (Figure 7.8). Open: the two `\TDrev` in §7.7.1, deferred to after Ch. 8 and 9. No `%% REV`, no `\todo`, no new overfull box |
-| 8 | Evaluation | **next** | 2 `\TDrev`, 5 `\TDmajor`, 2 `\TDminor`, 1 `\TDblock` in the file; RQ inline rather than in the `quote` block (DoD item 9); Table 8.8 caption length; E-G18 attribution; P10 framing. Draw the full list first (§0a) |
-| 9 | Discussion | after Ch. 8 | 2 `\TDrev`, 1 `\TDminor`; "two edges across 84 courses" (§0a item 3); future-work canvas item vs §7.2; Table 9.1 vs Appendix B.7 |
-| — | Appendices | light | unreferenced tables, duplicate process-state figure, glossary additions |
+| 8 | Evaluation | **done 2026-09-09**, DoD run | The chapter had never had a DoD pass; §12 listed it as *next* until now. All 16 `%% REV` closed earlier. DoD 2026-09-09 (PR #176), with items 2 and 3 cut by Moritz's instruction: 19 American spellings in thesis voice corrected; `demonstrates`/`confirms` softened; four causal constructions rewritten as co-occurrence; *displaces the catalogue entirely* corrected, it contradicted the sentence two later; denominators added at five sites; two *most severe* claims that were not the Nielsen rating reworded; five `Crucially,` openers cut. Table 7.6 and the positives table verified row by row against the codebook and the matrix on 2026-09-09: **no mismatches**. RQ3 opens the chapter in a quote block character-identical to Ch. 1. Remaining checker warnings all adjudicated: 5 absolutist qualifiers all scope-stated, 3 first-person hits are questionnaire item wordings, 1 *very* is inside a quotation |
+| 9 | Discussion | **done 2026-09-09**, DoD run | Never had a DoD pass either. PR #177: *The findings confirm* → *are consistent with*; the chapter's strongest generalisation (*The observation generalises beyond this artefact*) scoped to curricula that encode few hard dependencies; design principles marked untested outside this artefact and sample; two unevidenced population claims hedged; the two-station cycle reported per condition rather than as *roughly 40 % in both*; seven announcement sentences cut. Clean on spelling, em dashes, absolutist qualifiers and loose *significant*. `sec:disc-implications` and `sec:disc-generalisability` are never `\ref`'d — dead labels, harmless, left |
+| — | Conclusion | **done 2026-09-09**, DoD run | Had no row in this table at all. PR #178: the three RQ headings had drifted from Ch. 1 and dropped the clauses the paragraphs beneath them rely on — RQ1 had lost *understanding of curriculum structure and course dependencies*, which is exactly what its paragraph discusses; all three restored. *what it establishes* → *what it describes*; causal and generalising claims scoped; denominators added at three sites; three self-rankings cut. 2026-09-09, §15 B10: the contributions section still enumerated **four** contributions after Ch. 1 was merged to three, and a broken clause (*and of where*) was left by an earlier edit — both fixed |
+| — | Appendices | **done 2026-09-09**, DoD run | PR #179 and #180. Three factual defects: E-P44 was used in the matrix at 4/11 and cited in four chapters but its codebook definition had been deleted with the soft-dependency cut, so 64 codes were defined and 65 used; a *Seeded* column was described that exists in no table; *four questions were put* listed only three, and the interview plan confirms four. Then the codebook's German column: seven I4 rows carried an English analyst label where the participant's words belong, five of which already had the real German beside the label. Fixed at source (the open-coding document and `tools/codebook_translations.json`), not in the generated table. Removing one label made the `UNSOURCED` check fail and it was right — *graph used for exploration, not planning* was quoted three times as participant speech in Ch. 5 and the traceability appendix, and is an analyst label nobody said. All 14 appendix floats referenced; no duplicate labels |
 | — | Abstract / Kurzfassung | **empty** | write last, from the finished chapters |
 | — | Acknowledgements / Danksagung | **empty** | yours to write |
 | — | AI-tools disclosure (EN + DE) | **empty** | draft from the git history; check TU Wien's current policy first |
@@ -453,7 +497,7 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 1. `main.tex`: `\thesistitle` is "Title of the Thesis", the subtitle is the template placeholder, `\setdate` is 01.01.2001, `\Keywords` is "a list of keywords". The proposal's title is a ready candidate: *Design and Evaluation of a Hybrid Graph–Table Interface with Embedded Recommender System for Study Planning* — though "Embedded Recommender System" now over-promises relative to what was built and evaluated, so it likely wants adjusting.
 2. Abstract, Kurzfassung, Acknowledgements, Danksagung, and both AI-tools disclosure files are empty and are `\input` — they render as empty headed pages.
-3. `\printindex` and `\printglossaries` render empty pages (§5).
+3. ~~`\printindex` and `\printglossaries` render empty pages (§5).~~ **Closed** — both are commented out in `main.tex` (lines 282 and 287), each with the reason beside it.
 4. Consent PDF with a real name and birthdate sits in `context/interviews-round2/` and in git history. Decide on removal and history rewrite before the repo is shown to anyone.
 5. Storage location and retention period for raw recordings and transcripts are not stated in Ch. 2 and the outline template asks for both.
 
@@ -497,23 +541,25 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 ## 14. Material I still need from you
 
-**Sources cited in the thesis with no PDF anywhere in the repo or project.** Until each is opened, its claim is unverified. Ranked by how much weight it carries. *Delivered 2026-09-02: Wienand et al. 2024 and Arnold & Pistilli 2012, both verified (§14). Shneiderman 1983 was committed but the file is a one-page browser print of the IEEE Xplore viewer, not the article.*
+**Largely closed by the reference audit of 2026-09-10 (logged below).** Of the sources listed here, Nielsen 1993, Shneiderman 1983, Parasuraman and Riley 1997, Vessey 1991, Laugwitz et al. 2008, Greenwald 1976, Caulfield 2013, Denley 2012 and Wienand et al. 2024 have all now been opened and their claims verified. **Two remain unopened, both carrying definitional claims the audit judged safe: Palmer 1992, and Davis 1989** — for which the file in the repository is the 1987 working paper rather than the cited MIS Quarterly article. Saldaña 2013 is no longer cited at all, its entry having been cut with the other 24 uncited ones. The table below is kept as the record of what was outstanding and why.
+
+*Sources cited in the thesis with no PDF anywhere in the repo or project, as the list stood before the audit. Ranked by how much weight it carries.* *Delivered 2026-09-02: Wienand et al. 2024 and Arnold & Pistilli 2012, both verified (§14). Shneiderman 1983 was committed but the file is a one-page browser print of the IEEE Xplore viewer, not the article.*
 
 | Source | Where it carries weight | Why it matters |
 |---|---|---|
 | **Wienand et al. 2024** | Ch. 6 §6.2.4 (a direct quotation, "index card-like presentation") and §6.9 (three-level progress bars) | A quotation from an unopened source, in a different domain (enterprise-systems e-learning). Open access at doi 10.1007/s44217-024-00165-z |
-| **Vessey 1991** (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | The theory the central design claim is read through |
-| **Davis 1989** (TAM) | Ch. 8 instruments | The instrument's provenance |
-| **Laugwitz et al. 2008** (UEQ) | Ch. 8 instruments | Same |
+| ~~**Vessey 1991**~~ (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | **Opened and verified 2026-09-10** |
+| **Davis 1989** (TAM) | Ch. 8 instruments | **Still open, and safe.** The claim made of it is definitional and matches the canonical abstract. Note the repository file is the **1987 working paper**, not the cited MIS Quarterly article — replace it as hygiene |
+| ~~**Laugwitz et al. 2008**~~ (UEQ) | Ch. 8 instruments | **Opened and verified 2026-09-10** |
 | **ISO 9241-210** | Ch. 5 (the human-centred design activities) | Optional. The catalogue page in `context/related-work/77520.html` carries the scope text those four activities come from. *ISO 9241-11 was on this list and is now verified — see the log.* |
-| **Nielsen 1993** (*Usability Engineering*) | Ch. 8 severity ratings | The severity scale's source |
-| **Saldaña 2013** (coding manual) | Ch. 4 analysis method | Method citation |
+| ~~**Nielsen 1993**~~ (*Usability Engineering*) | Ch. 8 severity ratings | **Opened 2026-09-10.** The 0--4 labels were wrong (0 is "not a usability problem", cosmetic is 1) and "persistence" is from the 1994 article, not the book; both fixed in PR #186, anchored at pp.~102--103 |
+| ~~**Saldaña 2013**~~ (coding manual) | Ch. 4 analysis method | **Moot 2026-09-09**: the entry was never cited and was cut with the other 24 uncited ones (§15 A5) |
 | ~~**Ware 2004**, **Palmer 1992**, **Shneiderman 1983**~~ | Ch. 6 encoding decisions | Settled 2026-09-04 (§14): Palmer and Shneiderman verified from the published abstracts and their sentences narrowed to what each states; Ware cut. |
-| **Greenwald 1976** | Ch. 8 fixed-order rationale | Cited to justify not counterbalancing |
+| ~~**Greenwald 1976**~~ | Ch. 8 fixed-order rationale | **Opened and settled 2026-09-10.** p.~320 was wrong (correct: p.~316) and the second claim was overstated; both fixed in PR #185 |
 | **Arnold & Pistilli 2012**, **Caulfield 2013**, **Denley 2012** | Ch. 3 | The Course Signals retraction argument rests on two of these |
 
 **Also needed:**
-- The **GitHub PAT** (fine-grained, `Diploma_Thesis` only, Contents + Pull requests read/write) so I can open PRs.
+- ~~The **GitHub PAT**~~ — delivered 2026-09-09. **It has not been rotated**, and it has write access to `Diploma_Thesis`, `hypridplanner` and `userstudy`.
 - Confirmation that **interview round 2 is closed at 12 sessions / 11 analysed**. `CONTROL.md` still lists it as in progress with more interviews to come; every number in Ch. 8 and Ch. 9 assumes it is closed.
 - The **thesis title, subtitle decision, submission date and keywords** for `main.tex`.
 - Whether **TU Wien Informatics' current AI-use policy** has been checked with René or Selina, since it shapes the disclosure text.
@@ -623,14 +669,26 @@ Dependability (+2.43) and stimulation (+2.23) are not quoted in the chapter and 
 
 The thesis compiles with the two tables added and introduces no overfull box: `latexmk` reports the same six overfull hboxes before and after.
 
-### Outstanding: the Greenwald citation in Chapter 7, 2026-09-09
+### Reference audit, run twice, closed 2026-09-10
 
-Deleted the `%% REV` asking for it to be checked, by your decision, without checking: the PDF is not in the project and I could not open it. Two page-level claims in Section~\ref{sec:eval-order} still rest on it and are unverified:
+Moritz's own full audit of all 63 bibliography entries, the report committed as `reference_audit.md` in the repository root. Every entry was checked for existence and key match, for BibTeX field completeness, for how it renders in the compiled PDF, and claim by claim against the opened source.
 
-- **p. 320** counterbalancing distributes practice effects but does not remove an interaction between treatment and practice.
-- **pp. 316--318** a fixed sequence is an appropriate alternative when the course of learning is itself the object of study.
+**Second run, at `0d7b874` after PRs #185 and #186: 50 green, 11 amber, 0 red, 2 black.** First run was 38 / 17 / 2 / 6. The build it reports on: 203 pages, 63 entries, 63 cited, **0 uncited, 0 undefined citations, 0 BibTeX warnings, 0 overfull boxes in the bibliography, 0 `\cite` without a preceding `~`**.
 
-Greenwald, A. G. (1976). Within-subjects designs: To use or not to use? *Psychological Bulletin*, 83(2), 314--320. The cited pages sit at the end of a seven-page article, so the p. 320 attribution in particular is worth confirming. This grounds the fixed-order defence, which is the chapter's main design-validity argument.
+**No claim in the thesis is unsupported by its source.** The one red claim, the \enquote{positivist frame} gloss on Braun and Clarke's Big Q, is fixed; so are the six overstatements (Bartel twice, Srisamutr, Greenwald, the Nielsen severity labels, Trippel). Three page anchors were wrong and are corrected.
+
+**Newly verified from full text**, and therefore off the list below: Nielsen 1993 (pp.~102--103), Shneiderman 1983, Parasuraman and Riley 1997, Vessey 1991, Laugwitz et al. 2008, Greenwald 1976.
+
+**Still black, and both safe.** Palmer 1992, no PDF anywhere. Davis 1989, where the file in the repository is the **1987 working paper, not the cited MIS Quarterly article** — worth replacing as repository hygiene, though the claim made of it is definitional.
+
+**The 11 remaining amber items are one thing only:** the twelve citation keys that do not follow `surname_firstword_year`. Cosmetic; no rendered label changes and no examiner sees a key. Not done, by decision on 2026-09-10, on the grounds that the value on submission day is zero. If they are ever wanted, it is a `sed` over `bibliography.bib chapters/*.tex appendix/*.tex` plus a rebuild.
+
+### Closed: the Greenwald citation in Chapter 7, 2026-09-10
+
+Opened in Moritz's reference audit and both page-level claims settled. **p.~320 was wrong**: the passage on counterbalancing distributing practice effects without removing the treatment-by-practice interaction is at **p.~316**, and the anchor is corrected (PR #185). The second claim, that \enquote{a fixed sequence is an appropriate alternative when the course of learning is itself the object of study}, was stronger than the paper; §7.2 now says a repeated-measures design is appropriate where the course of learning is itself the object of study, with the sequence then held constant, on pp.~316--318. The fixed-order defence therefore still stands, on wording the paper supports.
+
+Original note, kept because it records why this sat open: the `%% REV` asking for the check was deleted by Moritz's decision without checking, the PDF not being in the project.
+
 ### Chapter 8, Bodily and Verbert checked 2026-09-09
 
 Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
@@ -798,6 +856,63 @@ Automated, and nothing else starts until they are green.
 7. Every glossary term hyperlinked with `\gterm` at its first occurrence in the thesis.
 8. Every figure and table referenced in prose; caption lengths within §7.
 
+### A1 addendum — the language warnings, adjudicated 2026-09-09
+
+Gate A1 requires that every remaining checker warning has been looked at and
+consciously accepted. This is that record. Nothing below is outstanding work.
+
+**Fixed in this pass, because the word was doing work the evidence does not support:**
+
+| Site | Was | Now |
+|---|---|---|
+| Ch. 1 §1.1 | advice at scale, "which is critical given that" | "which matters given that" |
+| Ch. 3 §3.1 | "tying dependencies to a matrix *inherently* aligns them" | "aligns them" |
+| Ch. 3 §3.2 | "recognised as a *critical* limitation" | "repeatedly named as a limitation" |
+| Ch. 3 §3.2 | "identified as *critically* under-represented" | "as under-represented" |
+| Ch. 2 §2.7 | "Methodological rigour is *systematically* addressed across *all* research stages" | "The same quality criteria apply at every stage of both studies" |
+| Ch. 5 §5.1 | "a flat list *fundamentally* cannot represent" | "cannot represent" |
+| Ch. 6 §7.7 | "user trust and the evaluation findings depend *entirely* on its accuracy" | rests on its accuracy, with the user half stated as what participants read their status from |
+
+The last one was the only overclaim of substance: nothing in the thesis
+measures user trust, let alone establishes that it depends entirely on
+anything. After this pass **the only judgmental-wording warning left is
+\emph{valuable} in the UEQ item list**, which is the instrument's own wording
+and is accepted below.
+
+**Accepted, with the reason. Do not re-open these.**
+
+- **Absolutist qualifiers, 34 remaining across seven files.** Each was read in
+  its own sentence and each states its scope there: *red is strictly reserved
+  elsewhere in the interface*, *recommendations are strictly confined to this
+  panel* followed by the list of what that excludes, *a strictly downward
+  dependency direction*, *designed strictly to evaluate the user experience …
+  explicitly excluding algorithmic accuracy*, *perfectly collinear* in its
+  technical sense, *universally accepted (E-G01, 11/11)* with the denominator
+  attached. The checker cannot see scope, so it will keep reporting them.
+- **`entire module` in Ch. 5, three times.** The name of the interaction, not a
+  qualifier.
+- **First-person singular: 3 in Ch. 7, 4 in Appendix B, 1 in Appendix A.** Every
+  one is a questionnaire item wording (*Helped me plan more effectively*,
+  *Improved my productivity*) or a line of the interview script (*Walk me
+  through the last time…*). Verbatim instrument text; changing it would
+  misreport what participants were asked.
+- **Colloquialism `kind of`, twice in Appendix A.** Both are interview
+  questions as put: *What kind of information did you look for*.
+- **American spelling `program`, once in Appendix A.3 and twice in the codebook
+  table.** All inside participant quotations, and all the verb: *if you can't
+  program well*, beside its German *wenn man nicht gut programmieren kann*.
+- **`organized` and `valuable` in Appendix B.2.** UEQ semantic-differential item
+  pairs, *organized / cluttered* and *valuable / inferior*. The instrument's
+  own wording.
+- **`very` in Ch. 7.** Inside a participant quotation.
+- **`highly` in Ch. 6.** *rather than because the study ranked them highly* —
+  a statement about the ranking, not an intensifier on a claim.
+
+**Still genuinely open, and not adjudicated here:** the 25 uncited bibliography
+entries (A5), which need a cut-or-use decision per entry, and the AI-tools
+disclosure. The 34 evaluation count statements were checked individually under
+B9 on 2026-09-09 and are all correct usage.
+
 ### B. Cross-chapter consistency
 
 The part no chapter pass can do. Work from §0's consistency register and check every number, name and count **everywhere it appears**, not where it was last edited.
@@ -809,21 +924,15 @@ The part no chapter pass can do. Work from §0's consistency register and check 
 13. Tables against their source artefacts, row by row. Chapter 8's tables were built by hand once and did not match the appendix; assume the same of any table not generated from data.
 14. Every citation still supports the claim it is attached to, using §14's instance counts: any key whose count has grown since it was cleared is re-opened for the new instances only.
 
-### C. Is it clear that this research is exploratory?
+### C. Exploratory framing — cut 2026-09-09
 
-**The specific review Moritz asked for, 2026-09-03.** Read the whole thesis once with this single question in mind. The work is a design study: two small samples at one institution, one fixed scenario order, one coder, and descriptive statistics. That is a legitimate and appropriate design, and it is not a weakness to be hidden. The failure mode is not admitting it in the limitations, which the thesis already does. The failure mode is **prose elsewhere that quietly reads as more than exploratory**, so that an examiner meets a confident claim in Chapter 1 or 9 and only finds the qualification in §2.4.
-
-Check, in this order, because the risk rises as you go:
-
-15. **The front matter.** Abstract, Kurzfassung, and the conclusion. These are written last, when everything else is already careful, and they are where the framing is most likely to be lost. They must say what kind of study this is, in their own words, not rely on the reader reaching Chapter 2. Both files are empty today, so this is a writing instruction as much as a check.
-16. **Claim verbs against evidence, everywhere** (§3, §10 item 17). *Establishes*, *demonstrates*, *shows*, *proves*, *confirms* are almost never right here. *Indicates*, *suggests*, *is consistent with*, *describes* usually are. A single sign test on eleven participants supports none of the strong verbs.
-17. **Causal language.** Eleven participants, a fixed scenario order, and no counterbalancing mean the design describes what students did; it cannot attribute a behaviour to a component. Any sentence of the form "the graph caused / led to / improved X" is wrong regardless of how the data looks.
-18. **The word "significant"** used loosely where no test was run, and every reported number checked for whether it is descriptive or inferential. UEQ and TAM results are a descriptive layer and must read as one.
-19. **Frequencies.** Every one carries its denominator, and none is presented as if it generalised. `9/11` is nine of eleven students in this study, not 82 % of students.
-20. **Generalisation claims.** Chapter 9 §9.7 separates what is specific to the hybrid from what might carry further. Nothing elsewhere in the thesis should quietly claim the wider version.
-21. **The contributions (§1.4) and the RQ answers (§9.1)** read together, back to back. These are the two places a reader looks for the headline, they are written at different times, and they are the most likely pair to drift apart in confidence.
-
-A useful test for any suspect sentence: **could this claim be false and the thesis still be fine?** If yes, the sentence is describing a finding and needs its hedge. If no, it is describing what was done and can be stated plainly.
+Cut in full on Moritz's instruction. Items C16 to C20 (claim verbs, causal
+language, loose "significant", denominators, generalisation claims) were in
+fact worked through incidentally, by the chapter definition-of-done passes of
+2026-09-09 and the language pass that followed; what they found is recorded in
+§12 and in the A1 addendum above. C15, the abstract and Kurzfassung stating
+what kind of study this is, survives as a writing instruction rather than a
+check, and belongs to whoever writes them.
 
 ### D. The read
 
@@ -832,7 +941,7 @@ A useful test for any suspect sentence: **could this claim be false and the thes
 
 ### E. Submission hygiene
 
-24. **Re-check every page-anchored citation against the source**, Moritz's request 2026-09-03. There are twenty-one in the thesis as of 2026-09-04, sixteen in Chapter 4 and three in Chapter 5; sixteen point at a specific page of Braun and Clarke; the others are Sandelowski p.~239, Nuseibeh and Easterbrook pp.~37 and~39, and Gotel and Finkelstein p.~96, all verified 2026-09-04 against the papers' own page markers. Gotel p.~94 was verified too and then dropped: the sentence it sat on describes this thesis's theme set, not a claim of theirs. Page anchors are the citations an examiner is most likely to open, and the ones a later edit can silently invalidate. Establish the PDF-to-printed page offset first: for the Braun and Clarke file it is printed = PDF minus 35.
+24. ~~**Re-check every page-anchored citation against the source**~~ — **done 2026-09-10**, by Moritz's own reference audit; the log is in §14 and the full report is `reference_audit.md` in the repository root. Three anchors were wrong and are corrected (Gotel p.~97, Munzner p.~921, Greenwald p.~316). Original note kept for the record: Moritz's request 2026-09-03. There are twenty-one in the thesis as of 2026-09-04, sixteen in Chapter 4 and three in Chapter 5; sixteen point at a specific page of Braun and Clarke; the others are Sandelowski p.~239, Nuseibeh and Easterbrook pp.~37 and~39, and Gotel and Finkelstein p.~96, all verified 2026-09-04 against the papers' own page markers. Gotel p.~94 was verified too and then dropped: the sentence it sat on describes this thesis's theme set, not a claim of theirs. Page anchors are the citations an examiner is most likely to open, and the ones a later edit can silently invalidate. Establish the PDF-to-printed page offset first: for the Braun and Clarke file it is printed = PDF minus 35.
 24. §11a in full, plus PDF/A validity, correct metadata, and the declaration and disclosure files complete.
 25. The data-protection items in §13 settled: the consent PDF carrying a real name and birthdate in git history, and the retention of the recordings.
 
