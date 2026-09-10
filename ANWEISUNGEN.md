@@ -8,15 +8,16 @@ This file governs the chapter-by-chapter finalisation. It is the single source o
 
 ---
 
-## Current state — 9 September 2026
+## Current state — 10 September 2026
 
-Submission is 10 September. This block is the short answer to "where are we";
+**Submission is today.** This block is the short answer to "where are we";
 the sections below are the detail.
 
 **The document builds clean.** `latexmk -pdf` gives **203 pages**, zero
-undefined references, zero undefined citations, 13 overfull boxes. The count
-moves by a page or two as wording changes; treat it as approximate and re-read
-it from the build, not from here.
+undefined references, zero undefined citations, zero BibTeX warnings, and 12
+overfull boxes, **none of them in the bibliography** and the largest 28.7~pt.
+Page and box counts move as wording changes; treat them as approximate and
+re-read them from the build, not from here.
 `python3 tools/check.py` passes every blocking check. There are **no `%% REV`
 comments and no `\TD` notes of any kind left in the thesis** — the last one,
 the completion-audit caption in Appendix B, closed on 9 September.
@@ -26,10 +27,10 @@ the completion-audit caption in Appendix B, closed on 9 September.
 | Part | State |
 |---|---|
 | **A. Mechanical gates** (1–8) | **Done.** A1 warnings adjudicated one by one, recorded in the A1 addendum in §15. A5 closed by cutting the 25 uncited entries. A6, A7, A8 closed 9 September |
-| **B. Cross-chapter consistency** (9–13) | **Done** 9 September. B14 cut: Moritz is checking references separately |
+| **B. Cross-chapter consistency** (9–13) | **Done** 9 September. B14 was cut here and done instead by the reference audit of 10 September, which checked every claim against its source |
 | **C. Exploratory framing** (15–21) | **Cut** 9 September on Moritz's instruction. C16–C20 were covered incidentally by the chapter passes |
 | **D. The read** (22–23) | **Open.** Moritz's, at the very end, on the notes-off PDF |
-| **E24a. Page-anchored citations** | **Open.** Moritz's separate reference check |
+| **E24a. Page-anchored citations** | **Done 2026-09-10.** Moritz's reference audit, run twice over all 63 entries; second run at `0d7b874`. Every page anchor checked, no claim left unsupported by its source. See §14 |
 | **E24b. §11a, PDF/A, metadata, declaration** | **Open**, postponed by Moritz. Blocked behind the front matter |
 | **E25. Data protection** | **Open.** The git-history rewrite is agreed and pending; Ch. 2 still states no retention period |
 
@@ -44,7 +45,7 @@ pass found.
 2. Title, subtitle, date and keywords in `main.tex` — all four still template placeholders (§13).
 3. The six empty `formalities/` files: abstract, Kurzfassung, acknowledgements, Danksagung, and both AI-tools disclosures. The disclosure needs Qwen3-VL (frame labelling), Otter.ai (transcription) and Claude (this assistant).
 
-Then D, E24a and E24b, in that order.
+Then D and E24b, in that order. E24a is closed.
 
 **Also outstanding, and not blocking the build:** the GitHub fine-grained token
 pasted into the working session on 9 September has not been rotated, and it has
@@ -540,23 +541,25 @@ Order is chosen so that the chapters whose content is still moving come after th
 
 ## 14. Material I still need from you
 
-**Sources cited in the thesis with no PDF anywhere in the repo or project.** Until each is opened, its claim is unverified. Ranked by how much weight it carries. *Delivered 2026-09-02: Wienand et al. 2024 and Arnold & Pistilli 2012, both verified (§14). Shneiderman 1983 was committed but the file is a one-page browser print of the IEEE Xplore viewer, not the article.*
+**Largely closed by the reference audit of 2026-09-10 (logged below).** Of the sources listed here, Nielsen 1993, Shneiderman 1983, Parasuraman and Riley 1997, Vessey 1991, Laugwitz et al. 2008, Greenwald 1976, Caulfield 2013, Denley 2012 and Wienand et al. 2024 have all now been opened and their claims verified. **Two remain unopened, both carrying definitional claims the audit judged safe: Palmer 1992, and Davis 1989** — for which the file in the repository is the 1987 working paper rather than the cited MIS Quarterly article. Saldaña 2013 is no longer cited at all, its entry having been cut with the other 24 uncited ones. The table below is kept as the record of what was outstanding and why.
+
+*Sources cited in the thesis with no PDF anywhere in the repo or project, as the list stood before the audit. Ranked by how much weight it carries.* *Delivered 2026-09-02: Wienand et al. 2024 and Arnold & Pistilli 2012, both verified (§14). Shneiderman 1983 was committed but the file is a one-page browser print of the IEEE Xplore viewer, not the article.*
 
 | Source | Where it carries weight | Why it matters |
 |---|---|---|
 | **Wienand et al. 2024** | Ch. 6 §6.2.4 (a direct quotation, "index card-like presentation") and §6.9 (three-level progress bars) | A quotation from an unopened source, in a different domain (enterprise-systems e-learning). Open access at doi 10.1007/s44217-024-00165-z |
-| **Vessey 1991** (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | The theory the central design claim is read through |
-| **Davis 1989** (TAM) | Ch. 8 instruments | The instrument's provenance |
-| **Laugwitz et al. 2008** (UEQ) | Ch. 8 instruments | Same |
+| ~~**Vessey 1991**~~ (cognitive fit) | Ch. 9, load-bearing in the substitution interpretation | **Opened and verified 2026-09-10** |
+| **Davis 1989** (TAM) | Ch. 8 instruments | **Still open, and safe.** The claim made of it is definitional and matches the canonical abstract. Note the repository file is the **1987 working paper**, not the cited MIS Quarterly article — replace it as hygiene |
+| ~~**Laugwitz et al. 2008**~~ (UEQ) | Ch. 8 instruments | **Opened and verified 2026-09-10** |
 | **ISO 9241-210** | Ch. 5 (the human-centred design activities) | Optional. The catalogue page in `context/related-work/77520.html` carries the scope text those four activities come from. *ISO 9241-11 was on this list and is now verified — see the log.* |
-| **Nielsen 1993** (*Usability Engineering*) | Ch. 8 severity ratings | The severity scale's source |
-| **Saldaña 2013** (coding manual) | Ch. 4 analysis method | Method citation |
+| ~~**Nielsen 1993**~~ (*Usability Engineering*) | Ch. 8 severity ratings | **Opened 2026-09-10.** The 0--4 labels were wrong (0 is "not a usability problem", cosmetic is 1) and "persistence" is from the 1994 article, not the book; both fixed in PR #186, anchored at pp.~102--103 |
+| ~~**Saldaña 2013**~~ (coding manual) | Ch. 4 analysis method | **Moot 2026-09-09**: the entry was never cited and was cut with the other 24 uncited ones (§15 A5) |
 | ~~**Ware 2004**, **Palmer 1992**, **Shneiderman 1983**~~ | Ch. 6 encoding decisions | Settled 2026-09-04 (§14): Palmer and Shneiderman verified from the published abstracts and their sentences narrowed to what each states; Ware cut. |
-| **Greenwald 1976** | Ch. 8 fixed-order rationale | Cited to justify not counterbalancing |
+| ~~**Greenwald 1976**~~ | Ch. 8 fixed-order rationale | **Opened and settled 2026-09-10.** p.~320 was wrong (correct: p.~316) and the second claim was overstated; both fixed in PR #185 |
 | **Arnold & Pistilli 2012**, **Caulfield 2013**, **Denley 2012** | Ch. 3 | The Course Signals retraction argument rests on two of these |
 
 **Also needed:**
-- The **GitHub PAT** (fine-grained, `Diploma_Thesis` only, Contents + Pull requests read/write) so I can open PRs.
+- ~~The **GitHub PAT**~~ — delivered 2026-09-09. **It has not been rotated**, and it has write access to `Diploma_Thesis`, `hypridplanner` and `userstudy`.
 - Confirmation that **interview round 2 is closed at 12 sessions / 11 analysed**. `CONTROL.md` still lists it as in progress with more interviews to come; every number in Ch. 8 and Ch. 9 assumes it is closed.
 - The **thesis title, subtitle decision, submission date and keywords** for `main.tex`.
 - Whether **TU Wien Informatics' current AI-use policy** has been checked with René or Selina, since it shapes the disclosure text.
@@ -666,14 +669,26 @@ Dependability (+2.43) and stimulation (+2.23) are not quoted in the chapter and 
 
 The thesis compiles with the two tables added and introduces no overfull box: `latexmk` reports the same six overfull hboxes before and after.
 
-### Outstanding: the Greenwald citation in Chapter 7, 2026-09-09
+### Reference audit, run twice, closed 2026-09-10
 
-Deleted the `%% REV` asking for it to be checked, by your decision, without checking: the PDF is not in the project and I could not open it. Two page-level claims in Section~\ref{sec:eval-order} still rest on it and are unverified:
+Moritz's own full audit of all 63 bibliography entries, the report committed as `reference_audit.md` in the repository root. Every entry was checked for existence and key match, for BibTeX field completeness, for how it renders in the compiled PDF, and claim by claim against the opened source.
 
-- **p. 320** counterbalancing distributes practice effects but does not remove an interaction between treatment and practice.
-- **pp. 316--318** a fixed sequence is an appropriate alternative when the course of learning is itself the object of study.
+**Second run, at `0d7b874` after PRs #185 and #186: 50 green, 11 amber, 0 red, 2 black.** First run was 38 / 17 / 2 / 6. The build it reports on: 203 pages, 63 entries, 63 cited, **0 uncited, 0 undefined citations, 0 BibTeX warnings, 0 overfull boxes in the bibliography, 0 `\cite` without a preceding `~`**.
 
-Greenwald, A. G. (1976). Within-subjects designs: To use or not to use? *Psychological Bulletin*, 83(2), 314--320. The cited pages sit at the end of a seven-page article, so the p. 320 attribution in particular is worth confirming. This grounds the fixed-order defence, which is the chapter's main design-validity argument.
+**No claim in the thesis is unsupported by its source.** The one red claim, the \enquote{positivist frame} gloss on Braun and Clarke's Big Q, is fixed; so are the six overstatements (Bartel twice, Srisamutr, Greenwald, the Nielsen severity labels, Trippel). Three page anchors were wrong and are corrected.
+
+**Newly verified from full text**, and therefore off the list below: Nielsen 1993 (pp.~102--103), Shneiderman 1983, Parasuraman and Riley 1997, Vessey 1991, Laugwitz et al. 2008, Greenwald 1976.
+
+**Still black, and both safe.** Palmer 1992, no PDF anywhere. Davis 1989, where the file in the repository is the **1987 working paper, not the cited MIS Quarterly article** — worth replacing as repository hygiene, though the claim made of it is definitional.
+
+**The 11 remaining amber items are one thing only:** the twelve citation keys that do not follow `surname_firstword_year`. Cosmetic; no rendered label changes and no examiner sees a key. Not done, by decision on 2026-09-10, on the grounds that the value on submission day is zero. If they are ever wanted, it is a `sed` over `bibliography.bib chapters/*.tex appendix/*.tex` plus a rebuild.
+
+### Closed: the Greenwald citation in Chapter 7, 2026-09-10
+
+Opened in Moritz's reference audit and both page-level claims settled. **p.~320 was wrong**: the passage on counterbalancing distributing practice effects without removing the treatment-by-practice interaction is at **p.~316**, and the anchor is corrected (PR #185). The second claim, that \enquote{a fixed sequence is an appropriate alternative when the course of learning is itself the object of study}, was stronger than the paper; §7.2 now says a repeated-measures design is appropriate where the course of learning is itself the object of study, with the sequence then held constant, on pp.~316--318. The fixed-order defence therefore still stands, on wording the paper supports.
+
+Original note, kept because it records why this sat open: the `%% REV` asking for the check was deleted by Moritz's decision without checking, the PDF not being in the project.
+
 ### Chapter 8, Bodily and Verbert checked 2026-09-09
 
 Opened the PDF in the project. Two corrections to the Relation to Prior Work section:
@@ -926,7 +941,7 @@ check, and belongs to whoever writes them.
 
 ### E. Submission hygiene
 
-24. **Re-check every page-anchored citation against the source**, Moritz's request 2026-09-03. There are twenty-one in the thesis as of 2026-09-04, sixteen in Chapter 4 and three in Chapter 5; sixteen point at a specific page of Braun and Clarke; the others are Sandelowski p.~239, Nuseibeh and Easterbrook pp.~37 and~39, and Gotel and Finkelstein p.~96, all verified 2026-09-04 against the papers' own page markers. Gotel p.~94 was verified too and then dropped: the sentence it sat on describes this thesis's theme set, not a claim of theirs. Page anchors are the citations an examiner is most likely to open, and the ones a later edit can silently invalidate. Establish the PDF-to-printed page offset first: for the Braun and Clarke file it is printed = PDF minus 35.
+24. ~~**Re-check every page-anchored citation against the source**~~ — **done 2026-09-10**, by Moritz's own reference audit; the log is in §14 and the full report is `reference_audit.md` in the repository root. Three anchors were wrong and are corrected (Gotel p.~97, Munzner p.~921, Greenwald p.~316). Original note kept for the record: Moritz's request 2026-09-03. There are twenty-one in the thesis as of 2026-09-04, sixteen in Chapter 4 and three in Chapter 5; sixteen point at a specific page of Braun and Clarke; the others are Sandelowski p.~239, Nuseibeh and Easterbrook pp.~37 and~39, and Gotel and Finkelstein p.~96, all verified 2026-09-04 against the papers' own page markers. Gotel p.~94 was verified too and then dropped: the sentence it sat on describes this thesis's theme set, not a claim of theirs. Page anchors are the citations an examiner is most likely to open, and the ones a later edit can silently invalidate. Establish the PDF-to-printed page offset first: for the Braun and Clarke file it is printed = PDF minus 35.
 24. §11a in full, plus PDF/A validity, correct metadata, and the declaration and disclosure files complete.
 25. The data-protection items in §13 settled: the consent PDF carrying a real name and birthdate in git history, and the retention of the recordings.
 
