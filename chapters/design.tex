@@ -554,72 +554,72 @@ To prevent action affordances from being misread as status or compliance signals
 \centering
 \begin{tikzpicture}[
   font=\sffamily,
-  statebox/.style={draw=gray!60, fill=gray!5, rounded corners=4pt, line width=0.8pt, minimum width=4.8cm, minimum height=1.6cm},
-  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=2.5pt, font=\scriptsize},
-  header/.style={font=\small\bfseries, text=black},
-  tr/.style={-{Stealth[length=5pt]}, gray!80, line width=0.8pt},
-  lbl/.style={font=\scriptsize, text=black, fill=white, inner sep=2pt}
+  statebox/.style={draw=gray!60, fill=gray!5, rounded corners=4pt, line width=0.7pt,
+                   minimum width=4.4cm, minimum height=1.25cm},
+  btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=2pt, font=\tiny},
+  header/.style={font=\footnotesize\bfseries, text=black},
+  tr/.style={-{Stealth[length=4.5pt]}, gray!70, line width=0.7pt},
+  lbl/.style={font=\scriptsize, text=black, fill=white, inner sep=1pt}
 ]
+  \def\xoff{7.0}
+  \def\yoff{3.2}
+  \def\rule{-13pt}
+  \def\brow{9pt}
 
-  \def\xoff{8.2}
-  \def\yoff{4.2}
-
-  % --- Nodes ---
-  
   % 1. Not Planned
   \node[statebox] (NP) at (0, \yoff) {};
-  \node[header, anchor=north] at (NP.north) [yshift=-4pt] {Not Planned};
-  \draw[gray!30, thin] ([yshift=-18pt]NP.north west) -- ([yshift=-18pt]NP.north east);
-  \node[btn] at ([xshift=-1.1cm, yshift=12pt]NP.south) {Park};
-  \node[btn] at ([xshift=1.1cm, yshift=12pt]NP.south) {Add to plan};
+  \node[header, anchor=north] at (NP.north) [yshift=-3pt] {Not Planned};
+  \draw[gray!30, thin] ([yshift=\rule]NP.north west) -- ([yshift=\rule]NP.north east);
+  \coordinate (npc) at ([yshift=\brow]NP.south);
+  \node[btn, anchor=east] at ([xshift=-2pt]npc) {Park};
+  \node[btn, anchor=west] at ([xshift=2pt]npc) {Add to plan};
 
   % 2. Parked
   \node[statebox] (PK) at (0, 0) {};
-  \node[header, anchor=north] at (PK.north) [yshift=-4pt] {Parked};
-  \draw[gray!30, thin] ([yshift=-18pt]PK.north west) -- ([yshift=-18pt]PK.north east);
-  \node[btn] at ([xshift=-1.1cm, yshift=12pt]PK.south) {Add to plan};
-  \node[btn] at ([xshift=1.1cm, yshift=12pt]PK.south) {Remove};
+  \node[header, anchor=north] at (PK.north) [yshift=-3pt] {Parked};
+  \draw[gray!30, thin] ([yshift=\rule]PK.north west) -- ([yshift=\rule]PK.north east);
+  \coordinate (pkc) at ([yshift=\brow]PK.south);
+  \node[btn, anchor=east] at ([xshift=-2pt]pkc) {Add to plan};
+  \node[btn, anchor=west] at ([xshift=2pt]pkc) {Remove};
 
   % 3. Planned
   \node[statebox] (PL) at (\xoff, \yoff) {};
-  \node[header, anchor=north] at (PL.north) [yshift=-4pt] {Planned};
-  \draw[gray!30, thin] ([yshift=-18pt]PL.north west) -- ([yshift=-18pt]PL.north east);
-  \node[btn] at ([xshift=-1.6cm, yshift=12pt]PL.south) {Move};  % opens the Semester Picker, Parking Stage included
-  \node[btn] at ([xshift=0cm, yshift=12pt]PL.south) {Mark done};
-  \node[btn] at ([xshift=1.6cm, yshift=12pt]PL.south) {Remove};
+  \node[header, anchor=north] at (PL.north) [yshift=-3pt] {Planned};
+  \draw[gray!30, thin] ([yshift=\rule]PL.north west) -- ([yshift=\rule]PL.north east);
+  \node[btn] (plmid) at ([yshift=\brow]PL.south) {Mark done};
+  \node[btn, anchor=east] at ([xshift=-3pt]plmid.west) {Move};  % opens the Semester Picker, Parking Stage included
+  \node[btn, anchor=west] at ([xshift=3pt]plmid.east) {Remove};
 
   % 4. Done
   \node[statebox] (DO) at (\xoff, 0) {};
-  \node[header, anchor=north] at (DO.north) [yshift=-4pt] {Done};
-  \draw[gray!30, thin] ([yshift=-18pt]DO.north west) -- ([yshift=-18pt]DO.north east);
-  \node[btn] at ([xshift=-1.1cm, yshift=12pt]DO.south) {Unmark};
-  \node[btn] at ([xshift=1.1cm, yshift=12pt]DO.south) {Remove};
-
-  % --- State Machine Transition Arrows ---
+  \node[header, anchor=north] at (DO.north) [yshift=-3pt] {Done};
+  \draw[gray!30, thin] ([yshift=\rule]DO.north west) -- ([yshift=\rule]DO.north east);
+  \coordinate (doc) at ([yshift=\brow]DO.south);
+  \node[btn, anchor=east] at ([xshift=-2pt]doc) {Unmark};
+  \node[btn, anchor=west] at ([xshift=2pt]doc) {Remove};
 
   % Initial state marker
-  \fill[black] (-3.2, \yoff) circle (0.1);
-  \draw[tr, black] (-3.1, \yoff) -- (NP.west);
+  \fill[black] (-3.0, \yoff) circle (0.09);
+  \draw[tr, black] (-2.9, \yoff) -- (NP.west);
 
-  % NP <-> Parked (Left Vertical)
-  \draw[tr] ([xshift=-0.5cm]NP.south) -- node[lbl, left] {Park} ([xshift=-0.5cm]PK.north);
-  \draw[tr] ([xshift=0.5cm]PK.north) -- node[lbl, right] {Remove} ([xshift=0.5cm]NP.south);
+  % NP <-> Parked (left vertical)
+  \draw[tr] ([xshift=0.15cm]NP.south) -- node[lbl, right] {Park} ([xshift=0.15cm]PK.north);
+  \draw[tr] ([xshift=-0.15cm]PK.north) -- node[lbl, left] {Remove} ([xshift=-0.15cm]NP.south);
 
-  % NP <-> Planned (Top Horizontal)
-  \draw[tr] ([yshift=0.25cm]NP.east) -- node[lbl, above] {Add to plan} ([yshift=0.25cm]PL.west);
-  \draw[tr] ([yshift=-0.25cm]PL.west) -- node[lbl, below] {Remove} ([yshift=-0.25cm]NP.east);
+  % NP <-> Planned (top horizontal)
+  \draw[tr] ([yshift=0.15cm]NP.east) -- node[lbl, above] {Add to plan} ([yshift=0.15cm]PL.west);
+  \draw[tr] ([yshift=-0.15cm]PL.west) -- node[lbl, below] {Remove} ([yshift=-0.15cm]NP.east);
 
-  % PL <-> Done (Right Vertical)
-  \draw[tr] ([xshift=0.5cm]PL.south) -- node[lbl, right] {Mark done} ([xshift=0.5cm]DO.north);
-  \draw[tr] ([xshift=-0.5cm]DO.north) -- node[lbl, left] {Unmark} ([xshift=-0.5cm]PL.south);
+  % PL <-> Done (right vertical)
+  \draw[tr] ([xshift=-0.15cm]PL.south) -- node[lbl, left] {Mark done} ([xshift=-0.15cm]DO.north);
+  \draw[tr] ([xshift=0.15cm]DO.north) -- node[lbl, right] {Unmark} ([xshift=0.15cm]PL.south);
 
-  % Parked <-> Planned (Diagonal), mirroring the state machine above.
-  \draw[tr] ([yshift=0.2cm]PK.north east) -- node[lbl, above, sloped, pos=0.27] {Add to plan} ([yshift=0.2cm]PL.south west);
-  \draw[tr] ([yshift=-0.2cm]PL.south west) -- node[lbl, below, sloped, pos=0.73] {Park} ([yshift=-0.2cm]PK.north east);
+  % Parked <-> Planned (diagonal)
+  \draw[tr] ([yshift=0.16cm]PK.north east) -- node[lbl, above, sloped, pos=0.20] {Add to plan} ([yshift=0.16cm]PL.south west);
+  \draw[tr] ([yshift=-0.16cm]PL.south west) -- node[lbl, below, sloped, pos=0.80] {Park} ([yshift=-0.16cm]PK.north east);
 
-  % Done -> NP (Diagonal Up-Left)
-  \draw[tr] (DO.north west) -- node[lbl, above, sloped, pos=0.16] {Remove} (NP.south east);
-
+  % Done -> NP (diagonal up-left)
+  \draw[tr] (DO.north west) -- node[lbl, above, sloped, pos=0.11] {Remove} (NP.south east);
 \end{tikzpicture}
 \caption{Unified course lifecycle state machine with context-sensitive action buttons. Each state defines and displays only the active transitions available to the user.}
 \label{fig:action-buttons}
@@ -964,6 +964,8 @@ The capacity profile is pre-populated with a default target of 30~ECTS per semes
 % ============================================================
 \section{Recommendation Presentation Design}
 \label{sec:recommendations}
+
+Where the Dashboard reports what a plan contains (Section~\ref{sec:dashboard}), recommendations propose what it might contain next. Feature~\ref{feat:007} and Feature~\ref{feat:012} govern them, and they pull in two directions: a recommendation must carry enough inspectable evidence to be trusted, and it must reach the student without disturbing the canvas being worked on. The three subsections below take these in turn: what a recommendation is grounded in and how it names that grounding (Section~\ref{sec:rec-types-evidence}), where it is shown (Section~\ref{sec:rec-panel}), and what happens when a student accepts one (Section~\ref{sec:rec-accept}).
 
 
 % ------------------------------------------------------------
