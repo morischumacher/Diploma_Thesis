@@ -1014,7 +1014,7 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
   btn/.style={draw=gray!50, fill=white, rounded corners=2pt, inner sep=1.6pt, font=\tiny}]
 
   % panel
-  \draw[gray!55, line width=0.9pt, rounded corners=4pt, fill=white] (0,0) rectangle (6.0,-7.3);
+  \draw[gray!55, line width=0.9pt, rounded corners=4pt, fill=white] (0,0) rectangle (6.0,-7.6);
   \node[font=\scriptsize\bfseries, anchor=west] at (0.3,-0.45) {Recommendations};
 
   % family toggles
@@ -1035,11 +1035,12 @@ The panel displays a scrollable list of recommendation cards, each draggable ont
   \node[btn, anchor=east] (b1) at (5.55,-4.72) {add};
 
   % card 2, cropped by the panel edge to show the list scrolls
-  \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0.3,-6.9) rectangle (5.7,-5.4);
+  \draw[gray!60, line width=0.8pt, rounded corners=3pt, fill=white] (0.3,-7.2) rectangle (5.7,-5.4);
   \node[badge, anchor=east] at (5.55,-5.4) {Other students};
   \node[font=\tiny, anchor=west] at (0.45,-5.75) {SSD \ $|$ \ VU \ $|$ \ summer};
   \node[font=\scriptsize\bfseries, anchor=west] at (0.45,-6.15) {Semistrukturierte Daten};
   \node[font=\tiny, anchor=west] at (0.45,-6.55) {\emph{62\,\% of similar students chose this}};
+  \node[btn, anchor=east] (b2) at (5.55,-6.95) {add};
 
 \end{tikzpicture}
 \caption{The Recommendation Panel. Each card names the family that produced it and the reason in the student's own terms, and is draggable into a semester lane; nothing is added to the canvas itself.}
