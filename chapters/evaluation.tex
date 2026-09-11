@@ -19,8 +19,8 @@ To operationalise this goal, the study was guided by four questions, carried ove
 
 \begin{itemize}
     \item \textbf{Planning practice:} How do students execute the planning process using the tool?
-    \item \textbf{The graph's contribution:} What does the graph-based view add to that work? Answered by comparing the two conditions within each participant (Section~\ref{sec:eval-ab}).
-    \item \textbf{Recommendations in the workflow:} Where and how do the embedded recommendations help?
+    \item \textbf{Components in the workflow:} Where does each of the tool's components sit in that process, and what does it contribute there?
+    \item \textbf{The graph's contribution:} What does the graph-based view add to that work?
     \item \textbf{Outcomes and satisfaction:} Do the plans students produce meet the task they were set, and how satisfied are students with the tool?
 \end{itemize}
 
@@ -84,9 +84,7 @@ Everything other than graph availability was held constant across the two condit
 \subsection{Fixed Scenario Order}
 \label{sec:eval-order}
 
-Scenario~A preceded Scenario~B for every participant. A fixed sequence was chosen over counterbalancing because the object of study is how a graph enters a workflow a student has already formed. By fixing the order, every participant encountered the graph at the same point on their learning curve. While counterbalancing is the standard approach to isolate treatment effects, it would have yielded two different baseline workflows within the cohort (one formed with the graph, one without). A consistent baseline workflow was prioritised instead, a decision grounded in Greenwald's analysis: counterbalancing distributes practice effects but does not remove an interaction between treatment and practice~\cite[p.~316]{greenwald1976within}, and that a repeated-measures design is appropriate where the course of learning is itself the object of study, the sequence then being held constant~\cite[pp.~316--318]{greenwald1976within}.
-
-Because graph availability and second-task exposure are perfectly collinear, this chapter attributes no changes in speed or outcome to the graph. Instead, Section~\ref{sec:eval-ab} focuses strictly on whether the graph displaces the established workflow, explicitly labelling any inseparable second-run effects.
+Scenario~A preceded Scenario~B for every participant. The order follows from the research question: the study asks how a graph enters a workflow a student has already formed, so the baseline workflow had to be formed before the graph was available. Counterbalancing would have given half the cohort a baseline formed with the graph, which is a different object of study. It would also not have removed the confound at issue: as Greenwald notes, where a treatment may be differently effective at different levels of practice, counterbalancing leaves treatment effects mixed with treatment--practice interactions~\cite[p.~316]{greenwald1976within}. His remedy for that case, a combined design in which a separate group repeats the task without the treatment~\cite[p.~316]{greenwald1976within}, was outside the scope of a eleven-participant study and is the design a larger study should adopt. Because graph availability and second-task exposure are therefore perfectly collinear, this chapter attributes no changes in speed or outcome to the graph; Section~\ref{sec:eval-ab} asks only whether the graph displaces the established workflow, labelling any inseparable second-run effects.
 
 \subsection{Session Sequence and Instruments}
 \label{sec:eval-sequence}
@@ -107,10 +105,9 @@ Two independent data streams were collected and triangulated per participant (Fi
 
 \subsection{Rationale and Limitations of Frame Sampling}
 \label{sec:eval-framemethod}
+Systematic fixed-interval sampling was chosen because the quantities this chapter reports are durations. At a constant interval each frame stands for the same span of time, so occupancy and dwell follow directly from the frame counts, on one basis for every participant and without weighting the record toward whichever surfaces change state most often. Exhaustive event coding would recover exact transition counts, but it would not estimate those durations any better, and it would cost analyst time that the questions of Section~\ref{sec:eval-guiding} would not repay. Because the label scheme was fixed prior to analysis, the process states of Section~\ref{sec:eval-statemodel} are empirically derived from the data rather than selectively interpreted by the analyst.
 
-Systematic fixed-interval frame sampling was chosen to give uniform, gapless coverage of interface occupancy and dwell times across the cohort, and because it was tractable within this study: hand-coding every state change across 22 recorded runs would have taken considerably longer than the time available. Because the label scheme was fixed prior to analysis, the process states of Section~\ref{sec:eval-statemodel} are empirically derived from the data rather than selectively interpreted by the analyst.
-
-However, this quantitative lens has inherent methodological trade-offs. First, a ten-second resolution inevitably misses sub-interval transient events (such as brief hovers or quickly dismissed menus), making these visual counts lower bounds. Second, a visual frame captures interface state but not user intent. To mitigate this, the visual codes are triangulated with the transcripts, which potentially carry the underlying rationale for observed actions. Third, complex UI configurations (such as simultaneous open panels) required uniform compound-state rules (Table~\ref{tab:states}) which dictate the resulting occupancies. Finally, the method's strict reliance on visual data necessitated the exclusion of P08, for whom no screen recording was available. These limitations define their interpretative boundaries as carried forward in Chapter~\ref{chap:discussion}.
+Four properties of the method bound what the frame record can be asked to show. A ten-second resolution does not see events shorter than the interval, a brief hover or a menu opened and dismissed, so counts of those events are lower bounds. A frame records interface state and not intent, which is why each visual code is read against the transcript for the reasoning behind the action it accompanies. Configurations with several panels open at once are resolved by fixed compound-state rules (Table~\ref{tab:states}), so the occupancies reported are in part a product of those rules and are to be read against them. And P08 is absent from the analysis, having no screen recording. Chapter~\ref{chap:discussion} carries these bounds into the interpretation.
 
 \subsection{Codebook and Frequencies}
 \label{sec:eval-codebook}
@@ -150,8 +147,7 @@ Frequencies are reported in the format \emph{n}/\emph{m}, where \emph{m} is the 
 \section{Findings}
 \label{sec:eval-results}
 
-The findings are reported in the order of the guiding questions: the planning process first, then what the graph changes in it, then the surfaces around the loop, including the Recommendation Panel, and what worked and where the loop breaks, then the questionnaires and the plans produced against self-report, and a summary that Chapter~\ref{chap:discussion} takes up.
-Frequencies are written \emph{n}/\emph{m} throughout, where \emph{m} counts the participants for whom the code could be decided (Section~\ref{sec:eval-codebook}).
+The findings are reported in the order of the guiding questions: the planning process first, then what the graph changes in it, then the surfaces around the loop, and what worked and where the loop breaks, then the questionnaires and the plans produced against self-report, and a summary that Chapter~\ref{chap:discussion} takes up.
 
 \subsection{The Planning Loop}
 \label{sec:eval-process}
@@ -161,20 +157,13 @@ Planning under this tool is a single checklist-driven loop, and it has the same 
 \paragraph{A State Model of the Planning Process}
 \label{sec:eval-statemodel}
 Each sampled frame carries a primary surface, and, recorded independently of it, which
-panels were open: the Dashboard, which coexists with either view rather than replacing
-it; the sidebar, which holds the Course Catalogue in the Table View and the filter panel
-in the Graph View, and can be hidden in the table; the Recommendation Panel; the visual
-legend; and any modal. The process states of Table~\ref{tab:states} combine the surface
-with the two that differentiate it, the Dashboard and the sidebar. They differentiate only
-within the Table View: the Graph View's sidebar is always the filter panel, so it yields
-a single state. The Recommendation Panel is deliberately not part of a state. It can stand
+panels were open: the Dashboard, which coexists with either view; the sidebar, which holds the Course Catalogue in the Table View and the filter panel
+in the Graph View; the Recommendation Panel; the visual
+legend; and any modal. A state is the primary surface together with the two panels that can vary beside it, the Dashboard and the sidebar. In the Table View both vary, and their four combinations are the four table states of Table~\ref{tab:states}: both open, catalogue only, Dashboard only, neither. In the Graph View the sidebar is always the filter panel, so it distinguishes nothing there, and the Graph View is recorded as a single state. The Recommendation Panel is deliberately not part of a state. It can stand
 open across every surface without changing which one is being worked in, so folding it into
 the state would split each state in two and describe the panel's visibility rather than the
 student's position in the loop. It is therefore counted as an overlay, reported on its own
-row in Table~\ref{tab:occupancy} and read in Section~\ref{sec:eval-recs}. That decision
-also bounds what its numbers mean: a frame records that the panel was open, not that it was
-being read, so a participant who opened it once and never consulted it again is
-indistinguishable from one who worked in it (Section~\ref{sec:eval-framemethod}).
+row in Table~\ref{tab:occupancy} and read in Section~\ref{sec:eval-recs}.
 
 \begin{table}[htpb]
     \centering
@@ -222,7 +211,7 @@ indistinguishable from one who worked in it (Section~\ref{sec:eval-framemethod})
 \paragraph{The Core Workflow: A Checklist-Driven Two-State Loop}
 \label{sec:eval-loop}
 
-The Dashboard's missing-requirements checklist was the primary driver of task completion for every participant (E-G15, 11/11). Students consistently seeded their plans with the pre-filled mandatory backbone, a feature universally accepted and valued (E-G01, 11/11). From this baseline, they utilized the checklist to identify remaining gaps, took action to close them, and returned to the list to verify progress. For instance, P09 began Scenario~A by reading the count aloud, \enquote{22 missing requirements, wow, that is a lot}, and then systematically resolved them item by item. Similarly, P10 explicitly articulated this feedback loop: \enquote{I need narrow-elective modules, transferable skills, so let me see what narrow-elective ones there are}. For the most junior participant, this loop only emerged after moderator intervention: P06 had been placing courses for roughly nine minutes with no view of what remained, and his response upon seeing the tracker marked the transition from unstructured browsing to goal-directed planning (\enquote{exactly that, here I see what I need}). That this loop takes the exact same shape for independent and heavily assisted participants is consistent with it being a structural property of the tool rather than an artefact of moderation.
+The Dashboard's missing-requirements checklist was the primary driver of task completion for every participant (E-G15, 11/11). Students consistently seeded their plans with the pre-filled mandatory backbone, a feature universally accepted and valued (E-G01, 11/11). From this baseline, they utilized the checklist to identify remaining gaps, took action to close them, and returned to the list to verify progress. For instance, P09 began Scenario~A by reading the count aloud, \enquote{22 missing requirements, wow, that is a lot}, and then systematically resolved them item by item. Similarly, P10 explicitly articulated this feedback loop: \enquote{I need narrow-elective modules, transferable skills, so let me see what narrow-elective ones there are}. For the most junior participant, this loop only emerged after moderator intervention: P06 had been placing courses for roughly nine minutes with no view of what remained, and his response upon seeing the tracker marked the transition from unstructured browsing to goal-directed planning (\enquote{exactly that, here I see what I need}). This loop takes the exact same shape for independent and heavily assisted participants.
 
 The loop alternates between two states: the checklist-reading state (\textsc{dash+cat})
 and a candidate-finding state, which in Scenario~A is the catalogue. Three stages of it are
