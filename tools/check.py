@@ -198,7 +198,11 @@ def main():
     # --- style ------------------------------------------------------------
     targets = [args.chapter] if args.chapter else \
               [f for f in TEX if f.startswith(('chapters/', 'appendix/'))]
-    AMERICAN = r'\b(color|colors|behavior|behaviors|catalog|catalogs|judgment|favor|labeled|modeling|analyze|analyzed|fulfillments?|programs?|visualization|personalization|prioritization|organized|recognized|minimize|utilize|emphasize|individualized)\b'
+    AMERICAN = (r'\b(?:color|colors|behavior|behaviors|catalog|catalogs|judgment|favor|labeled'
+                r'|modeling|fulfillments?|programs?|analyz(?:e|es|ed|ing)'
+                r'|(?:visuali|personali|prioriti|organi|recogni|minimi|utili|emphasi'
+                r'|individuali|characteri|optimi|locali|contextuali|synthesi|normali'
+                r'|summari|polari|categori|generali)z(?:e|es|ed|ing|ation|ations))\b')
     SLANG = r'\b(figure out|kind of|a lot of|pretty much|basically|end up|deal with|come up with|turn out|get around)\b'
     LANGUAGE = [
         ('hedge or intensifier', r'\b(actually|really|quite|obviously|simply|truly|indeed|very|extremely|highly)\b'),
